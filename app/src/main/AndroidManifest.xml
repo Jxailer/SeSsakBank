@@ -19,6 +19,15 @@
             android:name=".RegisterActivity"
             android:exported="true" />
         <activity
+            android:name=".GameStart2"
+            android:exported="true" />
+        <activity
+            android:name=".GameStart1"
+            android:exported="true" />
+        <activity
+            android:name=".PlantGame"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
