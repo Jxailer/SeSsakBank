@@ -50,7 +50,7 @@
             <EditText
                 android:id="@+id/signup_username"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:background="@drawable/round_button"
                 android:drawableLeft="@drawable/baseline_check_24"
                 android:drawablePadding="8dp"
@@ -61,7 +61,7 @@
             <Button
                 android:id="@+id/username_validate"
                 android:layout_width="60dp"
-                android:layout_height="30dp"
+                android:layout_height="48dp"
                 android:background="@drawable/rectangle_button"
                 android:backgroundTint="#8AAE4F4D"
                 android:text="중복확인"
@@ -81,7 +81,7 @@
             <EditText
                 android:id="@+id/signup_password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/round_button"
                 android:drawableLeft="@drawable/baseline_check_24"
@@ -94,7 +94,7 @@
             <EditText
                 android:id="@+id/signup_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/round_button"
                 android:drawableLeft="@drawable/baseline_check_24"
@@ -106,7 +106,7 @@
             <EditText
                 android:id="@+id/signup_birth"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/round_button"
                 android:drawableLeft="@drawable/baseline_check_24"
@@ -118,7 +118,7 @@
             <EditText
                 android:id="@+id/signup_phone"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/round_button"
                 android:drawableLeft="@drawable/baseline_check_24"

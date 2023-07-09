@@ -22,7 +22,7 @@
     <EditText
         android:id="@+id/login_username"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:ems="10"
         android:hint="아이디를 입력하세요."
         android:inputType="textPersonName"
@@ -37,7 +37,7 @@
     <EditText
         android:id="@+id/login_password"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:ems="10"
         android:hint="비밀번호를 입력하세요."
         android:inputType="textPassword"
