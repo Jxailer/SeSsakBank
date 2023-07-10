@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".game.GameStart2">
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".game.Game_nameChange">
 
     <TextView
-        android:id="@+id/tv_plantName"
+        android:id="@+id/tv_nameChange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_bold"
-        android:text="이 친구의 이름을 정해주세요!"
+        android:text="이름을 수정해주세요!"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,25 +20,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.147" />
 
-    <Button
-        android:id="@+id/btn_create"
-        android:layout_width="172dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/round_button"
-        android:backgroundTint="#A2C8A6"
-        android:fontFamily="@font/roboto_bold"
-        android:text="생성하기"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.362" />
-
     <EditText
-        android:id="@+id/edt_plantName"
+        android:id="@+id/edt_nameChange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="36dp"
@@ -47,11 +30,27 @@
         android:hint="이름"
         android:inputType="textPersonName"
         android:textColorHint="#9AA08D"
-        app:layout_constraintBottom_toTopOf="@+id/btn_create"
+        app:layout_constraintBottom_toTopOf="@+id/btn_alter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_plantName"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nameChange"
         app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btn_alter"
+        android:layout_width="172dp"
+        android:layout_height="45dp"
+        android:background="@drawable/round_button"
+        android:backgroundTint="#A2C8A6"
+        android:fontFamily="@font/roboto_bold"
+        android:text="변경하기"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.401" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

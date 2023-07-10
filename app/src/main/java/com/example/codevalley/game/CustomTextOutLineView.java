@@ -1,4 +1,4 @@
-package com.example.codevalley;
+package com.example.codevalley.game;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -8,6 +8,8 @@ import android.graphics.Canvas;
 import android.graphics.Paint.Style;
 import android.util.AttributeSet;
 import android.widget.TextView;
+
+import com.example.codevalley.R;
 
 @SuppressLint("AppCompatCustomView")
 public class CustomTextOutLineView extends TextView {

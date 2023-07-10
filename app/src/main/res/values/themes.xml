@@ -9,8 +9,11 @@
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Status bar color. 상태바 색상 바꾸기 -->
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">#257400</item>
+
         <!-- Customize your theme here. -->
+        <item name="windowNoTitle">true</item>
     </style>
 </resources>

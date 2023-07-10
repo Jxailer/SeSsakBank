@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:backgroundTint="#FFFFFF"
-    tools:context=".PlantGame">
+    tools:context=".game.PlantGame">
 
     <ImageView
         android:id="@+id/imageView9"
@@ -15,12 +15,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cardView"
+        app:layout_constraintTop_toTopOf="@+id/game_cardView"
         app:layout_constraintVertical_bias="0.606"
         app:srcCompat="@drawable/ssessak" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/game_cardView"
         android:layout_width="410dp"
         android:layout_height="200dp"
         android:background="#C4D7BF"
@@ -32,7 +32,7 @@
         app:layout_constraintVertical_bias="0.0">
 
 
-        <com.example.codevalley.CustomTextOutLineView
+        <com.example.codevalley.game.CustomTextOutLineView
             xmlns:textoutline="http://schemas.android.com/apk/res/com.example.codevalley"
             android:id="@+id/textView"
             android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
 <!--        android:progress="20"  프로그레스바 시작을 20으로 하고 싶다면 이 코드 넣으면 됨.-->
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_nameChange"
             android:layout_width="82dp"
             android:layout_height="35dp"
             android:layout_gravity="right"
@@ -123,7 +123,7 @@
         app:srcCompat="@drawable/grass2" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/btn_water"
         android:layout_width="78dp"
         android:layout_height="51dp"
         android:background="@drawable/round_button"
@@ -140,7 +140,7 @@
         app:layout_constraintVertical_bias="0.81" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btn_synthesis"
         android:layout_width="78dp"
         android:layout_height="51dp"
         android:background="@drawable/round_button"
@@ -153,11 +153,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.795"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cardView"
+        app:layout_constraintTop_toTopOf="@+id/game_cardView"
         app:layout_constraintVertical_bias="0.81" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tv_countSynthesis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_bold"
@@ -168,11 +168,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.76"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5"
+        app:layout_constraintTop_toBottomOf="@+id/btn_synthesis"
         app:layout_constraintVertical_bias="0.066" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/btn_fertilizer"
         android:layout_width="78dp"
         android:layout_height="51dp"
         android:background="@drawable/round_button"
@@ -185,11 +185,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.201"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cardView"
+        app:layout_constraintTop_toTopOf="@+id/game_cardView"
         app:layout_constraintVertical_bias="0.81" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tv_countWater"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_bold"
@@ -200,11 +200,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button6"
+        app:layout_constraintTop_toBottomOf="@+id/btn_water"
         app:layout_constraintVertical_bias="0.066" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_countFertilizer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_bold"
@@ -215,7 +215,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button7"
+        app:layout_constraintTop_toBottomOf="@+id/btn_fertilizer"
         app:layout_constraintVertical_bias="0.066" />
 
 

@@ -13,28 +13,31 @@
         android:theme="@style/Theme.CodeValley"
         tools:targetApi="31">
         <activity
+            android:name=".game.Game_nameChange"
+            android:exported="true" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true" />
         <activity
             android:name=".RegisterActivity"
             android:exported="true" />
         <activity
-            android:name=".GameStart2"
+            android:name=".game.GameStart2"
             android:exported="true" />
         <activity
-            android:name=".GameStart1"
+            android:name=".game.GameStart1"
             android:exported="true" />
         <activity
-            android:name=".PlantGame"
+            android:name=".game.PlantGame"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <meta-data

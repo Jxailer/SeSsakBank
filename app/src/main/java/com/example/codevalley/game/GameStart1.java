@@ -1,4 +1,4 @@
-package com.example.codevalley;
+package com.example.codevalley.game;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.codevalley.R;
 
 public class GameStart1 extends AppCompatActivity {
 
