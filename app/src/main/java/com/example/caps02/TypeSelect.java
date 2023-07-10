@@ -2,6 +2,8 @@ package com.example.caps02;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.view.View;
 import android.os.Bundle;
 import android.view.View.OnClickListener;
@@ -10,9 +12,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.codevalley.LoginActivity;
+import com.example.codevalley.R;
+
 public class TypeSelect extends AppCompatActivity {
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +32,12 @@ public class TypeSelect extends AppCompatActivity {
                 switch (rg.getCheckedRadioButtonId()){
                     case R.id.radio_kid:
                         Toast.makeText(getApplicationContext(),"어린이타입 선택완료", Toast.LENGTH_SHORT).show();
+                        Intent intent_kidUI = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(intent_kidUI);
                         break;
                     default:
                         Toast.makeText(getApplicationContext(),"보호자타입 선택완료", Toast.LENGTH_SHORT).show();
+
                 }
             }
 
