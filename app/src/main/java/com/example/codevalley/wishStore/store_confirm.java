@@ -20,6 +20,7 @@ public class store_confirm extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "구매확인 버튼을 눌렀어요.", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(getApplicationContext(), store_complete.class);
         startActivity(intent);
+        finish();
     }
 
     public void rewardConfirm_no(View v){

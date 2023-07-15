@@ -10,10 +10,30 @@
     tools:context=".wishStore.store_main">
 
     <!--참 잘했어요 샵 레이아웃-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/hamburgerButton"-->
+<!--            android:layout_width="48dp"-->
+<!--            android:layout_height="48dp"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:onClick="hamburgerMenu_Click"-->
+<!--            android:scaleType="centerInside"-->
+<!--            android:src="@drawable/hamburgerbutton"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            tools:ignore="SpeakableTextPresentCheck" />-->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mainLayout"
         android:layout_width="match_parent"
-        android:layout_height="1000dp"
+        android:layout_height="3000dp"
         android:layout_marginTop="100dp"
         android:background="#FFFFFF"
         app:layout_constraintStart_toEndOf="parent"
@@ -220,7 +240,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/wishlistConstraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="650dp"
             android:layout_marginTop="30dp"
             app:layout_constraintTop_toBottomOf="@+id/gameItemConstraintLayout">
 
@@ -252,53 +272,98 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/wishlist_category" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/wishlist1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view2">
+<!--            소원권 목록 스크롤뷰-->
+<!--            <ScrollView-->
+<!--                android:id="@+id/totalWishList"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="@+id/view2">-->
 
-                <Button
-                    android:id="@+id/wish1"
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/wishlist1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="25dp"
-                    android:text="- 놀이공원 가기 "
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="20dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:textColor="#000000"
-                    android:gravity="left"></Button>
+                    app:layout_constraintTop_toTopOf="@+id/view2">
 
-                <Button
-                    android:id="@+id/wishBuyButton1"
-                    android:layout_width="wrap_content"
+                    <Button
+                        android:id="@+id/wish1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:text="- 놀이공원 가기 "
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:textColor="#000000"
+                        android:gravity="left"></Button>
+
+                    <Button
+                        android:id="@+id/wishBuyButton1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="25dp"
+                        android:backgroundTint="#C4D7BF"
+                        android:text="     x 20"
+                        android:textSize="15sp"
+                        android:onClick="buyButtonClicked"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/wishlist2"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="25dp"
-                    android:backgroundTint="#C4D7BF"
-                    android:text="     x 20"
-                    android:textSize="15sp"
-                    android:onClick="buyButtonClicked"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/wishlist1">
+
+                    <Button
+                        android:id="@+id/wish2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:text="- 스티커 사러가기 "
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:textColor="#000000"
+                        android:gravity="left"/>
+
+                    <Button
+                        android:id="@+id/wishBuyButton2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="25dp"
+                        android:backgroundTint="#C4D7BF"
+                        android:text="     x 5"
+                        android:textSize="15sp"
+                        android:onClick="buyButtonClicked"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/wishlist2"
+                android:id="@+id/wishlist3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/wishlist1">
+                app:layout_constraintTop_toBottomOf="@+id/wishlist2">
 
                 <Button
-                    android:id="@+id/wish2"
+                    android:id="@+id/wish3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="25dp"
@@ -312,7 +377,7 @@
                     android:gravity="left"/>
 
                 <Button
-                    android:id="@+id/wishBuyButton2"
+                    android:id="@+id/wishBuyButton3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="25dp"
@@ -326,26 +391,65 @@
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/wishlist4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/wishlist3">
+
+                <Button
+                    android:id="@+id/wish4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:text="- 스티커 사러가기 "
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:textColor="#000000"
+                    android:gravity="left"/>
+
+                <Button
+                    android:id="@+id/wishBuyButton4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="25dp"
+                    android:backgroundTint="#C4D7BF"
+                    android:text="     x 5"
+                    android:textSize="15sp"
+                    android:onClick="buyButtonClicked"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+<!--            </ScrollView>-->
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 
 
 
         <!--하단바 구성-->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/bottomBar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginTop="568dp"
-            android:orientation="vertical"
-            android:background="@drawable/bar_layout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottomBar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="600dp"
+        android:background="@drawable/bar_layout"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <!--오른쪽 가이드라인-->
@@ -377,18 +481,6 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_end="70dp" />
 
-    <ImageButton
-        android:id="@+id/hamburgerButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
-        android:background="@android:color/transparent"
-        android:onClick="hamburgerMenu_Click"
-        android:scaleType="centerInside"
-        android:src="@drawable/hamburgerbutton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

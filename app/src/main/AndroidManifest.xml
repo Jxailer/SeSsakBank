@@ -21,14 +21,25 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" />
+
+<!--        스플래시부터 시작하기-->
+<!--        <activity-->
+<!--            android:name=".SplashActivity"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN"/>-->
+<!--                <category android:name="android.intent.category.LAUNCHER"/>-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+
+<!--        상점페이지부터 시작하기-->
         <activity
-            android:name=".SplashActivity"
+            android:name=".wishStore.store_main"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
         </activity>
         <activity
             android:name="com.example.caps02.TypeSelect"
@@ -39,9 +50,11 @@
         <activity
             android:name=".wishStore.store_confirm"
             android:exported="true" />
-        <activity
-            android:name=".wishStore.store_main"
-            android:exported="true" />
+
+<!--        상점페이지부터 시작할 시 주석처리-->
+<!--        <activity-->
+<!--            android:name=".wishStore.store_main"-->
+<!--            android:exported="true" />-->
 
 
         <meta-data
