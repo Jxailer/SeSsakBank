@@ -13,20 +13,30 @@
         android:theme="@style/Theme.CodeValley"
         tools:targetApi="31">
         <activity
+            android:name=".DailyRecordPopupActivity"
+            android:exported="false"
+            android:label="@string/title_activity_daily_record_popup"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity
+            android:name=".TargetPopupActivity"
+            android:exported="false"
+            android:label="TargetPopupActivity"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true" />
         <activity
             android:name=".RegisterActivity"
-            android:exported="true" />
-<!--        <activity-->
-<!--            android:name=".MainActivity"-->
-<!--            android:exported="true" />-->
+            android:exported="true" /> <!-- <activity -->
+        <!-- android:name=".MainActivity" -->
+        <!-- android:exported="true" /> -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
