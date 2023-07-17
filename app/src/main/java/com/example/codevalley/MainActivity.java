@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     public void targetButtonClicked(View v){
         Toast.makeText(MainActivity.this, "목표 버튼 눌림.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, TargetPopupActivity.class);
+        intent.putExtra("data", "Test Popup");
+        startActivityForResult(intent, 1);
     }
 
 
@@ -39,11 +41,11 @@ public class MainActivity extends AppCompatActivity {
     public void dayButtonClicked(View v){
         Toast.makeText(MainActivity.this, "날짜 버튼 눌림.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, DailyRecordPopupActivity.class);
+        intent.putExtra("data", "Test Popup");
+        startActivityForResult(intent, 1);
     }
 
 //    하단 네비게이션 바 버튼 클릭
-
-
     public void homeButtonClicked(View v){
         Toast.makeText(MainActivity.this, "홈 버튼 눌림.", Toast.LENGTH_SHORT).show();
     }

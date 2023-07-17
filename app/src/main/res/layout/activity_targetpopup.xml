@@ -35,24 +35,28 @@
             android:drawableLeft="@drawable/baseline_check_24"
             android:drawablePadding="8dp"
             android:hint="목표 적기"
-            android:padding="8dp"
+            android:textColorHint="#5F5F5F"
             android:textColor="@color/black"
+            android:padding="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/info1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="* 용돈 관리 목표를 적어보아요!"
-            android:textSize="16dp"
             android:layout_marginTop="20dp"
+            android:text="* 용돈 관리 목표를 적어보아요!"
+            android:textColor="#5F5F5F"
+            android:textSize="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/targetBox"/>
+            app:layout_constraintTop_toBottomOf="@+id/targetBox" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="* 목표는 용돈기입장 페이지 위에 표시돼요"
             android:textSize="16dp"
+            android:textColor="#5F5F5F"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/info1"/>
@@ -80,7 +84,7 @@
 
         android:layout_marginBottom="20dp"
         android:background="@drawable/round_button"
-        android:backgroundTint="#EAEAEA"
+        android:backgroundTint="#CDCDCD"
         android:onClick="cancelButtonClicked"
         android:text="취소"
         android:textSize="20dp"

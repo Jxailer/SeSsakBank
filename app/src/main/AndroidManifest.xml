@@ -14,14 +14,10 @@
         tools:targetApi="31">
         <activity
             android:name=".DailyRecordPopupActivity"
-            android:exported="false"
-            android:label="@string/title_activity_daily_record_popup"
-            android:theme="@android:style/Theme.Dialog" />
+            android:theme="@style/Theme.AppCompat" />
         <activity
             android:name=".TargetPopupActivity"
-            android:exported="false"
-            android:label="TargetPopupActivity"
-            android:theme="@android:style/Theme.Dialog" />
+            android:theme="@style/Theme.AppCompat" />
         <activity
             android:name=".LoginActivity"
             android:exported="true" />
