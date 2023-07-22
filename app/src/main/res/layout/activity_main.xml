@@ -150,7 +150,7 @@
                         android:id="@+id/day1Icon"
                         android:layout_width="54dp"
                         android:layout_height="20dp"
-                        android:layout_marginTop="46dp"
+                        android:layout_marginTop="35dp"
                         android:paddingLeft="2dp"
                         android:paddingRight="2dp"
                         android:orientation="horizontal"
@@ -240,6 +240,45 @@
                         android:paddingTop="20dip"
                         app:layout_constraintStart_toEndOf="@+id/day6"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:id="@+id/week1Total"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="5dp"
+                        android:background="#DFE7CA"
+                        android:gravity="right|center_horizontal"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/day1">
+
+                        <TextView
+                            android:id="@+id/totalIncome"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="12dp"
+                            android:padding="1dp"
+                            android:text="+10,000"
+                            android:textColor="#87BCA4"
+                            android:textSize="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/day7" />
+
+                        <TextView
+                            android:id="@+id/totalSpend"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="26dp"
+                            android:padding="1dp"
+                            android:text="-5,000"
+                            android:textColor="#BC8787"
+                            android:textSize="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/totalIncome" />
+                    </LinearLayout>
+
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
