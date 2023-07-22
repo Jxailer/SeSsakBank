@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     }
     public void stampButtonClicked(View v){
         Toast.makeText(MainActivity.this, "스템프 버튼 눌림.", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, StampPopupActivity.class);
+        intent.putExtra("data", "Test Popup");
+        startActivityForResult(intent, 1);
     }
 
     public void statisticsButtonClicked(View v){

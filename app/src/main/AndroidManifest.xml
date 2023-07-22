@@ -16,8 +16,14 @@
             android:name=".DailyRecordPopupActivity"
             android:theme="@style/Theme.AppCompat" />
         <activity
+            android:name=".RecordCreate"
+            android:exported="true"/>
+        <activity
             android:name=".TargetPopupActivity"
             android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".StampPopupActivity"
+            android:exported="true" />
         <activity
             android:name=".LoginActivity"
             android:exported="true" />
