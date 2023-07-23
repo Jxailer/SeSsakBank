@@ -20,7 +20,8 @@
             android:exported="true"/>
         <activity
             android:name=".TargetPopupActivity"
-            android:theme="@style/Theme.AppCompat" />
+            android:theme="@style/Theme.AppCompat"
+            android:exported="true"/>
         <activity
             android:name=".StampPopupActivity"
             android:exported="true" />
@@ -32,15 +33,16 @@
             android:exported="true" /> <!-- <activity -->
         <!-- android:name=".MainActivity" -->
         <!-- android:exported="true" /> -->
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name="com.example.caps02.TypeSelect"
             android:exported="true" />

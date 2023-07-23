@@ -1,5 +1,6 @@
 package com.example.codevalley;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,12 +11,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView targetResult; // 목표 설정한 값을 받아오는 변수
+    public static Context context_Main;
+    public TextView target; // 캘린더 위에 표시되는 목표 내용 변수
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        context_Main = this;
+
+        target = (TextView)findViewById(R.id.targetButton);
 
     }
 
@@ -23,22 +29,17 @@ public class MainActivity extends AppCompatActivity {
     public void targetButtonClicked(View v){
         Toast.makeText(MainActivity.this, "목표 버튼 눌림.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, TargetPopupActivity.class);
-        intent.putExtra("data", "@String/targetResult");
+        intent.putExtra("data", target.getText());
         startActivity(intent);
     }
 
-    //목표 설정한 값을 받아오기
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
-            if (resultCode == RESULT_OK) {
-                //데이터 받기
-                String result = data.getStringExtra("result");
-                targetResult.setText(result);
-            }
-        }
+    //목표 설정 내용 변경하기
+    protected void targetChange(){
+        String text = ((TargetPopupActivity)TargetPopupActivity.context_TargetPopup).editText.getText().toString();
+        target.setText(text);
     }
+
+
 
 
 //    정보바 버튼 클릭
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     public void stampButtonClicked(View v){
         Toast.makeText(MainActivity.this, "스템프 버튼 눌림.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, StampPopupActivity.class);
+        startActivity(intent);
     }
 
     public void statisticsButtonClicked(View v){
