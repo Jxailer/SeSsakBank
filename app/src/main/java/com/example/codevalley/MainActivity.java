@@ -3,11 +3,14 @@ package com.example.codevalley;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
+
+    TextView targetResult; // 목표 설정한 값을 받아오는 변수
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +23,21 @@ public class MainActivity extends AppCompatActivity {
     public void targetButtonClicked(View v){
         Toast.makeText(MainActivity.this, "목표 버튼 눌림.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, TargetPopupActivity.class);
-        intent.putExtra("data", "Test Popup");
-        startActivityForResult(intent, 1);
+        intent.putExtra("data", "@String/targetResult");
+        startActivity(intent);
+    }
+
+    //목표 설정한 값을 받아오기
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                //데이터 받기
+                String result = data.getStringExtra("result");
+                targetResult.setText(result);
+            }
+        }
     }
 
 
@@ -32,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
     public void stampButtonClicked(View v){
         Toast.makeText(MainActivity.this, "스템프 버튼 눌림.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, StampPopupActivity.class);
-        intent.putExtra("data", "Test Popup");
-        startActivityForResult(intent, 1);
     }
 
     public void statisticsButtonClicked(View v){
@@ -45,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, "날짜 버튼 눌림.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, DailyRecordPopupActivity.class);
         intent.putExtra("data", "Test Popup");
-        startActivityForResult(intent, 1);
+        startActivity(intent);
     }
 
 //    하단 네비게이션 바 버튼 클릭
