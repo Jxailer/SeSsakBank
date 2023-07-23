@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent"
         >
 
-        <Button
+        <TextView
             android:id="@+id/targetButton"
             android:layout_width="378dp"
             android:layout_height="wrap_content"
@@ -48,6 +48,7 @@
             android:padding="10dip"
             android:text="목표가 정해지지 않았어요!"
             android:textSize="20dp"
+            android:textColor="@color/black"
             android:onClick="targetButtonClicked"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
