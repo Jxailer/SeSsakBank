@@ -59,7 +59,7 @@
                 android:textColor="@color/black" />
 
             <Button
-                android:id="@+id/username_validate"
+                android:id="@+id/username_duplicate"
                 android:layout_width="60dp"
                 android:layout_height="30dp"
                 android:background="@drawable/rectangle_button"
