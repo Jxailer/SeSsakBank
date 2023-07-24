@@ -9,6 +9,65 @@
     tools:context=".game.PlantGame">
 
 
+    <LinearLayout
+        android:id="@+id/topBar_rectangle"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="600dp"
+        android:background="@drawable/bar_layout"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!--        홈 버튼(눌렸다는 것을 표현하기 위해 app:tint="#D5D6D6" 설정함)-->
+        <ImageButton
+            android:id="@+id/homeButton"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="30dp"
+            android:background="#00ff0000"
+            app:srcCompat="@drawable/home"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <!--        소원권 상점 버튼-->
+        <ImageButton
+            android:id="@+id/wishstoreButton"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="30dp"
+            android:background="#00ff0000"
+            app:srcCompat="@drawable/store"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <!--        마이페이지 버튼-->
+        <ImageButton
+            android:id="@+id/mypageButton"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="30dp"
+            android:background="#00ff0000"
+            app:srcCompat="@drawable/person"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <!--        게임 버튼-->
+        <ImageButton
+            android:id="@+id/gameButton"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="5dp"
+            android:background="#00ff0000"
+            app:srcCompat="@drawable/game"
+            app:tint="#5F8373"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </LinearLayout>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/game_cardView"
         android:layout_width="408dp"
@@ -293,6 +352,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.493"
         app:srcCompat="@drawable/hill" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
