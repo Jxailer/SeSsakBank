@@ -16,9 +16,10 @@ import com.example.codevalley.R;
 
 public class PlantGame extends AppCompatActivity {
     private int progress_num = 0;
-    private int countFertilizer = 10; // 여기에 이제 DB에서 보유 갯수 가져와야 함.
+    private int countFertilizer = 21; // 여기에 이제 DB에서 보유 갯수 가져와야 함.
     private int countWater = 0; // 여기에 이제 DB에서 보유 갯수 가져와야 함.
     private int countSynthesis = 5; // 여기에 이제 DB에서 보유 갯수 가져와야 함.
+    private int countLevel = 1;
 
 
     @Override
@@ -37,6 +38,7 @@ public class PlantGame extends AppCompatActivity {
         TextView tv_countWater = (TextView) findViewById(R.id.tv_countWater);
         TextView tv_countSynthesis = (TextView) findViewById(R.id.tv_countSynthesis);
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        TextView tv_countLevel = (TextView) findViewById(R.id.tv_countLevel);
 
 //        // GameStar2에서 받은 식물 이름 가져와서 출력
 //        Intent intent = getIntent(); // 넘어온 값을 받기 위해 intent객체를 생성하지만 getIntent()를 통해 넘어온 intent객체를 받아온다.
@@ -58,24 +60,29 @@ public class PlantGame extends AppCompatActivity {
         btn_fertilizer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                countFertilizer--;
-                tv_countFertilizer.setText(countFertilizer+"");
-                progress_num = progress_num + 20;
+                progress_num = progress_num + 2;
+                if (progress_num % 20 == 0){
+                    countLevel++;
+                    tv_countLevel.setText(countLevel+"");
+                    progress_num = 0;
+                }
                 try {
-                    if (countFertilizer >= 0){
-                        if (progress_num >= 200  && progress_num < 400){
+                    if (countFertilizer > 0){
+                        countFertilizer--;
+                        tv_countFertilizer.setText(countFertilizer+"");
+                        if (countLevel >= 10 && countLevel < 20){
                             imv_growingPlant.setImageResource(R.drawable.ssessak);
                         }
-                        else if (progress_num >= 400  && progress_num < 600){
+                        else if (countLevel >= 20  && countLevel < 30){
                             imv_growingPlant.setImageResource(R.drawable.small_tree);
                         }
-                        else if (progress_num >= 600  && progress_num < 800){
+                        else if (countLevel >= 30  && countLevel < 40){
                             imv_growingPlant.setImageResource(R.drawable.big_tree);
                         }
-                        else if (progress_num >= 800  && progress_num <= 999){
+                        else if (countLevel >= 40  && countLevel <= 50){
                             imv_growingPlant.setImageResource(R.drawable.big_fruittree);
                         }
-                        else if (progress_num < 0 || progress_num > 999){
+                        else if (countLevel < 0 || countLevel > 50){
                             Toast.makeText(getApplicationContext(),"범위를 초과했습니다.",Toast.LENGTH_SHORT).show();
                         }
                         else{
@@ -91,14 +98,17 @@ public class PlantGame extends AppCompatActivity {
                 }
             }
         });
+
         btn_water.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                countWater--;
-                tv_countWater.setText(countWater+"");
+//                countWater--;
+//                tv_countWater.setText(countWater+"");
                 progress_num = progress_num + 1;
                 try {
                     if (countWater >= 0){
+                        countWater--;
+                        tv_countWater.setText(countWater+"");
                         if (progress_num >= 200  && progress_num < 400){
                             imv_growingPlant.setImageResource(R.drawable.ssessak);
                         }
@@ -130,11 +140,13 @@ public class PlantGame extends AppCompatActivity {
         btn_synthesis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                countSynthesis--;
-                tv_countSynthesis.setText(countSynthesis+"");
+//                countSynthesis--;
+//                tv_countSynthesis.setText(countSynthesis+"");
                 progress_num = progress_num + 3;
                 try {
                     if (countSynthesis >= 0){
+                        countSynthesis--;
+                        tv_countSynthesis.setText(countSynthesis+"");
                         if (progress_num >= 200  && progress_num < 400){
                             imv_growingPlant.setImageResource(R.drawable.ssessak);
                         }
