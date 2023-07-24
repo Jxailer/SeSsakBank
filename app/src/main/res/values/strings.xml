@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">codeValley</string>
+    <string name="title_activity_daily_record_popup">DailyRecordPopupActivity</string>
 </resources>
