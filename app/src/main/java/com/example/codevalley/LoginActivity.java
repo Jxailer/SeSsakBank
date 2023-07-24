@@ -124,8 +124,8 @@ public class LoginActivity extends AppCompatActivity {
 
                     if(!Objects.equals(passwordFromDB, userPassword)) {
                         loginUsername.setError(null);
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
                     }
                 }else {
                     loginPassword.setError("비밀번호가 일치하지 않아요!");

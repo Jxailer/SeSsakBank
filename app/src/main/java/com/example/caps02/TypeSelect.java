@@ -12,6 +12,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.adult.adult_LoginActivity;
 import com.example.codevalley.LoginActivity;
 import com.example.codevalley.R;
 
@@ -37,7 +38,8 @@ public class TypeSelect extends AppCompatActivity {
                         break;
                     default:
                         Toast.makeText(getApplicationContext(),"보호자타입 선택완료", Toast.LENGTH_SHORT).show();
-
+                        Intent intent_adultUI = new Intent(getApplicationContext(), adult_LoginActivity.class);
+                        startActivity((intent_adultUI));
                 }
             }
 
