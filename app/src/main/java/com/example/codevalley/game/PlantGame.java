@@ -82,7 +82,7 @@ public class PlantGame extends AppCompatActivity {
                     if (countFertilizer > 0){
                         countFertilizer--;
                         tv_countFertilizer.setText(countFertilizer+"");
-                        if (countLevel >= 10 && countLevel < 20){
+                        if (countLevel >= 3 && countLevel < 20){
                             imv_growingPlant.setImageResource(R.drawable.ssessak);
                         }
                         else if (countLevel >= 20  && countLevel < 30){
