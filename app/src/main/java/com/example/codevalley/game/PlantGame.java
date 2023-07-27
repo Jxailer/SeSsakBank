@@ -73,7 +73,7 @@ public class PlantGame extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 progress_num = progress_num + 2;
-                if (progress_num % 20 == 0){
+                if (progress_num % 20 == 0 || progress_num > 20){
                     countLevel++;
                     tv_countLevel.setText(countLevel+"");
                     progress_num = 0;
@@ -83,7 +83,7 @@ public class PlantGame extends AppCompatActivity {
                         countFertilizer--;
                         tv_countFertilizer.setText(countFertilizer+"");
                         if (countLevel >= 3 && countLevel < 20){
-                            imv_growingPlant.setImageResource(R.drawable.ssessak);
+                            imv_growingPlant.setImageResource(R.drawable.big_tree);
                         }
                         else if (countLevel >= 20  && countLevel < 30){
                             imv_growingPlant.setImageResource(R.drawable.small_tree);
@@ -123,7 +123,7 @@ public class PlantGame extends AppCompatActivity {
                     if (countWater > 0){
                         countWater--;
                         tv_countWater.setText(countWater+"");
-                        if (countLevel >= 10 && countLevel < 20){
+                        if (countLevel >= 3 && countLevel < 20){
                             imv_growingPlant.setImageResource(R.drawable.ssessak);
                         }
                         else if (countLevel >= 20  && countLevel < 30){
@@ -163,7 +163,7 @@ public class PlantGame extends AppCompatActivity {
                     if (countSynthesis > 0){
                         countSynthesis--;
                         tv_countSynthesis.setText(countSynthesis+"");
-                        if (countLevel >= 10 && countLevel < 20){
+                        if (countLevel >= 3 && countLevel < 20){
                             imv_growingPlant.setImageResource(R.drawable.ssessak);
                         }
                         else if (countLevel >= 20  && countLevel < 30){
