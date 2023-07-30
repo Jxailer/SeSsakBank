@@ -14,8 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.OnLifecycleEvent;
 
-import com.example.codevalley.wishStore.store_confirm;
-import com.example.codevalley.wishStore.store_main;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -98,9 +96,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void wishstoreButtonClicked(View v){
         Toast.makeText(MainActivity.this, "소원궈 상점 버튼 눌림.", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(getApplicationContext(), store_main.class);
-        startActivity(intent);
-        finish();
     }
 
     public void mypageButtonClicked(View v){
