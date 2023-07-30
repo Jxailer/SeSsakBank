@@ -7,10 +7,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.OnLifecycleEvent;
 
@@ -19,8 +22,12 @@ public class MainActivity extends AppCompatActivity {
 
     public static Context context_Main;
     public TextView target; // 캘린더 위에 표시되는 목표 내용 변수
+    public EditText editText;
+    private Button saveButton;
 
-    public int targetChange = 0;
+    View targetChangeBox;
+
+    View calendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,38 +37,59 @@ public class MainActivity extends AppCompatActivity {
         context_Main = this;
 
         target = (TextView)findViewById(R.id.targetButton);
+        targetChangeBox = (View)findViewById(R.id.targetChangeBox);
+        editText = findViewById((R.id.targetBox));
 
-        if (targetChange == 1){
-            String text = ((TargetPopupActivity)TargetPopupActivity.context_TargetPopup).editText.getText().toString();
-            target.setText(text);
-            targetChange = 0;
-        }
+        calendar = (View)findViewById(R.id.calendar);
+
+        saveButton = findViewById(R.id.saveButton);
+
+//        저장버튼 눌렀을 시
+        saveButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+
+                if (editText.getText().length() == 0) { // 목표설정란이 비어있는지 확인하기.
+                    Toast.makeText(MainActivity.this, "목표가 설정되지 않았어요!", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    if(target.getText().toString() != editText.getText().toString()){ // 기존의 목표와 값이 다르다면 값을 변경함.
+                        String result = editText.getText().toString();
+                        target.setText(result);
+                        calendar.bringToFront(); // finish();
+                    }
+
+                    else {
+                        calendar.bringToFront(); // finish();
+                    }
+                    calendar.bringToFront(); // finish();
+                }
+            }
+        });
+
 
     }
 
-    @Override
-    protected void onRestart(){
-        super.onRestart();
-        Intent intent = getIntent();
-        String newTarget = intent.getStringExtra("targetChange");
-        target.setText(newTarget);
+    public void cancelButtonClicked(View v){
+        Toast.makeText(MainActivity.this, "취소 버튼 눌림.", Toast.LENGTH_SHORT).show();
+        calendar.bringToFront(); // finish();
     }
 
+//    @Override
+//    protected void onRestart(){
+//        super.onRestart();
+//        Intent intent = getIntent();
+//        String newTarget = intent.getStringExtra("targetChange");
+//        target.setText(newTarget);
+//    }
 
-//    목표 설정 버튼
+
+//    목표 설정 버튼을 눌렀을 시
     public void targetButtonClicked(View v){
         Toast.makeText(MainActivity.this, "목표 버튼 눌림.", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, TargetPopupActivity.class);
-        intent.putExtra("data", target.getText());
-        startActivity(intent);
-        target.setText("변경중 ..."); // 여기에서 targetButton의 text가 변경되는 것은 확인함.
-        finish();
-    }
-
-    //목표 설정 내용 변경하기
-    protected void targetChange(String result){
-        target.setText(result);
-        String targetTest = ((MainActivity)MainActivity.context_Main).target.getText().toString();
+        editText.setHint(target.getText().toString());
+        targetChangeBox.bringToFront();
     }
 
 

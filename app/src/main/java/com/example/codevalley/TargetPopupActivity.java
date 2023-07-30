@@ -46,6 +46,7 @@ public class TargetPopupActivity extends AppCompatActivity {
                     if( ((MainActivity)MainActivity.context_Main).target.getText().toString() != editText.getText().toString()){ // 기존의 목표와 값이 다르다면 값을 변경함.
                         String result = editText.getText().toString();
                         ((MainActivity)MainActivity.context_Main).target.setText(result);
+//                        ((MainActivity)MainActivity.context_Main).targetChange = 1;
                         finish();
                     }
 
