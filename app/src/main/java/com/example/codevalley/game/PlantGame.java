@@ -43,12 +43,12 @@ public class PlantGame extends AppCompatActivity {
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         TextView tv_countLevel = (TextView) findViewById(R.id.tv_countLevel);
 
-//        // GameStar2에서 받은 식물 이름 가져와서 출력
-//        Intent intent = getIntent(); // 넘어온 값을 받기 위해 intent객체를 생성하지만 getIntent()를 통해 넘어온 intent객체를 받아온다.
-//        Bundle bundle = intent.getExtras(); // Bundle을 통해 extra들을 모두 가져온다
-//        String plantname = bundle.getString("plantname"); // 키 값을 통해서 extras에 있는 값들을 얻는다.
-//
-//        tv_name.setText(plantname); // PlantGame.xml에 있는 객체에 Text를 설정
+        // GameStar2에서 받은 식물 이름 가져와서 출력
+        Intent intent = getIntent(); // 넘어온 값을 받기 위해 intent객체를 생성하지만 getIntent()를 통해 넘어온 intent객체를 받아온다.
+        Bundle bundle = intent.getExtras(); // Bundle을 통해 extra들을 모두 가져온다
+        String plantname = bundle.getString("plantname"); // 키 값을 통해서 extras에 있는 값들을 얻는다.
+
+        tv_name.setText(plantname); // PlantGame.xml에 있는 객체에 Text를 설정
 
         // 이름변경 버튼 눌렀을 시
         btn_nameChange.setOnClickListener(new View.OnClickListener() {
@@ -72,18 +72,30 @@ public class PlantGame extends AppCompatActivity {
         btn_fertilizer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progress_num = progress_num + 2;
-                if (progress_num % 20 == 0 || progress_num > 20){
-                    countLevel++;
-                    tv_countLevel.setText(countLevel+"");
-                    progress_num = 0;
-                }
                 try {
                     if (countFertilizer > 0){
                         countFertilizer--;
+                        progress_num = progress_num + 2;
+                        if (progress_num % 20 == 0){
+                            countLevel++;
+                            tv_countLevel.setText(countLevel+"");
+                            progress_num = 0;
+                            progressBar.setProgress(progress_num);
+                        }
+                        else if (progress_num > 20){
+                            countLevel++;
+                            tv_countLevel.setText(countLevel+"");
+                            progress_num = progress_num - 20;
+                            progressBar.setProgress(progress_num);
+                        }
+                        else {
+                            progressBar.setProgress(progress_num);
+                        }
                         tv_countFertilizer.setText(countFertilizer+"");
+
+                        // 식불 이미지 변경
                         if (countLevel >= 3 && countLevel < 20){
-                            imv_growingPlant.setImageResource(R.drawable.big_tree);
+                            imv_growingPlant.setImageResource(R.drawable.ssessak);
                         }
                         else if (countLevel >= 20  && countLevel < 30){
                             imv_growingPlant.setImageResource(R.drawable.small_tree);
@@ -97,8 +109,7 @@ public class PlantGame extends AppCompatActivity {
                         else if (countLevel < 0 || countLevel > 50){
                             Toast.makeText(getApplicationContext(),"범위를 초과했습니다.",Toast.LENGTH_SHORT).show();
                         }
-                        else{
-                            progressBar.setProgress(progress_num);
+                        else {
                         }
                     }
                     else {
@@ -113,16 +124,28 @@ public class PlantGame extends AppCompatActivity {
         btn_water.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               progress_num = progress_num + 1;
-                if (progress_num % 20 == 0){
-                    countLevel++;
-                    tv_countLevel.setText(countLevel+"");
-                    progress_num = 0;
-                }
                 try {
                     if (countWater > 0){
                         countWater--;
+                        progress_num = progress_num + 1;
+                        if (progress_num % 20 == 0){
+                            countLevel++;
+                            tv_countLevel.setText(countLevel+"");
+                            progress_num = 0;
+                            progressBar.setProgress(progress_num);
+                        }
+                        else if (progress_num > 20){
+                            countLevel++;
+                            tv_countLevel.setText(countLevel+"");
+                            progress_num = progress_num - 20;
+                            progressBar.setProgress(progress_num);
+                        }
+                        else {
+                            progressBar.setProgress(progress_num);
+                        }
                         tv_countWater.setText(countWater+"");
+
+                        // 식물 이미지 변경
                         if (countLevel >= 3 && countLevel < 20){
                             imv_growingPlant.setImageResource(R.drawable.ssessak);
                         }
@@ -139,7 +162,6 @@ public class PlantGame extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),"범위를 초과했습니다.",Toast.LENGTH_SHORT).show();
                         }
                         else{
-                            progressBar.setProgress(progress_num);
                         }
                     }
                     else {
@@ -153,16 +175,28 @@ public class PlantGame extends AppCompatActivity {
         btn_synthesis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progress_num = progress_num + 3;
-                if (progress_num % 20 == 0){
-                    countLevel++;
-                    tv_countLevel.setText(countLevel+"");
-                    progress_num = 0;
-                }
                 try {
                     if (countSynthesis > 0){
                         countSynthesis--;
+                        progress_num = progress_num + 3;
+                        if (progress_num % 20 == 0){
+                            countLevel++;
+                            tv_countLevel.setText(countLevel+"");
+                            progress_num = 0;
+                            progressBar.setProgress(progress_num);
+                        }
+                        else if (progress_num > 20){
+                            countLevel++;
+                            tv_countLevel.setText(countLevel+"");
+                            progress_num = progress_num - 20;
+                            progressBar.setProgress(progress_num);
+                        }
+                        else {
+                            progressBar.setProgress(progress_num);
+                        }
                         tv_countSynthesis.setText(countSynthesis+"");
+
+                        // 식물 이미지 변경
                         if (countLevel >= 3 && countLevel < 20){
                             imv_growingPlant.setImageResource(R.drawable.ssessak);
                         }
@@ -179,7 +213,6 @@ public class PlantGame extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),"범위를 초과했습니다.",Toast.LENGTH_SHORT).show();
                         }
                         else{
-                            progressBar.setProgress(progress_num);
                         }
                     }
                     else {
