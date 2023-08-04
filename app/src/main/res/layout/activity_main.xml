@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainParent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF">
@@ -49,7 +50,6 @@
             android:text="목표가 정해지지 않았어요!"
             android:textSize="20dp"
             android:textColor="@color/black"
-            android:onClick="targetButtonClicked"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -60,10 +60,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/targetChangeBox"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="380dp"
         android:layout_gravity="center"
         android:background="#eeeeee"
         android:orientation="vertical"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topBar">
 
@@ -100,6 +101,8 @@
                 android:textColor="@color/black"
                 android:textColorHint="#5F5F5F"
                 android:textStyle="normal"
+                android:privateImeOptions="defaultInputmode=korean"
+                android:singleLine="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -143,11 +146,9 @@
             android:id="@+id/cancelButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_marginBottom="20dp"
             android:background="@drawable/round_button"
             android:backgroundTint="#CDCDCD"
-            android:onClick="cancelButtonClicked"
             android:text="취소"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -170,7 +171,7 @@
             android:layout_marginTop="170dp"
             android:background="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="parent">
 <!--    월 정보, 도장, 통계 버튼 linearLayout-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/info"
