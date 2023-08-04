@@ -7,8 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,10 +26,14 @@ public class MainActivity extends AppCompatActivity {
     public TextView target; // 캘린더 위에 표시되는 목표 내용 변수
     public EditText editText;
     private Button saveButton;
+    private Button cancelButton;
+    private TextView targetButton;
 
     View targetChangeBox;
 
     View calendar;
+    View mainParent;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,62 +41,88 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         context_Main = this;
+        mainParent = findViewById(R.id.mainParent);
 
-        target = (TextView)findViewById(R.id.targetButton);
-        targetChangeBox = (View)findViewById(R.id.targetChangeBox);
+        target = (TextView) findViewById(R.id.targetButton);
+        targetChangeBox = (View) findViewById(R.id.targetChangeBox);
         editText = findViewById((R.id.targetBox));
 
-        calendar = (View)findViewById(R.id.calendar);
+        calendar = (View) findViewById(R.id.calendar);
 
         saveButton = findViewById(R.id.saveButton);
+        cancelButton = findViewById(R.id.cancelButton);
+        targetButton = findViewById(R.id.targetButton);
 
-//        저장버튼 눌렀을 시
-        saveButton.setOnClickListener(new View.OnClickListener(){
+        // targetBox(목표 수정창) 높이 증가(펼치기)용 소스코드
+//        LinearLayout.LayoutParams targetBoxSpreadParams = new LinearLayout.LayoutParams(
+//                LinearLayout.LayoutParams.MATCH_PARENT,
+//                380
+//        );
+
+        // targetBox(목표 수정창) 높이 감소(접기)용 소스코드
+//        LinearLayout.LayoutParams targetBoxFoldParams = new LinearLayout.LayoutParams(
+//                LinearLayout.LayoutParams.MATCH_PARENT,
+//                22
+//        );
+
+        // 목표 버튼 눌렀을 시
+        targetButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
+                targetChangeBox.setVisibility(View.VISIBLE);
+                targetChangeBox.bringToFront();
 
+            }
+        });
 
+//        저장버튼 눌렀을 시 onClickListener
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 if (editText.getText().length() == 0) { // 목표설정란이 비어있는지 확인하기.
                     Toast.makeText(MainActivity.this, "목표가 설정되지 않았어요!", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    if(target.getText().toString() != editText.getText().toString()){ // 기존의 목표와 값이 다르다면 값을 변경함.
+                } else {
+                    if (target.getText().toString() != editText.getText().toString()) { // 기존의 목표와 값이 다르다면 값을 변경함.
                         String result = editText.getText().toString();
                         target.setText(result);
-                        calendar.bringToFront(); // finish();
+                        Toast.makeText(MainActivity.this, "목표를 바꿨어요!", Toast.LENGTH_SHORT).show();
+                        targetChangeBox.setVisibility(View.INVISIBLE);
+
+                    } else {
+                        targetChangeBox.setVisibility(View.INVISIBLE);
+
                     }
 
-                    else {
-                        calendar.bringToFront(); // finish();
-                    }
-                    calendar.bringToFront(); // finish();
                 }
             }
         });
 
+//        취소 버튼 눌렀을 시 onClickListener
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(MainActivity.this, "취소 버튼 눌림.", Toast.LENGTH_SHORT).show();
+//                setContentView(targetChangeBox, targetBoxFoldParams); // finish();
+
+            }
+        });
+
+
 
     }
 
-    public void cancelButtonClicked(View v){
-        Toast.makeText(MainActivity.this, "취소 버튼 눌림.", Toast.LENGTH_SHORT).show();
-        calendar.bringToFront(); // finish();
-    }
-
-//    @Override
-//    protected void onRestart(){
-//        super.onRestart();
-//        Intent intent = getIntent();
-//        String newTarget = intent.getStringExtra("targetChange");
-//        target.setText(newTarget);
-//    }
 
 
 //    목표 설정 버튼을 눌렀을 시
-    public void targetButtonClicked(View v){
-        Toast.makeText(MainActivity.this, "목표 버튼 눌림.", Toast.LENGTH_SHORT).show();
-        editText.setHint(target.getText().toString());
-        targetChangeBox.bringToFront();
-    }
+//    public void targetButtonClicked(View v){
+//        Toast.makeText(MainActivity.this, "목표 버튼 눌림.", Toast.LENGTH_SHORT).show();
+////        if (targetChangeBox.getParent() != null)
+////            ((ViewGroup) targetChangeBox.getParent()).removeView(targetChangeBox);
+////        builder.setView(targetChangeBox);
+//        editText.setHint(target.getText().toString());
+//        targetChangeBox.bringToFront();
+//    }
 
 
 
