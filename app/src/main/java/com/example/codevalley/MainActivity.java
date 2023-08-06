@@ -1,7 +1,5 @@
 package com.example.codevalley;
 
-import static com.example.codevalley.TargetPopupActivity.context_TargetPopup;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -31,38 +29,15 @@ public class MainActivity extends AppCompatActivity {
 
         target = (TextView)findViewById(R.id.targetButton);
 
-        if (targetChange == 1){
-            String text = ((TargetPopupActivity)TargetPopupActivity.context_TargetPopup).editText.getText().toString();
-            target.setText(text);
-            targetChange = 0;
-        }
-
     }
 
-    @Override
-    protected void onRestart(){
-        super.onRestart();
-        Intent intent = getIntent();
-        String newTarget = intent.getStringExtra("targetChange");
-        target.setText(newTarget);
-    }
 
 
 //    목표 설정 버튼
     public void targetButtonClicked(View v){
         Toast.makeText(MainActivity.this, "목표 버튼 눌림.", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, TargetPopupActivity.class);
-        intent.putExtra("data", target.getText());
-        startActivity(intent);
-        target.setText("변경중 ..."); // 여기에서 targetButton의 text가 변경되는 것은 확인함.
-        finish();
     }
 
-    //목표 설정 내용 변경하기
-    protected void targetChange(String result){
-        target.setText(result);
-        String targetTest = ((MainActivity)MainActivity.context_Main).target.getText().toString();
-    }
 
 
 
@@ -81,11 +56,10 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, "통계 버튼 눌림.", Toast.LENGTH_SHORT).show();
     }
 
-    //캘린더 버튼 눌림
+    //일일 캘린더 버튼 눌림
     public void dayButtonClicked(View v){
         Toast.makeText(MainActivity.this, "날짜 버튼 눌림.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, DailyRecordPopupActivity.class);
-        intent.putExtra("data", "Test Popup");
         startActivity(intent);
     }
 
