@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.codevalley.MainActivity;
 import com.example.codevalley.R;
+import com.google.firebase.database.DatabaseReference;
 
 
 public class PlantGame extends AppCompatActivity {
@@ -22,6 +23,7 @@ public class PlantGame extends AppCompatActivity {
     private int countWater = 3; // 여기에 이제 DB에서 보유 갯수 가져와야 함.
     private int countSynthesis = 5; // 여기에 이제 DB에서 보유 갯수 가져와야 함.
     private int countLevel = 1;
+    DatabaseReference reference;
 
 
     @Override
