@@ -105,7 +105,29 @@ public class PlantGame extends AppCompatActivity {
 
                         // 식불 이미지 변경
                         if (countLevel >= 3 && countLevel < 20){
-                            imv_growingPlant.setImageResource(R.drawable.ssessak);
+                            FirebaseDatabase.getInstance().getReference().addValueEventListener(new ValueEventListener(){
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    // 데이터를 불러올 때 처리
+                                    for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                                        // 저장된 데이터를 하나씩 얻어옴
+                                        if (postSnapshot.child("planttype").getValue(String.class) == "사과나무") {
+                                            imv_growingPlant.setImageResource(R.drawable.appletree);
+                                        }
+                                        else if (postSnapshot.child("planttype").getValue(String.class) == "귤나무") {
+                                            imv_growingPlant.setImageResource(R.drawable.mandarintree);
+                                        }
+                                        else {
+                                            imv_growingPlant.setImageResource(R.drawable.bananatree);
+                                        }
+                                    }
+                                }
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+                                    // 데이터 불러오기 실패 시 처리
+                                }
+                            });
+//                            imv_growingPlant.setImageResource(R.drawable.ssessak);
                         }
                         else if (countLevel >= 20  && countLevel < 30){
                             imv_growingPlant.setImageResource(R.drawable.small_tree);
