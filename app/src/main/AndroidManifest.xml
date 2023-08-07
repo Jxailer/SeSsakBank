@@ -19,10 +19,6 @@
             android:name=".RecordCreate"
             android:exported="true"/>
         <activity
-            android:name=".TargetPopupActivity"
-            android:theme="@style/Theme.AppCompat"
-            android:exported="true"/>
-        <activity
             android:name=".StampPopupActivity"
             android:exported="true" />
         <activity

@@ -1,5 +1,6 @@
 package com.example.codevalley;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,11 +9,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.OnLifecycleEvent;
+
 
 public class MainActivity extends AppCompatActivity {
 
     public static Context context_Main;
     public TextView target; // 캘린더 위에 표시되는 목표 내용 변수
+
+    public int targetChange = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,19 +31,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
 //    목표 설정 버튼
     public void targetButtonClicked(View v){
         Toast.makeText(MainActivity.this, "목표 버튼 눌림.", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, TargetPopupActivity.class);
-        intent.putExtra("data", target.getText());
-        startActivity(intent);
     }
 
-    //목표 설정 내용 변경하기
-    protected void targetChange(){
-        String text = ((TargetPopupActivity)TargetPopupActivity.context_TargetPopup).editText.getText().toString();
-        target.setText(text);
-    }
 
 
 
@@ -56,11 +56,10 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, "통계 버튼 눌림.", Toast.LENGTH_SHORT).show();
     }
 
-    //캘린더 버튼 눌림
+    //일일 캘린더 버튼 눌림
     public void dayButtonClicked(View v){
         Toast.makeText(MainActivity.this, "날짜 버튼 눌림.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, DailyRecordPopupActivity.class);
-        intent.putExtra("data", "Test Popup");
         startActivity(intent);
     }
 
