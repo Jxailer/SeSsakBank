@@ -12,5 +12,6 @@ public class EighthActivity extends AppCompatActivity{
 
         getSupportActionBar().setTitle("< 공지사항");
 
+
     }
 }

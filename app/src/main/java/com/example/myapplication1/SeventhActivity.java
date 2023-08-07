@@ -13,5 +13,6 @@ public class SeventhActivity extends AppCompatActivity{
 
         getSupportActionBar().setTitle("< 고객센터");
 
+
     }
 }

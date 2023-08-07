@@ -31,10 +31,10 @@ public class FifthActivity extends AppCompatActivity{
         });
 
         EditText et1 = (EditText) findViewById(R.id.개월입력);
-        et1.setFilters(new InputFilter[]{ new InputFilterMinMax("1","12")});
+        et1.setFilters(new InputFilter[]{ new InputFilterMinMax("0","12")});
 
         EditText et2 = (EditText) findViewById(R.id.주일입력);
-        et2.setFilters(new InputFilter[]{ new InputFilterMinMax("1","4")});
+        et2.setFilters(new InputFilter[]{ new InputFilterMinMax("0","4")});
 
 
     }
