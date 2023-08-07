@@ -3,12 +3,10 @@ package com.example.codevalley;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.codevalley.game.Game_nameChange;
 import com.example.codevalley.game.PlantGame;
 
 public class MainActivity extends AppCompatActivity {
