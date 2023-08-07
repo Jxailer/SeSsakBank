@@ -9,8 +9,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.codevalley.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class GameStart1 extends AppCompatActivity {
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,8 @@ public class GameStart1 extends AppCompatActivity {
         btn_apple.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                reference = FirebaseDatabase.getInstance().getReference();
+                reference.child("users").child("username").child("planttype").setValue("사과나무");
                 Intent intent = new Intent(GameStart1.this, GameStart2.class);
                 startActivity(intent);
             }
@@ -36,6 +41,8 @@ public class GameStart1 extends AppCompatActivity {
         btn_mandarin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                reference = FirebaseDatabase.getInstance().getReference();
+                reference.child("users").child("username").child("planttype").setValue("귤나무");
                 Intent intent = new Intent(GameStart1.this, GameStart2.class);
                 startActivity(intent);
             }
@@ -45,6 +52,8 @@ public class GameStart1 extends AppCompatActivity {
         btn_banana.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                reference = FirebaseDatabase.getInstance().getReference();
+                reference.child("users").child("username").child("planttype").setValue("바나나나무");
                 Intent intent = new Intent(GameStart1.this, GameStart2.class);
                 startActivity(intent);
             }

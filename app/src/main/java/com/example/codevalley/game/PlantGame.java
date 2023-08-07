@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.codevalley.MainActivity;
 import com.example.codevalley.R;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class PlantGame extends AppCompatActivity {
@@ -83,12 +84,16 @@ public class PlantGame extends AppCompatActivity {
                             tv_countLevel.setText(countLevel+"");
                             progress_num = 0;
                             progressBar.setProgress(progress_num);
+                            reference = FirebaseDatabase.getInstance().getReference();
+                            reference.child("users").child("username").child("level").setValue(countLevel);
                         }
                         else if (progress_num > 20){
                             countLevel++;
                             tv_countLevel.setText(countLevel+"");
                             progress_num = progress_num - 20;
                             progressBar.setProgress(progress_num);
+                            reference = FirebaseDatabase.getInstance().getReference();
+                            reference.child("users").child("username").child("level").setValue(countLevel);
                         }
                         else {
                             progressBar.setProgress(progress_num);
@@ -135,12 +140,16 @@ public class PlantGame extends AppCompatActivity {
                             tv_countLevel.setText(countLevel+"");
                             progress_num = 0;
                             progressBar.setProgress(progress_num);
+                            reference = FirebaseDatabase.getInstance().getReference();
+                            reference.child("users").child("username").child("level").setValue(countLevel);
                         }
                         else if (progress_num > 20){
                             countLevel++;
                             tv_countLevel.setText(countLevel+"");
                             progress_num = progress_num - 20;
                             progressBar.setProgress(progress_num);
+                            reference = FirebaseDatabase.getInstance().getReference();
+                            reference.child("users").child("username").child("level").setValue(countLevel);
                         }
                         else {
                             progressBar.setProgress(progress_num);
@@ -186,12 +195,16 @@ public class PlantGame extends AppCompatActivity {
                             tv_countLevel.setText(countLevel+"");
                             progress_num = 0;
                             progressBar.setProgress(progress_num);
+                            reference = FirebaseDatabase.getInstance().getReference();
+                            reference.child("users").child("username").child("level").setValue(countLevel);
                         }
                         else if (progress_num > 20){
                             countLevel++;
                             tv_countLevel.setText(countLevel+"");
                             progress_num = progress_num - 20;
                             progressBar.setProgress(progress_num);
+                            reference = FirebaseDatabase.getInstance().getReference();
+                            reference.child("users").child("username").child("level").setValue(countLevel);
                         }
                         else {
                             progressBar.setProgress(progress_num);
