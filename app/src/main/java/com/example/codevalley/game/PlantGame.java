@@ -149,8 +149,11 @@ public class PlantGame extends AppCompatActivity {
                                             else if (postSnapshot.child("planttype").getValue(String.class) == "귤나무") {
                                                 imv_growingPlant.setImageResource(R.drawable.mandarintree);
                                             }
-                                            else {
+                                            else if (postSnapshot.child("planttype").getValue(String.class) == "바나나나무") {
                                                 imv_growingPlant.setImageResource(R.drawable.bananatree);
+                                            }
+                                            else {
+                                                Toast.makeText(getApplicationContext(),"잘못된 접근입니다.",Toast.LENGTH_SHORT).show();
                                             }
                                         }
                                     }
