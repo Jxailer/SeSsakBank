@@ -14,8 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.codevalley.MainActivity;
 import com.example.codevalley.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class PlantGame extends AppCompatActivity {
@@ -111,6 +114,30 @@ public class PlantGame extends AppCompatActivity {
                             imv_growingPlant.setImageResource(R.drawable.big_tree);
                         }
                         else if (countLevel >= 40  && countLevel <= 50){
+//                            private void readTree(){
+//                                FirebaseDatabase.getInstance().getReference().addValueEventListener(new ValueEventListener(){
+//                                    @Override
+//                                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                                        // 데이터를 불러올 때 처리
+//                                        for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+//                                            // 저장된 데이터를 하나씩 얻어옵니다.
+//                                            if (postSnapshot.child("planttype").getValue(String.class) == "사과나무") {
+//                                                imv_growingPlant.setImageResource(R.drawable.appletree);
+//                                            }
+//                                            else if (postSnapshot.child("planttype").getValue(String.class) == "귤나무") {
+//                                                imv_growingPlant.setImageResource(R.drawable.mandarintree);
+//                                            }
+//                                            else {
+//                                                imv_growingPlant.setImageResource(R.drawable.bananatree);
+//                                            }
+//                                        }
+//                                    }
+//                                    @Override
+//                                    public void onCancelled(DatabaseError databaseError) {
+//                                        // 데이터 불러오기 실패 시 처리
+//                                    }
+//                                });
+//                            }
                             imv_growingPlant.setImageResource(R.drawable.big_fruittree);
                         }
                         else if (countLevel < 0 || countLevel > 50){
