@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,8 +19,10 @@ public class MainActivity extends AppCompatActivity {
 
     public static Context context_Main;
     public TextView target; // 캘린더 위에 표시되는 목표 내용 변수
-
+    private Button recordCreate;
     public int targetChange = 0;
+
+    ViewGroup CalendarRecord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +30,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         context_Main = this;
-
         target = (TextView)findViewById(R.id.targetButton);
+        recordCreate = (Button)findViewById(R.id.recordCreateButton);
+        CalendarRecord = (ViewGroup)findViewById(R.id.CalendarRecord);
 
-    }
+        recordCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, RecordCreate.class);
+                startActivity(intent);
+            }
+        });
+
+    } // onCreate class 끝
 
 
 
@@ -59,8 +72,7 @@ public class MainActivity extends AppCompatActivity {
     //일일 캘린더 버튼 눌림
     public void dayButtonClicked(View v){
         Toast.makeText(MainActivity.this, "날짜 버튼 눌림.", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, DailyRecordPopupActivity.class);
-        startActivity(intent);
+        CalendarRecord.setVisibility(View.VISIBLE);
     }
 
 //    하단 네비게이션 바 버튼 클릭
