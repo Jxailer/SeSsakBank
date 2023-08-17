@@ -12,6 +12,9 @@ import com.example.codevalley.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class GameStart1 extends AppCompatActivity {
     DatabaseReference reference;
 
@@ -30,10 +33,15 @@ public class GameStart1 extends AppCompatActivity {
         btn_apple.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reference = FirebaseDatabase.getInstance().getReference();
-                reference.child("users").child("username").child("planttype").setValue("사과나무");
+//                reference = FirebaseDatabase.getInstance().getReference();
+//                reference.child("users").child("username").child("planttype").setValue("사과나무");
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
+                Map<String, Object> plantInfo = new HashMap<>();
+                plantInfo.put("dream/username/plantType", "사과나무");
+                ref.updateChildren(plantInfo);
                 Intent intent = new Intent(GameStart1.this, GameStart2.class);
                 startActivity(intent);
+
             }
         });
 
@@ -41,8 +49,12 @@ public class GameStart1 extends AppCompatActivity {
         btn_mandarin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reference = FirebaseDatabase.getInstance().getReference();
-                reference.child("users").child("username").child("planttype").setValue("귤나무");
+//                reference = FirebaseDatabase.getInstance().getReference();
+//                reference.child("users").child("username").child("planttype").setValue("귤나무");
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
+                Map<String, Object> plantInfo = new HashMap<>();
+                plantInfo.put("dream/username/plantType", "귤나무");
+                ref.updateChildren(plantInfo);
                 Intent intent = new Intent(GameStart1.this, GameStart2.class);
                 startActivity(intent);
             }
@@ -52,8 +64,12 @@ public class GameStart1 extends AppCompatActivity {
         btn_banana.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reference = FirebaseDatabase.getInstance().getReference();
-                reference.child("users").child("username").child("planttype").setValue("바나나나무");
+//                reference = FirebaseDatabase.getInstance().getReference();
+//                reference.child("users").child("username").child("planttype").setValue("바나나나무");
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
+                Map<String, Object> plantInfo = new HashMap<>();
+                plantInfo.put("dream/username/plantType", "바나나나무");
+                ref.updateChildren(plantInfo);
                 Intent intent = new Intent(GameStart1.this, GameStart2.class);
                 startActivity(intent);
             }
