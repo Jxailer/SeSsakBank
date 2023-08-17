@@ -55,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+
     // 아이디칸이 비어있는 경우
     public Boolean validateUsername(){
         String val = loginUsername.getText().toString();
