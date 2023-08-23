@@ -1,6 +1,5 @@
 package com.example.codevalley;
 
-import static com.example.codevalley.TargetPopupActivity.context_TargetPopup;
 
 import android.app.Activity;
 import android.content.Context;
@@ -74,10 +73,13 @@ public class MainActivity extends AppCompatActivity {
 
         // 목표 버튼 눌렀을 시
         targetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                targetChangeBox.setVisibility(View.VISIBLE);
-                targetChangeBox.bringToFront();
+                                            @Override
+                                            public void onClick(View v) {
+                                                targetChangeBox.setVisibility(View.VISIBLE);
+                                                targetChangeBox.bringToFront();
+                                            }
+                                        });
+
 
         recordCreate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,54 +89,45 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+//        저장버튼 눌렀을 시 onClickListener
+                saveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (editText.getText().length() == 0) { // 목표설정란이 비어있는지 확인하기.
+                            Toast.makeText(MainActivity.this, "목표가 설정되지 않았어요!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            if (target.getText().toString() != editText.getText().toString()) { // 기존의 목표와 값이 다르다면 값을 변경함.
+                                String result = editText.getText().toString();
+                                target.setText(result);
+                                Toast.makeText(MainActivity.this, "목표를 바꿨어요!", Toast.LENGTH_SHORT).show();
+                                targetChangeBox.setVisibility(View.INVISIBLE);
+
+                            } else {
+                                targetChangeBox.setVisibility(View.INVISIBLE);
+
+                            }
+
+                        }
+                    }
+                });
+
+//        취소 버튼 눌렀을 시 onClickListener
+                cancelButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Toast.makeText(MainActivity.this, "취소 버튼 눌림.", Toast.LENGTH_SHORT).show();
+//                setContentView(targetChangeBox, targetBoxFoldParams); // finish();
+
+                    }
+                });
+
     } // onCreate class 끝
 
 
 
 //    목표 설정 버튼
-    public void targetButtonClicked(View v){
-        Toast.makeText(MainActivity.this, "목표 버튼 눌림.", Toast.LENGTH_SHORT).show();
-    }
-
-            }
-        });
-
-//        저장버튼 눌렀을 시 onClickListener
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (editText.getText().length() == 0) { // 목표설정란이 비어있는지 확인하기.
-                    Toast.makeText(MainActivity.this, "목표가 설정되지 않았어요!", Toast.LENGTH_SHORT).show();
-                } else {
-                    if (target.getText().toString() != editText.getText().toString()) { // 기존의 목표와 값이 다르다면 값을 변경함.
-                        String result = editText.getText().toString();
-                        target.setText(result);
-                        Toast.makeText(MainActivity.this, "목표를 바꿨어요!", Toast.LENGTH_SHORT).show();
-                        targetChangeBox.setVisibility(View.INVISIBLE);
-
-                    } else {
-                        targetChangeBox.setVisibility(View.INVISIBLE);
-
-                    }
-
-                }
-            }
-        });
-
-//        취소 버튼 눌렀을 시 onClickListener
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(MainActivity.this, "취소 버튼 눌림.", Toast.LENGTH_SHORT).show();
-//                setContentView(targetChangeBox, targetBoxFoldParams); // finish();
-
-            }
-        });
-
-
-
-    }
 
 
 
@@ -189,5 +182,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-};
+    }
