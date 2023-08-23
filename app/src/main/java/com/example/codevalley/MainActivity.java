@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static Context context_Main;
     public TextView target; // 캘린더 위에 표시되는 목표 내용 변수
+    private Button recordCreate;
+    public int targetChange = 0;
     public EditText editText;
     private Button saveButton;
     private Button cancelButton;
@@ -35,12 +37,17 @@ public class MainActivity extends AppCompatActivity {
     View mainParent;
 
 
+    ViewGroup CalendarRecord;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         context_Main = this;
+        target = (TextView)findViewById(R.id.targetButton);
+        recordCreate = (Button)findViewById(R.id.recordCreateButton);
+        CalendarRecord = (ViewGroup)findViewById(R.id.CalendarRecord);
         mainParent = findViewById(R.id.mainParent);
 
         target = (TextView) findViewById(R.id.targetButton);
@@ -71,6 +78,23 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 targetChangeBox.setVisibility(View.VISIBLE);
                 targetChangeBox.bringToFront();
+
+        recordCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, RecordCreate.class);
+                startActivity(intent);
+            }
+        });
+
+    } // onCreate class 끝
+
+
+
+//    목표 설정 버튼
+    public void targetButtonClicked(View v){
+        Toast.makeText(MainActivity.this, "목표 버튼 눌림.", Toast.LENGTH_SHORT).show();
+    }
 
             }
         });
@@ -141,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, "통계 버튼 눌림.", Toast.LENGTH_SHORT).show();
     }
 
-    //캘린더 버튼 눌림
+    //일일 캘린더 버튼 눌림
     public void dayButtonClicked(View v){
         Toast.makeText(MainActivity.this, "날짜 버튼 눌림.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, DailyRecordPopupActivity.class);
