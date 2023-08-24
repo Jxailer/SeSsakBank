@@ -21,6 +21,9 @@
         <activity
             android:name=".RegisterActivity"
             android:exported="true" />
+<!--        <activity-->
+<!--            android:name=".MainActivity"-->
+<!--            android:exported="true" />-->
         <activity
             android:name=".game.GameStart2"
             android:exported="true" />
