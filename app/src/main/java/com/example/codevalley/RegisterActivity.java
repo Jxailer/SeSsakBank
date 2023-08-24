@@ -11,12 +11,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -137,8 +139,9 @@ public class RegisterActivity extends AppCompatActivity {
         String name = signupName.getText().toString();
         String birth = signupBirth.getText().toString();
         String phone = signupPhone.getText().toString();
+        Task<String> token = FirebaseMessaging.getInstance().getToken();
 
-        HelperClass helperClass = new HelperClass(username, password, name, birth, phone);
+        HelperClass helperClass = new HelperClass(username, password, name, birth, phone, token.getResult());
         reference.child(name).setValue(helperClass);
 
         Toast.makeText(RegisterActivity.this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
