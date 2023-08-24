@@ -3,6 +3,7 @@ package com.example.codevalley;
 public class HelperClass {
 
     String username, password, name, birth, phone, adult_name, adult_nickname;
+    String token;
 
     public String getUsername() {
         return username;
@@ -39,13 +40,17 @@ public class HelperClass {
     public String getAdult_nickname() { return adult_nickname; }
     public void setAdult_nickname(String adult_nickname) { this.adult_nickname = adult_nickname; }
 
+    public String getToken() { return token; }
+    public void setToken(String token) { this.token = token; }
 
-    public HelperClass(String username, String password, String name, String birth, String phone) {
+
+    public HelperClass(String username, String password, String name, String birth, String phone, String token) {
         this.username = username;
         this.password = password;
         this.name = name;
         this.birth = birth;
         this.phone = phone;
+        this.token = token;
     }
 
     public HelperClass(String username, String adult_nickname, String adult_name){
