@@ -37,7 +37,7 @@ public class GameStart1 extends AppCompatActivity {
 //                reference.child("users").child("username").child("planttype").setValue("사과나무");
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
                 Map<String, Object> plantInfo = new HashMap<>();
-                plantInfo.put("dream/username/plantType", "사과나무");
+                plantInfo.put("dream/plantType", "사과나무");
                 ref.updateChildren(plantInfo);
                 Intent intent = new Intent(GameStart1.this, GameStart2.class);
                 startActivity(intent);
@@ -53,7 +53,7 @@ public class GameStart1 extends AppCompatActivity {
 //                reference.child("users").child("username").child("planttype").setValue("귤나무");
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
                 Map<String, Object> plantInfo = new HashMap<>();
-                plantInfo.put("dream/username/plantType", "귤나무");
+                plantInfo.put("dream/plantType", "귤나무");
                 ref.updateChildren(plantInfo);
                 Intent intent = new Intent(GameStart1.this, GameStart2.class);
                 startActivity(intent);
@@ -68,7 +68,7 @@ public class GameStart1 extends AppCompatActivity {
 //                reference.child("users").child("username").child("planttype").setValue("바나나나무");
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
                 Map<String, Object> plantInfo = new HashMap<>();
-                plantInfo.put("dream/username/plantType", "바나나나무");
+                plantInfo.put("dream/plantType", "바나나나무");
                 ref.updateChildren(plantInfo);
                 Intent intent = new Intent(GameStart1.this, GameStart2.class);
                 startActivity(intent);

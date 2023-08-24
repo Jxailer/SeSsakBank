@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.codevalley.MainActivity;
@@ -22,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 
 public class PlantGame extends AppCompatActivity {
@@ -92,7 +94,7 @@ public class PlantGame extends AppCompatActivity {
                             progressBar.setProgress(progress_num);
                             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
                             Map<String, Object> plantLevelInfo = new HashMap<>();
-                            plantLevelInfo.put("dream/username/level", countLevel);
+                            plantLevelInfo.put("dream/plantType/level", countLevel);
                             ref.updateChildren(plantLevelInfo);
 //                            reference = FirebaseDatabase.getInstance().getReference();
 //                            reference.child("users").child("username").child("level").setValue(countLevel);
@@ -104,7 +106,7 @@ public class PlantGame extends AppCompatActivity {
                             progressBar.setProgress(progress_num);
                             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
                             Map<String, Object> plantLevelInfo = new HashMap<>();
-                            plantLevelInfo.put("dream/username/level", countLevel);
+                            plantLevelInfo.put("dream/plantType/level", countLevel);
                             ref.updateChildren(plantLevelInfo);
 //                            reference = FirebaseDatabase.getInstance().getReference();
 //                            reference.child("users").child("username").child("level").setValue(countLevel);
@@ -121,11 +123,12 @@ public class PlantGame extends AppCompatActivity {
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     // 데이터를 불러올 때 처리
                                     for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                                        // 저장된 데이터를 하나씩 얻어옴
-                                        if (postSnapshot.child("users/dream/username/plantType").getValue(String.class) == "사과나무") {
+                                        String planttype = postSnapshot.child("users/plantType").getValue(String.class);
+
+                                        if (planttype.equals("사과나무")) {
                                             imv_growingPlant.setImageResource(R.drawable.appletree);
                                         }
-                                        else if (postSnapshot.child("users/dream/username/plantType").getValue(String.class) == "귤나무") {
+                                        else if (planttype.equals("귤나무")) {
                                             imv_growingPlant.setImageResource(R.drawable.mandarintree);
                                         }
                                         else {
@@ -133,6 +136,7 @@ public class PlantGame extends AppCompatActivity {
                                         }
                                     }
                                 }
+
                                 @Override
                                 public void onCancelled(DatabaseError databaseError) {
                                     // 데이터 불러오기 실패 시 처리
@@ -201,7 +205,7 @@ public class PlantGame extends AppCompatActivity {
                             progressBar.setProgress(progress_num);
                             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
                             Map<String, Object> plantLevelInfo = new HashMap<>();
-                            plantLevelInfo.put("dream/username/level", countLevel);
+                            plantLevelInfo.put("dream/plantType/level", countLevel);
                             ref.updateChildren(plantLevelInfo);
 //                            reference = FirebaseDatabase.getInstance().getReference();
 //                            reference.child("users").child("username").child("level").setValue(countLevel);
@@ -213,7 +217,7 @@ public class PlantGame extends AppCompatActivity {
                             progressBar.setProgress(progress_num);
                             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
                             Map<String, Object> plantLevelInfo = new HashMap<>();
-                            plantLevelInfo.put("dream/username/level", countLevel);
+                            plantLevelInfo.put("dream/plantType/level", countLevel);
                             ref.updateChildren(plantLevelInfo);
 //                            reference = FirebaseDatabase.getInstance().getReference();
 //                            reference.child("users").child("username").child("level").setValue(countLevel);
@@ -285,7 +289,7 @@ public class PlantGame extends AppCompatActivity {
                             progressBar.setProgress(progress_num);
                             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
                             Map<String, Object> plantLevelInfo = new HashMap<>();
-                            plantLevelInfo.put("dream/username/level", countLevel);
+                            plantLevelInfo.put("dream/plantType/level", countLevel);
                             ref.updateChildren(plantLevelInfo);
 //                            reference = FirebaseDatabase.getInstance().getReference();
 //                            reference.child("users").child("username").child("level").setValue(countLevel);
@@ -297,7 +301,7 @@ public class PlantGame extends AppCompatActivity {
                             progressBar.setProgress(progress_num);
                             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
                             Map<String, Object> plantLevelInfo = new HashMap<>();
-                            plantLevelInfo.put("dream/username/level", countLevel);
+                            plantLevelInfo.put("dream/plantType/level", countLevel);
                             ref.updateChildren(plantLevelInfo);
 //                            reference = FirebaseDatabase.getInstance().getReference();
 //                            reference.child("users").child("username").child("level").setValue(countLevel);
