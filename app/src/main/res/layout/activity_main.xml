@@ -64,7 +64,7 @@
         android:layout_gravity="center"
         android:background="#eeeeee"
         android:orientation="vertical"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topBar">
 
@@ -427,14 +427,26 @@
                 app:layout_constraintTop_toBottomOf="@id/time" />
 
             <Button
-                android:id="@+id/recordCreateButton"
-                android:layout_width="378dp"
+                android:id="@+id/recordCreateButton_spent"
+                android:layout_width="185dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#ECEDCC"
+                android:backgroundTint="#BC8787"
                 android:gravity="left|center"
-                android:text="새로운 기록 만들기"
+                android:text="지출 기록 만들기"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/record1" />
+
+            <Button
+                android:id="@+id/recordCreateButton_income"
+                android:layout_width="185dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:backgroundTint="#87BCA4"
+                android:gravity="left|center"
+                android:text="수입 기록 만들기"
+                app:layout_constraintStart_toEndOf="@id/recordCreateButton_spent"
+                app:layout_constraintTop_toBottomOf="@id/record1" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -21,21 +21,6 @@ import androidx.lifecycle.OnLifecycleEvent;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static Context context_Main;
-    public TextView target; // 캘린더 위에 표시되는 목표 내용 변수
-    private Button recordCreate;
-    public int targetChange = 0;
-    public EditText editText;
-    private Button saveButton;
-    private Button cancelButton;
-    private TextView targetButton;
-
-    View targetChangeBox;
-
-    View calendar;
-    View mainParent;
-
-
     ViewGroup CalendarRecord;
 
     @Override
@@ -43,21 +28,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        context_Main = this;
-        target = (TextView)findViewById(R.id.targetButton);
-        recordCreate = (Button)findViewById(R.id.recordCreateButton);
-        CalendarRecord = (ViewGroup)findViewById(R.id.CalendarRecord);
-        mainParent = findViewById(R.id.mainParent);
+        Context context_Main = this;
+        TextView target = (TextView)findViewById(R.id.targetButton);
+        Button recordCreate_Spent = (Button)findViewById(R.id.recordCreateButton_spent);
+        Button recordCreate_Income = (Button)findViewById(R.id.recordCreateButton_income);
+        View mainParent = findViewById(R.id.mainParent);
 
-        target = (TextView) findViewById(R.id.targetButton);
-        targetChangeBox = (View) findViewById(R.id.targetChangeBox);
-        editText = findViewById((R.id.targetBox));
+        View targetChangeBox = (View) findViewById(R.id.targetChangeBox);
+        EditText editText = findViewById((R.id.targetBox));
 
-        calendar = (View) findViewById(R.id.calendar);
+        View calendar = (View) findViewById(R.id.calendar);
 
-        saveButton = findViewById(R.id.saveButton);
-        cancelButton = findViewById(R.id.cancelButton);
-        targetButton = findViewById(R.id.targetButton);
+        Button saveButton = findViewById(R.id.saveButton);
+        Button cancelButton = findViewById(R.id.cancelButton);
+        TextView targetButton = findViewById(R.id.targetButton);
 
         // targetBox(목표 수정창) 높이 증가(펼치기)용 소스코드
 //        LinearLayout.LayoutParams targetBoxSpreadParams = new LinearLayout.LayoutParams(
@@ -81,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
                                         });
 
 
-        recordCreate.setOnClickListener(new View.OnClickListener() {
+//        지출 내용 작성 버튼 눌렀을 시
+        recordCreate_Spent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, RecordCreate.class);
@@ -161,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
     //일일 캘린더 버튼 눌림
     public void dayButtonClicked(View v){
         Toast.makeText(MainActivity.this, "날짜 버튼 눌림.", Toast.LENGTH_SHORT).show();
+        CalendarRecord = (ViewGroup)findViewById(R.id.CalendarRecord);
         CalendarRecord.setVisibility(View.VISIBLE);
     }
 
