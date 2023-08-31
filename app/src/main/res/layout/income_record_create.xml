@@ -4,7 +4,7 @@
 xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="350dp"
-android:layout_height="700dp"
+android:layout_height="400dp"
 android:background="#eeeeee"
 android:orientation="vertical"
 android:layout_gravity="center">
@@ -15,7 +15,7 @@ android:layout_gravity="center">
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="용돈 기입 작성하기 (지출)"
+        android:text="용돈 기입 작성하기 (수입)"
         android:textStyle="bold"
         android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +36,7 @@ android:layout_gravity="center">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:text="어디에 돈을 사용했나요?"
+            android:text="어디에서 돈을 얻었나요?"
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -48,35 +48,11 @@ android:layout_gravity="center">
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:background="#C6C6C6"
-            android:entries="@array/recordType"
+            android:entries="@array/recordType2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/categoryText" />
 
         <!--        메모 작성-->
-
-        <EditText
-            android:id="@+id/memo"
-            android:layout_width="300dp"
-            android:layout_height="180dp"
-            android:layout_marginTop="16dp"
-            android:background="#C6C6C6"
-            android:hint="  memo"
-            android:textColor="@color/black"
-            android:textColorHint="#535353"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/memoText" />
-
-        <TextView
-            android:id="@+id/memoText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="136dp"
-            android:text="메모할 것이 있나요?"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/categorySpinner" />
 
         <TextView
             android:id="@+id/moneyAmountText"
@@ -84,7 +60,7 @@ android:layout_gravity="center">
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:text="얼만큼의 돈이 쓰였나요?"
+            android:text="얼만큼의 돈이 생겼나요?"
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/categorySpinner" />
@@ -107,10 +83,11 @@ android:layout_gravity="center">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="44dp"
         android:gravity="center_horizontal"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/recordView">
 
@@ -118,8 +95,8 @@ android:layout_gravity="center">
             android:id="@+id/saveButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="저장하기"
-            android:background="@drawable/green_button"/>
+            android:background="@drawable/green_button"
+            android:text="저장하기" />
 
         <Button
             android:id="@+id/cancelButton"
@@ -131,9 +108,6 @@ android:layout_gravity="center">
             android:text="취소하기" />
 
     </LinearLayout>
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
