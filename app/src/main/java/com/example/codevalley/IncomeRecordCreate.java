@@ -1,6 +1,5 @@
 package com.example.codevalley;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,25 +9,22 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.codevalley.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class RecordCreate extends AppCompatActivity {
-    DatabaseReference reference;
+public class IncomeRecordCreate extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_record_create);
+        setContentView(R.layout.income_record_create);
 
         Button saveButton = findViewById(R.id.saveButton);
         Button cancelButton = findViewById(R.id.cancelButton);
 
         Spinner categorySpinner = (Spinner) findViewById(R.id.categorySpinner);
-        EditText memo = (EditText) findViewById(R.id.memo);
         EditText moneyAmount = (EditText) findViewById(R.id.moneyAmount);
 
 //        저장버튼 눌림
@@ -37,21 +33,35 @@ public class RecordCreate extends AppCompatActivity {
             public void onClick(View view) {
 
                 String category = categorySpinner.getSelectedItem().toString(); // 카테고리 스피너에서 선택된 값 가져오기
-                String memoText = memo.getText().toString(); // 메모칸에 입력한 값 가져오기
                 int Amount = Integer.parseInt(moneyAmount.getText().toString()); // 용돈 금액 입력값을 int형으로 저장함.
 
-//                데이터베이스에 저장하기
-                //                reference = FirebaseDatabase.getInstance().getReference();
-//                reference.child("users").child("username").child("planttype").setValue("사과나무");
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
-                Map<String, Object> record = new HashMap<>();
-                record.put("dream/userrecord/record1/category", category);
-                record.put("dream/userrecord/record1/moneyAmount", Amount);
-                record.put("dream/userrecord/record1/memo", memoText);
-                ref.updateChildren(record);
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users/dream");
+                String src = "userrecord/";
 
-                Toast.makeText(RecordCreate.this, "저장 버튼 눌림.", Toast.LENGTH_SHORT).show();
-                finish();
+//                데이터베이스에 저장하기
+                //reference = FirebaseDatabase.getInstance().getReference();
+
+                int i = 1;
+
+                while(true){
+                    if (ref.child("users").child("record"+i).get() != null){
+                        continue;
+                    }
+                    else{
+
+//                reference.child("users").child("username").child("planttype").setValue("사과나무");
+
+                        Map<String, Object> record = new HashMap<>();
+                        record.put(src, category);
+                        record.put("dream/userrecord/record2/moneyAmount", Amount);
+                        ref.updateChildren(record);
+
+                        Toast.makeText(IncomeRecordCreate.this, "저장 버튼 눌림.", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                }
+
+
 
             }
         }); // saveButton onClick event listener 끝
@@ -60,7 +70,7 @@ public class RecordCreate extends AppCompatActivity {
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(RecordCreate.this, "취소 버튼 눌림.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(IncomeRecordCreate.this, "취소 버튼 눌림.", Toast.LENGTH_SHORT).show();
                 finish();
 
             }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="recordType2">
+        <item>정기적 용돈</item>
+        <item>새뱃돈</item>
+        <item>비정기적인 보너스</item>
+        <item>기타</item>
+    </string-array>
+</resources>
+
+<!--    21	정기적 용돈-->
+<!--    22	세뱃돈-->
+<!--    23	비정기적인 보너스-->
+<!--    24	기타-->
