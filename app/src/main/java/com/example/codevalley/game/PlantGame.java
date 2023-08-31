@@ -128,10 +128,10 @@ public class PlantGame extends AppCompatActivity {
                                     // 데이터를 불러올 때 처리
                                     for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                                         // 저장된 데이터를 하나씩 얻어옴
-                                        if (Objects.equals(postSnapshot.child("users/dream/plantType/type").getValue(String.class), "사과나무")) {
+                                        if (Objects.equals(postSnapshot.child("dream/plantType/type").getValue(String.class), "사과나무")) {
                                             imv_growingPlant.setImageResource(R.drawable.appletree);
                                         }
-                                        else if (Objects.equals(postSnapshot.child("users/dream/plantType/type").getValue(String.class), "귤나무")) {
+                                        else if (Objects.equals(postSnapshot.child("dream/plantType/type").getValue(String.class), "귤나무")) {
                                             imv_growingPlant.setImageResource(R.drawable.mandarintree);
                                         }
                                         else {
@@ -161,10 +161,10 @@ public class PlantGame extends AppCompatActivity {
                                     // 데이터를 불러올 때 처리
                                     for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                                         // 저장된 데이터를 하나씩 얻어옴
-                                        if (Objects.equals(postSnapshot.child("users/dream/plantType/type").getValue(String.class), "사과나무")) {
+                                        if (Objects.equals(postSnapshot.child("dream/plantType/type").getValue(String.class), "사과나무")) {
                                             imv_growingPlant.setImageResource(R.drawable.appletree);
                                         }
-                                        else if (Objects.equals(postSnapshot.child("users/dream/plantType/type").getValue(String.class), "귤나무")) {
+                                        else if (Objects.equals(postSnapshot.child("dream/plantType/type").getValue(String.class), "귤나무")) {
                                             imv_growingPlant.setImageResource(R.drawable.mandarintree);
                                         }
                                         else {
@@ -255,10 +255,10 @@ public class PlantGame extends AppCompatActivity {
                                     // 데이터를 불러올 때 처리
                                     for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                                         // 저장된 데이터를 하나씩 얻어옴
-                                        if (Objects.equals(postSnapshot.child("users/dream/plantType/type").getValue(String.class), "사과나무")) {
+                                        if (Objects.equals(postSnapshot.child("dream/plantType/type").getValue(String.class), "사과나무")) {
                                             imv_growingPlant.setImageResource(R.drawable.appletree);
                                         }
-                                        else if (Objects.equals(postSnapshot.child("users/dream/plantType/type").getValue(String.class), "귤나무")) {
+                                        else if (Objects.equals(postSnapshot.child("dream/plantType/type").getValue(String.class), "귤나무")) {
                                             imv_growingPlant.setImageResource(R.drawable.mandarintree);
                                         }
                                         else {
@@ -347,10 +347,10 @@ public class PlantGame extends AppCompatActivity {
                                     // 데이터를 불러올 때 처리
                                     for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                                         // 저장된 데이터를 하나씩 얻어옴
-                                        if (Objects.equals(postSnapshot.child("users/dream/plantType/type").getValue(String.class), "사과나무")) {
+                                        if (Objects.equals(postSnapshot.child("dream/plantType/type").getValue(String.class), "사과나무")) {
                                             imv_growingPlant.setImageResource(R.drawable.appletree);
                                         }
-                                        else if (Objects.equals(postSnapshot.child("users/dream/plantType/type").getValue(String.class), "귤나무")) {
+                                        else if (Objects.equals(postSnapshot.child("dream/plantType/type").getValue(String.class), "귤나무")) {
                                             imv_growingPlant.setImageResource(R.drawable.mandarintree);
                                         }
                                         else {
