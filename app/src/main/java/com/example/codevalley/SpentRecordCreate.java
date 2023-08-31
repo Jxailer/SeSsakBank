@@ -1,6 +1,5 @@
 package com.example.codevalley;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,19 +9,18 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.codevalley.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class RecordCreate extends AppCompatActivity {
+public class SpentRecordCreate extends AppCompatActivity {
     DatabaseReference reference;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_record_create);
+        setContentView(R.layout.spent_record_create);
 
         Button saveButton = findViewById(R.id.saveButton);
         Button cancelButton = findViewById(R.id.cancelButton);
@@ -50,7 +48,7 @@ public class RecordCreate extends AppCompatActivity {
                 record.put("dream/userrecord/record1/memo", memoText);
                 ref.updateChildren(record);
 
-                Toast.makeText(RecordCreate.this, "저장 버튼 눌림.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SpentRecordCreate.this, "저장 버튼 눌림.", Toast.LENGTH_SHORT).show();
                 finish();
 
             }
@@ -60,7 +58,7 @@ public class RecordCreate extends AppCompatActivity {
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(RecordCreate.this, "취소 버튼 눌림.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SpentRecordCreate.this, "취소 버튼 눌림.", Toast.LENGTH_SHORT).show();
                 finish();
 
             }

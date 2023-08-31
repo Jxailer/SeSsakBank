@@ -18,7 +18,7 @@ public class DailyRecordManagePopup extends AppCompatActivity {
 
     public void recordCreateButtonClicked(View v){
         Toast.makeText(DailyRecordManagePopup.this, "기록 작성 버튼 눌림.", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, RecordCreate.class);
+        Intent intent = new Intent(this, SpentRecordCreate.class);
     }
 
 }
