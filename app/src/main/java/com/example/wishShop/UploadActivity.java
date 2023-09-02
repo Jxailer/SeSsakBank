@@ -1,7 +1,6 @@
 package com.example.wishShop;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,10 +17,6 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.codevalley.R;
-import com.google.android.gms.auth.api.signin.internal.Storage;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 
 public class UploadActivity extends AppCompatActivity {
 
@@ -36,9 +31,9 @@ public class UploadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
 
-        uploadDesc = findViewById(R.id.uploadDesc);
+        uploadDesc = findViewById(R.id.uploadStamp);
         uploadTopic = findViewById(R.id.uploadTopic);
-        uploadLang = findViewById(R.id.uploadLang);
+        uploadLang = findViewById(R.id.uploadDesc);
         saveButton = findViewById(R.id.saveButton);
 
         ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
