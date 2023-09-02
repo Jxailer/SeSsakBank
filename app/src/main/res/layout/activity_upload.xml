@@ -14,32 +14,56 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal"
+
             android:padding="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginBottom="20dp"
+                >
 
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_arrow_back_ios_24" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="소원권 추가"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 >
 
                 <EditText
                     android:id="@+id/uploadTopic"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
+                    android:layout_marginLeft="25dp"
                     android:layout_weight="1"
                     android:background="#FFFFFF"
                     android:fontFamily="@font/inter_bold"
                     android:gravity="start|center_vertical"
                     android:hint="소원을 입력해주세요"
-                    android:padding="12dp"
-                    android:textColor="@color/green"
-                    android:textSize="25dp" />
+                    android:textColor="#3A3E45"
+                    android:textColorHint="#A5A5A5"
+                    android:textSize="20sp" />
 
                 <Button
                     android:id="@+id/saveButton"
@@ -69,6 +93,7 @@
                 android:fontFamily="@font/inter"
                 android:text="필요 도장 개수"
                 android:textAlignment="center"
+                android:textColor="#606060"
                 android:textSize="15sp" />
 
             <LinearLayout
@@ -109,6 +134,7 @@
                 android:fontFamily="@font/inter"
                 android:text="소원권 설명"
                 android:textAlignment="center"
+                android:textColor="#606060"
                 android:textSize="15sp" />
 
             <EditText
