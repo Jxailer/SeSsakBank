@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -60,20 +61,24 @@ public class IncomeRecordCreate extends AppCompatActivity {
                 }
                 Log.i("tag1", String.valueOf(categoryNum));
 
+
 //                데이터베이스에 저장하기
                 //reference = FirebaseDatabase.getInstance().getReference();
                 //reference.child("users").child("username").child("planttype").setValue("사과나무");
 
                 //record 순차저장
-                FirebaseDatabase.getInstance().getReference().addValueEventListener(new ValueEventListener() {
-                    int recordNum = 1; // record들을 구분하기 위한 번호
+                FirebaseDatabase.getInstance().getReference().addListenerForSingleValueEvent(new ValueEventListener() {
+                    //addListenerForSingleValueEvent: 한 번만 반복
+                    // record들을 구분하기 위한 번호
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
+                        int recordNum = 1;
                         // 데이터를 불러올 때 처리
                         for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 //                            record를 순차 저장함
-                                if (Objects.equals(postSnapshot.child("users/dream/userrecord/record" + String.valueOf(recordNum)).getValue(String.class), null)) {
-                                    String src = "record" + String.valueOf(recordNum) + "/";String categorySrc = src + "category";
+                            while(true){
+                                if (Objects.equals(postSnapshot.child("users/dream/userrecord/record" + recordNum).getValue(String.class), null)) { // 해당 경로의 데이터가 비어있는지 확인
+                                    String src = "record" + recordNum + "/";String categorySrc = src + "category";
                                     String moneySrc = src + "moneyAmount";
 
                                     Log.i("tag2", src);
@@ -91,9 +96,11 @@ public class IncomeRecordCreate extends AppCompatActivity {
                                 }
                                 else {
                                     Log.i("tag1", String.valueOf(recordNum));
-                                    recordNum++;
+                                    recordNum++ ;
                                     continue;
                                 }
+                            }
+
                             }
                         }
 
