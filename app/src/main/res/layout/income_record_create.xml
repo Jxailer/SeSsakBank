@@ -18,6 +18,7 @@ android:layout_gravity="center">
         android:text="용돈 기입 작성하기 (수입)"
         android:textStyle="bold"
         android:textSize="25dp"
+        android:textColor="#535353"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,6 +39,7 @@ android:layout_gravity="center">
             android:layout_marginLeft="20dp"
             android:text="어디에서 돈을 얻었나요?"
             android:textSize="20dp"
+            android:textColor="#535353"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,8 +49,10 @@ android:layout_gravity="center">
             android:layout_height="45dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
-            android:background="#C6C6C6"
+            android:background="#A1A1A1"
             android:entries="@array/recordType2"
+            android:spinnerMode="dropdown"
+            android:textColor="#535353"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/categoryText" />
 
@@ -62,6 +66,7 @@ android:layout_gravity="center">
             android:layout_marginTop="20dp"
             android:text="얼만큼의 돈이 생겼나요?"
             android:textSize="20dp"
+            android:textColor="#535353"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/categorySpinner" />
 
@@ -71,10 +76,10 @@ android:layout_gravity="center">
             android:layout_height="45dp"
             android:layout_marginStart="28dp"
             android:layout_marginTop="10dp"
-            android:background="#C6C6C6"
+            android:background="#A1A1A1"
             android:hint="  사용한 금액"
-            android:textColor="@color/black"
-            android:textColorHint="#535353"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#F4F4F4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/moneyAmountText" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -96,7 +101,8 @@ android:layout_gravity="center">
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/green_button"
-            android:text="저장하기" />
+            android:text="저장하기"
+            android:textColor="#535353"/>
 
         <Button
             android:id="@+id/cancelButton"
@@ -105,7 +111,8 @@ android:layout_gravity="center">
             android:layout_marginLeft="20dp"
             android:background="@drawable/green_button"
             android:backgroundTint="#DDDDDD"
-            android:text="취소하기" />
+            android:text="취소하기"
+            android:textColor="#535353"/>
 
     </LinearLayout>
 
