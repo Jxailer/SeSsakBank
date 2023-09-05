@@ -23,4 +23,8 @@ public class DataClass {
         this.dataStamp = dataStamp;
         this.dataDesc = dataDesc;
     }
+
+    public DataClass(){
+
+    }
 }
