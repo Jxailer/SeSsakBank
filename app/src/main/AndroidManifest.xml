@@ -15,10 +15,10 @@
         android:theme="@style/Theme.CodeValley"
         tools:targetApi="31">
         <activity
-            android:name="com.example.wishShop.AddActivity"
+            android:name="com.example.wishShop.WishShopActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.wishShop.WishShopActivity"
+            android:name="com.example.wishShop.UploadActivity"
             android:exported="true" />
         <activity
             android:name=".LoginActivity"

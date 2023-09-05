@@ -3,30 +3,24 @@ package com.example.wishShop;
 public class DataClass {
 
     private String dataTitle;
+    private String dataStamp;
     private String dataDesc;
-    private String dataLang;
-    private String dataImage;
 
     public String getDataTitle() {
         return dataTitle;
+    }
+
+    public String getDataStamp() {
+        return dataStamp;
     }
 
     public String getDataDesc() {
         return dataDesc;
     }
 
-    public String getDataLang() {
-        return dataLang;
-    }
-
-    public String getDataImage() {
-        return dataImage;
-    }
-
-    public DataClass(String dataTitle, String dataDesc, String dataLang, String dataImage) {
+    public DataClass(String dataTitle, String dataStamp, String dataDesc) {
         this.dataTitle = dataTitle;
+        this.dataStamp = dataStamp;
         this.dataDesc = dataDesc;
-        this.dataLang = dataLang;
-        this.dataImage = dataImage;
     }
 }
