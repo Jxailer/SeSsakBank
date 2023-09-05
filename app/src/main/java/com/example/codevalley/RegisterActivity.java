@@ -1,6 +1,7 @@
 package com.example.codevalley;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,24 +12,28 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+//주석처리된 코드는 수정 전 코드
 public class RegisterActivity extends AppCompatActivity {
 
     EditText signupUsername, signupPassword, signupName, signupBirth, signupPhone;
     TextView loginRedirectText;
     Button signupButton, usernameDuplicate;
     DatabaseReference reference;
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,19 +139,36 @@ public class RegisterActivity extends AppCompatActivity {
 
     //사용자 정보 파이어베이스에 저장
     public void addUserInfo(){
-        String username = signupUsername.getText().toString();
-        String password = signupPassword.getText().toString();
+        String id = signupUsername.getText().toString();
+        String pw = signupPassword.getText().toString();
         String name = signupName.getText().toString();
         String birth = signupBirth.getText().toString();
         String phone = signupPhone.getText().toString();
-        Task<String> token = FirebaseMessaging.getInstance().getToken();
+//        Task<String> token = FirebaseMessaging.getInstance().getToken();
+//
+//        HelperClass helperClass = new HelperClass(username, password, name, birth, phone, token.getResult());
+//        reference.child(name).setValue(helperClass);
+//
+//        Toast.makeText(RegisterActivity.this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+//        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+//        startActivity(intent);
+        mAuth.createUserWithEmailAndPassword(id, pw).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    HelperClass helperClass = new HelperClass(id, pw, name, birth, phone);
+                    reference.child(id.replace(".", ",")).setValue(helperClass); //아이디가 맨 위로 오게 바꿨고 아이디가 이메일 형식이라 .이 들어가는데
+                    //리얼타임에는 .이 저장이 안되나봐 그래서 ,로 바꿔서 저장되게 했어 그래서 회원가입을 해보면~
 
-        HelperClass helperClass = new HelperClass(username, password, name, birth, phone, token.getResult());
-        reference.child(name).setValue(helperClass);
-
-        Toast.makeText(RegisterActivity.this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-        startActivity(intent);
+                    Toast.makeText(RegisterActivity.this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(RegisterActivity.this, "회원가입 실패", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     //비밀번호 정규식(영문, 특수문자 8~15자)

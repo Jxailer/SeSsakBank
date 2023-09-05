@@ -24,7 +24,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Objects;
 
 public class adult_LoginActivity extends AppCompatActivity {
-    EditText loginUsername, loginNickname, loginName;
+    EditText loginUsername;
+    public static String childID;
+    EditText loginNickname;
+    EditText loginName;
     Button loginButton;
     FirebaseDatabase database;
     DatabaseReference reference;
@@ -111,11 +114,11 @@ public class adult_LoginActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("adults");
 
-        String username = loginUsername.getText().toString();
+        childID = loginUsername.getText().toString();
         String adult_nickname = loginNickname.getText().toString();
         String adult_name = loginName.getText().toString();
 
-        HelperClass helperClass = new HelperClass(username, adult_nickname, adult_name);
+        HelperClass helperClass = new HelperClass(childID, adult_nickname, adult_name);
         reference.child(adult_nickname).setValue(helperClass);
 
         Intent intent = new Intent(adult_LoginActivity.this, MainActivity.class);

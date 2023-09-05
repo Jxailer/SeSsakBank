@@ -51,6 +51,10 @@
             android:exported="true"
             tools:ignore="Instantiatable" />
 
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="true" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
