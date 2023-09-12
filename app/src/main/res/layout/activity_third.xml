@@ -56,32 +56,6 @@
 
   </com.google.android.material.textfield.TextInputLayout>
 
-  <com.google.android.material.textfield.TextInputLayout
-      android:id="@+id/textInputLayout1"
-      android:layout_width="269dp"
-      android:layout_height="64dp"
-      android:layout_marginStart="72dp"
-      app:errorEnabled="true"
-      app:hintEnabled="true"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/비번확인"
-      app:passwordToggleEnabled="true">
-
-    <EditText
-        android:id="@+id/새비번확인"
-        android:layout_width="265dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:backgroundTint="@color/white"
-        android:ems="10"
-        android:hint="위와 동일하게 입력하세요."
-        android:inputType="textPassword"
-        android:textSize="16sp"
-        tools:ignore="DuplicateIds" />
-
-  </com.google.android.material.textfield.TextInputLayout>
-
   <TextView
       android:id="@+id/비번조건"
       android:layout_width="wrap_content"
@@ -89,18 +63,6 @@
       android:layout_marginStart="80dp"
       android:layout_marginTop="240dp"
       android:text="8자리 이상"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
-
-  <TextView
-      android:id="@+id/비번확인"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="72dp"
-      android:layout_marginTop="328dp"
-      android:text="비밀번호 확인"
-      android:textColor="@color/black"
-      android:textSize="16sp"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
 
@@ -129,22 +91,23 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
 
-  <Button
+  <android.widget.Button
       android:id="@+id/비번확인버튼"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_width="120dp"
+      android:layout_height="46dp"
       android:layout_marginStart="157dp"
       android:layout_marginEnd="157dp"
-      android:layout_marginBottom="107dp"
-      android:backgroundTint="@color/purple_700"
+      android:layout_marginBottom="176dp"
+
+      android:clickable="false"
       android:onClick="onButton1Clicked"
       android:text="변경하기"
       android:textColor="@color/black"
       android:textSize="16sp"
       android:textStyle="bold"
-      android:visibility="gone"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.444"
       app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
