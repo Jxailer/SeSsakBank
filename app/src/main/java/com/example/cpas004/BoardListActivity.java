@@ -1,20 +1,29 @@
 package com.example.cpas004;
 
+import android.app.ListActivity;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.codevalley.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 public class BoardListActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -63,6 +72,55 @@ public class BoardListActivity extends AppCompatActivity implements View.OnClick
         //데이터 가져오기
         loadData();
 
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+                int position = viewHolder.getBindingAdapterPosition();
+
+                switch(direction){
+                    case ItemTouchHelper.LEFT:
+                        String key = list.get(position).getUser_key();
+
+                        DAOBoardWrite dao = new DAOBoardWrite();
+
+                        dao.remove(key).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(BoardListActivity.this,
+                                        "삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(BoardListActivity.this,
+                                        "삭제 실패"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                }
+            }
+
+            @Override
+            public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+
+                new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder,
+                        dX, dY, actionState, isCurrentlyActive)
+                        .addSwipeLeftBackgroundColor(Color.RED)
+                        .addSwipeLeftActionIcon(R.drawable.ic_delete)
+                        .addSwipeLeftLabel("삭제")
+                        .setSwipeLeftLabelColor(Color.WHITE)
+                        .create()
+                        .decorate();
+
+                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+            }
+        }).attachToRecyclerView(recyclerView);
+
     }
 
 
@@ -79,11 +137,11 @@ public class BoardListActivity extends AppCompatActivity implements View.OnClick
 
                     //키 값 가져오기
                     key = data.getKey();
-                    title = boardwrite.getUser_title();
+                    //title = boardwrite.getUser_title();
 
                     //키 값 담기
                     boardwrite.setUser_key(key);
-                    boardwrite.setUser_title(title);
+                    //boardwrite.setUser_title(title);
 
                     //리스트에 담기
                     list.add(boardwrite);

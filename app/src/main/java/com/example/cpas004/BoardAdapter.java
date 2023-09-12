@@ -1,6 +1,7 @@
 package com.example.cpas004;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,18 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardVH>{
 
         //제목
         holder.titleText.setText(boardwrite.getUser_title());
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(context, BoardUpdateActivity.class);
+                intent.putExtra("key", boardwrite.getUser_key());
+                intent.putExtra("title", boardwrite.getUser_title());
+                intent.putExtra("write", boardwrite.getUser_text());
+                context.startActivity(intent);
+            }
+        });
 
     }
 
