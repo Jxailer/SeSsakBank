@@ -399,7 +399,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:visibility="invisible"
+            android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/Calendar"
             >
@@ -415,16 +415,12 @@
                 app:layout_constraintTop_toTopOf="parent"
                 />
 
-            <Button
-                android:id="@+id/record1"
-                android:layout_width="378dp"
+            <ListView
+                android:id="@+id/wishList"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="#ECEDCC"
-                android:gravity="left|center"
-                android:text="+ 10,000 (용돈) / 받아쓰기 100점 기념!"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/time" />
+                app:layout_constraintTop_toBottomOf="parent"/>
 
             <Button
                 android:id="@+id/recordCreateButton_spent"
@@ -434,7 +430,7 @@
                 android:gravity="left|center"
                 android:text="지출 기록 만들기"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/record1" />
+                app:layout_constraintTop_toBottomOf="@id/time" />
 
             <Button
                 android:id="@+id/recordCreateButton_income"
@@ -445,7 +441,7 @@
                 android:gravity="left|center"
                 android:text="수입 기록 만들기"
                 app:layout_constraintStart_toEndOf="@id/recordCreateButton_spent"
-                app:layout_constraintTop_toBottomOf="@id/record1" />
+                app:layout_constraintTop_toBottomOf="@id/time" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
