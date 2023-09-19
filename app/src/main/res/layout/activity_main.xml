@@ -249,7 +249,6 @@
                         android:paddingTop="20dip"
                         android:layout_marginLeft="17dp"
                         android:background="#00ff0000"
-                        android:onClick="dayButtonClicked"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 <!--                    1일차 아이콘 linear layout-->
@@ -399,7 +398,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:visibility="visible"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/Calendar"
             >

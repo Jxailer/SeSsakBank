@@ -1,9 +1,7 @@
 package com.example.codevalley;
 
 import android.os.Bundle;
-
 import android.util.Log;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,10 +21,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import java.util.HashMap;
-import java.util.Map;
->>>>>>> cb12e23 (.)
-
 public class IncomeRecordCreate extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +37,6 @@ public class IncomeRecordCreate extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-<<<<<<< HEAD
                 String category = categorySpinner.getSelectedItem().toString(); // 카테고리 스피너에서 선택된 값 가져오기
                 int categoryNum; // 카테고리 별 고유번호 부여
                 int Amount = Integer.parseInt(moneyAmount.getText().toString()); // 용돈 금액 입력값을 int형으로 저장함.
@@ -108,8 +101,8 @@ public class IncomeRecordCreate extends AppCompatActivity {
                                 }
                             }
 
-                            }
                         }
+                    }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
@@ -119,42 +112,6 @@ public class IncomeRecordCreate extends AppCompatActivity {
                 });
             }
         });// saveButton onClick event listener 끝
-=======
-
-                String category = categorySpinner.getSelectedItem().toString(); // 카테고리 스피너에서 선택된 값 가져오기
-                int Amount = Integer.parseInt(moneyAmount.getText().toString()); // 용돈 금액 입력값을 int형으로 저장함.
-
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users/dream");
-                String src = "userrecord/";
-
-//                데이터베이스에 저장하기
-                //reference = FirebaseDatabase.getInstance().getReference();
-
-                int i = 1;
-
-                while(true){
-                    if (ref.child("users").child("record"+i).get() != null){
-                        continue;
-                    }
-                    else{
-
-//                reference.child("users").child("username").child("planttype").setValue("사과나무");
-
-                        Map<String, Object> record = new HashMap<>();
-                        record.put(src, category);
-                        record.put("dream/userrecord/record2/moneyAmount", Amount);
-                        ref.updateChildren(record);
-
-                        Toast.makeText(IncomeRecordCreate.this, "저장 버튼 눌림.", Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
-                }
-
-
-
-            }
-        }); // saveButton onClick event listener 끝
->>>>>>> cb12e23 (.)
 
         //취소버튼 눌림
         cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -172,5 +129,4 @@ public class IncomeRecordCreate extends AppCompatActivity {
 
 
 
-} // 메인 클래스 끝.
-
+}// 메인 클래스 끝.

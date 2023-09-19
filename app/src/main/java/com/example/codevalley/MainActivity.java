@@ -6,12 +6,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         Context context_Main = this;
         TextView target = (TextView)findViewById(R.id.targetButton);
@@ -36,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button saveButton = findViewById(R.id.saveButton);
         Button cancelButton = findViewById(R.id.cancelButton);
+        Button dayButton = findViewById(R.id.day1);
         TextView targetButton = findViewById(R.id.targetButton);
 
         // targetBox(목표 수정창) 높이 증가(펼치기)용 소스코드
@@ -49,6 +65,21 @@ public class MainActivity extends AppCompatActivity {
 //                LinearLayout.LayoutParams.MATCH_PARENT,
 //                22
 //        );
+
+
+
+        // day1 버튼 클릭시
+        dayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                getValue();
+
+                Toast.makeText(MainActivity.this, "날짜 버튼 눌림.", Toast.LENGTH_SHORT).show();
+                CalendarRecord = (ViewGroup)findViewById(R.id.CalendarRecord);
+                CalendarRecord.setVisibility(View.VISIBLE);
+            }
+        });
 
         // 목표 버튼 눌렀을 시
         targetButton.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+
     } // onCreate class 끝
 
 
@@ -147,10 +179,88 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //일일 캘린더 버튼 눌림
-    public void dayButtonClicked(View v){
-        Toast.makeText(MainActivity.this, "날짜 버튼 눌림.", Toast.LENGTH_SHORT).show();
-        CalendarRecord = (ViewGroup)findViewById(R.id.CalendarRecord);
-        CalendarRecord.setVisibility(View.VISIBLE);
+//    public void dayButtonClicked(View v){
+//        ArrayList<String> arrayList = new ArrayList<>();
+//        ArrayAdapter<String> adapter;
+//
+//        FirebaseDatabase firebaseDatabase;
+//        DatabaseReference databaseReference;
+//
+//        ListView listView;
+//
+//        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayList);
+//        firebaseDatabase = FirebaseDatabase.getInstance();
+//        databaseReference = firebaseDatabase.getReference().child("wishManage");
+//
+//        getValue();
+//
+//        Toast.makeText(MainActivity.this, "날짜 버튼 눌림.", Toast.LENGTH_SHORT).show();
+//        CalendarRecord = (ViewGroup)findViewById(R.id.CalendarRecord);
+//        CalendarRecord.setVisibility(View.VISIBLE);
+//
+//        }
+
+    private void getValue() {
+        ArrayList<String> arrayList = new ArrayList<>();
+        ArrayAdapter<String> adapter;
+
+        FirebaseDatabase firebaseDatabase;
+        DatabaseReference databaseReference;
+
+        ListView listView = findViewById(R.id.wishList);
+
+
+
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayList); // 어댑터 초기화
+        firebaseDatabase = FirebaseDatabase.getInstance(); // 데이터베이스 초기화
+        databaseReference = firebaseDatabase.getReference().child("users/dream/userrecord"); // 레퍼런스 초기화
+        listView.setAdapter(adapter);
+
+        Toast.makeText(MainActivity.this, "통계 버튼 눌림.", Toast.LENGTH_SHORT).show();
+
+        databaseReference.addChildEventListener(new ChildEventListener() {
+
+
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                //리스트 초기화
+                arrayList.clear();
+                int recordnum = 1;
+
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    //데이터베이스 가져오기(value 이름으로 된 값을 변수에 담는다.
+                    String sValue = dataSnapshot.child("record"+recordnum).getValue(String.class);
+
+                    //리스트에 변수를 담는다.
+                    arrayList.add(sValue);
+                }
+
+                //리스트뷰 어뎁터 설정
+                listView.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(MainActivity.this, "error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 
 //    하단 네비게이션 바 버튼 클릭
