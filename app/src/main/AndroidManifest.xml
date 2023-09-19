@@ -52,7 +52,7 @@
             tools:ignore="Instantiatable" />
 
         <activity
-            android:name=".ProfileActivity"
+            android:name="com.example.wishShop.Child_WishShop"
             android:exported="true" />
 
         <meta-data
