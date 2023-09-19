@@ -144,22 +144,13 @@ public class RegisterActivity extends AppCompatActivity {
         String name = signupName.getText().toString();
         String birth = signupBirth.getText().toString();
         String phone = signupPhone.getText().toString();
-//        Task<String> token = FirebaseMessaging.getInstance().getToken();
-//
-//        HelperClass helperClass = new HelperClass(username, password, name, birth, phone, token.getResult());
-//        reference.child(name).setValue(helperClass);
-//
-//        Toast.makeText(RegisterActivity.this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
-//        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-//        startActivity(intent);
+
         mAuth.createUserWithEmailAndPassword(id, pw).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     HelperClass helperClass = new HelperClass(id, pw, name, birth, phone);
-                    reference.child(id.replace(".", ",")).setValue(helperClass); //아이디가 맨 위로 오게 바꿨고 아이디가 이메일 형식이라 .이 들어가는데
-                    //리얼타임에는 .이 저장이 안되나봐 그래서 ,로 바꿔서 저장되게 했어 그래서 회원가입을 해보면~
-
+                    reference.child(id.replace(".", ",")).setValue(helperClass);
                     Toast.makeText(RegisterActivity.this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(intent);

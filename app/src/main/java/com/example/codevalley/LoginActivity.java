@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wishShop.Child_WishShop;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -33,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     static FirebaseAuth.AuthStateListener mAuthListener;
     static FirebaseUser mUser;
-    static String userID;
+    public static String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                 mUser = firebaseAuth.getCurrentUser();
                 if (mUser != null) {
                     userID = mUser.getEmail().replace(".", ",");
-                    Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, Child_WishShop.class);
                     startActivity(intent);
                     finish();
                 } else {
