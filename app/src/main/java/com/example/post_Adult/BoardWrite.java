@@ -1,4 +1,4 @@
-package com.example.cpas004;
+package com.example.post_Adult;
 
 public class BoardWrite {
 

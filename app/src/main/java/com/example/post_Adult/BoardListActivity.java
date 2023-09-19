@@ -1,6 +1,5 @@
-package com.example.cpas004;
+package com.example.post_Adult;
 
-import android.app.ListActivity;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Bundle;
