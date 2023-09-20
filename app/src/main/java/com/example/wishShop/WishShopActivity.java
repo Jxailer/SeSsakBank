@@ -64,6 +64,7 @@ public class WishShopActivity extends AppCompatActivity {
                 dataList.clear();
                 for (DataSnapshot itemSnapshot: snapshot.getChildren()){
                     DataClass dataClass = itemSnapshot.getValue(DataClass.class);
+                    dataClass.setKey(itemSnapshot.getKey());
                     dataList.add(dataClass);
                 }
                 adapter.notifyDataSetChanged();

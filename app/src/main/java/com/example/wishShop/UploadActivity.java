@@ -26,6 +26,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.text.DateFormat;
+import java.util.Calendar;
+
 public class UploadActivity extends AppCompatActivity {
 
     Button saveButton;
@@ -67,6 +70,8 @@ public class UploadActivity extends AppCompatActivity {
         String desc = uploadDesc.getText().toString();
 
         DataClass dataClass = new DataClass(title, stamp, desc);
+
+//        String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
 
         FirebaseDatabase.getInstance().getReference("wishManage").child(title)
                 .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
