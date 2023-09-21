@@ -80,7 +80,6 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent = new Intent(LoginActivity.this, Child_WishShop.class);
                     startActivity(intent);
                     finish();
-                } else {
                 }
             }
         };

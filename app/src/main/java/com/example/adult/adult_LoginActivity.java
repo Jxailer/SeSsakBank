@@ -82,22 +82,17 @@ public class adult_LoginActivity extends AppCompatActivity {
     }
 
     public void checkUsername(){
-        String userUsername = loginUsername.getText().toString().trim();
+        String kidUsername = loginUsername.getText().toString();
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-        Query checkUserDatabase = reference.orderByChild("username").equalTo(userUsername);
-
-        checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
+                String usernameFromDB = snapshot.child(kidUsername.replace(".", ",")).child("username").getValue(String.class);
+                if(Objects.equals(kidUsername, usernameFromDB)){
                     loginUsername.setError(null);
-                    String usernameFromDB = snapshot.child(userUsername).child("username").getValue(String.class);
-
-                    if (!Objects.equals(usernameFromDB, userUsername)) {
-                        addAdultInfo();
-                    }
-                }else {
+                    addAdultInfo();
+                }else{
                     loginUsername.setError("유저가 존재하지 않아요!");
                     loginUsername.requestFocus();
                 }
@@ -114,12 +109,12 @@ public class adult_LoginActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("adults");
 
-        childID = loginUsername.getText().toString();
+        childID = loginUsername.getText().toString().replace(".", ",");
         String adult_nickname = loginNickname.getText().toString();
         String adult_name = loginName.getText().toString();
 
-        HelperClass helperClass = new HelperClass(childID, adult_nickname, adult_name);
-        reference.child(adult_nickname).setValue(helperClass);
+        HelperClass helperClass = new HelperClass(adult_nickname, adult_name);
+        reference.child(childID).setValue(helperClass);
 
         Intent intent = new Intent(adult_LoginActivity.this, MainActivity.class);
         startActivity(intent);

@@ -1,7 +1,6 @@
 package com.example.codevalley;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,7 +25,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-//주석처리된 코드는 수정 전 코드
 public class RegisterActivity extends AppCompatActivity {
 
     EditText signupUsername, signupPassword, signupName, signupBirth, signupPhone;
@@ -149,7 +147,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    HelperClass helperClass = new HelperClass(id, pw, name, birth, phone);
+                    HelperClass helperClass = new HelperClass(pw, name, birth, phone);
                     reference.child(id.replace(".", ",")).setValue(helperClass);
                     Toast.makeText(RegisterActivity.this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
