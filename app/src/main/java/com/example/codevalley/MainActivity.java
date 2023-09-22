@@ -22,6 +22,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                getValue();
+//                getValue();
 
                 Toast.makeText(MainActivity.this, "날짜 버튼 눌림.", Toast.LENGTH_SHORT).show();
                 CalendarRecord = (ViewGroup)findViewById(R.id.CalendarRecord);
@@ -200,68 +201,68 @@ public class MainActivity extends AppCompatActivity {
 //
 //        }
 
-    private void getValue() {
-        ArrayList<String> arrayList = new ArrayList<>();
-        ArrayAdapter<String> adapter;
-
-        FirebaseDatabase firebaseDatabase;
-        DatabaseReference databaseReference;
-
-        ListView listView = findViewById(R.id.wishList);
-
-
-
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayList); // 어댑터 초기화
-        firebaseDatabase = FirebaseDatabase.getInstance(); // 데이터베이스 초기화
-        databaseReference = firebaseDatabase.getReference().child("users/dream/userrecord"); // 레퍼런스 초기화
-        listView.setAdapter(adapter);
-
-        Toast.makeText(MainActivity.this, "통계 버튼 눌림.", Toast.LENGTH_SHORT).show();
-
-        databaseReference.addChildEventListener(new ChildEventListener() {
-
-
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                //리스트 초기화
-                arrayList.clear();
-                int recordnum = 1;
-
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    //데이터베이스 가져오기(value 이름으로 된 값을 변수에 담는다.
-                    String sValue = dataSnapshot.child("record"+recordnum).getValue(String.class);
-
-                    //리스트에 변수를 담는다.
-                    arrayList.add(sValue);
-                }
-
-                //리스트뷰 어뎁터 설정
-                listView.setAdapter(adapter);
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(MainActivity.this, "error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
-    }
+//    private void getValue() {
+//        ArrayList<String> recordList = new ArrayList<>();
+//        ArrayAdapter<String> adapter;
+//
+//        FirebaseDatabase firebaseDatabase;
+//        DatabaseReference databaseReference;
+//
+//        ListView listView = findViewById(R.id.wishList);
+//
+//
+//
+//        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, recordList); // 어댑터 초기화
+//        firebaseDatabase = FirebaseDatabase.getInstance(); // 데이터베이스 초기화
+//        databaseReference = firebaseDatabase.getReference().child("users/dream/userrecord"); // 레퍼런스 초기화
+//        listView.setAdapter(adapter);
+//
+//        Toast.makeText(MainActivity.this, "통계 버튼 눌림.", Toast.LENGTH_SHORT).show();
+//
+//        databaseReference.addChildEventListener(new ChildEventListener() {
+//
+//
+//            @Override
+//            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//                //리스트 초기화
+//                recordList.clear();
+//                int recordnum = 1;
+//
+//                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+//                    //데이터베이스 가져오기(value 이름으로 된 값을 변수에 담는다.
+//                    String sValue = dataSnapshot.child("record"+recordnum).getValue(String.class);
+//
+//                    //리스트에 변수를 담는다.
+//                    recordList.add(sValue);
+//                }
+//
+//                //리스트뷰 어뎁터 설정
+//                listView.setAdapter(adapter);
+//
+//            }
+//
+//            @Override
+//            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//
+//            }
+//
+//            @Override
+//            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+//
+//            }
+//
+//            @Override
+//            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//                Toast.makeText(MainActivity.this, "error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+//    }
 
 //    하단 네비게이션 바 버튼 클릭
     public void homeButtonClicked(View v){
