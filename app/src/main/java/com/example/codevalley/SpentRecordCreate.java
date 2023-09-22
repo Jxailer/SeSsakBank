@@ -1,5 +1,7 @@
 package com.example.codevalley;
 
+import static com.example.codevalley.LoginActivity.userID;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+
 
 public class SpentRecordCreate extends AppCompatActivity {
     DatabaseReference reference;
@@ -45,7 +48,7 @@ public class SpentRecordCreate extends AppCompatActivity {
 
                 int categoryNum; // 카테고리 별 고유번호 부여
 
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users/dream/userrecord/");
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users/"+ userID +"/userrecord/");
 
 
                 //<!--    1	식사-->
@@ -99,7 +102,7 @@ public class SpentRecordCreate extends AppCompatActivity {
                         for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 //                            record를 순차 저장함
                             while(true){
-                                if (Objects.equals(postSnapshot.child("users/dream/userrecord/record" + recordNum).getValue(String.class), null)) { // 해당 경로의 데이터가 비어있는지 확인
+                                if (Objects.equals(postSnapshot.child("users/"+ userID +"/userrecord/" + recordNum).getValue(String.class), null)) { // 해당 경로의 데이터가 비어있는지 확인
                                     String src = "record" + recordNum + "/";String categorySrc = src + "category";
                                     String moneySrc = src + "moneyAmount";
                                     String memoSrc = src + "memo";

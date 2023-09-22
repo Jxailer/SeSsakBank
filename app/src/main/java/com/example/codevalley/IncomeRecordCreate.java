@@ -1,5 +1,7 @@
 package com.example.codevalley;
 
+import static com.example.codevalley.LoginActivity.userID;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -41,7 +43,7 @@ public class IncomeRecordCreate extends AppCompatActivity {
                 int categoryNum; // 카테고리 별 고유번호 부여
                 int Amount = Integer.parseInt(moneyAmount.getText().toString()); // 용돈 금액 입력값을 int형으로 저장함.
 
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users/dream/userrecord/");
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users/"+ userID +"/userrecord/");
 
                 // 카테고리 고유번호 부여
                 // 21	정기적 용돈
@@ -77,7 +79,7 @@ public class IncomeRecordCreate extends AppCompatActivity {
                         for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 //                            record를 순차 저장함
                             while(true){
-                                if (Objects.equals(postSnapshot.child("users/dream/userrecord/record" + recordNum).getValue(String.class), null)) { // 해당 경로의 데이터가 비어있는지 확인
+                                if (Objects.equals(postSnapshot.child("users/"+ userID +"/userrecord/" + recordNum).getValue(String.class), null)) { // 해당 경로의 데이터가 비어있는지 확인
                                     String src = "record" + recordNum + "/";String categorySrc = src + "category";
                                     String moneySrc = src + "moneyAmount";
 

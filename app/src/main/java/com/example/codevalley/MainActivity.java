@@ -1,6 +1,9 @@
 package com.example.codevalley;
 
 
+import static com.example.codevalley.LoginActivity.userID;
+
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,7 +25,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,8 +81,9 @@ public class MainActivity extends AppCompatActivity {
 
                 getValue();
 
-                Toast.makeText(MainActivity.this, "날짜 버튼 눌림.", Toast.LENGTH_SHORT).show();
                 CalendarRecord = (ViewGroup)findViewById(R.id.CalendarRecord);
+
+
                 CalendarRecord.setVisibility(View.VISIBLE);
             }
         });
@@ -137,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View v) {
 
                         Toast.makeText(MainActivity.this, "취소 버튼 눌림.", Toast.LENGTH_SHORT).show();
-//                setContentView(targetChangeBox, targetBoxFoldParams); // finish();
+                        targetChangeBox.setVisibility(View.INVISIBLE);
 
                     }
                 });
@@ -201,65 +208,27 @@ public class MainActivity extends AppCompatActivity {
 //        }
 
     private void getValue() {
-        ArrayList<String> arrayList = new ArrayList<>();
-        ArrayAdapter<String> adapter;
 
-        FirebaseDatabase firebaseDatabase;
-        DatabaseReference databaseReference;
+        TextView record = findViewById(R.id.recordList);
+        TextView amount = findViewById(R.id.moneyAmountRecord);
 
-        ListView listView = findViewById(R.id.wishList);
+        DatabaseReference recordRef = FirebaseDatabase.getInstance().getReference("users/"+userID+"/userrecord/record1");
 
-
-
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayList); // 어댑터 초기화
-        firebaseDatabase = FirebaseDatabase.getInstance(); // 데이터베이스 초기화
-        databaseReference = firebaseDatabase.getReference().child("users/dream/userrecord"); // 레퍼런스 초기화
-        listView.setAdapter(adapter);
-
-        Toast.makeText(MainActivity.this, "통계 버튼 눌림.", Toast.LENGTH_SHORT).show();
-
-        databaseReference.addChildEventListener(new ChildEventListener() {
-
-
+        recordRef.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
             @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                //리스트 초기화
-                arrayList.clear();
-                int recordnum = 1;
-
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    //데이터베이스 가져오기(value 이름으로 된 값을 변수에 담는다.
-                    String sValue = dataSnapshot.child("record"+recordnum).getValue(String.class);
-
-                    //리스트에 변수를 담는다.
-                    arrayList.add(sValue);
-                }
-
-                //리스트뷰 어뎁터 설정
-                listView.setAdapter(adapter);
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String memoData = snapshot.child(userID).child("memo").getValue(String.class);
+                record.setText(memoData);
+                Integer amountData = snapshot.child(userID).child("moneyAmount").getValue(Integer.class);
+                amount.setText("금액 : " + amountData);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(MainActivity.this, "error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
+
         });
     }
 
