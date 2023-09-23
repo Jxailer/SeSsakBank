@@ -31,15 +31,15 @@ public class Child_WishShop extends AppCompatActivity {
 
         ur_wish = findViewById(R.id.ur_wish);
         need_stamp = findViewById(R.id.need_stamp);
-        mRef = FirebaseDatabase.getInstance().getReference("wishManage");
+        mRef = FirebaseDatabase.getInstance().getReference("adults").child(userID).child("wishManage");
 
         mRef.addValueEventListener(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String wishData = snapshot.child(userID).child("dataDesc").getValue(String.class);
+                String wishData = snapshot.child("dataDesc").getValue(String.class);
                 ur_wish.setText(wishData);
-                Integer stampData = snapshot.child(userID).child("dataStamp").getValue(Integer.class);
+                Integer stampData = snapshot.child("dataStamp").getValue(Integer.class);
                 need_stamp.setText("필요한 도장 개수 : " + stampData);
             }
 
