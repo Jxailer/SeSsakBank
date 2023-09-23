@@ -398,7 +398,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:visibility="visible"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/Calendar"
             >
@@ -420,7 +420,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text="용돈 기록"
+                android:text=" "
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/recordCreateButton_spent"/>
@@ -430,7 +430,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="26dp"
                 android:layout_marginTop="10dp"
-                android:text="용돈 기록"
+                android:text=" "
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/recordCreateButton_spent"/>

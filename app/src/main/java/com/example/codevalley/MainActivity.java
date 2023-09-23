@@ -220,9 +220,13 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 //                String memoData = snapshot.child(userID).child("memo").getValue(String.class);
                 String memoData = snapshot.child("record1").child("memo").getValue(String.class);
-                record.setText(memoData);
                 Integer amountData = snapshot.child("record1").child("moneyAmount").getValue(Integer.class);
-                amount.setText("금액 : " + amountData);
+
+                if (memoData != null && amountData != null){
+                    record.setText(memoData);
+                    amount.setText("금액 : " + amountData);
+                }
+
             }
 
             @Override
