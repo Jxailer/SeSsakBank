@@ -212,15 +212,16 @@ public class MainActivity extends AppCompatActivity {
         TextView record = findViewById(R.id.recordList);
         TextView amount = findViewById(R.id.moneyAmountRecord);
 
-        DatabaseReference recordRef = FirebaseDatabase.getInstance().getReference("users/"+userID+"/userrecord/record1");
-
+//        DatabaseReference recordRef = FirebaseDatabase.getInstance().getReference("users/"+userID+"/userrecord/record1");
+        DatabaseReference recordRef = FirebaseDatabase.getInstance().getReference("users").child(userID).child("userrecord");
         recordRef.addValueEventListener(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String memoData = snapshot.child(userID).child("memo").getValue(String.class);
+//                String memoData = snapshot.child(userID).child("memo").getValue(String.class);
+                String memoData = snapshot.child("record1").child("memo").getValue(String.class);
                 record.setText(memoData);
-                Integer amountData = snapshot.child(userID).child("moneyAmount").getValue(Integer.class);
+                Integer amountData = snapshot.child("record1").child("moneyAmount").getValue(Integer.class);
                 amount.setText("금액 : " + amountData);
             }
 
