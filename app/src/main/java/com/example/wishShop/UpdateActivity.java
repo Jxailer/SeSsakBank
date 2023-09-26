@@ -1,5 +1,7 @@
 package com.example.wishShop;
 
+import static com.example.codevalley.LoginActivity.userID;
+
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -136,7 +138,7 @@ public class UpdateActivity extends AppCompatActivity {
 
         DataClass dataClass = new DataClass(title, stamp, desc);
 
-        FirebaseDatabase.getInstance().getReference("wishManage").child(oldTitle)
+        FirebaseDatabase.getInstance().getReference("wishManage").child(userID).child(oldTitle)
                 .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

@@ -1,5 +1,7 @@
 package com.example.wishShop;
 
+import static com.example.codevalley.LoginActivity.userID;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -55,7 +57,7 @@ public class WishShopActivity extends AppCompatActivity {
         MyAdapter adapter = new MyAdapter(WishShopActivity.this, dataList);
         recyclerView.setAdapter(adapter);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("wishManage");
+        databaseReference = FirebaseDatabase.getInstance().getReference("wishManage").child(userID);
         dialog.show();
 
         eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
