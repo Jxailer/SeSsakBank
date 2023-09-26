@@ -12,6 +12,8 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.icu.text.CaseMap;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -55,13 +57,17 @@ public class UpdateActivity extends AppCompatActivity {
             oldTitle = bundle.getString("wishTitle");
         }
 
+        // 메소드 실행
+        stampMinMax();
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveData();
-                updateData();
-                Intent intent = new Intent(UpdateActivity.this, WishShopActivity.class);
-                startActivity(intent);
+                if(Info()){
+                    saveData();
+                    updateData();
+                    Intent intent = new Intent(UpdateActivity.this, WishShopActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -72,6 +78,57 @@ public class UpdateActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
+    // 필수 입력 사항 미기재시
+    public Boolean Info(){
+        String title = updateTitle.getText().toString();
+        String stamp = updateStamp.getText().toString();
+        String desc = updateDesc.getText().toString();
+
+        if(title.isEmpty()) {
+            updateTitle.setError("소원권 제목을 입력해 주세요.");
+            return false;
+        } else if(stamp.isEmpty()) {
+            updateStamp.setError("스탬프 갯수를 설정해 주세요.");
+            return false;
+        } else {
+            updateTitle.setError(null);
+            updateStamp.setError(null);
+            return true;
+        }
+    }
+
+    // 스탬프 개수 최소, 최대 제한
+    public void stampMinMax(){
+        //스탬프 적는 et의 텍스트가 변경될 때
+        updateStamp.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+            // @SuppressLint("ResourceType")
+            @Override
+            //텍스트가 변경될 때마다 함수 호출
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // 작성되어 있던 값을 지울 때 pareInt(" ") 에서 에러가 나기 때문에 위와 같은 과정 필요
+                if(updateStamp.getText().toString().length()>0) {
+                    // 120 초과일 때
+                    if (Integer.parseInt(updateStamp.getText().toString()) > 120) {
+                        //et가 120으로 변경됨
+                        updateStamp.setText("120");
+                    }
+                    // 1 미만일 때
+                    if (Integer.parseInt(updateStamp.getText().toString()) < 1) {
+                        // et가 1로 변경됨
+                        updateStamp.setText("1");
+                    }
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
+    }
+
     public void updateData(){
         title = updateTitle.getText().toString().trim();
         stamp = updateStamp.getText().toString().trim();

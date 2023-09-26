@@ -62,7 +62,9 @@
                     android:hint="소원을 입력해주세요"
                     android:textColor="#3A3E45"
                     android:textColorHint="#A5A5A5"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:maxLength="13"
+                    android:maxLines="1" />
 
             </LinearLayout>
 
@@ -86,7 +88,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="40dp"
                 android:gravity="center">
 
                 <EditText
@@ -99,7 +100,9 @@
                     android:padding="16dp"
                     android:textAlignment="center"
                     android:textColor="#3A3E45"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:inputType="number"
+                    android:digits="0123456789" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -111,6 +114,17 @@
                     android:textAlignment="center"
                     android:textSize="25sp" />
             </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="40dp"
+                android:fontFamily="@font/inter"
+                android:text="도장은 최소 1개부터 최대 120개까지 가능합니다."
+                android:textAlignment="center"
+                android:textColor="#95606060"
+                android:textSize="12sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -133,7 +147,8 @@
                 android:gravity="start|center_vertical"
                 android:padding="16dp"
                 android:textColor="#3A3E45"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:maxLength="100" />
 
             <Button
                 android:id="@+id/updateButton"
