@@ -1,5 +1,7 @@
 package com.example.post_Adult;
 
+import static com.example.codevalley.LoginActivity.userID;
+
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -104,6 +106,7 @@ public class BoardListActivity extends AppCompatActivity implements View.OnClick
                 }
             }
 
+
             @Override
             public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
 
@@ -135,8 +138,9 @@ public class BoardListActivity extends AppCompatActivity implements View.OnClick
                     BoardWrite boardwrite = data.getValue(BoardWrite.class);
 
                     //키 값 가져오기
-                    key = data.getKey();
+                    //key = data.getKey();
                     //title = boardwrite.getUser_title();
+                    key = userID;
 
                     //키 값 담기
                     boardwrite.setUser_key(key);

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:backgroundTint="#C8E4B2"
+    android:backgroundTint="#D7E5CA"
     app:cardCornerRadius="3dp"
     app:cardElevation="10dp">
     
@@ -31,8 +31,10 @@
             android:layout_height="wrap_content"
 
             android:paddingLeft="10dp"
-            android:textSize="30dp"
-            android:text="글 내용" />
+            android:textSize="20dp"
+            android:text="글 내용"
+            android:layout_gravity="center"
+            />
 
     </LinearLayout>
 

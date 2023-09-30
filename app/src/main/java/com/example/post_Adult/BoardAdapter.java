@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresPermission;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,6 +43,8 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardVH>{
 
         // 글쓴이
         holder.writeUser.setText(boardwrite.getUser_key());
+
+
 
         //제목
         holder.titleText.setText(boardwrite.getUser_title());
