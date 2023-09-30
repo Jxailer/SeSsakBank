@@ -1,6 +1,7 @@
 package com.example.myapplication1;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -36,10 +37,10 @@ public class SixthActivity extends AppCompatActivity{
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if (checked){
-                    ebt.setVisibility(View.VISIBLE);
+                    ebt.setBackgroundColor(Color.rgb(136,189,165));
                     ebt.setEnabled(true);
                 }else {
-                    ebt.setVisibility(View.GONE);
+                    ebt.setBackgroundColor(Color.rgb(199,199,199));
                     ebt.setEnabled(false);
                 }
             }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
@@ -39,37 +40,29 @@ public class ThirdActivity extends AppCompatActivity{
 
         EditText pwcheck = (EditText) findViewById(R.id.새비번입력란);
         Button pwcheckbutton = (Button) findViewById(R.id.비번확인버튼);
-        String password = pwcheck.getText().toString();
+        String repassword = pwcheck.getText().toString();
         String rgPattern = "^(?=.*[A-Za-z])(?=.*[!@#$%^&?])[A-Za-z!@#$%^&?]{8,15}$";
 
-        pwcheck.addTextChangedListener(new TextWatcher() {
 
+
+        pwcheck.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
-
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
-
             @Override
             public void afterTextChanged(Editable editable) {
-                if (editable.length() >= 8){
-                    if (password.equals(rgPattern)) {
-                        pwcheckbutton.setClickable(true);
-                        pwcheckbutton.setBackgroundColor(Color.GREEN);
-                    } else {
-                        pwcheck.setError("비밀번호는 영문과 특수문자를 포함하여야 합니다.");
-                        pwcheckbutton.setClickable(false);
-                        pwcheckbutton.setBackgroundColor(Color.GRAY);
-                    }
+                if (editable.length()>8){
+
+                        pwcheckbutton.setEnabled(true);
+                        pwcheckbutton.setBackgroundColor(Color.rgb(136,189,165));
+
 
                 } else {
-                    pwcheck.setError("비밀번호는 8자 이상이어야 합니다.");
-                    pwcheckbutton.setClickable(false);
-                    pwcheckbutton.setBackgroundColor(Color.GRAY);
+                    pwcheckbutton.setEnabled(false);
+                    pwcheckbutton.setBackgroundColor(Color.rgb(199,199,199));
                 }
 
             }
@@ -103,6 +96,22 @@ public class ThirdActivity extends AppCompatActivity{
 //        } else {
 //            button.setClickable(false);
 //            button.setBackgroundColor(Color.GRAY);
+//        }
+
+//        if (editable.length() >= 8){
+//            if (password.equals(rgPattern)) {
+//                pwcheckbutton.setClickable(true);
+//                pwcheckbutton.setBackgroundColor(Color.GREEN);
+//            } else {
+//                pwcheck.setError("비밀번호는 영문과 특수문자를 포함하여야 합니다.");
+//                pwcheckbutton.setClickable(false);
+//                pwcheckbutton.setBackgroundColor(Color.GRAY);
+//            }
+//
+//        } else {
+//            pwcheck.setError("비밀번호는 8자 이상이어야 합니다.");
+//            pwcheckbutton.setClickable(false);
+//            pwcheckbutton.setBackgroundColor(Color.GRAY);
 //        }
 
 

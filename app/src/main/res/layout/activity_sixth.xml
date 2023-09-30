@@ -4,73 +4,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/purple_700">
+    android:backgroundTint="@color/defaultgray">
 
-    <TextView
-        android:id="@+id/삭제내용2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="221dp"
-        android:text="- 탈퇴 후 동일한 아이디로 30일 이내에 재가입이 가능합니다."
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/정보사라져"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="35dp"
-        android:text="회원의 정보가 모두 사라져요!"
-        app:layout_constraintBottom_toTopOf="@+id/삭제내용"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/회원이름" />
-
-    <TextView
-        android:id="@+id/회원이름"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:text="김혜은"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/정보사라져"
-        app:layout_constraintEnd_toStartOf="@+id/정보사라져"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/삭제내용"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:text="- 회원탈퇴한 계정의 정보는 복구가 불가능합니다."
-        app:layout_constraintBottom_toTopOf="@+id/삭제내용2"
-        app:layout_constraintStart_toStartOf="@+id/삭제내용2" />
-
-    <CheckBox
-        android:id="@+id/삭제약관"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="200dp"
-        android:text="위 내용을 전부 확인했으며 탈퇴에 동의합니다."
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/회원이름"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="25dp"
+                    android:text="김혜은"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/정보사라져"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:text="회원의 정보가 모두 사라져요!" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/삭제내용"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="20dp"
+                android:text="- 회원탈퇴한 계정의 정보는 복구가 불가능합니다." />
+
+            <TextView
+                android:id="@+id/삭제내용2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"
+                android:text="- 탈퇴 후 동일한 아이디로 30일 이내에 재가입이 가능합니다." />
+
+            <TextView
+                android:id="@+id/삭제내용3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"
+                android:text="- 혹시 이용하시는 도중 불편한 점이 있으셨다면, [고객센터]로 내용을 남겨주세요." />
+
+            <TextView
+                android:id="@+id/삭제내용4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"
+                android:text="- 혹시 이용하시는 도중 불편한 점이 있으셨다면, [고객센터]로 내용을 남겨주세요." />
+
+            <CheckBox
+                android:id="@+id/삭제약관"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_gravity="center"
+                android:text="위 내용을 전부 확인했으며 탈퇴에 동의합니다." />
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/탈퇴버튼"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
-        android:backgroundTint="@color/purple_700"
+        android:layout_width="107dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="11dp"
+        android:backgroundTint="@color/defaultgray"
         android:text="탈퇴"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:visibility="gone"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/삭제약관" />
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
