@@ -2,12 +2,12 @@ package com.example.codevalley;
 
 public class HelperClass {
 
-    static String password, name, birth, phone, adult_name, adult_nickname;
+    static String username, password, name, birth, phone, adult_name, adult_nickname;
 
-//    public String getUsername() {
-//        return username;
-//    }
-//    public void setUsername(String username) { this.username = username; }
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) { this.username = username; }
 
     public String getPassword() {
         return password;
@@ -40,7 +40,8 @@ public class HelperClass {
     public void setAdult_nickname(String adult_nickname) { this.adult_nickname = adult_nickname; }
 
 
-    public HelperClass(String password, String name, String birth, String phone) {
+    public HelperClass(String username, String password, String name, String birth, String phone) {
+        this.username = username;
         this.password = password;
         this.name = name;
         this.birth = birth;

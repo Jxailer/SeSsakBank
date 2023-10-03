@@ -147,7 +147,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    HelperClass helperClass = new HelperClass(pw, name, birth, phone);
+                    HelperClass helperClass = new HelperClass(id, pw, name, birth, phone);
                     reference.child(id.replace(".", ",")).setValue(helperClass);
                     Toast.makeText(RegisterActivity.this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);

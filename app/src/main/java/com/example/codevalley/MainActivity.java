@@ -9,6 +9,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.codevalley.wishStore.store_complete;
+import com.example.codevalley.wishStore.store_main;
+
 public class MainActivity extends AppCompatActivity {
 
     public static Context context_Main;
@@ -70,7 +73,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void wishstoreButtonClicked(View v){
-        Toast.makeText(MainActivity.this, "소원궈 상점 버튼 눌림.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, "소원권 상점 버튼 눌림.", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, store_main.class);
+        startActivity(intent);
     }
 
     public void mypageButtonClicked(View v){

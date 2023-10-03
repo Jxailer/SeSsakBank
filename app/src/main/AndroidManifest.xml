@@ -44,6 +44,14 @@
         </activity>
 
         <activity
+            android:name=".wishStore.store_complete"
+            android:exported="true" />
+        <activity android:name=".wishStore.store_confirm"
+            android:exported="true"/>
+        <activity android:name=".wishStore.store_main"
+            android:exported="true"/>
+
+        <activity
             android:name="com.example.caps02.TypeSelect"
             android:exported="true" />
         <activity
@@ -51,8 +59,9 @@
             android:exported="true"
             tools:ignore="Instantiatable" />
 
-        <activity
-            android:name="com.example.wishShop.Child_WishShop"
+        <activity android:name="com.example.wishShop.WishShopActivity"
+            android:exported="true" />
+        <activity android:name="com.example.wishShop.UploadActivity"
             android:exported="true" />
 
         <meta-data
