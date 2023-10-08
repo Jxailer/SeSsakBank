@@ -13,10 +13,10 @@
         android:theme="@style/Theme.CodeValley"
         tools:targetApi="29">
         <activity
-            android:name=".IncomeRecordCreate"
+            android:name=".recordListHelper.IncomeRecordCreate"
             android:theme="@style/Theme.AppCompat" />
         <activity
-            android:name=".SpentRecordCreate"
+            android:name=".recordListHelper.SpentRecordCreate"
             android:exported="true"/>
         <activity
             android:name=".StampPopupActivity"

@@ -398,7 +398,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:visibility="invisible"
+            android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/Calendar"
             >
@@ -420,9 +420,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text=" "
+                android:text=" 123"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/recordCreateButton_spent"/>
             <TextView
                 android:id="@+id/moneyAmountRecord"
@@ -430,19 +429,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="26dp"
                 android:layout_marginTop="10dp"
-                android:text=" "
+                android:text=" 123"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/recordCreateButton_spent"/>
 
-
+            <!--용돈 기입 내역을 띄워주는 리싸이클러 뷰-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="0dp"
+                android:layout_height="641dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recordList" />
 
             <Button
                 android:id="@+id/recordCreateButton_spent"
                 android:layout_width="185dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#BC8787"
-                android:gravity="left|center"
+                android:gravity="center"
                 android:text="지출 기록 만들기"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/time" />
@@ -453,7 +460,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:backgroundTint="#87BCA4"
-                android:gravity="left|center"
+                android:gravity="center"
                 android:text="수입 기록 만들기"
                 app:layout_constraintStart_toEndOf="@id/recordCreateButton_spent"
                 app:layout_constraintTop_toBottomOf="@id/time" />
