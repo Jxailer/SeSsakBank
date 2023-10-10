@@ -12,7 +12,7 @@
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="5dp"
+    android:layout_marginTop="10dp"
     android:layout_marginEnd="10dp"
     android:layout_marginStart="10dp">
 
@@ -46,42 +46,19 @@
                 android:textSize="16sp" />
         </LinearLayout>
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/detailTitle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-
-            <TextView
-                android:id="@+id/detailTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_weight="1"
-                android:background="#FFFFFF"
-                android:fontFamily="@font/inter_bold"
-                android:gravity="start|center_vertical"
-                android:text="Title"
-                android:textColor="#3A3E45"
-                android:textColorHint="#A5A5A5"
-                android:textSize="20sp" />
-
-            <Button
-                android:id="@+id/editButton"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@drawable/green_border"
-                android:backgroundTint="#FFFFFF"
-                android:fontFamily="@font/inter_bold"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                android:outlineProvider="none"
-                android:text="편집"
-                android:textColor="#769787"
-                android:textSize="20sp"
-                app:cornerRadius="10dp" />
-
-        </LinearLayout>
+            android:layout_height="60dp"
+            android:layout_marginLeft="25dp"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="start|center_vertical"
+            android:text="Title"
+            android:textColor="#3A3E45"
+            android:textColorHint="#A5A5A5"
+            android:textSize="20sp" />
 
         <View
             android:layout_width="match_parent"
@@ -153,6 +130,44 @@
             android:text="Description"
             android:textColor="#3A3E45"
             android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="60dp"
+            android:gravity="center">
+            <Button
+                android:id="@+id/editButton"
+                android:layout_width="240dp"
+                android:layout_height="60dp"
+                android:background="@drawable/green_border"
+                android:backgroundTint="#769787"
+                android:fontFamily="@font/inter_bold"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:outlineProvider="none"
+                android:text="편집"
+                android:textColor="#F6F6F6"
+                android:textSize="20sp"
+                app:cornerRadius="10dp" />
+
+            <Button
+                android:id="@+id/deleteButton"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/green_border"
+                android:backgroundTint="#B0DDDDDD"
+                android:fontFamily="@font/inter_bold"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:outlineProvider="none"
+                android:text="삭제"
+                android:textColor="#3A3E45"
+                android:textSize="20sp"
+                app:cornerRadius="10dp" />
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

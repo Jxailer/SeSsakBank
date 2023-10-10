@@ -122,7 +122,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="40dp"
                 android:fontFamily="@font/inter"
-                android:text="도장은 최소 1개부터 최대 120개까지 가능합니다."
+                android:text="도장은 최소 1개부터 최대 150개까지 가능합니다."
                 android:textAlignment="center"
                 android:textColor="#95606060"
                 android:textSize="12sp" />

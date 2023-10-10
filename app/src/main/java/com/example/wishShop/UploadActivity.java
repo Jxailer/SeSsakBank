@@ -91,9 +91,9 @@ public class UploadActivity extends AppCompatActivity {
                 // 작성되어 있던 값을 지울 때 pareInt(" ") 에서 에러가 나기 때문에 위와 같은 과정 필요
                 if(uploadStamp.getText().toString().length()>0) {
                     // 120 초과일 때
-                    if (Integer.parseInt(uploadStamp.getText().toString()) > 120) {
-                        //et가 120으로 변경됨
-                        uploadStamp.setText("120");
+                    if (Integer.parseInt(uploadStamp.getText().toString()) > 150) {
+                        //et가 150으로 변경됨
+                        uploadStamp.setText("150");
                     }
                     // 1 미만일 때
                     if (Integer.parseInt(uploadStamp.getText().toString()) < 1) {

@@ -19,6 +19,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.codevalley.MainActivity;
@@ -34,7 +35,8 @@ import com.google.firebase.storage.StorageReference;
 public class UpdateActivity extends AppCompatActivity {
 
     Button updateButton;
-    EditText updateTitle, updateStamp, updateDesc;
+    EditText updateStamp, updateDesc;
+    TextView updateTitle;
     String title, stamp, desc;
     String key, oldTitle;
     DatabaseReference databaseReference;
@@ -83,14 +85,10 @@ public class UpdateActivity extends AppCompatActivity {
 
     // 필수 입력 사항 미기재시
     public Boolean Info(){
-        String title = updateTitle.getText().toString();
         String stamp = updateStamp.getText().toString();
         String desc = updateDesc.getText().toString();
 
-        if(title.isEmpty()) {
-            updateTitle.setError("소원권 제목을 입력해 주세요.");
-            return false;
-        } else if(stamp.isEmpty()) {
+        if(stamp.isEmpty()) {
             updateStamp.setError("스탬프 갯수를 설정해 주세요.");
             return false;
         } else {
@@ -114,9 +112,9 @@ public class UpdateActivity extends AppCompatActivity {
                 // 작성되어 있던 값을 지울 때 pareInt(" ") 에서 에러가 나기 때문에 위와 같은 과정 필요
                 if(updateStamp.getText().toString().length()>0) {
                     // 120 초과일 때
-                    if (Integer.parseInt(updateStamp.getText().toString()) > 120) {
-                        //et가 120으로 변경됨
-                        updateStamp.setText("120");
+                    if (Integer.parseInt(updateStamp.getText().toString()) > 150) {
+                        //et가 150으로 변경됨
+                        updateStamp.setText("150");
                     }
                     // 1 미만일 때
                     if (Integer.parseInt(updateStamp.getText().toString()) < 1) {
@@ -143,7 +141,7 @@ public class UpdateActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
-                    StorageReference reference = FirebaseStorage.getInstance().getReference("title");
+                    StorageReference reference = FirebaseStorage.getInstance().getReference("wishManage").child(userID).child(title);
                     reference.delete();
                     Toast.makeText(UpdateActivity.this, "수정 완료되었습니다.", Toast.LENGTH_SHORT).show();
                     finish();
