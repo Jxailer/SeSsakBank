@@ -4,6 +4,8 @@ import static com.example.codevalley.LoginActivity.userID;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -47,22 +49,12 @@ public class DetailActivity extends AppCompatActivity {
             title = bundle.getString("wishTitle");
         }
 
+
+
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("wishManage").child(userID);
-//                FirebaseStorage storage = FirebaseStorage.getInstance();
-//
-//                StorageReference storageReference = storage.getReference(title);
-//                storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void unused) {
-                        reference.child(title).removeValue();
-                        Toast.makeText(DetailActivity.this, "삭제되었습니다", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), WishShopActivity.class));
-                        finish();
-//                    }
-//                });
+                showdialog();
             }
         });
 
@@ -77,5 +69,38 @@ public class DetailActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void showdialog(){
+        AlertDialog.Builder dialog=new AlertDialog.Builder(this);
+//        dialog.setIcon(R.mipmap.ic_launcher);//알림창 아이콘 설정
+//        dialog.setTitle("알림창");
+        dialog.setMessage("소원권을 삭제하시겠어요?"); //알림창 메세지 설정
+
+        //알림창의 닫기를 눌렀을때 발생 이벤트 설정
+        dialog.setNeutralButton("취소",null); //아무 이벤트 발생하지 않게 하기위하여 null로 설정
+
+        dialog.setPositiveButton("삭제", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("wishManage").child(userID);
+//                FirebaseStorage storage = FirebaseStorage.getInstance();
+//
+//                StorageReference storageReference = storage.getReference(title);
+//                storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void unused) {
+                reference.child(title).removeValue();
+//                        Toast.makeText(DetailActivity.this, "삭제되었습니다", Toast.LENGTH_SHORT).show();
+//                        startActivity(new Intent(getApplicationContext(), WishShopActivity.class));
+//                        finish();
+//                    }
+//                });
+                Toast.makeText(getApplicationContext(),"삭제되었습니다.",Toast.LENGTH_LONG).show();
+                startActivity(new Intent(getApplicationContext(), WishShopActivity.class));
+                finish();
+            }//예를 눌렀을때, 데이터가 삭제되고 토스트 알림메세지 뜸.
+        });
+        dialog.show();
     }
 }
