@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.codevalley.R;
@@ -38,8 +39,8 @@ public class commentActivity extends AppCompatActivity {
 
     ListView listView;
 
-
-    EditText commentTitle, commentText;
+    TextView commentTitle;
+    TextView commentText;
     String sKey, sTitle, sText;
 
     @Override

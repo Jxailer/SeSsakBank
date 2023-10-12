@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <EditText
+        <TextView
             android:id="@+id/comment_title"
             android:focusableInTouchMode="false"
             android:layout_width="match_parent"
@@ -26,10 +26,11 @@
 
     </LinearLayout>
 
-    <EditText
+    <TextView
         android:id="@+id/comment_text"
         android:focusableInTouchMode="false"
         android:layout_width="match_parent"
+        android:gravity="center_vertical"
         android:layout_height="300dp"
         android:padding="16dp"
         android:layout_marginBottom="16dp"
