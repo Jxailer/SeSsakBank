@@ -13,15 +13,23 @@
         android:theme="@style/Theme.CodeValley"
         tools:targetApi="31">
         <activity
+            android:name="com.example.post_Adult.commentActivity"
+            android:exported="true"
+            android:parentActivityName="com.example.post_Adult.BoardListActivity"/>
+        <activity
+            android:name="com.example.post_Adult.BoardUpdateActivity"
+            android:exported="true"
+            android:parentActivityName="com.example.post_Adult.BoardListActivity" />
+        <activity
             android:name=".DailyRecordPopupActivity"
             android:theme="@style/Theme.AppCompat" />
         <activity
             android:name=".RecordCreate"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".TargetPopupActivity"
-            android:theme="@style/Theme.AppCompat"
-            android:exported="true"/>
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat" />
         <activity
             android:name=".StampPopupActivity"
             android:exported="true" />
@@ -33,23 +41,34 @@
             android:exported="true" /> <!-- <activity -->
         <!-- android:name=".MainActivity" -->
         <!-- android:exported="true" /> -->
-
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.example.caps02.TypeSelect"
+            android:name="com.example.typeSelect.TypeSelect"
             android:exported="true" />
         <activity
             android:name="com.example.adult.adult_LoginActivity"
             android:exported="true"
             tools:ignore="Instantiatable" />
+        <activity
+            android:name="com.example.post_Adult.BoardWirteMain"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.post_Adult.BoardListActivity"
+            android:exported="true" />
 
         <meta-data
             android:name="preloaded_fonts"

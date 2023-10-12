@@ -7,7 +7,7 @@ import android.os.Handler;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.caps02.TypeSelect;
+import com.example.typeSelect.TypeSelect;
 
 public class SplashActivity extends AppCompatActivity {
     @Override

@@ -1,12 +1,10 @@
-package com.example.caps02;
+package com.example.typeSelect;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.view.View;
 import android.os.Bundle;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;

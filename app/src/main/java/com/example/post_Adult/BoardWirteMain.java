@@ -82,7 +82,7 @@ public class BoardWirteMain extends AppCompatActivity implements View.OnClickLis
     //모든 게시글 목록(리스트) 버튼
     @Override
     public void onClick(View view) {
-        intent = new Intent(this, BoardListActivity.class);
+        intent = new Intent(this, BoardListActivity.class);  //BoardListActivity
         startActivity(intent);
     }
 }

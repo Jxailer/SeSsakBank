@@ -2,10 +2,12 @@ package com.example.post_Adult;
 
 import static com.example.codevalley.LoginActivity.userID;
 
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -84,7 +86,7 @@ public class BoardListActivity extends AppCompatActivity implements View.OnClick
 
                 int position = viewHolder.getBindingAdapterPosition();
 
-                switch(direction){
+                switch (direction) {
                     case ItemTouchHelper.LEFT:
                         String key = list.get(position).getUser_key();
 
@@ -100,7 +102,7 @@ public class BoardListActivity extends AppCompatActivity implements View.OnClick
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 Toast.makeText(BoardListActivity.this,
-                                        "삭제 실패"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        "삭제 실패" + e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
                 }
@@ -122,7 +124,6 @@ public class BoardListActivity extends AppCompatActivity implements View.OnClick
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
             }
         }).attachToRecyclerView(recyclerView);
-
     }
 
 
@@ -133,14 +134,15 @@ public class BoardListActivity extends AppCompatActivity implements View.OnClick
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
 
-                for(DataSnapshot data : snapshot.getChildren()){
+                for (DataSnapshot data : snapshot.getChildren()) {
 
                     BoardWrite boardwrite = data.getValue(BoardWrite.class);
 
                     //키 값 가져오기
-                    //key = data.getKey();
+                    key = data.getKey();
                     //title = boardwrite.getUser_title();
-                    key = userID;
+                    //key = userID;
+                    //key = "";
 
                     //키 값 담기
                     boardwrite.setUser_key(key);
@@ -160,13 +162,15 @@ public class BoardListActivity extends AppCompatActivity implements View.OnClick
             }
         });
 
-
     }
-
 
 
     @Override
+            //actingbar->boardWrite 화면 전환
     public void onClick(View view) {
         finish();
-    }
+    } //finish();
+
+
+
 }
