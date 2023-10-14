@@ -18,19 +18,20 @@ public class store_complete extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.completeactivity_store);
 
-    }
-
-    public void complete(View v){
-        Handler splashHandler = new Handler();
-        splashHandler.postDelayed(new Runnable() {
+        Handler completeHandler = new Handler();
+        completeHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 Intent completeIntent = new Intent(getApplicationContext(), store_main.class);
                 startActivity(completeIntent);
                 finish();
             }
-        },500);
+        },1000);
     }
+
+//    public void complete(View v){
+//
+//    }
     protected void onPause() {
         super.onPause();
         finish();

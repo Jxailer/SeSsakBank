@@ -41,13 +41,14 @@ public class store_confirm extends AppCompatActivity {
             childRef.updateChildren(wishUpdates);
 
             Toast.makeText(getApplicationContext(), "구매확인 버튼을 눌렀어요.", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(getApplicationContext(), store_complete.class);
-            startActivity(intent);
+            Intent yesIntent = new Intent(getApplicationContext(), store_complete.class);
+            startActivity(yesIntent);
             finish();
 
         }else{
             Toast.makeText(getApplicationContext(), "도장 개수가 모자라요!", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(getApplicationContext(), store_main.class);
+            Intent failIntent = new Intent(getApplicationContext(), store_main.class);
+            startActivity(failIntent);
             finish();
         }
     }
@@ -57,7 +58,8 @@ public class store_confirm extends AppCompatActivity {
 
     public void rewardConfirm_no(View v){
         Toast.makeText(getApplicationContext(), "구매를 취소했어요.", Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(getApplicationContext(), store_main.class);
+        Intent noIntent = new Intent(getApplicationContext(), store_main.class);
+        startActivity(noIntent);
         finish();
     }
 }
