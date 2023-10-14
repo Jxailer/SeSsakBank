@@ -7,14 +7,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
-import android.widget.ListView;
+
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.codevalley.MainActivity;
 import com.example.codevalley.R;
-import com.example.codevalley.TargetPopupActivity;
 import com.example.wishShop.DataClass;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,10 +29,13 @@ import java.util.ArrayList;
 
 
 public class store_main extends AppCompatActivity {
+    TextView stampAmount;
+    static Integer ur_stamp;
     RecyclerView wishRcv;
     RecyclerView.Adapter wishAdt;
     ArrayList<DataClass> dataList;
-    DatabaseReference wishRef = FirebaseDatabase.getInstance().getReference("wishManage").child("22@naver,com");
+    DatabaseReference wishRef = FirebaseDatabase.getInstance().getReference("wishManage").child("33@naver,com");
+    DatabaseReference stampRef = FirebaseDatabase.getInstance().getReference("users").child("33@naver,com");
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -42,6 +43,7 @@ public class store_main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainactivity_store);
         wishRcv = findViewById(R.id.child_wishData);
+        stampAmount = findViewById(R.id.stampAmount);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager((Context) this);
         wishRcv.setLayoutManager(linearLayoutManager);
@@ -67,6 +69,27 @@ public class store_main extends AppCompatActivity {
 
         wishAdt = new store_adapter(this, dataList);
         wishRcv.setAdapter(wishAdt);
+
+//        store_adapter wishAdt = new store_adapter(this, dataList);
+
+//        wishAdt.setOnItemClickListener(new store_adapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View v, int pos) {
+//                Intent confirmIntent = new Intent(getApplicationContext(), store_confirm.class);
+//                startActivity(confirmIntent);
+//            }
+//        });
+
+        stampRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ur_stamp = snapshot.child("get").child("stamp").getValue(Integer.class);
+                stampAmount.setText(String.valueOf(ur_stamp));
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
 
 

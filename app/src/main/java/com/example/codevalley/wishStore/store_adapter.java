@@ -1,9 +1,11 @@
 package com.example.codevalley.wishStore;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -19,9 +21,9 @@ public class store_adapter extends RecyclerView.Adapter<store_adapter.ViewHolder
     private ArrayList<DataClass> dataList;
     private Context context;
 
-    public store_adapter(Context context, ArrayList<DataClass> datalist) {
+    public store_adapter(Context context, ArrayList<DataClass> dataList) {
         this.context = context;
-        this.dataList = datalist;
+        this.dataList = dataList;
     }
 
     @NonNull
@@ -36,6 +38,19 @@ public class store_adapter extends RecyclerView.Adapter<store_adapter.ViewHolder
     public void onBindViewHolder(@NonNull store_adapter.ViewHolder holder, int position) {
         holder.wishTitle.setText(dataList.get(position).getDataTitle());
         holder.stampCnt.setText(String.valueOf(dataList.get(position).getDataStamp()));
+
+        holder.stampCnt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String wish_title = holder.wishTitle.getText().toString();
+                String stamp_price = holder.stampCnt.getText().toString();
+
+                Intent confirmIntent = new Intent(context, store_confirm.class);
+                confirmIntent.putExtra("wish_title", wish_title);
+                confirmIntent.putExtra("stamp_price", Integer.valueOf(stamp_price));
+                context.startActivity(confirmIntent);
+            }
+        });
     }
 
     @Override
