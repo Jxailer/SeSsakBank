@@ -89,7 +89,7 @@ public class PlantGame extends AppCompatActivity {
                 try {
                     if (countFertilizer > 0){
                         countFertilizer--;
-                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
+                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
                         Map<String, Object> fertilizerInfo = new HashMap<>();
                         fertilizerInfo.put("item/fertilizer", countFertilizer);
                         ref1.updateChildren(fertilizerInfo);
@@ -99,7 +99,7 @@ public class PlantGame extends AppCompatActivity {
                             tv_countLevel.setText(countLevel+"");
                             progress_num = 0;
                             progressBar.setProgress(progress_num);
-                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
+                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
                             Map<String, Object> plantLevelInfo = new HashMap<>();
                             plantLevelInfo.put("plantType/level", countLevel);
                             ref.updateChildren(plantLevelInfo);
@@ -111,7 +111,7 @@ public class PlantGame extends AppCompatActivity {
                             tv_countLevel.setText(countLevel+"");
                             progress_num = progress_num - 20;
                             progressBar.setProgress(progress_num);
-                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
+                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
                             Map<String, Object> plantLevelInfo = new HashMap<>();
                             plantLevelInfo.put("plantType/level", countLevel);
                             ref.updateChildren(plantLevelInfo);
@@ -125,7 +125,7 @@ public class PlantGame extends AppCompatActivity {
 
                         // 식물 이미지 변경
                         if (countLevel >= 3 && countLevel < 20){
-                            FirebaseDatabase.getInstance().getReference("users").child(userID).child("plantType").addValueEventListener(new ValueEventListener(){
+                            FirebaseDatabase.getInstance().getReference("game").child(userID).child("plantType").addValueEventListener(new ValueEventListener(){
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     // 저장된 데이터를 하나씩 얻어옴
@@ -154,7 +154,7 @@ public class PlantGame extends AppCompatActivity {
                         }
                         else if (countLevel >= 40  && countLevel <= 50){
 //                            private void readTree(){
-                            FirebaseDatabase.getInstance().getReference("users").child(userID).child("plantType").addValueEventListener(new ValueEventListener(){
+                            FirebaseDatabase.getInstance().getReference("game").child(userID).child("plantType").addValueEventListener(new ValueEventListener(){
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     // 저장된 데이터를 하나씩 얻어옴
@@ -183,7 +183,7 @@ public class PlantGame extends AppCompatActivity {
                     }
                     else {
                         tv_countFertilizer.setText(0);
-                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
+                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
                         Map<String, Object> fertilizerInfo = new HashMap<>();
                         fertilizerInfo.put("item/fertilizer", countFertilizer);
                         ref1.updateChildren(fertilizerInfo);
@@ -200,7 +200,7 @@ public class PlantGame extends AppCompatActivity {
                 try {
                     if (countWater > 0){
                         countWater--;
-                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
+                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
                         Map<String, Object> waterInfo = new HashMap<>();
                         waterInfo.put("item/water", countWater);
                         ref1.updateChildren(waterInfo);
@@ -210,7 +210,7 @@ public class PlantGame extends AppCompatActivity {
                             tv_countLevel.setText(countLevel+"");
                             progress_num = 0;
                             progressBar.setProgress(progress_num);
-                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
+                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
                             Map<String, Object> plantLevelInfo = new HashMap<>();
                             plantLevelInfo.put("plantType/level", countLevel);
                             ref.updateChildren(plantLevelInfo);
@@ -222,7 +222,7 @@ public class PlantGame extends AppCompatActivity {
                             tv_countLevel.setText(countLevel+"");
                             progress_num = progress_num - 20;
                             progressBar.setProgress(progress_num);
-                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
+                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
                             Map<String, Object> plantLevelInfo = new HashMap<>();
                             plantLevelInfo.put("plantType/level", countLevel);
                             ref.updateChildren(plantLevelInfo);
@@ -245,7 +245,7 @@ public class PlantGame extends AppCompatActivity {
                             imv_growingPlant.setImageResource(R.drawable.big_tree);
                         }
                         else if (countLevel >= 40  && countLevel <= 50){
-                            FirebaseDatabase.getInstance().getReference("users").child(userID).child("plantType").addValueEventListener(new ValueEventListener(){
+                            FirebaseDatabase.getInstance().getReference("game").child(userID).child("plantType").addValueEventListener(new ValueEventListener(){
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     // 저장된 데이터를 하나씩 얻어옴
@@ -273,7 +273,7 @@ public class PlantGame extends AppCompatActivity {
                     }
                     else {
                         tv_countWater.setText(0);
-                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
+                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
                         Map<String, Object> waterInfo = new HashMap<>();
                         waterInfo.put("item/water", countWater);
                         ref1.updateChildren(waterInfo);
@@ -289,7 +289,7 @@ public class PlantGame extends AppCompatActivity {
                 try {
                     if (countSynthesis > 0){
                         countSynthesis--;
-                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
+                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
                         Map<String, Object> synthesisInfo = new HashMap<>();
                         synthesisInfo.put("item/synthesis", countSynthesis);
                         ref1.updateChildren(synthesisInfo);
@@ -299,7 +299,7 @@ public class PlantGame extends AppCompatActivity {
                             tv_countLevel.setText(countLevel+"");
                             progress_num = 0;
                             progressBar.setProgress(progress_num);
-                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
+                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
                             Map<String, Object> plantLevelInfo = new HashMap<>();
                             plantLevelInfo.put("plantType/level", countLevel);
                             ref.updateChildren(plantLevelInfo);
@@ -311,7 +311,7 @@ public class PlantGame extends AppCompatActivity {
                             tv_countLevel.setText(countLevel+"");
                             progress_num = progress_num - 20;
                             progressBar.setProgress(progress_num);
-                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
+                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
                             Map<String, Object> plantLevelInfo = new HashMap<>();
                             plantLevelInfo.put("plantType/level", countLevel);
                             ref.updateChildren(plantLevelInfo);
@@ -334,7 +334,7 @@ public class PlantGame extends AppCompatActivity {
                             imv_growingPlant.setImageResource(R.drawable.big_tree);
                         }
                         else if (countLevel >= 40  && countLevel <= 50){
-                            FirebaseDatabase.getInstance().getReference("users").child(userID).child("plantType").addValueEventListener(new ValueEventListener(){
+                            FirebaseDatabase.getInstance().getReference("game").child(userID).child("plantType").addValueEventListener(new ValueEventListener(){
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     // 저장된 데이터를 하나씩 얻어옴
@@ -362,7 +362,7 @@ public class PlantGame extends AppCompatActivity {
                     }
                     else {
                         tv_countSynthesis.setText(0);
-                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
+                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
                         Map<String, Object> synthesisInfo = new HashMap<>();
                         synthesisInfo.put("item/synthesis", countSynthesis);
                         ref1.updateChildren(synthesisInfo);
