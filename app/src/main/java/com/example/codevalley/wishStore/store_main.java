@@ -57,6 +57,7 @@ public class store_main extends AppCompatActivity implements View.OnClickListene
                 ur_stamp = snapshot.child("stamp").getValue(Integer.class);
                 stampAmount.setText(String.valueOf(ur_stamp));
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
@@ -81,7 +82,6 @@ public class store_main extends AppCompatActivity implements View.OnClickListene
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 
@@ -102,26 +102,38 @@ public class store_main extends AppCompatActivity implements View.OnClickListene
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.water_btn:
-                water++;
-                Map<String, Object> waterUpdates = new HashMap<>();
-                waterUpdates.put("water", water);
-                itemRef.updateChildren(waterUpdates);
+                if(ur_stamp>=1){
+                    water++;
+                    Map<String, Object> waterUpdates = new HashMap<>();
+                    waterUpdates.put("water", water);
+                    itemRef.updateChildren(waterUpdates);
+                    ur_stamp -= 1;
+                }else{Toast.makeText(store_main.this, "도장 개수가 모자라요!", Toast.LENGTH_SHORT).show();}
                 break;
             case R.id.sun_btn:
-                synthesis++;
-                Map<String, Object> synthesisUpdates = new HashMap<>();
-                synthesisUpdates.put("synthesis", synthesis);
-                itemRef.updateChildren(synthesisUpdates);
+                if(ur_stamp>=2){
+                    synthesis++;
+                    Map<String, Object> synthesisUpdates = new HashMap<>();
+                    synthesisUpdates.put("synthesis", synthesis);
+                    itemRef.updateChildren(synthesisUpdates);
+                    ur_stamp-=2;
+                }else{Toast.makeText(store_main.this, "도장 개수가 모자라요!", Toast.LENGTH_SHORT).show();}
                 break;
             case R.id.fertile_btn:
-                fertilizer++;
-                Map<String, Object> fertilizerUpdates = new HashMap<>();
-                fertilizerUpdates.put("fertilizer", fertilizer);
-                itemRef.updateChildren(fertilizerUpdates);
+                if(ur_stamp>=3){
+                    fertilizer++;
+                    Map<String, Object> fertilizerUpdates = new HashMap<>();
+                    fertilizerUpdates.put("fertilizer", fertilizer);
+                    itemRef.updateChildren(fertilizerUpdates);
+                    ur_stamp-=3;
+                }else{Toast.makeText(store_main.this, "도장 개수가 모자라요!", Toast.LENGTH_SHORT).show();}
                 break;
             default:
                 break;
         }
+        Map<String, Object> stampUpdates = new HashMap<>();
+        stampUpdates.put("stamp", ur_stamp);
+        stampRef.updateChildren(stampUpdates);
     }
 
 //    네비게이션 하단바 버튼클릭 이벤트
