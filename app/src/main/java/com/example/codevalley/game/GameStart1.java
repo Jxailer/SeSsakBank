@@ -1,5 +1,7 @@
 package com.example.codevalley.game;
 
+import static com.example.codevalley.LoginActivity.userID;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -35,9 +37,9 @@ public class GameStart1 extends AppCompatActivity {
             public void onClick(View view) {
 //                reference = FirebaseDatabase.getInstance().getReference();
 //                reference.child("users").child("username").child("planttype").setValue("사과나무");
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
                 Map<String, Object> plantInfo = new HashMap<>();
-                plantInfo.put("dream/plantType/type", "사과나무");
+                plantInfo.put("plantType/type", "사과나무");
                 ref.updateChildren(plantInfo);
                 Intent intent = new Intent(GameStart1.this, GameStart2.class);
                 startActivity(intent);
@@ -51,9 +53,9 @@ public class GameStart1 extends AppCompatActivity {
             public void onClick(View view) {
 //                reference = FirebaseDatabase.getInstance().getReference();
 //                reference.child("users").child("username").child("planttype").setValue("귤나무");
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
                 Map<String, Object> plantInfo = new HashMap<>();
-                plantInfo.put("dream/plantType/type", "귤나무");
+                plantInfo.put("plantType/type", "귤나무");
                 ref.updateChildren(plantInfo);
                 Intent intent = new Intent(GameStart1.this, GameStart2.class);
                 startActivity(intent);
@@ -66,9 +68,9 @@ public class GameStart1 extends AppCompatActivity {
             public void onClick(View view) {
 //                reference = FirebaseDatabase.getInstance().getReference();
 //                reference.child("users").child("username").child("planttype").setValue("바나나나무");
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
                 Map<String, Object> plantInfo = new HashMap<>();
-                plantInfo.put("dream/plantType/type", "바나나나무");
+                plantInfo.put("plantType/type", "바나나나무");
                 ref.updateChildren(plantInfo);
                 Intent intent = new Intent(GameStart1.this, GameStart2.class);
                 startActivity(intent);

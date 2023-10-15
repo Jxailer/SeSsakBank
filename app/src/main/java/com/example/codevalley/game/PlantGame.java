@@ -1,5 +1,8 @@
 package com.example.codevalley.game;
 
+import static com.example.codevalley.LoginActivity.userID;
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -86,9 +89,9 @@ public class PlantGame extends AppCompatActivity {
                 try {
                     if (countFertilizer > 0){
                         countFertilizer--;
-                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("users");
+                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
                         Map<String, Object> fertilizerInfo = new HashMap<>();
-                        fertilizerInfo.put("dream/item/fertilizer", countFertilizer);
+                        fertilizerInfo.put("item/fertilizer", countFertilizer);
                         ref1.updateChildren(fertilizerInfo);
                         progress_num = progress_num + 2;
                         if (progress_num % 20 == 0){
@@ -96,9 +99,9 @@ public class PlantGame extends AppCompatActivity {
                             tv_countLevel.setText(countLevel+"");
                             progress_num = 0;
                             progressBar.setProgress(progress_num);
-                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
+                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
                             Map<String, Object> plantLevelInfo = new HashMap<>();
-                            plantLevelInfo.put("dream/plantType/level", countLevel);
+                            plantLevelInfo.put("plantType/level", countLevel);
                             ref.updateChildren(plantLevelInfo);
 //                            reference = FirebaseDatabase.getInstance().getReference();
 //                            reference.child("users").child("username").child("level").setValue(countLevel);
@@ -108,9 +111,9 @@ public class PlantGame extends AppCompatActivity {
                             tv_countLevel.setText(countLevel+"");
                             progress_num = progress_num - 20;
                             progressBar.setProgress(progress_num);
-                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
+                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
                             Map<String, Object> plantLevelInfo = new HashMap<>();
-                            plantLevelInfo.put("dream/plantType/level", countLevel);
+                            plantLevelInfo.put("plantType/level", countLevel);
                             ref.updateChildren(plantLevelInfo);
 //                            reference = FirebaseDatabase.getInstance().getReference();
 //                            reference.child("users").child("username").child("level").setValue(countLevel);
@@ -120,26 +123,22 @@ public class PlantGame extends AppCompatActivity {
                         }
                         tv_countFertilizer.setText(countFertilizer+"");
 
-                        // 식불 이미지 변경
+                        // 식물 이미지 변경
                         if (countLevel >= 3 && countLevel < 20){
-                            FirebaseDatabase.getInstance().getReference().addValueEventListener(new ValueEventListener(){
+                            FirebaseDatabase.getInstance().getReference("users").child(userID).child("plantType").addValueEventListener(new ValueEventListener(){
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
-                                    // 데이터를 불러올 때 처리
-                                    for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                                        // 저장된 데이터를 하나씩 얻어옴
-                                        if (Objects.equals(postSnapshot.child("dream/plantType/type").getValue(String.class), "사과나무")) {
-                                            imv_growingPlant.setImageResource(R.drawable.appletree);
-                                        }
-                                        else if (Objects.equals(postSnapshot.child("dream/plantType/type").getValue(String.class), "귤나무")) {
-                                            imv_growingPlant.setImageResource(R.drawable.mandarintree);
-                                        }
-                                        else {
-                                            imv_growingPlant.setImageResource(R.drawable.bananatree);
-                                        }
+                                    // 저장된 데이터를 하나씩 얻어옴
+                                    if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "사과나무")) {
+                                        imv_growingPlant.setImageResource(R.drawable.appletree);
+                                    }
+                                    else if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "귤나무")) {
+                                        imv_growingPlant.setImageResource(R.drawable.mandarintree);
+                                    }
+                                    else {
+                                        imv_growingPlant.setImageResource(R.drawable.bananatree);
                                     }
                                 }
-
                                 @Override
                                 public void onCancelled(DatabaseError databaseError) {
                                     // 데이터 불러오기 실패 시 처리
@@ -155,28 +154,25 @@ public class PlantGame extends AppCompatActivity {
                         }
                         else if (countLevel >= 40  && countLevel <= 50){
 //                            private void readTree(){
-                            FirebaseDatabase.getInstance().getReference().addValueEventListener(new ValueEventListener(){
+                            FirebaseDatabase.getInstance().getReference("users").child(userID).child("plantType").addValueEventListener(new ValueEventListener(){
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
-                                    // 데이터를 불러올 때 처리
-                                    for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                                        // 저장된 데이터를 하나씩 얻어옴
-                                        if (Objects.equals(postSnapshot.child("dream/plantType/type").getValue(String.class), "사과나무")) {
-                                            imv_growingPlant.setImageResource(R.drawable.appletree);
-                                        }
-                                        else if (Objects.equals(postSnapshot.child("dream/plantType/type").getValue(String.class), "귤나무")) {
-                                            imv_growingPlant.setImageResource(R.drawable.mandarintree);
-                                        }
-                                        else {
-                                            imv_growingPlant.setImageResource(R.drawable.bananatree);
-                                        }
+                                    // 저장된 데이터를 하나씩 얻어옴
+                                    if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "사과나무")) {
+                                        imv_growingPlant.setImageResource(R.drawable.appletree);
+                                    }
+                                    else if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "귤나무")) {
+                                        imv_growingPlant.setImageResource(R.drawable.mandarintree);
+                                    }
+                                    else {
+                                        imv_growingPlant.setImageResource(R.drawable.bananatree);
                                     }
                                 }
                                     @Override
                                     public void onCancelled(DatabaseError databaseError) {
                                         // 데이터 불러오기 실패 시 처리
                                     }
-                                });
+                            });
 //                            }
                         }
                         else if (countLevel < 0 || countLevel > 50){
@@ -187,9 +183,9 @@ public class PlantGame extends AppCompatActivity {
                     }
                     else {
                         tv_countFertilizer.setText(0);
-                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("users");
+                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
                         Map<String, Object> fertilizerInfo = new HashMap<>();
-                        fertilizerInfo.put("dream/item/fertilizer", countFertilizer);
+                        fertilizerInfo.put("item/fertilizer", countFertilizer);
                         ref1.updateChildren(fertilizerInfo);
                     }
                 }catch (Exception e){
@@ -204,9 +200,9 @@ public class PlantGame extends AppCompatActivity {
                 try {
                     if (countWater > 0){
                         countWater--;
-                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("users");
+                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
                         Map<String, Object> waterInfo = new HashMap<>();
-                        waterInfo.put("dream/item/water", countWater);
+                        waterInfo.put("item/water", countWater);
                         ref1.updateChildren(waterInfo);
                         progress_num = progress_num + 1;
                         if (progress_num % 20 == 0){
@@ -214,9 +210,9 @@ public class PlantGame extends AppCompatActivity {
                             tv_countLevel.setText(countLevel+"");
                             progress_num = 0;
                             progressBar.setProgress(progress_num);
-                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
+                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
                             Map<String, Object> plantLevelInfo = new HashMap<>();
-                            plantLevelInfo.put("dream/plantType/level", countLevel);
+                            plantLevelInfo.put("plantType/level", countLevel);
                             ref.updateChildren(plantLevelInfo);
 //                            reference = FirebaseDatabase.getInstance().getReference();
 //                            reference.child("users").child("username").child("level").setValue(countLevel);
@@ -226,9 +222,9 @@ public class PlantGame extends AppCompatActivity {
                             tv_countLevel.setText(countLevel+"");
                             progress_num = progress_num - 20;
                             progressBar.setProgress(progress_num);
-                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
+                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
                             Map<String, Object> plantLevelInfo = new HashMap<>();
-                            plantLevelInfo.put("dream/plantType/level", countLevel);
+                            plantLevelInfo.put("plantType/level", countLevel);
                             ref.updateChildren(plantLevelInfo);
 //                            reference = FirebaseDatabase.getInstance().getReference();
 //                            reference.child("users").child("username").child("level").setValue(countLevel);
@@ -249,21 +245,18 @@ public class PlantGame extends AppCompatActivity {
                             imv_growingPlant.setImageResource(R.drawable.big_tree);
                         }
                         else if (countLevel >= 40  && countLevel <= 50){
-                            FirebaseDatabase.getInstance().getReference().addValueEventListener(new ValueEventListener(){
+                            FirebaseDatabase.getInstance().getReference("users").child(userID).child("plantType").addValueEventListener(new ValueEventListener(){
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
-                                    // 데이터를 불러올 때 처리
-                                    for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                                        // 저장된 데이터를 하나씩 얻어옴
-                                        if (Objects.equals(postSnapshot.child("dream/plantType/type").getValue(String.class), "사과나무")) {
-                                            imv_growingPlant.setImageResource(R.drawable.appletree);
-                                        }
-                                        else if (Objects.equals(postSnapshot.child("dream/plantType/type").getValue(String.class), "귤나무")) {
-                                            imv_growingPlant.setImageResource(R.drawable.mandarintree);
-                                        }
-                                        else {
-                                            imv_growingPlant.setImageResource(R.drawable.bananatree);
-                                        }
+                                    // 저장된 데이터를 하나씩 얻어옴
+                                    if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "사과나무")) {
+                                        imv_growingPlant.setImageResource(R.drawable.appletree);
+                                    }
+                                    else if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "귤나무")) {
+                                        imv_growingPlant.setImageResource(R.drawable.mandarintree);
+                                    }
+                                    else {
+                                        imv_growingPlant.setImageResource(R.drawable.bananatree);
                                     }
                                 }
                                 @Override
@@ -280,9 +273,9 @@ public class PlantGame extends AppCompatActivity {
                     }
                     else {
                         tv_countWater.setText(0);
-                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("users");
+                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
                         Map<String, Object> waterInfo = new HashMap<>();
-                        waterInfo.put("dream/item/water", countWater);
+                        waterInfo.put("item/water", countWater);
                         ref1.updateChildren(waterInfo);
                     }
                 }catch (Exception e){
@@ -296,9 +289,9 @@ public class PlantGame extends AppCompatActivity {
                 try {
                     if (countSynthesis > 0){
                         countSynthesis--;
-                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("users");
+                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
                         Map<String, Object> synthesisInfo = new HashMap<>();
-                        synthesisInfo.put("dream/item/synthesis", countSynthesis);
+                        synthesisInfo.put("item/synthesis", countSynthesis);
                         ref1.updateChildren(synthesisInfo);
                         progress_num = progress_num + 3;
                         if (progress_num % 20 == 0){
@@ -306,9 +299,9 @@ public class PlantGame extends AppCompatActivity {
                             tv_countLevel.setText(countLevel+"");
                             progress_num = 0;
                             progressBar.setProgress(progress_num);
-                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
+                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
                             Map<String, Object> plantLevelInfo = new HashMap<>();
-                            plantLevelInfo.put("dream/plantType/level", countLevel);
+                            plantLevelInfo.put("plantType/level", countLevel);
                             ref.updateChildren(plantLevelInfo);
 //                            reference = FirebaseDatabase.getInstance().getReference();
 //                            reference.child("users").child("username").child("level").setValue(countLevel);
@@ -318,9 +311,9 @@ public class PlantGame extends AppCompatActivity {
                             tv_countLevel.setText(countLevel+"");
                             progress_num = progress_num - 20;
                             progressBar.setProgress(progress_num);
-                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
+                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
                             Map<String, Object> plantLevelInfo = new HashMap<>();
-                            plantLevelInfo.put("dream/plantType/level", countLevel);
+                            plantLevelInfo.put("plantType/level", countLevel);
                             ref.updateChildren(plantLevelInfo);
 //                            reference = FirebaseDatabase.getInstance().getReference();
 //                            reference.child("users").child("username").child("level").setValue(countLevel);
@@ -341,21 +334,18 @@ public class PlantGame extends AppCompatActivity {
                             imv_growingPlant.setImageResource(R.drawable.big_tree);
                         }
                         else if (countLevel >= 40  && countLevel <= 50){
-                            FirebaseDatabase.getInstance().getReference().addValueEventListener(new ValueEventListener(){
+                            FirebaseDatabase.getInstance().getReference("users").child(userID).child("plantType").addValueEventListener(new ValueEventListener(){
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
-                                    // 데이터를 불러올 때 처리
-                                    for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                                        // 저장된 데이터를 하나씩 얻어옴
-                                        if (Objects.equals(postSnapshot.child("dream/plantType/type").getValue(String.class), "사과나무")) {
-                                            imv_growingPlant.setImageResource(R.drawable.appletree);
-                                        }
-                                        else if (Objects.equals(postSnapshot.child("dream/plantType/type").getValue(String.class), "귤나무")) {
-                                            imv_growingPlant.setImageResource(R.drawable.mandarintree);
-                                        }
-                                        else {
-                                            imv_growingPlant.setImageResource(R.drawable.bananatree);
-                                        }
+                                    // 저장된 데이터를 하나씩 얻어옴
+                                    if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "사과나무")) {
+                                        imv_growingPlant.setImageResource(R.drawable.appletree);
+                                    }
+                                    else if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "귤나무")) {
+                                        imv_growingPlant.setImageResource(R.drawable.mandarintree);
+                                    }
+                                    else {
+                                        imv_growingPlant.setImageResource(R.drawable.bananatree);
                                     }
                                 }
                                 @Override
@@ -372,9 +362,9 @@ public class PlantGame extends AppCompatActivity {
                     }
                     else {
                         tv_countSynthesis.setText(0);
-                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("users");
+                        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
                         Map<String, Object> synthesisInfo = new HashMap<>();
-                        synthesisInfo.put("dream/item/synthesis", countSynthesis);
+                        synthesisInfo.put("item/synthesis", countSynthesis);
                         ref1.updateChildren(synthesisInfo);
                     }
                 }catch (Exception e){
