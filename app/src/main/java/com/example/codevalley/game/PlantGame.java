@@ -94,11 +94,16 @@ public class PlantGame extends AppCompatActivity {
                         fertilizerInfo.put("item/fertilizer", countFertilizer);
                         ref1.updateChildren(fertilizerInfo);
                         progress_num = progress_num + 2;
+
                         if (progress_num % 20 == 0){
                             countLevel++;
                             tv_countLevel.setText(countLevel+"");
                             progress_num = 0;
                             progressBar.setProgress(progress_num);
+                            DatabaseReference ref3 = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
+                            Map<String, Object> progress1Info = new HashMap<>();
+                            progress1Info.put("progress", progress_num);
+                            ref3.updateChildren(progress1Info);
                             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
                             Map<String, Object> plantLevelInfo = new HashMap<>();
                             plantLevelInfo.put("plantType/level", countLevel);
@@ -111,6 +116,10 @@ public class PlantGame extends AppCompatActivity {
                             tv_countLevel.setText(countLevel+"");
                             progress_num = progress_num - 20;
                             progressBar.setProgress(progress_num);
+                            DatabaseReference ref3 = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
+                            Map<String, Object> progress1Info = new HashMap<>();
+                            progress1Info.put("progress", progress_num);
+                            ref3.updateChildren(progress1Info);
                             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
                             Map<String, Object> plantLevelInfo = new HashMap<>();
                             plantLevelInfo.put("plantType/level", countLevel);
@@ -120,6 +129,10 @@ public class PlantGame extends AppCompatActivity {
                         }
                         else {
                             progressBar.setProgress(progress_num);
+                            DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
+                            Map<String, Object> progressInfo = new HashMap<>();
+                            progressInfo.put("progress", progress_num);
+                            ref2.updateChildren(progressInfo);
                         }
                         tv_countFertilizer.setText(countFertilizer+"");
 
@@ -205,11 +218,16 @@ public class PlantGame extends AppCompatActivity {
                         waterInfo.put("item/water", countWater);
                         ref1.updateChildren(waterInfo);
                         progress_num = progress_num + 1;
+
                         if (progress_num % 20 == 0){
                             countLevel++;
                             tv_countLevel.setText(countLevel+"");
                             progress_num = 0;
                             progressBar.setProgress(progress_num);
+                            DatabaseReference ref3 = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
+                            Map<String, Object> progress1Info = new HashMap<>();
+                            progress1Info.put("progress", progress_num);
+                            ref3.updateChildren(progress1Info);
                             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
                             Map<String, Object> plantLevelInfo = new HashMap<>();
                             plantLevelInfo.put("plantType/level", countLevel);
@@ -222,6 +240,10 @@ public class PlantGame extends AppCompatActivity {
                             tv_countLevel.setText(countLevel+"");
                             progress_num = progress_num - 20;
                             progressBar.setProgress(progress_num);
+                            DatabaseReference ref3 = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
+                            Map<String, Object> progress1Info = new HashMap<>();
+                            progress1Info.put("progress", progress_num);
+                            ref3.updateChildren(progress1Info);
                             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
                             Map<String, Object> plantLevelInfo = new HashMap<>();
                             plantLevelInfo.put("plantType/level", countLevel);
@@ -231,6 +253,10 @@ public class PlantGame extends AppCompatActivity {
                         }
                         else {
                             progressBar.setProgress(progress_num);
+                            DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
+                            Map<String, Object> progressInfo = new HashMap<>();
+                            progressInfo.put("progress", progress_num);
+                            ref2.updateChildren(progressInfo);
                         }
                         tv_countWater.setText(countWater+"");
 
@@ -294,11 +320,16 @@ public class PlantGame extends AppCompatActivity {
                         synthesisInfo.put("item/synthesis", countSynthesis);
                         ref1.updateChildren(synthesisInfo);
                         progress_num = progress_num + 3;
+
                         if (progress_num % 20 == 0){
                             countLevel++;
                             tv_countLevel.setText(countLevel+"");
                             progress_num = 0;
                             progressBar.setProgress(progress_num);
+                            DatabaseReference ref3 = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
+                            Map<String, Object> progress1Info = new HashMap<>();
+                            progress1Info.put("progress", progress_num);
+                            ref3.updateChildren(progress1Info);
                             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
                             Map<String, Object> plantLevelInfo = new HashMap<>();
                             plantLevelInfo.put("plantType/level", countLevel);
@@ -311,6 +342,10 @@ public class PlantGame extends AppCompatActivity {
                             tv_countLevel.setText(countLevel+"");
                             progress_num = progress_num - 20;
                             progressBar.setProgress(progress_num);
+                            DatabaseReference ref3 = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
+                            Map<String, Object> progress1Info = new HashMap<>();
+                            progress1Info.put("progress", progress_num);
+                            ref3.updateChildren(progress1Info);
                             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
                             Map<String, Object> plantLevelInfo = new HashMap<>();
                             plantLevelInfo.put("plantType/level", countLevel);
@@ -320,6 +355,10 @@ public class PlantGame extends AppCompatActivity {
                         }
                         else {
                             progressBar.setProgress(progress_num);
+                            DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
+                            Map<String, Object> progressInfo = new HashMap<>();
+                            progressInfo.put("progress", progress_num);
+                            ref2.updateChildren(progressInfo);
                         }
                         tv_countSynthesis.setText(countSynthesis+"");
 

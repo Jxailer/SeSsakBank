@@ -1,5 +1,7 @@
 package com.example.codevalley.game;
 
+import static com.example.codevalley.LoginActivity.userID;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,6 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.codevalley.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Game_nameChange extends AppCompatActivity {
 
@@ -30,6 +37,10 @@ public class Game_nameChange extends AppCompatActivity {
                 if (nameChange.isEmpty()) {
                     Toast.makeText(getApplicationContext(),"이름을 입력해주세요!",Toast.LENGTH_LONG).show();
                 } else {
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
+                    Map<String, Object> plantNameInfo = new HashMap<>();
+                    plantNameInfo.put("plantName", nameChange);
+                    ref.updateChildren(plantNameInfo);
                     Intent intent = new Intent(Game_nameChange.this, PlantGame.class); // Activity사이에서 값을 전달하기 위해서는 intent를 사용한다.
                     intent.putExtra("plantname",nameChange); // intent생성시 현재 activity와 이동할 activity선언하고, putExtra메서드를 통해 키 값과 데이터를 저장
                     startActivity(intent); // Intent와 함께 다음 activity실행
