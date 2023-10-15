@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,15 +27,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
-public class store_main extends AppCompatActivity {
+public class store_main extends AppCompatActivity implements View.OnClickListener {
     TextView stampAmount;
-    static Integer ur_stamp;
+    static Integer ur_stamp = 0, fertilizer = 0, synthesis = 0, water = 0;
+    Button ferBtn, synBtn, waterBtn;
     RecyclerView wishRcv;
     RecyclerView.Adapter wishAdt;
     ArrayList<DataClass> dataList;
     DatabaseReference wishRef = FirebaseDatabase.getInstance().getReference("wishManage").child("33@naver,com");
+    DatabaseReference itemRef = FirebaseDatabase.getInstance().getReference("game").child("33@naver,com").child("item");
     DatabaseReference stampRef = FirebaseDatabase.getInstance().getReference("users").child("33@naver,com");
 
     @SuppressLint("MissingInflatedId")
@@ -45,6 +50,19 @@ public class store_main extends AppCompatActivity {
         wishRcv = findViewById(R.id.child_wishData);
         stampAmount = findViewById(R.id.stampAmount);
 
+        // 가지고 있는 도장 개수 보여주기
+        stampRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ur_stamp = snapshot.child("stamp").getValue(Integer.class);
+                stampAmount.setText(String.valueOf(ur_stamp));
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+        // 부모가 등록한 소원권 목록 보여주기
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager((Context) this);
         wishRcv.setLayoutManager(linearLayoutManager);
 
@@ -70,29 +88,41 @@ public class store_main extends AppCompatActivity {
         wishAdt = new store_adapter(this, dataList);
         wishRcv.setAdapter(wishAdt);
 
-//        store_adapter wishAdt = new store_adapter(this, dataList);
+        waterBtn = findViewById(R.id.water_btn);
+        synBtn = findViewById(R.id.sun_btn);
+        ferBtn = findViewById(R.id.fertile_btn);
 
-//        wishAdt.setOnItemClickListener(new store_adapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View v, int pos) {
-//                Intent confirmIntent = new Intent(getApplicationContext(), store_confirm.class);
-//                startActivity(confirmIntent);
-//            }
-//        });
-
-        stampRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                ur_stamp = snapshot.child("get").child("stamp").getValue(Integer.class);
-                stampAmount.setText(String.valueOf(ur_stamp));
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
+        waterBtn.setOnClickListener(this);
+        synBtn.setOnClickListener(this);
+        ferBtn.setOnClickListener(this);
     }
 
-
+//  도장으로 게임 아이템 구매
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.water_btn:
+                water++;
+                Map<String, Object> waterUpdates = new HashMap<>();
+                waterUpdates.put("water", water);
+                itemRef.updateChildren(waterUpdates);
+                break;
+            case R.id.sun_btn:
+                synthesis++;
+                Map<String, Object> synthesisUpdates = new HashMap<>();
+                synthesisUpdates.put("synthesis", synthesis);
+                itemRef.updateChildren(synthesisUpdates);
+                break;
+            case R.id.fertile_btn:
+                fertilizer++;
+                Map<String, Object> fertilizerUpdates = new HashMap<>();
+                fertilizerUpdates.put("fertilizer", fertilizer);
+                itemRef.updateChildren(fertilizerUpdates);
+                break;
+            default:
+                break;
+        }
+    }
 
 //    네비게이션 하단바 버튼클릭 이벤트
     public void homeButtonClicked(View v){
@@ -113,5 +143,6 @@ public class store_main extends AppCompatActivity {
     public void plantgameButtonClicked(View v){
         Toast.makeText(store_main.this, "식물키우기 게임 버튼 눌림.", Toast.LENGTH_SHORT).show();
     }
+
 
 }

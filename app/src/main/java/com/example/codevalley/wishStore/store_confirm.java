@@ -21,8 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class store_confirm extends AppCompatActivity {
-    DatabaseReference childRef = FirebaseDatabase.getInstance().getReference("users").child("33@naver,com").child("get");
-    DatabaseReference adultRef = FirebaseDatabase.getInstance().getReference("wishManage").child("33@naver,com");
+    DatabaseReference childRef = FirebaseDatabase.getInstance().getReference("users").child("33@naver,com");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +30,6 @@ public class store_confirm extends AppCompatActivity {
 
     public void rewardConfirm_yes(View v){
         Intent get_intent = getIntent();
-        String wish_title = get_intent.getStringExtra("wish_title");
         Integer stamp_price = get_intent.getIntExtra("stamp_price", 0);
         if(ur_stamp >= stamp_price){
             Integer urStamp = ur_stamp - stamp_price;
