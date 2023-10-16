@@ -16,20 +16,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.example.wishShop.WishShopActivity;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -55,11 +41,6 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if (!validateUsername() | !validatePassword()) {
-//
-//                } else {
-////                    checkUsername();
-//                }
                 if(validateUsername() & validatePassword()){
                     loginUser(loginUsername.getText().toString(), loginPassword.getText().toString());
                 }
@@ -142,37 +123,5 @@ public class LoginActivity extends AppCompatActivity {
             mAuth.removeAuthStateListener(mAuthListener);
         }
     }
-
-//    private void checkPassword() {
-//        String userPassword = loginPassword.getText().toString().trim();
-//
-//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-//        Query checkPwDatabase = reference.orderByChild("password").equalTo(userPassword);
-//
-//        checkPwDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-//
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                if(snapshot.exists()){
-//                    loginPassword.setError(null);
-//                    String passwordFromDB = snapshot.child(userPassword).child("password").getValue(String.class);
-//
-//                    if(!Objects.equals(passwordFromDB, userPassword)) {
-//                        loginUsername.setError(null);
-//                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                        startActivity(intent);
-//                    }
-//                }else {
-//                    loginPassword.setError("비밀번호가 일치하지 않아요!");
-//                    loginPassword.requestFocus();
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
 
 }
