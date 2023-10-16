@@ -30,9 +30,7 @@
             android:exported="true" />
         <activity
             android:name=".RegisterActivity"
-            android:exported="true" /> <!-- <activity -->
-        <!-- android:name=".MainActivity" -->
-        <!-- android:exported="true" /> -->
+            android:exported="true" />
 
         <activity
             android:name=".MainActivity"
@@ -59,6 +57,8 @@
             android:exported="true"
             tools:ignore="Instantiatable" />
 
+        <activity android:name="com.example.wishShop.DetailActivity"
+            android:exported="true" />
         <activity android:name="com.example.wishShop.WishShopActivity"
             android:exported="true" />
         <activity android:name="com.example.wishShop.UploadActivity"
