@@ -15,15 +15,30 @@
         android:theme="@style/Theme.CodeValley"
         tools:targetApi="31">
 
+<!--        App start-->
         <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.caps02.TypeSelect"
+            android:exported="true" />
+        <activity
+            android:name="com.example.adult.adult_LoginActivity"
+            android:exported="true"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true" />
+
+<!--        main-->
         <activity
             android:name=".DailyRecordPopupActivity"
             android:theme="@style/Theme.AppCompat" />
@@ -38,16 +53,10 @@
             android:name=".StampPopupActivity"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity"
-            android:exported="true" />
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="true" />
-        <activity
             android:name=".MainActivity"
             android:exported="true" />
 
-
+<!--        child_wishStore-->
         <activity
             android:name=".wishStore.store_complete"
             android:exported="true" />
@@ -56,14 +65,10 @@
         <activity android:name=".wishStore.store_main"
             android:exported="true"/>
 
+<!--        adult_wishShop-->
         <activity
-            android:name="com.example.caps02.TypeSelect"
-            android:exported="true" />
-        <activity
-            android:name="com.example.adult.adult_LoginActivity"
-            android:exported="true"
-            tools:ignore="Instantiatable" />
-
+            android:name="com.example.wishShop.UpdateActivity"
+            android:exported="false" />
         <activity
             android:name="com.example.wishShop.DetailActivity"
             android:exported="false" />
