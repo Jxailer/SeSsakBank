@@ -16,6 +16,20 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.example.wishShop.WishShopActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -129,38 +143,6 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-
-
-
-//    public void checkUsername(){
-//        String userUsername = loginUsername.getText().toString().trim();
-//
-//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-//        Query checkUserDatabase = reference.orderByChild("username").equalTo(userUsername);
-//
-//        checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                if (snapshot.exists()){
-//                    loginUsername.setError(null);
-//                    String usernameFromDB = snapshot.child(userUsername).child("username").getValue(String.class);
-//
-//                    if (!Objects.equals(usernameFromDB, userUsername)) {
-//                        checkPassword();
-//                    }
-//                }else {
-//                    loginUsername.setError("유저가 존재하지 않아요!");
-//                    loginUsername.requestFocus();
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
-//
 //    private void checkPassword() {
 //        String userPassword = loginPassword.getText().toString().trim();
 //

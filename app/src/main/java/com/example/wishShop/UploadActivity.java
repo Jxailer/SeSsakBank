@@ -1,20 +1,16 @@
 package com.example.wishShop;
 
-import android.app.Activity;
+import static com.example.codevalley.LoginActivity.userID;
+
 import android.app.AlertDialog;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,8 +19,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.FirebaseDatabase;
-//import com.google.firebase.storage.FirebaseStorage;
-//import com.google.firebase.storage.StorageReference;
 
 public class UploadActivity extends AppCompatActivity {
 
@@ -42,11 +36,15 @@ public class UploadActivity extends AppCompatActivity {
         uploadStamp = findViewById(R.id.uploadStamp);
         saveButton = findViewById(R.id.saveButton);
 
+        // 메소드 실행
+        stampMinMax();
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveData();
-                uploadData();
+                if(Info()){
+                        saveData();
+                        uploadData();
+                }
             }
         });
     }
@@ -60,6 +58,56 @@ public class UploadActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    // 필수 입력 사항 미기재시
+    public Boolean Info(){
+        String title = uploadTopic.getText().toString();
+        String stamp = uploadStamp.getText().toString();
+        String desc = uploadDesc.getText().toString();
+
+        if(title.isEmpty()) {
+            uploadTopic.setError("소원권 제목을 입력해 주세요.");
+            return false;
+        } else if(stamp.isEmpty()) {
+            uploadStamp.setError("스탬프 갯수를 설정해 주세요.");
+            return false;
+        } else {
+            uploadTopic.setError(null);
+            uploadStamp.setError(null);
+            return true;
+        }
+    }
+
+    // 스탬프 개수 최소, 최대 제한
+    public void stampMinMax(){
+        //스탬프 적는 et의 텍스트가 변경될 때
+        uploadStamp.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+            // @SuppressLint("ResourceType")
+            @Override
+            //텍스트가 변경될 때마다 함수 호출
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                // 작성되어 있던 값을 지울 때 pareInt(" ") 에서 에러가 나기 때문에 위와 같은 과정 필요
+                if(uploadStamp.getText().toString().length()>0) {
+                    // 120 초과일 때
+                    if (Integer.parseInt(uploadStamp.getText().toString()) > 150) {
+                        //et가 150으로 변경됨
+                        uploadStamp.setText("150");
+                    }
+                    // 1 미만일 때
+                    if (Integer.parseInt(uploadStamp.getText().toString()) < 1) {
+                        // et가 1로 변경됨
+                        uploadStamp.setText("1");
+                    }
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
+    }
+
     // 아래 코드는 topic, 설명, stamp 저장하기 위한 코드
     public void uploadData(){
         String title = uploadTopic.getText().toString();
@@ -68,7 +116,9 @@ public class UploadActivity extends AppCompatActivity {
 
         DataClass dataClass = new DataClass(title, stamp, desc);
 
-        FirebaseDatabase.getInstance().getReference("wishManage").child(title)
+//        String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+
+        FirebaseDatabase.getInstance().getReference("wishManage").child(userID).child(title)
                 .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

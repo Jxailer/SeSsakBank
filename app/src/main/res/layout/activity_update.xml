@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.wishShop.UploadActivity">
+    tools:context="com.example.wishShop.UpdateActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -40,7 +39,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inter_bold"
-                    android:text="소원권 추가"
+                    android:text="소원권 수정"
                     android:textColor="#000000"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -51,21 +50,37 @@
                 android:orientation="horizontal"
                 >
 
-                <EditText
-                    android:id="@+id/uploadTopic"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="160dp"
                     android:layout_height="60dp"
                     android:layout_marginLeft="25dp"
                     android:layout_weight="1"
                     android:background="#FFFFFF"
                     android:fontFamily="@font/inter_bold"
                     android:gravity="start|center_vertical"
-                    android:hint="소원을 입력해주세요"
-                    android:textColor="#3A3E45"
+                    android:hint="소원제목"
+                    android:maxLength="13"
+                    android:maxLines="1"
+                    android:text="소원권 : "
+                    android:textColor="#000000"
+                    android:textColorHint="#A5A5A5"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/updateTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF"
+                    android:fontFamily="@font/inter_bold"
+                    android:gravity="start|center_vertical"
+                    android:hint="소원제목"
+                    android:textColor="#000000"
                     android:textColorHint="#A5A5A5"
                     android:textSize="20sp"
                     android:maxLength="13"
-                    android:maxLines="1"/>
+                    android:maxLines="1" />
 
             </LinearLayout>
 
@@ -92,7 +107,7 @@
                 android:gravity="center">
 
                 <EditText
-                    android:id="@+id/uploadStamp"
+                    android:id="@+id/updateStamp"
                     android:layout_width="65dp"
                     android:layout_height="50dp"
                     android:background="@drawable/green_border"
@@ -138,7 +153,7 @@
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/uploadDesc"
+                android:id="@+id/updateDesc"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginTop="10dp"
@@ -152,7 +167,7 @@
                 android:maxLength="100" />
 
             <Button
-                android:id="@+id/saveButton"
+                android:id="@+id/updateButton"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="60dp"
@@ -162,7 +177,7 @@
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:outlineProvider="none"
-                android:text="추가하기"
+                android:text="완료"
                 android:textColor="#F6F6F6"
                 android:textSize="20sp"
                 app:cornerRadius="10dp" />
