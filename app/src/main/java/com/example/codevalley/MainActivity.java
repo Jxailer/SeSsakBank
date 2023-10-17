@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.codevalley.game.GameStart1;
 import com.example.codevalley.wishStore.store_complete;
 import com.example.codevalley.wishStore.store_main;
 
@@ -84,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void plantgameButtonClicked(View v){
         Toast.makeText(MainActivity.this, "식물키우기 게임 버튼 눌림.", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, GameStart1.class);
+        startActivity(intent);
     }
 
 

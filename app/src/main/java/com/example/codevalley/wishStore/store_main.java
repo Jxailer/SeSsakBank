@@ -33,7 +33,7 @@ import java.util.Map;
 
 public class store_main extends AppCompatActivity implements View.OnClickListener {
     TextView stampAmount;
-    static Integer ur_stamp = 0, fertilizer = 0, synthesis = 0, water = 0;
+    public static Integer ur_stamp = 0, fertilizer = 0, synthesis = 0, water = 0;
     Button ferBtn, synBtn, waterBtn;
     RecyclerView wishRcv;
     RecyclerView.Adapter wishAdt;

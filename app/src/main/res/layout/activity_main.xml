@@ -23,7 +23,7 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="16dp" />
 
-<!--    목표 버튼-->
+    <!--    목표 버튼-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
@@ -67,57 +67,57 @@
             android:layout_marginTop="170dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-<!--    월 정보, 도장, 통계 버튼 linearLayout-->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <Button
-                android:id="@+id/month"
-                android:layout_width="50dp"
+            <!--    월 정보, 도장, 통계 버튼 linearLayout-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/info"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:background="#00ff0000"
-                android:text="5월"
-                android:textColor="#5F6060"
-                android:textSize="30dp"
-                android:gravity="left"
-                android:textStyle="bold"
-                android:onClick="monthButtonClicked"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/stamp"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="212dp"
-            android:onClick="stampButtonClicked"
-            android:background="#00ff0000"
-            app:layout_constraintStart_toEndOf="@+id/month"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:srcCompat="@drawable/check_circle_outline_30"
-            tools:ignore="SpeakableTextPresentCheck" />
+                <Button
+                    android:id="@+id/month"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:background="#00ff0000"
+                    android:text="5월"
+                    android:textColor="#5F6060"
+                    android:textSize="30dp"
+                    android:gravity="left"
+                    android:textStyle="bold"
+                    android:onClick="monthButtonClicked"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/statistics"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:onClick="statisticsButtonClicked"
-            android:background="#00ff0000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/stamp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:srcCompat="@drawable/bar_chart_24"
-            tools:ignore="SpeakableTextPresentCheck" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageButton
+                    android:id="@+id/stamp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="212dp"
+                    android:onClick="stampButtonClicked"
+                    android:background="#00ff0000"
+                    app:layout_constraintStart_toEndOf="@+id/month"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:srcCompat="@drawable/check_circle_outline_30"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
-<!--            달력 위젯-->
+                <ImageButton
+                    android:id="@+id/statistics"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:onClick="statisticsButtonClicked"
+                    android:background="#00ff0000"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/stamp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:srcCompat="@drawable/bar_chart_24"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!--            달력 위젯-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Calendar"
                 android:layout_marginTop="25dp"
@@ -126,7 +126,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/info">
 
-<!--                1주 위젯-->
+                <!--                1주 위젯-->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/week1"
                     android:layout_width="match_parent"
@@ -134,7 +134,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-<!--                    1일-->
+                    <!--                    1일-->
                     <Button
                         android:id="@+id/day1"
                         android:layout_width="54dp"
@@ -147,7 +147,7 @@
                         android:onClick="dayButtonClicked"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-<!--                    1일차 아이콘 linear layout-->
+                    <!--                    1일차 아이콘 linear layout-->
                     <LinearLayout
                         android:id="@+id/day1Icon"
                         android:layout_width="54dp"
@@ -182,7 +182,7 @@
                             app:srcCompat="@drawable/bar_chart_24" />
                     </LinearLayout>
 
-<!--                    2일-->
+                    <!--                    2일-->
                     <Button
                         android:id="@+id/day2"
                         android:layout_width="52dp"
@@ -192,7 +192,7 @@
                         android:text="2"
                         app:layout_constraintStart_toEndOf="@+id/day1"
                         app:layout_constraintTop_toTopOf="parent" />
-<!--                    3일-->
+                    <!--                    3일-->
                     <Button
                         android:id="@+id/day3"
                         android:layout_width="54dp"
@@ -202,7 +202,7 @@
                         android:paddingTop="20dip"
                         app:layout_constraintStart_toEndOf="@+id/day2"
                         app:layout_constraintTop_toTopOf="parent" />
-<!--                    4일-->
+                    <!--                    4일-->
                     <Button
                         android:id="@+id/day4"
                         android:layout_width="54dp"
@@ -212,7 +212,7 @@
                         android:paddingTop="20dip"
                         app:layout_constraintStart_toEndOf="@+id/day3"
                         app:layout_constraintTop_toTopOf="parent" />
-<!--                    5일-->
+                    <!--                    5일-->
                     <Button
                         android:id="@+id/day5"
                         android:layout_width="54dp"
@@ -222,7 +222,7 @@
                         android:paddingTop="20dip"
                         app:layout_constraintStart_toEndOf="@+id/day4"
                         app:layout_constraintTop_toTopOf="parent" />
-<!--                    6일-->
+                    <!--                    6일-->
                     <Button
                         android:id="@+id/day6"
                         android:layout_width="54dp"
@@ -232,7 +232,7 @@
                         android:paddingTop="20dip"
                         app:layout_constraintStart_toEndOf="@+id/day5"
                         app:layout_constraintTop_toTopOf="parent" />
-<!--                    7일-->
+                    <!--                    7일-->
                     <Button
                         android:id="@+id/day7"
                         android:layout_width="54dp"
@@ -288,7 +288,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--스크롤바를 확인하기 위한 임시 뷰-->
+            <!--스크롤바를 확인하기 위한 임시 뷰-->
             <ImageView
                 android:id="@+id/statistics2"
                 android:layout_width="43dp"
@@ -302,7 +302,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-<!--    하단바-->
+    <!--    하단바-->
     <LinearLayout
         android:id="@+id/topBar_rectangle"
         android:layout_width="match_parent"
@@ -316,7 +316,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-<!--        홈 버튼(눌렸다는 것을 표현하기 위해 app:tint="#D5D6D6" 설정함)-->
+        <!--        홈 버튼(눌렸다는 것을 표현하기 위해 app:tint="#D5D6D6" 설정함)-->
         <ImageButton
             android:id="@+id/homeButton"
             android:layout_width="55dp"
@@ -329,7 +329,7 @@
             app:srcCompat="@drawable/home"
             tools:ignore="SpeakableTextPresentCheck" />
 
-<!--        소원권 상점 버튼-->
+        <!--        소원권 상점 버튼-->
         <ImageButton
             android:id="@+id/wishstoreButton"
             android:layout_width="55dp"
@@ -341,7 +341,7 @@
             app:srcCompat="@drawable/store"
             tools:ignore="SpeakableTextPresentCheck"/>
 
-<!--        마이페이지 버튼-->
+        <!--        마이페이지 버튼-->
         <ImageButton
             android:id="@+id/mypageButton"
             android:layout_width="55dp"
@@ -353,7 +353,7 @@
             app:srcCompat="@drawable/person"
             tools:ignore="SpeakableTextPresentCheck"/>
 
-<!--        게임 버튼-->
+        <!--        게임 버튼-->
         <ImageButton
             android:id="@+id/gameButton"
             android:layout_width="55dp"

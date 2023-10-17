@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.codevalley">
+    package="com.example.codevalley" >
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -32,10 +32,24 @@
             android:exported="true"
             tools:ignore="Instantiatable" />
         <activity
+            android:name=".game.Game_nameChange"
+            android:exported="true" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true" />
         <activity
             android:name=".RegisterActivity"
+            android:exported="true" /> <!-- <activity -->
+        <!-- android:name=".MainActivity" -->
+        <!-- android:exported="true" /> -->
+        <activity
+            android:name=".game.GameStart2"
+            android:exported="true" />
+        <activity
+            android:name=".game.GameStart1"
+            android:exported="true" />
+        <activity
+            android:name=".game.PlantGame"
             android:exported="true" />
 
 <!--        main-->
@@ -78,10 +92,9 @@
         <activity
             android:name="com.example.wishShop.UploadActivity"
             android:exported="true" />
+    </application>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-    </application>
-
 </manifest>
