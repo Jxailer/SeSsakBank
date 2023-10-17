@@ -53,7 +53,7 @@ public class commentActivity extends AppCompatActivity {
 
         commentTitle = findViewById(R.id.comment_title);
         commentText = findViewById(R.id.comment_text);
-        
+
         getAndSetIntentData();
 
         // 2. 댓글 기능
@@ -92,10 +92,10 @@ public class commentActivity extends AppCompatActivity {
                     //입력창 초기화화
                     commentEdit.setText("");
                 }
-           }
+            }
         });
 
-    
+
     } //onCreate
 
     // 파이어베이스에서 댓글 데이터 가져오기
@@ -128,21 +128,21 @@ public class commentActivity extends AppCompatActivity {
     }
 
     // 2. comment화면에 보일 데이터 받아서 화면에 보여주기기
-   private void getAndSetIntentData() {
+    private void getAndSetIntentData() {
 
         //값 있는지 체크
-      if(getIntent().hasExtra("key") && getIntent().hasExtra("title") &&
-               getIntent().hasExtra("write")){
+        if(getIntent().hasExtra("key") && getIntent().hasExtra("title") &&
+                getIntent().hasExtra("write")){
 
-           //데이터 가져오기
-           sKey = getIntent().getStringExtra("key");
-           sTitle = getIntent().getStringExtra("title");
-           sText = getIntent().getStringExtra("write");
+            //데이터 가져오기
+            sKey = getIntent().getStringExtra("key");
+            sTitle = getIntent().getStringExtra("title");
+            sText = getIntent().getStringExtra("write");
 
-           //데이터 넣기
-           commentTitle.setText(sTitle);
-           commentText.setText(sText);
-       }
+            //데이터 넣기
+            commentTitle.setText(sTitle);
+            commentText.setText(sText);
+        }
     }
 
 

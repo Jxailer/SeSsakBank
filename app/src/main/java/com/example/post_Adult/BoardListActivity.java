@@ -166,7 +166,7 @@ public class BoardListActivity extends AppCompatActivity implements View.OnClick
 
 
     @Override
-            //actingbar->boardWrite 화면 전환
+    //actingbar->boardWrite 화면 전환
     public void onClick(View view) {
         finish();
     } //finish();

@@ -9,7 +9,7 @@
     android:backgroundTint="#D7E5CA"
     app:cardCornerRadius="20dp"
     app:cardElevation="10dp">
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -46,6 +46,6 @@
         android:src="@drawable/ic_comment"/>
 
 
-
+ㅗ
 
 </androidx.cardview.widget.CardView>

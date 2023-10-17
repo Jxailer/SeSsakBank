@@ -22,7 +22,7 @@
             android:singleLine="true"
             android:background="#FFFFFF"
             android:textStyle="bold"
-            android:hint="제목을 입력하세요." />
+            android:hint="제목을 입력하세요."/>
 
     </LinearLayout>
 
@@ -35,7 +35,7 @@
         android:padding="16dp"
         android:layout_marginBottom="16dp"
         android:background="#55C8E4B2"
-        android:hint="내용을 입력하세요." />
+        android:hint="내용을 입력하세요."/>
 
     <LinearLayout
         android:layout_marginTop="15dp"
@@ -43,28 +43,30 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/comment_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:paddingBottom="20dp"
-        android:paddingLeft="16dp"
-        android:hint="댓글을 입력하세요."/>
+        <EditText
+            android:id="@+id/comment_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingBottom="20dp"
+            android:paddingLeft="16dp"
+            android:hint="댓글을 입력하세요."/>
 
-    <ImageButton
-        android:id="@+id/comment_addBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:src="@drawable/ic_send_comment"
-        android:padding="16dp"
-        android:textStyle="bold"
-        android:background="#C8E4B2"/>
+        <ImageButton
+            android:id="@+id/comment_addBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_send_comment"
+            android:padding="16dp"
+            android:textStyle="bold"
+            android:background="#C8E4B2"/>
+
     </LinearLayout>
     <ListView
         android:id="@+id/comment_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="8dp"/>
+
 
 </LinearLayout>
