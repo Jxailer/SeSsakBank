@@ -60,7 +60,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardVH>{
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(context, commentActivity.class); //BoardUpdateActivity.class
+                Intent intent = new Intent(context, BoardUpdateActivity.class); //BoardUpdateActivity.class
                 //Intent intent2 = new Intent(context, commentActivity.class); //commentActivity
                 intent.putExtra("key", boardwrite.getUser_key());
                 intent.putExtra("title", boardwrite.getUser_title());
@@ -75,8 +75,11 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardVH>{
         holder.imgBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), commentActivity.class);
-                //startActivity(intent);
+                Intent intent2 = new Intent(context, commentActivity.class);
+                intent2.putExtra("key", boardwrite.getUser_key());
+                intent2.putExtra("title", boardwrite.getUser_title());
+                intent2.putExtra("write", boardwrite.getUser_text());
+                context.startActivity(intent2);
             }
         });
 
