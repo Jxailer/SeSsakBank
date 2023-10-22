@@ -9,4 +9,13 @@
     <color name="white">#FFFFFFFF</color>
     <color name="first">#FCFFE9</color>
     <color name="green">#769787</color>
+    <color name="defaultgray">#c7c7c7</color>
+    <color name="dialogColor">#DDDDDD</color>
+
+    <style name="DialogTheme" parent="@style/Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/dialogColor</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
 </resources>

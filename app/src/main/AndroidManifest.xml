@@ -42,6 +42,8 @@
             android:exported="true" /> <!-- <activity -->
         <!-- android:name=".MainActivity" -->
         <!-- android:exported="true" /> -->
+
+<!--        game-->
         <activity
             android:name=".game.GameStart2"
             android:exported="true" />
@@ -78,6 +80,35 @@
             android:exported="true"/>
         <activity android:name=".wishStore.store_main"
             android:exported="true"/>
+
+<!--        child_mypage-->
+        <activity
+            android:name=".myPage.MyPageActivity"
+            android:enabled="true"/>
+        <activity
+            android:name=".myPage.UserInfo"
+            android:enabled="true"/>
+        <activity
+            android:name=".myPage.PwdUpdate"
+            android:enabled="true"/>
+        <activity
+            android:name=".myPage.VersionInfo"
+            android:enabled="true"/>
+        <activity
+            android:name=".myPage.CycleSet"
+            android:enabled="true"/>
+        <activity
+            android:name=".myPage.DeleteID"
+            android:enabled="true"/>
+        <activity
+            android:name=".myPage.Maintainance"
+            android:enabled="true"/>
+        <activity
+            android:name=".myPage.CustomService"
+            android:enabled="true"/>
+        <activity
+            android:name=".myPage.LogoutPopup"
+            android:enabled="true"/>
 
 <!--        adult_wishShop-->
         <activity
