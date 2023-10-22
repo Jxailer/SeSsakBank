@@ -109,7 +109,8 @@
             android:exported="true"/>
         <activity
             android:name=".myPage.LogoutPopup"
-            android:exported="true"/>
+            android:exported="true"
+            android:theme="@style/DialogTheme"/>
 
 <!--        adult_wishShop-->
         <activity

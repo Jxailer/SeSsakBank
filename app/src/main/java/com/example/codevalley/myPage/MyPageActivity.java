@@ -17,7 +17,7 @@ public class MyPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mypage);
 
-        getSupportActionBar().setTitle("< 마이 페이지");
+//        getSupportActionBar().setTitle("< 마이 페이지");
 
         Button imageButton = (Button) findViewById(R.id.user_info);
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +69,7 @@ public class MyPageActivity extends AppCompatActivity {
 
         });
 
-        Switch onoffswitch = findViewById(R.id.push_onoff);
+        Switch onoffswitch = findViewById(R.id.push_onOff);
         onoffswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isCheked) {
