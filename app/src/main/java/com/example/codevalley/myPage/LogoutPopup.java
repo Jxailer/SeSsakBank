@@ -1,5 +1,6 @@
 package com.example.codevalley.myPage;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,12 +13,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.codevalley.R;
 
 public class LogoutPopup extends AppCompatActivity{
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logoutpopup);
 
-        Button imageButton = (Button) findViewById(R.id.로그아웃함);
+        Button imageButton = (Button) findViewById(R.id.yes_logout);
         imageButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -29,7 +31,7 @@ public class LogoutPopup extends AppCompatActivity{
             }
         });
 
-        Button imageButton1 = (Button) findViewById(R.id.로그아웃안함);
+        Button imageButton1 = (Button) findViewById(R.id.no_logout);
         imageButton1.setOnClickListener(new View.OnClickListener() {
 
             @Override

@@ -19,7 +19,7 @@ public class MyPageActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("< 마이 페이지");
 
-        Button imageButton = (Button) findViewById(R.id.계정정보);
+        Button imageButton = (Button) findViewById(R.id.user_info);
         imageButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -29,7 +29,7 @@ public class MyPageActivity extends AppCompatActivity {
             }
         });
 
-        Button imageButton1 = (Button) findViewById(R.id.데이터전송);
+        Button imageButton1 = (Button) findViewById(R.id.data_send);
         imageButton1.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -39,7 +39,7 @@ public class MyPageActivity extends AppCompatActivity {
             }
         });
 
-        Button imageButton2 = (Button) findViewById(R.id.회원탈퇴);
+        Button imageButton2 = (Button) findViewById(R.id.del_id);
         imageButton2.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -48,7 +48,7 @@ public class MyPageActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Button imageButton3 = (Button) findViewById(R.id.고객센터);
+        Button imageButton3 = (Button) findViewById(R.id.cus_service);
         imageButton3.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -58,7 +58,7 @@ public class MyPageActivity extends AppCompatActivity {
             }
 
         });
-        Button imageButton4 = (Button) findViewById(R.id.공지사항);
+        Button imageButton4 = (Button) findViewById(R.id.notice);
         imageButton4.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -69,7 +69,7 @@ public class MyPageActivity extends AppCompatActivity {
 
         });
 
-        Switch onoffswitch = findViewById(R.id.알림온오프);
+        Switch onoffswitch = findViewById(R.id.push_onoff);
         onoffswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isCheked) {

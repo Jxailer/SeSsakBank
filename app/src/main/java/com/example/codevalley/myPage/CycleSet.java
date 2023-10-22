@@ -1,5 +1,6 @@
 package com.example.codevalley.myPage;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputFilter;
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.codevalley.R;
 
 public class CycleSet extends AppCompatActivity {
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +24,7 @@ public class CycleSet extends AppCompatActivity {
 
         getSupportActionBar().setTitle("< 데이터 전송 주기 변경");
 
-        Button button = (Button) findViewById(R.id.주기확인버튼);
+        Button button = (Button) findViewById(R.id.cycleBtn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,10 +34,10 @@ public class CycleSet extends AppCompatActivity {
             }
         });
 
-        EditText et1 = (EditText) findViewById(R.id.개월입력);
+        EditText et1 = (EditText) findViewById(R.id.month_set);
         et1.setFilters(new InputFilter[]{ new InputFilterMinMax("0","12")});
 
-        EditText et2 = (EditText) findViewById(R.id.주일입력);
+        EditText et2 = (EditText) findViewById(R.id.week_set);
         et2.setFilters(new InputFilter[]{ new InputFilterMinMax("0","4")});
 
 

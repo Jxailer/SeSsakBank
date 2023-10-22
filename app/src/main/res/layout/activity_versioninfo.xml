@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/현재버전2"
+        android:id="@+id/thisVer2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -14,11 +14,11 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/가름선11"
-        app:layout_constraintStart_toStartOf="@+id/현재버전" />
+        app:layout_constraintBottom_toTopOf="@+id/line11"
+        app:layout_constraintStart_toStartOf="@+id/thisVer" />
 
     <TextView
-        android:id="@+id/신규버전타이틀"
+        android:id="@+id/newVer_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="21dp"
@@ -27,20 +27,20 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/가름선6" />
+        app:layout_constraintTop_toBottomOf="@+id/line6" />
 
     <View
-        android:id="@+id/가름선11"
+        android:id="@+id/line11"
         android:layout_width="0dp"
         android:layout_height="0.8dp"
         android:layout_marginTop="68dp"
         android:background="@drawable/line"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/현재버전타이틀" />
+        app:layout_constraintTop_toBottomOf="@+id/thisVer_title" />
 
     <TextView
-        android:id="@+id/현재버전타이틀"
+        android:id="@+id/thisVer_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="21dp"
@@ -52,19 +52,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:id="@+id/가름선6"
+        android:id="@+id/line6"
         android:layout_width="0dp"
         android:layout_height="0.8dp"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="12dp"
         android:background="@drawable/line"
-        app:layout_constraintBottom_toTopOf="@+id/현재버전2"
+        app:layout_constraintBottom_toTopOf="@+id/thisVer2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/현재버전타이틀" />
+        app:layout_constraintTop_toBottomOf="@+id/thisVer_title" />
 
     <TextView
-        android:id="@+id/현재버전"
+        android:id="@+id/thisVer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="154dp"
@@ -73,6 +73,6 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/가름선6"
-        app:layout_constraintEnd_toEndOf="@+id/가름선6" />
+        app:layout_constraintBottom_toTopOf="@+id/line6"
+        app:layout_constraintEnd_toEndOf="@+id/line6" />
 </androidx.constraintlayout.widget.ConstraintLayout>

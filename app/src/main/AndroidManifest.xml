@@ -70,7 +70,8 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="true">
+        </activity>
 
 <!--        child_wishStore-->
         <activity
@@ -84,31 +85,31 @@
 <!--        child_mypage-->
         <activity
             android:name=".myPage.MyPageActivity"
-            android:enabled="true"/>
+            android:exported="true"/>
         <activity
             android:name=".myPage.UserInfo"
-            android:enabled="true"/>
+            android:exported="true"/>
         <activity
             android:name=".myPage.PwdUpdate"
-            android:enabled="true"/>
+            android:exported="true"/>
         <activity
             android:name=".myPage.VersionInfo"
-            android:enabled="true"/>
+            android:exported="true"/>
         <activity
             android:name=".myPage.CycleSet"
-            android:enabled="true"/>
+            android:exported="true"/>
         <activity
             android:name=".myPage.DeleteID"
-            android:enabled="true"/>
+            android:exported="true"/>
         <activity
             android:name=".myPage.Maintainance"
-            android:enabled="true"/>
+            android:exported="true"/>
         <activity
             android:name=".myPage.CustomService"
-            android:enabled="true"/>
+            android:exported="true"/>
         <activity
             android:name=".myPage.LogoutPopup"
-            android:enabled="true"/>
+            android:exported="true"/>
 
 <!--        adult_wishShop-->
         <activity

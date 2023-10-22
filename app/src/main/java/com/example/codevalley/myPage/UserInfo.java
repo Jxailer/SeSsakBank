@@ -22,7 +22,7 @@ public class UserInfo extends AppCompatActivity {
 
         getSupportActionBar().setTitle("< 계정정보");
 
-        Button imageButton = (Button) findViewById(R.id.비번변경);
+        Button imageButton = (Button) findViewById(R.id.pwd_update);
         imageButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -32,7 +32,7 @@ public class UserInfo extends AppCompatActivity {
             }
         });
 
-        Button imageButton2 = (Button) findViewById(R.id.버전정보);
+        Button imageButton2 = (Button) findViewById(R.id.ver_info);
         imageButton2.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -42,7 +42,7 @@ public class UserInfo extends AppCompatActivity {
             }
         });
 
-        Button imageButton3 = (Button) findViewById(R.id.로그아웃);
+        Button imageButton3 = (Button) findViewById(R.id.logout);
         imageButton3.setOnClickListener(new View.OnClickListener() {
 
             @Override

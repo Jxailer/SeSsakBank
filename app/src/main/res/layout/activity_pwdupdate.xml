@@ -15,11 +15,11 @@
         app:errorEnabled="true"
         app:hintEnabled="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/현재비밀번호"
+        app:layout_constraintTop_toBottomOf="@+id/pwd_title"
         app:passwordToggleEnabled="true">
 
         <EditText
-            android:id="@+id/현재비번확인"
+            android:id="@+id/pwd"
             android:layout_width="265dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -40,11 +40,11 @@
         app:errorEnabled="true"
         app:hintEnabled="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/새비밀번호"
+        app:layout_constraintTop_toBottomOf="@+id/newPwd_title"
         app:passwordToggleEnabled="true">
 
         <EditText
-            android:id="@+id/새비번입력란"
+            android:id="@+id/newPwd"
             android:layout_width="265dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -52,12 +52,12 @@
             android:hint="새 비밀번호를 입력하세요."
             android:inputType="textPassword"
             android:textSize="16sp"
-            app:layout_constraintTop_toBottomOf="@+id/새비밀번호" />
+            app:layout_constraintTop_toBottomOf="@+id/newPwd_title" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/비번조건"
+        android:id="@+id/regular_pwd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -67,7 +67,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/새비밀번호"
+        android:id="@+id/newPwd_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
@@ -80,7 +80,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/현재비밀번호"
+        android:id="@+id/pwd_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
@@ -92,7 +92,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/비번확인버튼"
+        android:id="@+id/update_btn"
         android:layout_width="120dp"
         android:layout_height="46dp"
         android:layout_marginStart="157dp"

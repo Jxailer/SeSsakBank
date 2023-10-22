@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/주기확인버튼"
+        android:id="@+id/cycleBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="131dp"
@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/주일"
+        android:id="@+id/week_cycle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="주일"
@@ -30,10 +30,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/주일입력" />
+        app:layout_constraintTop_toBottomOf="@+id/week_set" />
 
     <EditText
-        android:id="@+id/주일입력"
+        android:id="@+id/week_set"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginTop="26dp"
@@ -41,11 +41,11 @@
         android:inputType="number"
         android:textAlignment="center"
         android:hint="4까지 입력할 수 있어요."
-        app:layout_constraintStart_toStartOf="@+id/개월입력"
-        app:layout_constraintTop_toBottomOf="@+id/개월" />
+        app:layout_constraintStart_toStartOf="@+id/month_set"
+        app:layout_constraintTop_toBottomOf="@+id/month_cycle" />
 
     <EditText
-        android:id="@+id/개월입력"
+        android:id="@+id/month_set"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="133dp"
@@ -54,13 +54,13 @@
         android:inputType="number"
         android:textAlignment="center"
         android:hint="12까지 입력할 수 있어요."
-        app:layout_constraintBottom_toTopOf="@+id/주기안내"
+        app:layout_constraintBottom_toTopOf="@+id/cycle_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/개월"
+        android:id="@+id/month_cycle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="개월"
@@ -69,16 +69,16 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/개월입력" />
+        app:layout_constraintTop_toBottomOf="@+id/month_set" />
 
     <TextView
-        android:id="@+id/주기안내"
+        android:id="@+id/cycle_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="234dp"
         android:text="* 최소단위는 일주일이에요."
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/주일입력"
-        app:layout_constraintTop_toBottomOf="@+id/개월입력" />
+        app:layout_constraintEnd_toEndOf="@+id/month_set"
+        app:layout_constraintTop_toBottomOf="@+id/month_set" />
 </androidx.constraintlayout.widget.ConstraintLayout>

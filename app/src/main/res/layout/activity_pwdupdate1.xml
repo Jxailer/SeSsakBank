@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="1.0">
 
         <TextView
-            android:id="@+id/새비밀번호2"
+            android:id="@+id/new_pwd_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -31,7 +31,6 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/비번조건3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
@@ -45,11 +44,10 @@
             android:layout_marginTop="15dp"
             android:layout_marginBottom="191dp"
             android:background="@color/white">
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <EditText
-            android:id="@+id/새비번입력란"
+            android:id="@+id/new_pwd"
             android:layout_width="210dp"
             android:layout_height="48dp"
             android:layout_marginStart="36dp"
@@ -60,7 +58,7 @@
             android:inputType="textPassword"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/새비밀번호" />
+            app:layout_constraintTop_toBottomOf="@+id/new_pwd_title" />
 
     </LinearLayout>
 

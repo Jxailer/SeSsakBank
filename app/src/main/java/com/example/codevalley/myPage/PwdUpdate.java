@@ -27,7 +27,7 @@ public class PwdUpdate extends AppCompatActivity {
 
         getSupportActionBar().setTitle("< 비밀번호 변경");
 
-        Button button = (Button) findViewById(R.id.비번확인버튼);
+        Button button = (Button) findViewById(R.id.update_btn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,8 +38,8 @@ public class PwdUpdate extends AppCompatActivity {
             }
         });
 
-        EditText pwcheck = (EditText) findViewById(R.id.새비번입력란);
-        Button pwcheckbutton = (Button) findViewById(R.id.비번확인버튼);
+        EditText pwcheck = (EditText) findViewById(R.id.newPwd);
+        Button pwcheckbutton = (Button) findViewById(R.id.update_btn);
         String repassword = pwcheck.getText().toString();
         String rgPattern = "^(?=.*[A-Za-z])(?=.*[!@#$%^&?])[A-Za-z!@#$%^&?]{8,15}$";
 

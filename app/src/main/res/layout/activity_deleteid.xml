@@ -27,7 +27,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/회원이름"
+                    android:id="@+id/user_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="50dp"
@@ -37,7 +37,6 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/정보사라져"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
@@ -46,7 +45,6 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/삭제내용"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
@@ -54,7 +52,6 @@
                 android:text="- 회원탈퇴한 계정의 정보는 복구가 불가능합니다." />
 
             <TextView
-                android:id="@+id/삭제내용2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -62,7 +59,6 @@
                 android:text="- 탈퇴 후 동일한 아이디로 30일 이내에 재가입이 가능합니다." />
 
             <TextView
-                android:id="@+id/삭제내용3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -70,7 +66,6 @@
                 android:text="- 혹시 이용하시는 도중 불편한 점이 있으셨다면, [고객센터]로 내용을 남겨주세요." />
 
             <TextView
-                android:id="@+id/삭제내용4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -78,7 +73,7 @@
                 android:text="- 혹시 이용하시는 도중 불편한 점이 있으셨다면, [고객센터]로 내용을 남겨주세요." />
 
             <CheckBox
-                android:id="@+id/삭제약관"
+                android:id="@+id/del_agree"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
@@ -88,7 +83,7 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/탈퇴버튼"
+        android:id="@+id/deleteBtn"
         android:layout_width="107dp"
         android:layout_height="48dp"
         android:layout_marginBottom="11dp"

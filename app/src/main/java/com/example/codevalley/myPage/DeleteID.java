@@ -1,5 +1,6 @@
 package com.example.codevalley.myPage;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.codevalley.R;
 
 public class DeleteID extends AppCompatActivity {
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +25,7 @@ public class DeleteID extends AppCompatActivity {
         getSupportActionBar().setTitle("< 회원탈퇴");
 
         Button ebt;
-        ebt = findViewById(R.id.탈퇴버튼);
+        ebt = findViewById(R.id.deleteBtn);
         ebt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,7 +36,7 @@ public class DeleteID extends AppCompatActivity {
             }
         });
 
-        CheckBox echeck = findViewById(R.id.삭제약관);
+        CheckBox echeck = findViewById(R.id.del_agree);
         echeck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
