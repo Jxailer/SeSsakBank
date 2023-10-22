@@ -30,13 +30,14 @@ import java.util.Objects;
 
 
 public class PlantGame extends AppCompatActivity {
-    private int progress_num = 0;
-    private int countFertilizer = 21; // 여기에 이제 DB에서 보유 갯수 가져와야 함.
-    private int countWater = 3; // 여기에 이제 DB에서 보유 갯수 가져와야 함.
-    private int countSynthesis = 5; // 여기에 이제 DB에서 보유 갯수 가져와야 함.
+    private int progress_num;
+    private int countFertilizer;
+    private int countWater;
+    private int countSynthesis;
     private int countLevel = 1;
     DatabaseReference reference;
-
+    DatabaseReference itemRef = FirebaseDatabase.getInstance().getReference("game").child(userID).child("item");
+    DatabaseReference gameRef = FirebaseDatabase.getInstance().getReference("game").child(userID);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,12 +58,119 @@ public class PlantGame extends AppCompatActivity {
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         TextView tv_countLevel = (TextView) findViewById(R.id.tv_countLevel);
 
-        // GameStar2에서 받은 식물 이름 가져와서 출력
-        Intent intent = getIntent(); // 넘어온 값을 받기 위해 intent객체를 생성하지만 getIntent()를 통해 넘어온 intent객체를 받아온다.
-        Bundle bundle = intent.getExtras(); // Bundle을 통해 extra들을 모두 가져온다
-        String plantname = bundle.getString("plantname"); // 키 값을 통해서 extras에 있는 값들을 얻는다.
+        // 게임 세팅 DB에서 가져오기
+        itemRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                countFertilizer = snapshot.child("fertilizer").getValue(Integer.class);
+                tv_countFertilizer.setText(String.valueOf(countFertilizer));
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
 
-        tv_name.setText(plantname); // PlantGame.xml에 있는 객체에 Text를 설정
+        itemRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                countWater = snapshot.child("water").getValue(Integer.class);
+                tv_countWater.setText(String.valueOf(countWater));
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+        itemRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                countSynthesis = snapshot.child("synthesis").getValue(Integer.class);
+                tv_countSynthesis.setText(String.valueOf(countSynthesis));
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+        gameRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                tv_name.setText(String.valueOf(snapshot.child("plantName").getValue(String.class)));
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+        gameRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                countLevel = snapshot.child("plantType").child("level").getValue(Integer.class);
+                tv_countLevel.setText(String.valueOf(snapshot.child("plantType").child("level").getValue(Integer.class)));
+
+                if (countLevel >= 2 && countLevel < 3){
+                    imv_growingPlant.setImageResource(R.drawable.ssessak);
+                }
+                else if (countLevel >= 3 && countLevel < 4){
+                    imv_growingPlant.setImageResource(R.drawable.small_tree);
+                }
+                else if (countLevel >= 4  && countLevel < 5){
+                    imv_growingPlant.setImageResource(R.drawable.big_tree);
+                }
+                else if (countLevel >= 5  && countLevel <= 50){
+                    FirebaseDatabase.getInstance().getReference("game").child(userID).child("plantType").addValueEventListener(new ValueEventListener(){
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            // 저장된 데이터를 하나씩 얻어옴
+                            if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "사과나무")) {
+                                imv_growingPlant.setImageResource(R.drawable.appletree);
+                            }
+                            else if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "귤나무")) {
+                                imv_growingPlant.setImageResource(R.drawable.mandarintree);
+                            }
+                            else {
+                                imv_growingPlant.setImageResource(R.drawable.bananatree);
+                            }
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            // 데이터 불러오기 실패 시 처리
+                        }
+                    });
+                }
+                else if (countLevel < 0 || countLevel > 50){
+                    Toast.makeText(getApplicationContext(),"범위를 초과했습니다.",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    imv_growingPlant.setImageResource(R.drawable.seed);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+        gameRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                progress_num = snapshot.child("progress").getValue(Integer.class);
+                progressBar.setProgress(progress_num);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+
+
+
+
+//        // GameStar2에서 받은 식물 이름 가져와서 출력
+//        Intent intent = getIntent(); // 넘어온 값을 받기 위해 intent객체를 생성하지만 getIntent()를 통해 넘어온 intent객체를 받아온다.
+//        Bundle bundle = intent.getExtras(); // Bundle을 통해 extra들을 모두 가져온다
+//        String plantname = bundle.getString("plantname"); // 키 값을 통해서 extras에 있는 값들을 얻는다.
+//
+//        tv_name.setText(plantname); // PlantGame.xml에 있는 객체에 Text를 설정
 
         // 이름변경 버튼 눌렀을 시
         btn_nameChange.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +189,8 @@ public class PlantGame extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
 
         // 아이템 버튼 클릭 했을 시
         btn_fertilizer.setOnClickListener(new View.OnClickListener() {
@@ -136,63 +246,63 @@ public class PlantGame extends AppCompatActivity {
                         }
                         tv_countFertilizer.setText(countFertilizer+"");
 
-                        // 식물 이미지 변경
-                        if (countLevel >= 3 && countLevel < 20){
-                            FirebaseDatabase.getInstance().getReference("game").child(userID).child("plantType").addValueEventListener(new ValueEventListener(){
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    // 저장된 데이터를 하나씩 얻어옴
-                                    if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "사과나무")) {
-                                        imv_growingPlant.setImageResource(R.drawable.appletree);
-                                    }
-                                    else if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "귤나무")) {
-                                        imv_growingPlant.setImageResource(R.drawable.mandarintree);
-                                    }
-                                    else {
-                                        imv_growingPlant.setImageResource(R.drawable.bananatree);
-                                    }
-                                }
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {
-                                    // 데이터 불러오기 실패 시 처리
-                                }
-                            });
-//                            imv_growingPlant.setImageResource(R.drawable.ssessak);
-                        }
-                        else if (countLevel >= 20  && countLevel < 30){
-                            imv_growingPlant.setImageResource(R.drawable.small_tree);
-                        }
-                        else if (countLevel >= 30  && countLevel < 40){
-                            imv_growingPlant.setImageResource(R.drawable.big_tree);
-                        }
-                        else if (countLevel >= 40  && countLevel <= 50){
-//                            private void readTree(){
-                            FirebaseDatabase.getInstance().getReference("game").child(userID).child("plantType").addValueEventListener(new ValueEventListener(){
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    // 저장된 데이터를 하나씩 얻어옴
-                                    if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "사과나무")) {
-                                        imv_growingPlant.setImageResource(R.drawable.appletree);
-                                    }
-                                    else if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "귤나무")) {
-                                        imv_growingPlant.setImageResource(R.drawable.mandarintree);
-                                    }
-                                    else {
-                                        imv_growingPlant.setImageResource(R.drawable.bananatree);
-                                    }
-                                }
-                                    @Override
-                                    public void onCancelled(DatabaseError databaseError) {
-                                        // 데이터 불러오기 실패 시 처리
-                                    }
-                            });
-//                            }
-                        }
-                        else if (countLevel < 0 || countLevel > 50){
-                            Toast.makeText(getApplicationContext(),"범위를 초과했습니다.",Toast.LENGTH_SHORT).show();
-                        }
-                        else {
-                        }
+//                        // 식물 이미지 변경
+//                        if (countLevel >= 3 && countLevel < 20){
+//                            FirebaseDatabase.getInstance().getReference("game").child(userID).child("plantType").addValueEventListener(new ValueEventListener(){
+//                                @Override
+//                                public void onDataChange(DataSnapshot dataSnapshot) {
+//                                    // 저장된 데이터를 하나씩 얻어옴
+//                                    if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "사과나무")) {
+//                                        imv_growingPlant.setImageResource(R.drawable.appletree);
+//                                    }
+//                                    else if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "귤나무")) {
+//                                        imv_growingPlant.setImageResource(R.drawable.mandarintree);
+//                                    }
+//                                    else {
+//                                        imv_growingPlant.setImageResource(R.drawable.bananatree);
+//                                    }
+//                                }
+//                                @Override
+//                                public void onCancelled(DatabaseError databaseError) {
+//                                    // 데이터 불러오기 실패 시 처리
+//                                }
+//                            });
+////                            imv_growingPlant.setImageResource(R.drawable.ssessak);
+//                        }
+//                        else if (countLevel >= 20  && countLevel < 30){
+//                            imv_growingPlant.setImageResource(R.drawable.small_tree);
+//                        }
+//                        else if (countLevel >= 30  && countLevel < 40){
+//                            imv_growingPlant.setImageResource(R.drawable.big_tree);
+//                        }
+//                        else if (countLevel >= 40  && countLevel <= 50){
+////                            private void readTree(){
+//                            FirebaseDatabase.getInstance().getReference("game").child(userID).child("plantType").addValueEventListener(new ValueEventListener(){
+//                                @Override
+//                                public void onDataChange(DataSnapshot dataSnapshot) {
+//                                    // 저장된 데이터를 하나씩 얻어옴
+//                                    if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "사과나무")) {
+//                                        imv_growingPlant.setImageResource(R.drawable.appletree);
+//                                    }
+//                                    else if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "귤나무")) {
+//                                        imv_growingPlant.setImageResource(R.drawable.mandarintree);
+//                                    }
+//                                    else {
+//                                        imv_growingPlant.setImageResource(R.drawable.bananatree);
+//                                    }
+//                                }
+//                                    @Override
+//                                    public void onCancelled(DatabaseError databaseError) {
+//                                        // 데이터 불러오기 실패 시 처리
+//                                    }
+//                            });
+////                            }
+//                        }
+//                        else if (countLevel < 0 || countLevel > 50){
+//                            Toast.makeText(getApplicationContext(),"범위를 초과했습니다.",Toast.LENGTH_SHORT).show();
+//                        }
+//                        else {
+//                        }
                     }
                     else {
                         tv_countFertilizer.setText(0);
@@ -259,43 +369,6 @@ public class PlantGame extends AppCompatActivity {
                             ref2.updateChildren(progressInfo);
                         }
                         tv_countWater.setText(countWater+"");
-
-                        // 식물 이미지 변경
-                        if (countLevel >= 3 && countLevel < 20){
-                            imv_growingPlant.setImageResource(R.drawable.ssessak);
-                        }
-                        else if (countLevel >= 20  && countLevel < 30){
-                            imv_growingPlant.setImageResource(R.drawable.small_tree);
-                        }
-                        else if (countLevel >= 30  && countLevel < 40){
-                            imv_growingPlant.setImageResource(R.drawable.big_tree);
-                        }
-                        else if (countLevel >= 40  && countLevel <= 50){
-                            FirebaseDatabase.getInstance().getReference("game").child(userID).child("plantType").addValueEventListener(new ValueEventListener(){
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    // 저장된 데이터를 하나씩 얻어옴
-                                    if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "사과나무")) {
-                                        imv_growingPlant.setImageResource(R.drawable.appletree);
-                                    }
-                                    else if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "귤나무")) {
-                                        imv_growingPlant.setImageResource(R.drawable.mandarintree);
-                                    }
-                                    else {
-                                        imv_growingPlant.setImageResource(R.drawable.bananatree);
-                                    }
-                                }
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {
-                                    // 데이터 불러오기 실패 시 처리
-                                }
-                            });
-                        }
-                        else if (countLevel < 0 || countLevel > 50){
-                            Toast.makeText(getApplicationContext(),"범위를 초과했습니다.",Toast.LENGTH_SHORT).show();
-                        }
-                        else{
-                        }
                     }
                     else {
                         tv_countWater.setText(0);
@@ -309,6 +382,7 @@ public class PlantGame extends AppCompatActivity {
                 }
             }
         });
+
         btn_synthesis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -361,43 +435,6 @@ public class PlantGame extends AppCompatActivity {
                             ref2.updateChildren(progressInfo);
                         }
                         tv_countSynthesis.setText(countSynthesis+"");
-
-                        // 식물 이미지 변경
-                        if (countLevel >= 3 && countLevel < 20){
-                            imv_growingPlant.setImageResource(R.drawable.ssessak);
-                        }
-                        else if (countLevel >= 20  && countLevel < 30){
-                            imv_growingPlant.setImageResource(R.drawable.small_tree);
-                        }
-                        else if (countLevel >= 30  && countLevel < 40){
-                            imv_growingPlant.setImageResource(R.drawable.big_tree);
-                        }
-                        else if (countLevel >= 40  && countLevel <= 50){
-                            FirebaseDatabase.getInstance().getReference("game").child(userID).child("plantType").addValueEventListener(new ValueEventListener(){
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    // 저장된 데이터를 하나씩 얻어옴
-                                    if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "사과나무")) {
-                                        imv_growingPlant.setImageResource(R.drawable.appletree);
-                                    }
-                                    else if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "귤나무")) {
-                                        imv_growingPlant.setImageResource(R.drawable.mandarintree);
-                                    }
-                                    else {
-                                        imv_growingPlant.setImageResource(R.drawable.bananatree);
-                                    }
-                                }
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {
-                                    // 데이터 불러오기 실패 시 처리
-                                }
-                            });
-                        }
-                        else if (countLevel < 0 || countLevel > 50){
-                            Toast.makeText(getApplicationContext(),"범위를 초과했습니다.",Toast.LENGTH_SHORT).show();
-                        }
-                        else{
-                        }
                     }
                     else {
                         tv_countSynthesis.setText(0);
