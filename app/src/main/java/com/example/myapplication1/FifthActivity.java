@@ -12,6 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.codevalley.R;
+
 public class FifthActivity extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,7 +27,7 @@ public class FifthActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(),"저장되었습니다.",Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(),MyPageActivity.class);
                 startActivity(intent);
             }
         });

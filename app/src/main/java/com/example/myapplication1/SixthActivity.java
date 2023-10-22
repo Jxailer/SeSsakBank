@@ -12,6 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.codevalley.R;
+
 public class SixthActivity extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,7 +28,7 @@ public class SixthActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(),"탈퇴되었습니다.", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MyPageActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
