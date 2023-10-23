@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText loginUsername, loginPassword;
     Button loginButton;
     TextView signupRedirectText;
-    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    public static FirebaseAuth mAuth = FirebaseAuth.getInstance();
     static FirebaseAuth.AuthStateListener mAuthListener;
     public static FirebaseUser mUser;
     public static String userID;

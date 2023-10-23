@@ -1,5 +1,8 @@
 package com.example.codevalley.myPage;
 
+import static com.example.codevalley.LoginActivity.mAuth;
+import static com.example.codevalley.LoginActivity.mUser;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.codevalley.LoginActivity;
 import com.example.codevalley.R;
 
 public class LogoutPopup extends AppCompatActivity{
@@ -24,8 +28,9 @@ public class LogoutPopup extends AppCompatActivity{
 
             @Override
             public void onClick(View view) {
+                mAuth.signOut();   //파이어베이스 인증 서비스의 로그아웃 기능
                 Toast.makeText(getApplicationContext(),"로그아웃되었습니다.",Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(), MyPageActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
             }

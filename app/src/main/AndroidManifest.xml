@@ -82,7 +82,7 @@
         <activity android:name=".wishStore.store_main"
             android:exported="true"/>
 
-<!--        child_mypage-->
+<!--        child_myPage-->
         <activity
             android:name=".myPage.MyPageActivity"
             android:exported="true"/>
