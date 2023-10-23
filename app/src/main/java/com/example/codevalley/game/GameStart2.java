@@ -35,6 +35,9 @@ public class GameStart2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String plantName = edt_plantName.getText().toString(); // 변수에 저장된 객체에서 Text를 가져오고 String형식으로 변환 후 저장
+                Integer level = 1;
+                Integer progress_num = 0;
+
                 if (plantName.isEmpty()) {
                     Toast.makeText(getApplicationContext(),"이름을 정해주세요!",Toast.LENGTH_LONG).show();
                 } else {
@@ -42,8 +45,19 @@ public class GameStart2 extends AppCompatActivity {
                     Map<String, Object> plantNameInfo = new HashMap<>();
                     plantNameInfo.put("plantName", plantName);
                     ref.updateChildren(plantNameInfo);
+
+                    Map<String, Object> plantLevelInfo = new HashMap<>();
+                    plantLevelInfo.put("plantType/level", level);
+                    ref.updateChildren(plantLevelInfo);
+
+                    Map<String, Object> plantProgressInfo = new HashMap<>();
+                    plantProgressInfo.put("progress", progress_num);
+                    ref.updateChildren(plantProgressInfo);
+
+
+
                     Intent intent = new Intent(GameStart2.this, PlantGame.class); // Activity사이에서 값을 전달하기 위해서는 intent를 사용한다.
-                    intent.putExtra("plantname",plantName); // intent생성시 현재 activity와 이동할 activity선언하고, putExtra메서드를 통해 키 값과 데이터를 저장
+//                    intent.putExtra("plantname",plantName); // intent생성시 현재 activity와 이동할 activity선언하고, putExtra메서드를 통해 키 값과 데이터를 저장
                     startActivity(intent); // Intent와 함께 다음 activity실행
                 }
             }
