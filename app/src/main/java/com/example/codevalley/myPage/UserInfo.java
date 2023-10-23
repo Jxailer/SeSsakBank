@@ -1,5 +1,7 @@
 package com.example.codevalley.myPage;
 
+import static com.example.codevalley.LoginActivity.userID;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,16 +13,21 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.codevalley.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
 public class UserInfo extends AppCompatActivity {
+//    DatabaseReference reference = FirebaseDatabase.getInstance().getReference(userID);
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userinfo);
 
-        getSupportActionBar().setTitle("< 계정정보");
+//        getSupportActionBar().setTitle("< 계정정보");
+
+
 
         Button imageButton = (Button) findViewById(R.id.pwd_update);
         imageButton.setOnClickListener(new View.OnClickListener() {

@@ -22,7 +22,7 @@ public class CycleSet extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cycleset);
 
-        getSupportActionBar().setTitle("< 데이터 전송 주기 변경");
+//        getSupportActionBar().setTitle("< 데이터 전송 주기 변경");
 
         Button button = (Button) findViewById(R.id.cycleBtn);
         button.setOnClickListener(new View.OnClickListener() {

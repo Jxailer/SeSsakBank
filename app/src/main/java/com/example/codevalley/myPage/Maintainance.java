@@ -13,7 +13,7 @@ public class Maintainance extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maintainance);
 
-        getSupportActionBar().setTitle("< 공지사항");
+//        getSupportActionBar().setTitle("< 공지사항");
 
 
     }

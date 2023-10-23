@@ -13,7 +13,7 @@ public class VersionInfo extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_versioninfo);
 
-        getSupportActionBar().setTitle("< 버전정보");
+//        getSupportActionBar().setTitle("< 버전정보");
 
     }
 }

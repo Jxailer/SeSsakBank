@@ -27,7 +27,7 @@
         android:background="@drawable/line"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/계정정보"
+        app:layout_constraintStart_toStartOf="@+id/user_info"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -51,7 +51,7 @@
         android:background="@drawable/line"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/계정정보"
+        app:layout_constraintStart_toStartOf="@+id/user_info"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="UnknownIdInLayout" />
 

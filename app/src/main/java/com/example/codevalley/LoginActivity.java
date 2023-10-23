@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView signupRedirectText;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     static FirebaseAuth.AuthStateListener mAuthListener;
-    static FirebaseUser mUser;
+    public static FirebaseUser mUser;
     public static String userID;
 
     @Override

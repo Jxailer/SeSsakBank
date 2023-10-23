@@ -26,7 +26,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
-
+    public String id, pw, name, birth, phone;
     EditText signupUsername, signupPassword, signupName, signupBirth, signupPhone;
     TextView loginRedirectText;
     Button signupButton, usernameDuplicate;
@@ -51,13 +51,18 @@ public class RegisterActivity extends AppCompatActivity {
         usernameDuplicate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(checkRegister()){
+                if (checkRegister()) {
                     //회원가입 버튼 눌렀을 시
                     signupButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            if (essentialInfo() & regularPW()){
-                                addUserInfo();
+                            if (essentialInfo()) {
+                                pw = signupPassword.getText().toString();
+                                if (regularPW(pw)) {
+                                    addUserInfo();
+                                } else {
+                                    signupPassword.setError("비밀번호는 영문과 특수문자를 포함하여 8자 이상이어야 합니다.");
+                                }
                             }
                         }
                     });
@@ -77,11 +82,11 @@ public class RegisterActivity extends AppCompatActivity {
 
     //필수 입력 사항 미기재시
     public Boolean essentialInfo(){
-        String id = signupUsername.getText().toString();
-        String pw = signupPassword.getText().toString();
-        String name = signupName.getText().toString();
-        String bir = signupBirth.getText().toString();
-        String phone = signupPhone.getText().toString();
+        id = signupUsername.getText().toString();
+        pw = signupPassword.getText().toString();
+        name = signupName.getText().toString();
+        birth = signupBirth.getText().toString();
+        phone = signupPhone.getText().toString();
 
         if(id.isEmpty()) {
             signupUsername.setError("아이디는 필수사항입니다");
@@ -92,7 +97,7 @@ public class RegisterActivity extends AppCompatActivity {
         } else if(name.isEmpty()) {
             signupName.setError("이름은 필수사항입니다");
             return false;
-        } else if(bir.isEmpty()) {
+        } else if(birth.isEmpty()) {
             signupBirth.setError("생년월일은 필수사항입니다");
             return false;
         } else if(phone.isEmpty()) {
@@ -110,10 +115,9 @@ public class RegisterActivity extends AppCompatActivity {
 
     //아이디 중복검사
     public boolean checkRegister(){
-        String username = signupUsername.getText().toString().trim();
-
+        id = signupUsername.getText().toString().trim();
         reference = FirebaseDatabase.getInstance().getReference("users");
-        Query duplicateDatabase = reference.orderByChild("username").equalTo(username);
+        Query duplicateDatabase = reference.orderByChild("username").equalTo(id);
 
         final boolean[] result = {true};
         duplicateDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -137,12 +141,11 @@ public class RegisterActivity extends AppCompatActivity {
 
     //사용자 정보 파이어베이스에 저장
     public void addUserInfo(){
-        String id = signupUsername.getText().toString();
-        String pw = signupPassword.getText().toString();
-        String name = signupName.getText().toString();
-        String birth = signupBirth.getText().toString();
-        String phone = signupPhone.getText().toString();
-
+        id = signupUsername.getText().toString();
+        pw = signupPassword.getText().toString();
+        name = signupName.getText().toString();
+        birth = signupBirth.getText().toString();
+        phone = signupPhone.getText().toString();
         mAuth.createUserWithEmailAndPassword(id, pw).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -161,8 +164,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     //비밀번호 정규식(영문, 특수문자 8~15자)
-    public boolean regularPW() {
-        String password = signupPassword.getText().toString();
+    public static boolean regularPW(String password) {
         String rgPattern = "^(?=.*[A-Za-z])(?=.*[!@#$%^&?])[A-Za-z!@#$%^&?]{8,15}$";
         Pattern pattern = Pattern.compile(rgPattern);
         Matcher matcher = pattern.matcher(password);
@@ -171,10 +173,7 @@ public class RegisterActivity extends AppCompatActivity {
             return true;
         }
         else{
-            signupPassword.setError("비밀번호는 영문과 특수문자를 포함하여 8자 이상이어야 합니다.");
             return false;
         }
     }
-
-
 }

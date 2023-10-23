@@ -21,7 +21,6 @@ public class MyPageActivity extends AppCompatActivity {
 
         Button imageButton = (Button) findViewById(R.id.user_info);
         imageButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), UserInfo.class);

@@ -12,7 +12,7 @@ public class CustomService extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customservice);
 
-        getSupportActionBar().setTitle("< 고객센터");
+//        getSupportActionBar().setTitle("< 고객센터");
 
     }
 }

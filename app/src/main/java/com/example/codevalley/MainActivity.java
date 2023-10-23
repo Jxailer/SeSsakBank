@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.codevalley.game.GameStart1;
+import com.example.codevalley.myPage.MyPageActivity;
 import com.example.codevalley.wishStore.store_complete;
 import com.example.codevalley.wishStore.store_main;
 
@@ -81,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void mypageButtonClicked(View v){
         Toast.makeText(MainActivity.this, "마이페이지 버튼 눌림.", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, MyPageActivity.class);
+        startActivity(intent);
     }
 
     public void plantgameButtonClicked(View v){
