@@ -12,6 +12,12 @@
     <color name="defaultgray">#c7c7c7</color>
     <color name="dialogColor">#DDDDDD</color>
 
+    <color name="main">#397b18</color>
+    <color name="sub1">#faf9f7</color>
+    <color name="sub2">#99bd87</color>
+    <color name="gray1">#dfe1de</color>
+    <color name="gray2">#c1c5be</color>
+
     <style name="DialogTheme" parent="@style/Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@color/dialogColor</item>
         <item name="android:colorBackgroundCacheHint">@null</item>

@@ -28,8 +28,7 @@ import java.util.regex.Pattern;
 public class RegisterActivity extends AppCompatActivity {
     public String id, pw, name, birth, phone;
     EditText signupUsername, signupPassword, signupName, signupBirth, signupPhone;
-    TextView loginRedirectText;
-    Button signupButton, usernameDuplicate;
+    Button signupButton, usernameDuplicate, loginRedirectText;
     DatabaseReference reference;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
 

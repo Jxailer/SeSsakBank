@@ -2,108 +2,118 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#FCFFE9"
+    android:background="@color/sub1"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp">
 
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.171"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/sessakbank_logo" />
 
     <EditText
         android:id="@+id/login_username"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="64dp"
         android:ems="10"
         android:hint="아이디를 입력하세요."
         android:inputType="textPersonName"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColorHint="@color/gray2"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.374" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/login_password"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="비밀번호를 입력하세요."
         android:inputType="textPassword"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColorHint="@color/gray2"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/login_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.463" />
+        app:layout_constraintTop_toBottomOf="@+id/login_username"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginBottom="48dp"
+        android:text="아직 회원이 아니신가요? "
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/signupRedirectText"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#00F4F4F4"
-        android:backgroundTint="#00FFFFFF"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="33dp"
+        android:backgroundTint="@color/sub1"
         android:text="회원가입"
-        android:textColor="#59000000"
-        android:textSize="12sp"
+        android:textColor="@color/main"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.337"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.812" />
+        app:layout_constraintVertical_bias="0.998" />
 
     <Button
         android:id="@+id/login_find"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#00FFFFFF"
-        android:text="아이디 찾기"
-        android:textColor="#59000000"
-        android:textSize="12sp"
+        android:background="@color/sub1"
+        android:text="아이디/비밀번호 찾기"
+        android:textColor="@color/black"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.684"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.812" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.795"
-        app:srcCompat="@drawable/opposition" />
+        app:layout_constraintTop_toBottomOf="@+id/login_password"
+        app:layout_constraintVertical_bias="0.080" />
 
     <Button
         android:id="@+id/login_button"
-        android:layout_width="111dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginBottom="104dp"
         android:background="@drawable/round_button"
-        android:backgroundTint="#8AAE4F4D"
         android:text="로그인"
+        android:textColor="@color/sub1"
+        android:textSize="18dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.587" />
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
