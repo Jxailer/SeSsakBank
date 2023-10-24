@@ -24,7 +24,7 @@
                     android:layout_margin="5dp"
                     android:textSize="16dp"
                     android:textStyle="bold"
-                    android:text="메모" />
+                    android:text="지출 메모" />
 
                 <TextView
                     android:id="@+id/recordAmount"
@@ -32,7 +32,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_marginLeft="10dp"
-                    android:text="카페주소"
+                    android:text="금액"
                     android:textColor="#BC8787"/>
 
             </LinearLayout>

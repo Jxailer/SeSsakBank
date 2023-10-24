@@ -5,7 +5,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="350dp"
 android:layout_height="400dp"
-android:background="#eeeeee"
+android:background="#faf9f7"
 android:orientation="vertical"
 android:layout_gravity="center">
 
@@ -43,20 +43,21 @@ android:layout_gravity="center">
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!--        메모 작성-->
+
         <Spinner
             android:id="@+id/categorySpinner"
             android:layout_width="250dp"
             android:layout_height="45dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
-            android:background="#A1A1A1"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#B9CDA8"
+            android:background="@drawable/green_button"
             android:entries="@array/recordType2"
             android:spinnerMode="dropdown"
             android:textColor="#535353"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/categoryText" />
-
-        <!--        메모 작성-->
 
         <TextView
             android:id="@+id/moneyAmountText"
@@ -76,10 +77,11 @@ android:layout_gravity="center">
             android:layout_height="45dp"
             android:layout_marginStart="28dp"
             android:layout_marginTop="10dp"
-            android:background="#A1A1A1"
+            android:backgroundTint="#B9CDA8"
+            android:background="@drawable/green_button"
             android:hint="  받은 금액"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#F4F4F4"
+            android:textColor="#8B8888"
+            android:textColorHint="#535353"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/moneyAmountText" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -100,18 +102,21 @@ android:layout_gravity="center">
             android:id="@+id/saveButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@drawable/green_button"
+            android:background="@drawable/round_button"
+            android:backgroundTint="#397b18"
             android:text="저장하기"
-            android:textColor="#535353"/>
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"/>
 
         <Button
             android:id="@+id/cancelButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
-            android:background="@drawable/green_button"
+            android:background="@drawable/round_button"
             android:backgroundTint="#DDDDDD"
             android:text="취소하기"
+            android:textStyle="bold"
             android:textColor="#535353"/>
 
     </LinearLayout>

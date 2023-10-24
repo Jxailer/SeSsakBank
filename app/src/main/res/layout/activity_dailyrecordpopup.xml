@@ -35,7 +35,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/recTitle"
+            android:id="@+id/recTitle2"
             android:layout_width="190dp"
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
@@ -43,6 +43,8 @@
             android:text="wishTitle"
             android:textColor="#3A3E45"
             android:textSize="20sp" />
+
+
 
     </RelativeLayout>
 
