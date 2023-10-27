@@ -47,6 +47,8 @@
             android:layout_height="48dp"
             android:text="중복확인"
             android:textSize="16sp"
+            android:textColor="@color/sub1"
+            android:backgroundTint="@color/main"
             android:background="@drawable/rectangle_button"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="157dp" />
