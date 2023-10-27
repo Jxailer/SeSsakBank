@@ -1,13 +1,10 @@
-package com.example.post_Adult;
-
-import static com.example.codevalley.LoginActivity.userID;
+package com.example.adult.post;
 
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;

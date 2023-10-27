@@ -1,4 +1,4 @@
-package com.example.post_Adult;
+package com.example.adult.post;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;

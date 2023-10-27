@@ -1,4 +1,4 @@
-package com.example.post_Adult;
+package com.example.adult.post;
 
 public class BoardWrite {
 

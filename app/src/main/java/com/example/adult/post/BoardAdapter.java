@@ -1,4 +1,4 @@
-package com.example.post_Adult;
+package com.example.adult.post;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,14 +9,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresPermission;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.codevalley.R;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardVH>{
 

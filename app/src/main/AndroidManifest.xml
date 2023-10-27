@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.caps02.TypeSelect"
+            android:name=".TypeSelect"
             android:exported="true" />
         <activity
             android:name="com.example.adult.adult_LoginActivity"
@@ -67,7 +67,7 @@
         <activity android:name=".wishStore.store_main"
             android:exported="true"/>
 
-        <!--        child_myPage-->
+<!--            child_myPage-->
         <activity
             android:name=".myPage.MyPageActivity"
             android:exported="true"/>
@@ -97,7 +97,7 @@
             android:exported="true"
             android:theme="@style/DialogTheme"/>
 
-        <!--        game-->
+<!--        game-->
         <activity
             android:name=".game.GameStart2"
             android:exported="true" />
@@ -108,7 +108,7 @@
             android:name=".game.PlantGame"
             android:exported="true" />
 
-        <!--        adult_wishShop-->
+<!--        adult_wishShop-->
         <activity
             android:name="com.example.wishShop.UpdateActivity"
             android:exported="false" />
@@ -124,20 +124,20 @@
 
 <!--        adult_post-->
         <activity
-            android:name="com.example.post_Adult.commentActivity"
+            android:name="com.example.adult.post.commentActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan"
-            android:parentActivityName="com.example.post_Adult.BoardListActivity"/>
+            android:parentActivityName="com.example.adult.post.BoardListActivity"/>
         <activity
-            android:name="com.example.post_Adult.BoardUpdateActivity"
+            android:name="com.example.adult.post.BoardUpdateActivity"
             android:exported="true"
-            android:parentActivityName="com.example.post_Adult.BoardListActivity" />
+            android:parentActivityName="com.example.adult.post.BoardListActivity" />
         <activity
-            android:name="com.example.post_Adult.BoardWirteMain"
+            android:name="com.example.adult.post.BoardWirteMain"
             android:exported="true">
         </activity>
         <activity
-            android:name="com.example.post_Adult.BoardListActivity"
+            android:name="com.example.adult.post.BoardListActivity"
             android:exported="true" />
 
 

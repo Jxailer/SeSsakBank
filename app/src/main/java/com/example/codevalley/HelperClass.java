@@ -40,7 +40,7 @@ public class HelperClass {
     public void setAdult_nickname(String adult_nickname) { this.adult_nickname = adult_nickname; }
 
 
-    public HelperClass(String username, String password, String name, String birth, String phone, String result) {
+    public HelperClass(String username, String password, String name, String birth, String phone) {
         this.username = username;
         this.password = password;
         this.name = name;
