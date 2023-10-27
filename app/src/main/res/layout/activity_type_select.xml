@@ -32,13 +32,12 @@
         app:layout_constraintBottom_toTopOf="@+id/selectBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.512"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/typeAdult"
-        android:layout_width="140dp"
-        android:layout_height="187dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
         android:background="@drawable/type_heart_button"
         app:layout_constraintBottom_toTopOf="@+id/selectBtn"
