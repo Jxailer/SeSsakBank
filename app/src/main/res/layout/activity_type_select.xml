@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FCFFE9"
-    tools:context="com.example.caps02.TypeSelect">
+    tools:context="com.example.typeSelect.TypeSelect">
 
     <TextView
         android:id="@+id/textView"
