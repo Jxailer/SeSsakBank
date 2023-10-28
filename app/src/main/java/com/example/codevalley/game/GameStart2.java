@@ -56,9 +56,14 @@ public class GameStart2 extends AppCompatActivity {
 
 
 
-                    Intent intent = new Intent(GameStart2.this, PlantGame.class); // Activity사이에서 값을 전달하기 위해서는 intent를 사용한다.
-//                    intent.putExtra("plantname",plantName); // intent생성시 현재 activity와 이동할 activity선언하고, putExtra메서드를 통해 키 값과 데이터를 저장
-                    startActivity(intent); // Intent와 함께 다음 activity실행
+//                    Intent intent = new Intent(GameStart2.this, PlantGame.class); // Activity사이에서 값을 전달하기 위해서는 intent를 사용한다.
+////                    intent.putExtra("plantname",plantName); // intent생성시 현재 activity와 이동할 activity선언하고, putExtra메서드를 통해 키 값과 데이터를 저장
+//                    startActivity(intent); // Intent와 함께 다음 activity실행
+
+                    startActivity(new Intent(GameStart2.this, PlantGame.class)
+                            .setAction(Intent.ACTION_MAIN)
+                            .addCategory(Intent.CATEGORY_LAUNCHER)
+                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 }
             }
         });

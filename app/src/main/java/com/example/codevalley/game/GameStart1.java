@@ -3,13 +3,16 @@ package com.example.codevalley.game;
 import static com.example.codevalley.LoginActivity.userID;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.codevalley.MainActivity;
 import com.example.codevalley.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -30,6 +33,23 @@ public class GameStart1 extends AppCompatActivity {
         Button btn_mandarin = (Button) findViewById(R.id.btn_mandarin);
         Button btn_banana = (Button) findViewById(R.id.btn_banana);
 
+        // SharedPreferences 객체 생성
+        SharedPreferences sharedPreferences = getSharedPreferences("GamePrefs", MODE_PRIVATE);
+
+        // "isInit" 값 가져오기 (기본값은 false)
+        boolean isInit = sharedPreferences.getBoolean("isInit", false);
+
+        if (!isInit) {
+            startActivity(new Intent(GameStart1.this, PlantGame.class)
+                    .setAction(Intent.ACTION_MAIN)
+                    .addCategory(Intent.CATEGORY_LAUNCHER)
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("isInit", true).apply();
+        }
+
+
         // 처음 게임에 접속했을 시 키울 나무를 선택하는 페이지
         // 사과 나무를 선택 했을 시
         btn_apple.setOnClickListener(new View.OnClickListener() {
@@ -41,9 +61,10 @@ public class GameStart1 extends AppCompatActivity {
                 Map<String, Object> plantInfo = new HashMap<>();
                 plantInfo.put("plantType/type", "사과나무");
                 ref.updateChildren(plantInfo);
-                Intent intent = new Intent(GameStart1.this, GameStart2.class);
-                startActivity(intent);
-
+                startActivity(new Intent(GameStart1.this, GameStart2.class)
+                        .setAction(Intent.ACTION_MAIN)
+                        .addCategory(Intent.CATEGORY_LAUNCHER)
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
 
@@ -57,8 +78,10 @@ public class GameStart1 extends AppCompatActivity {
                 Map<String, Object> plantInfo = new HashMap<>();
                 plantInfo.put("plantType/type", "귤나무");
                 ref.updateChildren(plantInfo);
-                Intent intent = new Intent(GameStart1.this, GameStart2.class);
-                startActivity(intent);
+                startActivity(new Intent(GameStart1.this, GameStart2.class)
+                        .setAction(Intent.ACTION_MAIN)
+                        .addCategory(Intent.CATEGORY_LAUNCHER)
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
 
@@ -72,8 +95,10 @@ public class GameStart1 extends AppCompatActivity {
                 Map<String, Object> plantInfo = new HashMap<>();
                 plantInfo.put("plantType/type", "바나나나무");
                 ref.updateChildren(plantInfo);
-                Intent intent = new Intent(GameStart1.this, GameStart2.class);
-                startActivity(intent);
+                startActivity(new Intent(GameStart1.this, GameStart2.class)
+                        .setAction(Intent.ACTION_MAIN)
+                        .addCategory(Intent.CATEGORY_LAUNCHER)
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
     }
