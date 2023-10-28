@@ -10,7 +10,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.codevalley.MainActivity;
 import com.example.codevalley.R;
+import com.example.codevalley.game.GameStart1;
+import com.example.codevalley.wishStore.store_main;
 
 public class MyPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,5 +83,28 @@ public class MyPageActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    //    네비게이션 하단바 버튼클릭 이벤트
+    public void homeButtonClicked(View v){
+        Intent homeIntent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(homeIntent);
+        finish();
+    }
+
+    public void wishstoreButtonClicked(View v){
+        Intent wishIntent = new Intent(this, store_main.class);
+        startActivity(wishIntent);
+        finish();
+    }
+
+    public void mypageButtonClicked(View v){
+
+    }
+
+    public void plantgameButtonClicked(View v){
+        Intent gameIntent = new Intent(this, GameStart1.class);
+        startActivity(gameIntent);
+        finish();
     }
 }

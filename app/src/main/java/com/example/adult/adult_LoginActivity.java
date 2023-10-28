@@ -116,7 +116,7 @@ public class adult_LoginActivity extends AppCompatActivity {
         HelperClass helperClass = new HelperClass(adult_nickname, adult_name);
         reference.child(childID).setValue(helperClass);
 
-        Intent intent = new Intent(adult_LoginActivity.this, MainActivity.class);
+        Intent intent = new Intent(adult_LoginActivity.this, HomeActivity.class);
         startActivity(intent);
     }
 }

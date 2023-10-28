@@ -4,19 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/sub1"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp">
+    android:layout_height="match_parent" >
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_begin="56dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="56dp" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="56dp"
+        app:layout_constraintStart_toEndOf="@+id/guidLeft"
+        app:layout_constraintEnd_toStartOf="@+id/guidRight"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/sessakbank_logo" />
@@ -25,44 +48,44 @@
         android:id="@+id/login_username"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:ems="10"
         android:hint="아이디를 입력하세요."
         android:inputType="textPersonName"
         android:textColorHint="@color/gray2"
         android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp" />
 
     <EditText
         android:id="@+id/login_password"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="170dp"
         android:ems="10"
         android:hint="비밀번호를 입력하세요."
         android:inputType="textPassword"
         android:textColorHint="@color/gray2"
         android:textSize="18dp"
         app:layout_constraintBottom_toTopOf="@+id/login_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_username"
-        app:layout_constraintVertical_bias="0.0" />
+        tools:layout_editor_absoluteX="16dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="42dp"
-        android:layout_marginBottom="48dp"
         android:text="아직 회원이 아니신가요? "
         android:textColor="@color/black"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/signupRedirectText"
+        app:layout_constraintStart_toEndOf="@+id/guidLeft"
+        app:layout_constraintTop_toBottomOf="@+id/login_button" />
 
     <Button
         android:id="@+id/signupRedirectText"
@@ -70,17 +93,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="42dp"
-        android:layout_marginBottom="33dp"
         android:backgroundTint="@color/sub1"
         android:text="회원가입"
         android:textColor="@color/main"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.998" />
+        app:layout_constraintEnd_toStartOf="@+id/guidRight"
+        app:layout_constraintTop_toBottomOf="@+id/login_button" />
 
     <Button
         android:id="@+id/login_find"
@@ -102,7 +121,9 @@
         android:id="@+id/login_button"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_marginBottom="104dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="56dp"
         android:background="@drawable/round_button"
         android:text="로그인"
         android:textColor="@color/sub1"
@@ -110,7 +131,6 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />

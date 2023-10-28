@@ -13,7 +13,10 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.adult.HomeActivity;
+import com.example.adult.profile.Profile;
 import com.example.codevalley.R;
+import com.example.wishShop.WishShopActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -161,7 +164,6 @@ public class BoardListActivity extends AppCompatActivity implements View.OnClick
 
     }
 
-
     @Override
     //actingbar->boardWrite 화면 전환
     public void onClick(View view) {
@@ -169,6 +171,24 @@ public class BoardListActivity extends AppCompatActivity implements View.OnClick
         startActivity(intent);
     } //finish();
 
+    //    하단 네비게이션 바 버튼 클릭
+    public void homeButtonClicked(View v){
+        Intent homeIntent = new Intent(this, HomeActivity.class);
+        startActivity(homeIntent);
+    }
 
+    public void wishShopButtonClicked(View v){
+        Intent wishShopIntent = new Intent(this, WishShopActivity.class);
+        startActivity(wishShopIntent);
+    }
+
+    public void profileButtonClicked(View v){
+        Intent profileIntent = new Intent(this, Profile.class);
+        startActivity(profileIntent);
+    }
+
+    public void communityButtonClicked(View v){
+
+    }
 
 }

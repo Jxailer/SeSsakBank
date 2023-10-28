@@ -140,6 +140,13 @@
             android:name="com.example.adult.post.BoardListActivity"
             android:exported="true" />
 
+<!--            adult_activity-->
+        <activity
+            android:name="com.example.adult.HomeActivity"
+            android:enabled="true" />
+        <activity
+            android:name="com.example.adult.profile.Profile"
+            android:enabled="true" />
 
         <meta-data
             android:name="preloaded_fonts"

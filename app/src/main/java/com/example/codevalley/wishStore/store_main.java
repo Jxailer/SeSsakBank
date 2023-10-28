@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.example.codevalley.MainActivity;
 import com.example.codevalley.R;
+import com.example.codevalley.game.GameStart1;
+import com.example.codevalley.myPage.MyPageActivity;
 import com.example.wishShop.DataClass;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,9 +40,9 @@ public class store_main extends AppCompatActivity implements View.OnClickListene
     RecyclerView wishRcv;
     RecyclerView.Adapter wishAdt;
     ArrayList<DataClass> dataList;
-    DatabaseReference wishRef = FirebaseDatabase.getInstance().getReference("wishManage").child("33@naver,com");
-    DatabaseReference itemRef = FirebaseDatabase.getInstance().getReference("game").child("33@naver,com").child("item");
-    DatabaseReference stampRef = FirebaseDatabase.getInstance().getReference("users").child("33@naver,com");
+    DatabaseReference wishRef = FirebaseDatabase.getInstance().getReference("wishManage").child(userID);
+    DatabaseReference itemRef = FirebaseDatabase.getInstance().getReference("game").child(userID).child("item");
+    DatabaseReference stampRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -138,23 +140,24 @@ public class store_main extends AppCompatActivity implements View.OnClickListene
 
 //    네비게이션 하단바 버튼클릭 이벤트
     public void homeButtonClicked(View v){
-        Toast.makeText(store_main.this, "홈 버튼 눌림.", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intent);
+        Intent homeIntent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(homeIntent);
         finish();
     }
 
     public void wishstoreButtonClicked(View v){
-        Toast.makeText(store_main.this, "소원권 상점 버튼 눌림.", Toast.LENGTH_SHORT).show();
     }
 
     public void mypageButtonClicked(View v){
-        Toast.makeText(store_main.this, "마이페이지 버튼 눌림.", Toast.LENGTH_SHORT).show();
+        Intent myPageIntent = new Intent(this, MyPageActivity.class);
+        startActivity(myPageIntent);
+        finish();
     }
 
     public void plantgameButtonClicked(View v){
-        Toast.makeText(store_main.this, "식물키우기 게임 버튼 눌림.", Toast.LENGTH_SHORT).show();
+        Intent gameIntent = new Intent(this, GameStart1.class);
+        startActivity(gameIntent);
+        finish();
     }
-
 
 }
