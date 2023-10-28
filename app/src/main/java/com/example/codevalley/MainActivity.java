@@ -3,22 +3,31 @@ package com.example.codevalley;
 
 import static com.example.codevalley.LoginActivity.userID;
 
+import static java.security.AccessController.getContext;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-//import com.example.codevalley.recordListHelper.Fraglike;
+import com.example.codevalley.recordListHelper.Fraglike;
+import com.example.codevalley.recordListHelper.CustomAdapter_RecordList;
 import com.example.codevalley.recordListHelper.HelperClass_RecordList;
 import com.example.codevalley.recordListHelper.IncomeRecordCreate;
 import com.example.codevalley.recordListHelper.SpentRecordCreate;
@@ -59,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
         View targetChangeBox = (View) findViewById(R.id.targetChangeBox);
         EditText editText = findViewById((R.id.targetBox));
+        CalendarRecord = findViewById((R.id.CalendarRecord));
 
         View calendar = (View) findViewById(R.id.calendar);
 
@@ -66,18 +76,6 @@ public class MainActivity extends AppCompatActivity {
         Button cancelButton = findViewById(R.id.cancelButton);
         Button dayButton = findViewById(R.id.day1);
         Button targetButton = findViewById(R.id.targetButton);
-
-        // targetBox(목표 수정창) 높이 증가(펼치기)용 소스코드
-//        LinearLayout.LayoutParams targetBoxSpreadParams = new LinearLayout.LayoutParams(
-//                LinearLayout.LayoutParams.MATCH_PARENT,
-//                380
-//        );
-
-        // targetBox(목표 수정창) 높이 감소(접기)용 소스코드
-//        LinearLayout.LayoutParams targetBoxFoldParams = new LinearLayout.LayoutParams(
-//                LinearLayout.LayoutParams.MATCH_PARENT,
-//                22
-//        );
 
 
         // day1 버튼 클릭시
@@ -96,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
         targetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                targetChangeBox.setVisibility(View.VISIBLE);
                 targetChangeBox.bringToFront();
             }
         });
@@ -157,20 +154,6 @@ public class MainActivity extends AppCompatActivity {
     } // onCreate class 끝
 
 
-//    목표 설정 버튼
-
-
-//    목표 설정 버튼을 눌렀을 시
-//    public void targetButtonClicked(View v){
-//        Toast.makeText(MainActivity.this, "목표 버튼 눌림.", Toast.LENGTH_SHORT).show();
-////        if (targetChangeBox.getParent() != null)
-////            ((ViewGroup) targetChangeBox.getParent()).removeView(targetChangeBox);
-////        builder.setView(targetChangeBox);
-//        editText.setHint(target.getText().toString());
-//        targetChangeBox.bringToFront();
-//    }
-
-
     //    정보바 버튼 클릭
     public void monthButtonClicked(View v) {
         Toast.makeText(MainActivity.this, "월 버튼 눌림.", Toast.LENGTH_SHORT).show();
@@ -186,57 +169,57 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, "통계 버튼 눌림.", Toast.LENGTH_SHORT).show();
     }
 
-    //일일 캘린더 버튼 눌림
-//    public void dayButtonClicked(View v){
-//        ArrayList<String> arrayList = new ArrayList<>();
-//        ArrayAdapter<String> adapter;
-//
-//        FirebaseDatabase firebaseDatabase;
-//        DatabaseReference databaseReference;
-//
-//        ListView listView;
-//
-//        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayList);
-//        firebaseDatabase = FirebaseDatabase.getInstance();
-//        databaseReference = firebaseDatabase.getReference().child("wishManage");
-//
-//        getValue();
-//
-//        Toast.makeText(MainActivity.this, "날짜 버튼 눌림.", Toast.LENGTH_SHORT).show();
-//        CalendarRecord = (ViewGroup)findViewById(R.id.CalendarRecord);
-//        CalendarRecord.setVisibility(View.VISIBLE);
-//
-//        }
+//    일일 캘린더 버튼 눌림
+    public void dayButtonClicked(View v){
+        ArrayList<String> arrayList = new ArrayList<>();
+        ArrayAdapter<String> adapter;
 
-//    private void getValue() {
-//
-//        TextView record = findViewById(R.id.recordList);
-//        TextView amount = findViewById(R.id.moneyAmountRecord);
-//
-////        DatabaseReference recordRef = FirebaseDatabase.getInstance().getReference("users/"+userID+"/userrecord/record1");
-//        DatabaseReference recordRef = FirebaseDatabase.getInstance().getReference("users").child(userID).child("userrecord");
-//        recordRef.addValueEventListener(new ValueEventListener() {
-//            @SuppressLint("SetTextI18n")
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-////              String memoData = snapshot.child(userID).child("memo").getValue(String.class);
-//                String memoData = snapshot.child("record1").child("memo").getValue(String.class);
-//                Integer amountData = snapshot.child("record1").child("moneyAmount").getValue(Integer.class);
-//
-//                if (memoData != null && amountData != null) {
-//                    record.setText(memoData);
-//                    amount.setText("금액 : " + amountData);
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                Toast.makeText(MainActivity.this, "error", Toast.LENGTH_SHORT).show();
-//            }
-//
-//        });
-//    }
+        FirebaseDatabase firebaseDatabase;
+        DatabaseReference databaseReference;
+
+        ListView listView;
+
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayList);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference().child("wishManage");
+
+        getValue();
+
+        Toast.makeText(MainActivity.this, "날짜 버튼 눌림.", Toast.LENGTH_SHORT).show();
+        CalendarRecord = (ViewGroup)findViewById(R.id.CalendarRecord);
+        CalendarRecord.setVisibility(View.VISIBLE);
+
+        }
+
+    private void getValue() {
+
+        TextView record = findViewById(R.id.recordList);
+        TextView amount = findViewById(R.id.moneyAmountRecord);
+
+//        DatabaseReference recordRef = FirebaseDatabase.getInstance().getReference("users/"+userID+"/userrecord/record1");
+        DatabaseReference recordRef = FirebaseDatabase.getInstance().getReference("users").child(userID).child("userrecord");
+        recordRef.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//              String memoData = snapshot.child(userID).child("memo").getValue(String.class);
+                String memoData = snapshot.child("record1").child("memo").getValue(String.class);
+                Integer amountData = snapshot.child("record1").child("moneyAmount").getValue(Integer.class);
+
+                if (memoData != null && amountData != null) {
+                    record.setText(memoData);
+                    amount.setText("금액 : " + amountData);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(MainActivity.this, "error", Toast.LENGTH_SHORT).show();
+            }
+
+        });
+    }
 
     //    하단 네비게이션 바 버튼 클릭
     public void homeButtonClicked(View v) {
