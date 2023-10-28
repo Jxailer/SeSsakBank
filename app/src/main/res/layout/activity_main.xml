@@ -325,8 +325,8 @@
             android:layout_marginRight="30dp"
             android:background="#00ff0000"
             android:onClick="homeButtonClicked"
-            app:tint="#5F8373"
             app:srcCompat="@drawable/home"
+            app:tint="#397b18 "
             tools:ignore="SpeakableTextPresentCheck" />
 
         <!--        소원권 상점 버튼-->
@@ -339,8 +339,8 @@
             android:background="#00ff0000"
             android:layout_marginRight="30dp"
             app:srcCompat="@drawable/store"
+            app:tint="#c1c5be"
             tools:ignore="SpeakableTextPresentCheck"/>
-
         <!--        마이페이지 버튼-->
         <ImageButton
             android:id="@+id/mypageButton"
@@ -351,6 +351,7 @@
             android:background="#00ff0000"
             android:layout_marginRight="30dp"
             app:srcCompat="@drawable/person"
+            app:tint="#c1c5be"
             tools:ignore="SpeakableTextPresentCheck"/>
 
         <!--        게임 버튼-->
@@ -362,9 +363,11 @@
             android:onClick="plantgameButtonClicked"
             android:background="#00ff0000"
             app:srcCompat="@drawable/game"
+            app:tint="#c1c5be"
             tools:ignore="SpeakableTextPresentCheck"/>
 
     </LinearLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

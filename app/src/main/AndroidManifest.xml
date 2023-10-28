@@ -25,33 +25,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.caps02.TypeSelect"
+            android:name=".TypeSelect"
             android:exported="true" />
         <activity
             android:name="com.example.adult.adult_LoginActivity"
             android:exported="true"
             tools:ignore="Instantiatable" />
         <activity
-            android:name=".game.Game_nameChange"
-            android:exported="true" />
-        <activity
             android:name=".LoginActivity"
             android:exported="true" />
         <activity
             android:name=".RegisterActivity"
-            android:exported="true" /> <!-- <activity -->
-        <!-- android:name=".MainActivity" -->
-        <!-- android:exported="true" /> -->
-
-<!--        game-->
-        <activity
-            android:name=".game.GameStart2"
-            android:exported="true" />
-        <activity
-            android:name=".game.GameStart1"
-            android:exported="true" />
-        <activity
-            android:name=".game.PlantGame"
             android:exported="true" />
 
 <!--        main-->
@@ -73,6 +57,7 @@
             android:exported="true">
         </activity>
 
+
 <!--        child_wishStore-->
         <activity
             android:name=".wishStore.store_complete"
@@ -82,7 +67,7 @@
         <activity android:name=".wishStore.store_main"
             android:exported="true"/>
 
-<!--        child_myPage-->
+<!--            child_myPage-->
         <activity
             android:name=".myPage.MyPageActivity"
             android:exported="true"/>
@@ -112,6 +97,17 @@
             android:exported="true"
             android:theme="@style/DialogTheme"/>
 
+<!--        game-->
+        <activity
+            android:name=".game.GameStart2"
+            android:exported="true" />
+        <activity
+            android:name=".game.GameStart1"
+            android:exported="true" />
+        <activity
+            android:name=".game.PlantGame"
+            android:exported="true" />
+
 <!--        adult_wishShop-->
         <activity
             android:name="com.example.wishShop.UpdateActivity"
@@ -125,9 +121,36 @@
         <activity
             android:name="com.example.wishShop.UploadActivity"
             android:exported="true" />
-    </application>
+
+<!--        adult_post-->
+        <activity
+            android:name="com.example.adult.post.commentActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"
+            android:parentActivityName="com.example.adult.post.BoardListActivity"/>
+        <activity
+            android:name="com.example.adult.post.BoardUpdateActivity"
+            android:exported="true"
+            android:parentActivityName="com.example.adult.post.BoardListActivity" />
+        <activity
+            android:name="com.example.adult.post.BoardWirteMain"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name="com.example.adult.post.BoardListActivity"
+            android:exported="true" />
+
+<!--            adult_activity-->
+        <activity
+            android:name="com.example.adult.HomeActivity"
+            android:enabled="true" />
+        <activity
+            android:name="com.example.adult.profile.Profile"
+            android:enabled="true" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+    </application>
+
 </manifest>

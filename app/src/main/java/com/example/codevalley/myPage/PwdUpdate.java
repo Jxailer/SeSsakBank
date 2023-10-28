@@ -60,10 +60,8 @@ public class PwdUpdate extends AppCompatActivity {
                 old_pwd = oldPwd.getText().toString();
                 new_pwd = newPwd.getText().toString();
 
-                if(password.equals(old_pwd)){
+                if(oldPwd != null && password.equals(old_pwd)){
                     if(regularPW(new_pwd)) {
-                        oldPwd.setError(null);
-                        newPwd.setError(null);
                         updatePwd();
                     }else{
                         newPwd.setError("비밀번호는 영문과 특수문자를 포함하여 8자 이상이어야 합니다.");
@@ -82,13 +80,15 @@ public class PwdUpdate extends AppCompatActivity {
     //최종적으로 비밀번호 업데이트
     public void updatePwd(){
         String new_pwd = newPwd.getText().toString();
-
         //파이어베이스 authentication 비번 업데이트
         mUser.updatePassword(new_pwd);
         //파이어베이스 리얼타임 비밀번호 업데이트
         Map<String, Object> pwUpdates = new HashMap<>();
         pwUpdates.put("password", new_pwd);
         pwdRef.updateChildren(pwUpdates);
+
+        oldPwd.setError(null);
+        newPwd.setError(null);
 
         Toast.makeText(getApplicationContext(), "비밀번호가 변경되었습니다.", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(getApplicationContext(), UserInfo.class);

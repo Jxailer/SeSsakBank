@@ -13,6 +13,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.adult.HomeActivity;
+import com.example.adult.post.BoardListActivity;
+import com.example.adult.profile.Profile;
 import com.example.codevalley.LoginActivity;
 import com.example.codevalley.MainActivity;
 import com.example.codevalley.R;
@@ -86,5 +89,25 @@ public class WishShopActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    //    하단 네비게이션 바 버튼 클릭
+    public void homeButtonClicked(View v){
+        Intent homeIntent = new Intent(this, HomeActivity.class);
+        startActivity(homeIntent);
+    }
+
+    public void wishShopButtonClicked(View v){
+
+    }
+
+    public void profileButtonClicked(View v){
+        Intent profileIntent = new Intent(this, Profile.class);
+        startActivity(profileIntent);
+    }
+
+    public void communityButtonClicked(View v){
+        Intent communityIntent = new Intent(this, BoardListActivity.class);
+        startActivity(communityIntent);
     }
 }
