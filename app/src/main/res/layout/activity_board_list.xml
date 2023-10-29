@@ -62,6 +62,20 @@
             app:srcCompat="@drawable/store"
             app:tint="#c1c5be"
             tools:ignore="SpeakableTextPresentCheck"/>
+
+        <!--        게시판 버튼-->
+        <ImageButton
+            android:id="@+id/communityBtn"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="5dp"
+            android:onClick="communityButtonClicked"
+            android:background="#00ff0000"
+            android:layout_marginRight="30dp"
+            app:srcCompat="@drawable/community"
+            app:tint="#397b18"
+            tools:ignore="SpeakableTextPresentCheck"/>
+
         <!--        마이페이지 버튼-->
         <ImageButton
             android:id="@+id/myPageBtn"
@@ -70,21 +84,8 @@
             android:layout_marginTop="5dp"
             android:onClick="profileButtonClicked"
             android:background="#00ff0000"
-            android:layout_marginRight="30dp"
             app:srcCompat="@drawable/person"
             app:tint="#c1c5be"
-            tools:ignore="SpeakableTextPresentCheck"/>
-
-        <!--        게시판-->
-        <ImageButton
-            android:id="@+id/communityBtn"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="5dp"
-            android:onClick="communityButtonClicked"
-            android:background="#00ff0000"
-            app:srcCompat="@drawable/community"
-            app:tint="#397b18 "
             tools:ignore="SpeakableTextPresentCheck"/>
 
     </LinearLayout>
