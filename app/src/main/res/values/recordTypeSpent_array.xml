@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="recordType">
+        <item>음식</item>
+        <item>간식</item>
+        <item>문구류</item>
+        <item>옷</item>
+        <item>여가</item>
+        <item>취미</item>
+        <item>문제집/책</item>
+        <item>교통비</item>
+        <item>분실</item>
+        <item>기타</item>
+    </string-array>
+</resources>
+
+<!--    1	식사-->
+<!--    2	의류-->
+<!--    3	문구-->
+<!--    4	간식-->
+<!--    5	여가-->
+<!--    6	취미-->
+<!--    7	교재/책-->
+<!--    8	교통-->
+<!--    9	분실-->
+<!--    10	기타-->
+<!--    21	정기적 용돈-->
+<!--    22	세뱃돈-->
+<!--    23	비정기적인 보너스-->
+<!--    24	기타-->
