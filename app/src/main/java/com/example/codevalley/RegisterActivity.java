@@ -1,11 +1,12 @@
 package com.example.codevalley;
 
+import static com.example.codevalley.LoginActivity.userID;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,9 +28,11 @@ import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
     public String id, pw, name, birth, phone;
+    public static Integer fertilizer = 1, synthesis = 1, water = 1;
     EditText signupUsername, signupPassword, signupName, signupBirth, signupPhone;
     Button signupButton, usernameDuplicate, loginRedirectText;
-    DatabaseReference reference;
+    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+    DatabaseReference gameItemRef = FirebaseDatabase.getInstance().getReference("game");
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     @Override
@@ -115,7 +118,6 @@ public class RegisterActivity extends AppCompatActivity {
     //아이디 중복검사
     public boolean checkRegister(){
         id = signupUsername.getText().toString().trim();
-        reference = FirebaseDatabase.getInstance().getReference("users");
         Query duplicateDatabase = reference.orderByChild("username").equalTo(id);
 
         final boolean[] result = {true};
@@ -149,9 +151,11 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    HelperClass helperClass = new HelperClass(id, pw, name, birth, phone);
-                    reference.child(id.replace(".", ",")).setValue(helperClass);
-                    Toast.makeText(RegisterActivity.this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                    HelperClass userInfoClass = new HelperClass(id, pw, name, birth, phone);
+                    reference.child(id.replace(".", ",")).setValue(userInfoClass);
+                    //초기 게임 아이템 주기
+                    HelperClass gameItemClass = new HelperClass(fertilizer, synthesis, water);
+                    gameItemRef.child(id.replace(".", ",")).child("item").setValue(gameItemClass);
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(intent);
                 }
@@ -175,4 +179,5 @@ public class RegisterActivity extends AppCompatActivity {
             return false;
         }
     }
+
 }

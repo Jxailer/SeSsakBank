@@ -1,6 +1,9 @@
 package com.example.codevalley.wishStore;
 
 import static com.example.codevalley.LoginActivity.userID;
+import static com.example.codevalley.RegisterActivity.fertilizer;
+import static com.example.codevalley.RegisterActivity.synthesis;
+import static com.example.codevalley.RegisterActivity.water;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -35,7 +38,7 @@ import java.util.Map;
 
 public class store_main extends AppCompatActivity implements View.OnClickListener {
     TextView stampAmount;
-    public static Integer ur_stamp = 0, fertilizer = 0, synthesis = 0, water = 0;
+    public static Integer ur_stamp = 0;
     Button ferBtn, synBtn, waterBtn;
     RecyclerView wishRcv;
     RecyclerView.Adapter wishAdt;

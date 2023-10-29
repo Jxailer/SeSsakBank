@@ -3,7 +3,7 @@
     <style name="Theme.CodeValley" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimaryVariant">#003700B3</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -15,7 +15,7 @@
 
         <!-- Status bar color. 상태바 색상 바꾸기 -->
         <item name="android:windowLightStatusBar">false</item>
-        <item name="android:statusBarColor">#257400</item>
+        <item name="android:statusBarColor">#000000</item>
 
         <!-- Customize your theme here. -->
         <item name="windowNoTitle">true</item>
