@@ -9,6 +9,7 @@
     tools:context=".game.PlantGame">
 
 
+    <!--    하단바-->
     <LinearLayout
         android:id="@+id/topBar_rectangle"
         android:layout_width="match_parent"
@@ -17,8 +18,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="600dp"
         android:background="@drawable/bar_layout"
-        android:gravity="center_horizontal"
         android:orientation="horizontal"
+        android:gravity="center_horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -30,7 +31,9 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="30dp"
             android:background="#00ff0000"
+            android:onClick="homeButtonClicked"
             app:srcCompat="@drawable/home"
+            app:tint="#c1c5be"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <!--        소원권 상점 버튼-->
@@ -39,21 +42,24 @@
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="30dp"
+            android:onClick="wishstoreButtonClicked"
             android:background="#00ff0000"
+            android:layout_marginRight="30dp"
             app:srcCompat="@drawable/store"
-            tools:ignore="SpeakableTextPresentCheck" />
-
+            app:tint="#c1c5be"
+            tools:ignore="SpeakableTextPresentCheck"/>
         <!--        마이페이지 버튼-->
         <ImageButton
             android:id="@+id/mypageButton"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="30dp"
+            android:onClick="mypageButtonClicked"
             android:background="#00ff0000"
+            android:layout_marginRight="30dp"
             app:srcCompat="@drawable/person"
-            tools:ignore="SpeakableTextPresentCheck" />
+            app:tint="#c1c5be"
+            tools:ignore="SpeakableTextPresentCheck"/>
 
         <!--        게임 버튼-->
         <ImageButton
@@ -61,10 +67,11 @@
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_marginTop="5dp"
+            android:onClick="plantgameButtonClicked"
             android:background="#00ff0000"
             app:srcCompat="@drawable/game"
-            app:tint="#5F8373"
-            tools:ignore="SpeakableTextPresentCheck" />
+            app:tint="#397b18"
+            tools:ignore="SpeakableTextPresentCheck"/>
 
     </LinearLayout>
 
