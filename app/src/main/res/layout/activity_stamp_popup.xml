@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="350dp"
-    android:layout_height="350dp"
-    android:background="#eeeeee"
-    android:orientation="vertical"
-    android:layout_gravity="center">
+    android:layout_height="550dp"
+    android:layout_gravity="center"
+    android:background="#ECEDCC"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/myTarget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="스템프"
         android:textColor="@color/black"
         android:textSize="30dp"
@@ -20,30 +22,129 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+<!--    도장 개수 표시-->
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="20dp"
+        android:text="5개"
+        android:textColor="@color/black"
+        android:textSize="28dp"
+        app:layout_constraintStart_toEndOf="@+id/myTarget"
+        app:layout_constraintTop_toTopOf="parent" />
+
+<!--    도장판-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myTarget"/>
+        app:layout_constraintTop_toBottomOf="@+id/myTarget">
+
+<!--        스템프 아이콘 LinearLayout 모음-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/stampIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        <!--        도장판 1번째 라인-->
+        <LinearLayout
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="13dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/stamp1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="14dp"
+
+                app:srcCompat="@drawable/check_circle_outline_30" />
+
+            <ImageView
+                android:id="@+id/stamp2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                app:srcCompat="@drawable/check_circle_outline_30" />
+
+            <ImageView
+                android:id="@+id/stamp3"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                app:srcCompat="@drawable/check_circle_outline_30" />
+
+            <ImageView
+                android:id="@+id/stamp4"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                app:srcCompat="@drawable/check_circle_outline_30" />
+
+            <ImageView
+                android:id="@+id/stamp5"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                app:srcCompat="@drawable/check_circle_outline_30" />
+
+        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <!--            배경 이미지-->
+        <ImageView
+            android:id="@+id/stampBackground"
+            android:layout_width="270dp"
+            android:layout_height="270dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/stampboard" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/storeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/round_button"
+        android:backgroundTint="#88BDA5"
+        android:padding="12dp"
+        android:text="소원권 상점 바로가기"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <Button
         android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/round_button"
         android:backgroundTint="#CDCDCD"
-        android:onClick="closeButtonClicked"
+        android:padding="12dp"
         android:text="닫기"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="18dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/storeButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

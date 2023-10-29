@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<alpha xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:anim/accelerate_interpolator"
+    android:fromAlpha="0.0"
+    android:toAlpha="1.0"
+    android:fillAfter="true"
+    android:duration="@android:integer/config_longAnimTime" />
+
+<!--    fillAfter는 Animation 종료 후에도 상태를 유지할지에 관한 값입니다.-->
+<!--    이미지의 Alpha를 0부터 1까지 변화(점점 나타나도록)시킵니다.-->
+<!--    config_longAnimTime은 500이란 값을 가지고 있으며 이는 애니메이션이 0.5초동안 실행된다는 것을 뜻합니다.-->

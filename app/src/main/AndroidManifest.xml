@@ -50,6 +50,12 @@
             android:theme="@style/Theme.AppCompat"
             android:exported="true"/>
         <activity
+            android:name=".recordListHelper.IncomeRecordCreate"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name=".recordListHelper.SpentRecordCreate"
+            android:exported="true"/>
+        <activity
             android:name=".StampPopupActivity"
             android:exported="true" />
         <activity
