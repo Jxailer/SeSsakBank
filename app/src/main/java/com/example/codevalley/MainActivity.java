@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         Button saveButton = findViewById(R.id.saveButton);
         Button cancelButton = findViewById(R.id.cancelButton);
         Button dayButton = findViewById(R.id.day1);
-        Button targetButton = findViewById(R.id.targetButton);
+//        Button targetButton = findViewById(R.id.targetButton);
 
 
         // day1 버튼 클릭시
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // 목표 버튼 눌렀을 시
-        targetButton.setOnClickListener(new View.OnClickListener() {
+        target.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 targetChangeBox.bringToFront();

@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
     public String id, pw, name, birth, phone;
-    public static Integer fertilizer = 1, synthesis = 1, water = 1;
+    public static Integer fertilizer = 1, synthesis = 1, water = 1, ur_stamp=65;
     EditText signupUsername, signupPassword, signupName, signupBirth, signupPhone;
     Button signupButton, usernameDuplicate, loginRedirectText;
     DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
@@ -151,7 +151,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    HelperClass userInfoClass = new HelperClass(id, pw, name, birth, phone);
+                    HelperClass userInfoClass = new HelperClass(id, pw, name, birth, phone, ur_stamp);
                     reference.child(id.replace(".", ",")).setValue(userInfoClass);
                     //초기 게임 아이템 주기
                     HelperClass gameItemClass = new HelperClass(fertilizer, synthesis, water);

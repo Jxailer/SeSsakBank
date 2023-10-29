@@ -1,7 +1,7 @@
 package com.example.codevalley.wishStore;
 
 import static com.example.codevalley.LoginActivity.userID;
-import static com.example.codevalley.wishStore.store_main.ur_stamp;
+import static com.example.codevalley.RegisterActivity.ur_stamp;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,8 +21,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class store_confirm extends AppCompatActivity {
-    DatabaseReference childRef = FirebaseDatabase.getInstance().getReference("users").child("33@naver,com");
-    DatabaseReference adultRef = FirebaseDatabase.getInstance().getReference("wishManage").child("33@naver,com");
+    DatabaseReference childRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
+    DatabaseReference adultRef = FirebaseDatabase.getInstance().getReference("wishManage").child(userID);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
