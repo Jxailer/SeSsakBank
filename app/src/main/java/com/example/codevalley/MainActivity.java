@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, "통계 버튼 눌림.", Toast.LENGTH_SHORT).show();
     }
 
-//    일일 캘린더 버튼 눌림
+    //    일일 캘린더 버튼 눌림
     public void dayButtonClicked(View v){
         ArrayList<String> arrayList = new ArrayList<>();
         ArrayAdapter<String> adapter;
@@ -193,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
         CalendarRecord = (ViewGroup)findViewById(R.id.CalendarRecord);
         CalendarRecord.setVisibility(View.VISIBLE);
 
-        }
+    }
 
     private void getValue() {
 
@@ -225,25 +225,21 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-//    하단 네비게이션 바 버튼 클릭
+    //    하단 네비게이션 바 버튼 클릭
     public void homeButtonClicked(View v){
-        Toast.makeText(MainActivity.this, "홈 버튼 눌림.", Toast.LENGTH_SHORT).show();
     }
 
     public void wishstoreButtonClicked(View v){
-        Toast.makeText(MainActivity.this, "소원권 상점 버튼 눌림.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, store_main.class);
         startActivity(intent);
     }
 
     public void mypageButtonClicked(View v){
-        Toast.makeText(MainActivity.this, "마이페이지 버튼 눌림.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, MyPageActivity.class);
         startActivity(intent);
     }
 
     public void plantgameButtonClicked(View v){
-        Toast.makeText(MainActivity.this, "식물키우기 게임 버튼 눌림.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, GameStart1.class);
         startActivity(intent);
     }
