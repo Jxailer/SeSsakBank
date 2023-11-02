@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/sub1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:layout_editor_absoluteY="81dp">
@@ -17,6 +18,7 @@
         android:text="공지사항"
         android:textColor="@android:color/black"
         android:textSize="16sp"
+        android:paddingLeft="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,6 +32,7 @@
         android:text="고객센터"
         android:textColor="@android:color/black"
         android:textSize="16sp"
+        android:paddingLeft="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,6 +66,7 @@
         android:text="데이터 전송 주기 변경"
         android:textColor="@android:color/black"
         android:textSize="16sp"
+        android:paddingLeft="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -86,6 +90,7 @@
         android:text="회원탈퇴"
         android:textColor="@android:color/black"
         android:textSize="16sp"
+        android:paddingLeft="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -100,6 +105,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
+        android:id="@+id/view3"
         android:layout_width="0dp"
         android:layout_height="0.8dp"
         android:layout_marginTop="220dp"
@@ -114,18 +120,19 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="124dp"
-        android:layout_marginBottom="13dp"
         android:background="@drawable/button"
         android:gravity="center_vertical"
         android:text="계정정보"
         android:textColor="@android:color/black"
         android:textSize="16sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toTopOf="@+id/push_set"
+        android:paddingLeft="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
+        android:id="@+id/view4"
         android:layout_width="0dp"
         android:layout_height="0.8dp"
         android:layout_marginTop="172dp"
@@ -135,12 +142,14 @@
         app:layout_constraintStart_toStartOf="@+id/user_info"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--    하단바-->
+
     <Switch
         android:id="@+id/push_onOff"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="172dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginEnd="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/push_set"
         app:layout_constraintTop_toTopOf="parent" />
@@ -159,9 +168,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/push_onOff"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_info" />
+        app:layout_constraintTop_toBottomOf="@+id/user_info"
+        app:layout_constraintVertical_bias="0.22" />
 
-    <!--    하단바-->
     <LinearLayout
         android:id="@+id/topBar_rectangle"
         android:layout_width="match_parent"

@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/sub1"
     tools:context=".myPage.MyPageActivity">
 
     <Button
@@ -16,6 +17,7 @@
         android:text="버전정보"
         android:textColor="@android:color/black"
         android:textSize="16sp"
+        android:paddingLeft="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,6 +42,7 @@
         android:text="비밀번호 변경"
         android:textColor="@android:color/black"
         android:textSize="16sp"
+        android:paddingLeft="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -65,6 +68,7 @@
         android:text="로그아웃"
         android:textColor="@android:color/black"
         android:textSize="16sp"
+        android:paddingLeft="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

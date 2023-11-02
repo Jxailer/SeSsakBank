@@ -6,6 +6,7 @@ import static com.example.codevalley.RegisterActivity.regularPW;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.codevalley.R;
@@ -34,9 +36,19 @@ public class PwdUpdate extends AppCompatActivity {
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-//        getSupportActionBar().setTitle("< 비밀번호 변경");
+        getSupportActionBar().setTitle("< 비밀번호 변경");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pwdupdate);
+
+        //actionBar 객체를 가져올 수 있다.
+
+        ActionBar actionBar = getSupportActionBar();
+
+        //메뉴바에 '<' 버튼이 생긴다.(두개는 항상 같이다닌다)
+
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
+//
 
         oldPwd = findViewById(R.id.pwd);
         newPwd = findViewById(R.id.newPwd);
@@ -62,7 +74,9 @@ public class PwdUpdate extends AppCompatActivity {
 
                 if(oldPwd != null && password.equals(old_pwd)){
                     if(regularPW(new_pwd)) {
+                        updateBtn.setEnabled(true);
                         updatePwd();
+                        updateBtn.setBackgroundColor(Color.rgb(136,189,165));
                     }else{
                         newPwd.setError("비밀번호는 영문과 특수문자를 포함하여 8자 이상이어야 합니다.");
                     }
