@@ -1,6 +1,6 @@
 package com.example.wishShop;
 
-import static com.example.codevalley.LoginActivity.userID;
+import static com.example.adult.adult_LoginActivity.childID;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -136,12 +136,12 @@ public class UpdateActivity extends AppCompatActivity {
 
         DataClass dataClass = new DataClass(title, stamp, desc);
 
-        FirebaseDatabase.getInstance().getReference("wishManage").child(userID).child(oldTitle)
+        FirebaseDatabase.getInstance().getReference("wishManage").child(childID).child(oldTitle)
                 .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
-                    StorageReference reference = FirebaseStorage.getInstance().getReference("wishManage").child(userID).child(title);
+                    StorageReference reference = FirebaseStorage.getInstance().getReference("wishManage").child(childID).child(title);
                     reference.delete();
                     Toast.makeText(UpdateActivity.this, "수정 완료되었습니다.", Toast.LENGTH_SHORT).show();
                     finish();

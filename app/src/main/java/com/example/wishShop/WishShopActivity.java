@@ -1,6 +1,6 @@
 package com.example.wishShop;
 
-import static com.example.codevalley.LoginActivity.userID;
+import static com.example.adult.adult_LoginActivity.childID;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -60,7 +60,7 @@ public class WishShopActivity extends AppCompatActivity {
         MyAdapter adapter = new MyAdapter(WishShopActivity.this, dataList);
         recyclerView.setAdapter(adapter);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("wishManage").child(userID);
+        databaseReference = FirebaseDatabase.getInstance().getReference("wishManage").child(childID);
         dialog.show();
 
         eventListener = databaseReference.addValueEventListener(new ValueEventListener() {

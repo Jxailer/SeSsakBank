@@ -1,6 +1,6 @@
 package com.example.wishShop;
 
-import static com.example.codevalley.LoginActivity.userID;
+import static com.example.adult.adult_LoginActivity.childID;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -83,7 +83,7 @@ public class DetailActivity extends AppCompatActivity {
         dialog.setPositiveButton("삭제", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("wishManage").child(userID);
+                final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("wishManage").child(childID);
 //                FirebaseStorage storage = FirebaseStorage.getInstance();
 //
 //                StorageReference storageReference = storage.getReference(title);

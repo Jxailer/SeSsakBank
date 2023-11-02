@@ -1,6 +1,6 @@
 package com.example.wishShop;
 
-import static com.example.codevalley.LoginActivity.userID;
+import static com.example.adult.adult_LoginActivity.childID;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
@@ -118,7 +118,7 @@ public class UploadActivity extends AppCompatActivity {
 
 //        String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
 
-        FirebaseDatabase.getInstance().getReference("wishManage").child(userID).child(title)
+        FirebaseDatabase.getInstance().getReference("wishManage").child(childID).child(title)
                 .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

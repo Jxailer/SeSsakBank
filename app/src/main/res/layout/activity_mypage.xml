@@ -209,18 +209,6 @@
             app:srcCompat="@drawable/store"
             app:tint="#c1c5be"
             tools:ignore="SpeakableTextPresentCheck"/>
-        <!--        마이페이지 버튼-->
-        <ImageButton
-            android:id="@+id/mypageButton"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="5dp"
-            android:onClick="mypageButtonClicked"
-            android:background="#00ff0000"
-            android:layout_marginRight="30dp"
-            app:srcCompat="@drawable/person"
-            app:tint="#397b18 "
-            tools:ignore="SpeakableTextPresentCheck"/>
 
         <!--        게임 버튼-->
         <ImageButton
@@ -230,8 +218,21 @@
             android:layout_marginTop="5dp"
             android:onClick="plantgameButtonClicked"
             android:background="#00ff0000"
+            android:layout_marginRight="30dp"
             app:srcCompat="@drawable/game"
             app:tint="#c1c5be"
+            tools:ignore="SpeakableTextPresentCheck"/>
+
+        <!--        마이페이지 버튼-->
+        <ImageButton
+            android:id="@+id/mypageButton"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="5dp"
+            android:onClick="mypageButtonClicked"
+            android:background="#00ff0000"
+            app:srcCompat="@drawable/person"
+            app:tint="#397b18"
             tools:ignore="SpeakableTextPresentCheck"/>
 
     </LinearLayout>

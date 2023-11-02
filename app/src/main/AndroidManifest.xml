@@ -39,15 +39,21 @@
             android:exported="true" />
 
 <!--        main-->
+<!--        <activity-->
+<!--            android:name=".DailyRecordPopupActivity"-->
+<!--            android:theme="@style/Theme.AppCompat" />-->
+<!--        <activity-->
+<!--            android:name=".RecordCreate"-->
+<!--            android:exported="true"/>-->
+<!--        <activity-->
+<!--            android:name=".TargetPopupActivity"-->
+<!--            android:theme="@style/Theme.AppCompat"-->
+<!--            android:exported="true"/>-->
         <activity
-            android:name=".DailyRecordPopupActivity"
+            android:name=".recordListHelper.IncomeRecordCreate"
             android:theme="@style/Theme.AppCompat" />
         <activity
-            android:name=".RecordCreate"
-            android:exported="true"/>
-        <activity
-            android:name=".TargetPopupActivity"
-            android:theme="@style/Theme.AppCompat"
+            android:name=".recordListHelper.SpentRecordCreate"
             android:exported="true"/>
         <activity
             android:name=".StampPopupActivity"
@@ -107,6 +113,9 @@
         <activity
             android:name=".game.PlantGame"
             android:exported="true" />
+        <activity
+             android:name=".game.Game_nameChange"
+             android:exported="true" />
 
 <!--        adult_wishShop-->
         <activity
