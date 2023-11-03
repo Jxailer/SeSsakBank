@@ -34,8 +34,8 @@ public class CycleSet extends AppCompatActivity {
             }
         });
 
-        EditText et1 = (EditText) findViewById(R.id.month_set);
-        et1.setFilters(new InputFilter[]{ new InputFilterMinMax("0","12")});
+//        EditText et1 = (EditText) findViewById(R.id.month_set);
+//        et1.setFilters(new InputFilter[]{ new InputFilterMinMax("0","12")});
 
         EditText et2 = (EditText) findViewById(R.id.week_set);
         et2.setFilters(new InputFilter[]{ new InputFilterMinMax("0","4")});

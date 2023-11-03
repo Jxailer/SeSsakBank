@@ -25,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.codevalley.game.PlantGame;
 import com.example.codevalley.recordListHelper.Fraglike;
 import com.example.codevalley.recordListHelper.CustomAdapter_RecordList;
 import com.example.codevalley.recordListHelper.HelperClass_RecordList;
@@ -56,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
 
     private View view;
+
+    private int gameCheck; // gamestart1번만 실행하기 위해 옆에 이 코드 추가
 
 
     @Override
@@ -240,8 +243,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void plantgameButtonClicked(View v){
-        Intent intent = new Intent(this, GameStart1.class);
-        startActivity(intent);
+        // gamestart1번만 실행하기 위해 아래 이 코드 추가
+        FirebaseDatabase.getInstance().getReference("game").child(userID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                try{
+                    gameCheck = snapshot.child("gameCheck").getValue(Integer.class);
+                    if (gameCheck == 1) {
+                        Intent intent = new Intent(MainActivity.this, PlantGame.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else {
+                        Intent intent = new Intent(MainActivity.this, GameStart1.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                } catch (Exception e){
+                    Intent intent = new Intent(MainActivity.this, GameStart1.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
 
 //    public class Fraglike extends Fragment {

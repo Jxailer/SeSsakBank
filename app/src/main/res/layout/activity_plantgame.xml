@@ -161,17 +161,39 @@
 
     </androidx.cardview.widget.CardView>
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/btn_fertilizer"
+        android:layout_width="78dp"
+        android:layout_height="51dp"
+        android:background="@drawable/round_button"
+        android:backgroundTint="#C4D9BA"
+        android:fontFamily="@font/roboto_bold"
+        android:text="비료"
+        android:textColor="#397B18"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintHorizontal_bias="0.204"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/game_cardView"
+        app:layout_constraintVertical_bias="0.812" />
+
+    <Button
+        android:id="@+id/btn_water"
+        android:layout_width="78dp"
+        android:layout_height="51dp"
+        android:background="@drawable/round_button"
+        android:backgroundTint="#C4D9BA"
+        android:fontFamily="@font/roboto_bold"
+        android:text="물"
+        android:textColor="#397B18"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.356"
-        app:srcCompat="@drawable/final_sun" />
+        app:layout_constraintVertical_bias="0.812" />
 
     <TextView
         android:id="@+id/textView2"
@@ -186,51 +208,7 @@
         app:layout_constraintHorizontal_bias="0.003"
         app:layout_constraintStart_toEndOf="@+id/tv_countFertilizer"
         app:layout_constraintTop_toBottomOf="@+id/btn_fertilizer"
-        app:layout_constraintVertical_bias="0.07" />
-
-    <Button
-        android:id="@+id/btn_water"
-        android:layout_width="78dp"
-        android:layout_height="51dp"
-        android:background="@drawable/round_button"
-        android:backgroundTint="#C4D9BA"
-        android:fontFamily="@font/roboto_bold"
-        android:text="물"
-        android:textColor="#397B18"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.776" />
-
-    <TextView
-        android:id="@+id/tv_countWater"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_bold"
-        android:text="0"
-        android:textColor="#21480E"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_water"
-        app:layout_constraintVertical_bias="0.063" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.598"
-        app:srcCompat="@drawable/grass1" />
+        app:layout_constraintVertical_bias="0.106" />
 
     <TextView
         android:id="@+id/tv_countSynthesis"
@@ -242,10 +220,10 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.73"
+        app:layout_constraintHorizontal_bias="0.733"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_synthesis"
-        app:layout_constraintVertical_bias="0.063" />
+        app:layout_constraintVertical_bias="0.107" />
 
     <TextView
         android:id="@+id/tv_countFertilizer"
@@ -257,10 +235,10 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.229"
+        app:layout_constraintHorizontal_bias="0.231"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_fertilizer"
-        app:layout_constraintVertical_bias="0.063" />
+        app:layout_constraintVertical_bias="0.107" />
 
     <TextView
         android:id="@+id/textView4"
@@ -275,7 +253,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tv_countWater"
         app:layout_constraintTop_toBottomOf="@+id/btn_water"
-        app:layout_constraintVertical_bias="0.07" />
+        app:layout_constraintVertical_bias="0.106" />
 
     <TextView
         android:id="@+id/textView3"
@@ -290,36 +268,22 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tv_countSynthesis"
         app:layout_constraintTop_toBottomOf="@+id/btn_synthesis"
-        app:layout_constraintVertical_bias="0.07" />
+        app:layout_constraintVertical_bias="0.106" />
 
-    <Button
-        android:id="@+id/btn_fertilizer"
-        android:layout_width="78dp"
-        android:layout_height="51dp"
-        android:background="@drawable/round_button"
-        android:backgroundTint="#C4D9BA"
-        android:fontFamily="@font/roboto_bold"
-        android:text="비료"
-        android:textColor="#397B18"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.201"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/game_cardView"
-        app:layout_constraintVertical_bias="0.776" />
-
-    <ImageView
-        android:id="@+id/imageView6"
+    <TextView
+        android:id="@+id/tv_countWater"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_bold"
+        android:text="0"
+        android:textColor="#21480E"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.753"
+        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.64"
-        app:srcCompat="@drawable/grass2" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_water"
+        app:layout_constraintVertical_bias="0.107" />
 
     <Button
         android:id="@+id/btn_synthesis"
@@ -333,10 +297,46 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.795"
+        app:layout_constraintHorizontal_bias="0.798"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/game_cardView"
-        app:layout_constraintVertical_bias="0.776" />
+        app:layout_constraintVertical_bias="0.812" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.756"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.645"
+        app:srcCompat="@drawable/grass2" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.361"
+        app:srcCompat="@drawable/final_sun" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.254"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.603"
+        app:srcCompat="@drawable/grass1" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -344,9 +344,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.488"
+        app:layout_constraintVertical_bias="0.494"
         app:srcCompat="@drawable/hill" />
 
     <ImageView

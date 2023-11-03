@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.codevalley.MainActivity;
 import com.example.codevalley.R;
 import com.example.codevalley.game.GameStart1;
+import com.example.codevalley.game.PlantGame;
 import com.example.codevalley.myPage.MyPageActivity;
 import com.example.wishShop.DataClass;
 import com.google.firebase.database.DataSnapshot;
@@ -46,6 +47,8 @@ public class store_main extends AppCompatActivity implements View.OnClickListene
     DatabaseReference wishRef = FirebaseDatabase.getInstance().getReference("wishManage").child(userID);
     DatabaseReference itemRef = FirebaseDatabase.getInstance().getReference("game").child(userID).child("item");
     DatabaseReference stampRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
+
+    private int gameCheck; // gamestart1번만 실행하기 위해 옆에 이 코드 추가
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -158,9 +161,32 @@ public class store_main extends AppCompatActivity implements View.OnClickListene
     }
 
     public void plantgameButtonClicked(View v){
-        Intent gameIntent = new Intent(this, GameStart1.class);
-        startActivity(gameIntent);
-        finish();
+        // gamestart1번만 실행하기 위해 아래 이 코드 추가
+        FirebaseDatabase.getInstance().getReference("game").child(userID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                try{
+                    gameCheck = snapshot.child("gameCheck").getValue(Integer.class);
+                    if (gameCheck == 1) {
+                        Intent intent = new Intent(store_main.this, PlantGame.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else {
+                        Intent intent = new Intent(store_main.this, GameStart1.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                } catch (Exception e){
+                    Intent intent = new Intent(store_main.this, GameStart1.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
 
 }
