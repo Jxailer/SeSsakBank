@@ -5,47 +5,114 @@
     android:id="@+id/board_card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="20dp"
-    android:backgroundTint="#D7E5CA"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="10dp">
+    android:backgroundTint="@color/sub1"
+    app:cardCornerRadius="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:gravity="center_vertical"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/title_user"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="익명"
-            android:textSize="15dp"
-            android:paddingLeft="20dp"
-            android:textColor="#7EAA92"/>
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/user_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="닉네임"
+                android:textSize="18dp"
+                android:textColor="@color/black"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/write_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="시간"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+
 
         <TextView
             android:id="@+id/title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:paddingLeft="20dp"
-            android:textSize="20dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
             android:text="글 내용" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray1"
+            android:layout_marginTop="16dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginVertical="10dp">
+
+            <LinearLayout
+                android:id="@+id/like_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/ic_like"
+                    android:backgroundTint="@color/gray2"/>
+
+                <TextView
+                    android:id="@+id/like_cnt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:textSize="14sp"
+                    android:text="좋아요" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/comment_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/comment_icon"
+                    android:backgroundTint="@color/gray2"/>
+
+                <TextView
+                    android:id="@+id/comment_cnt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:text="댓글" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
     </LinearLayout>
-    <ImageButton
-        android:id="@+id/commentBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="right"
-        android:layout_marginRight="25dp"
-        android:backgroundTint="#D7E5CA"
-        android:src="@drawable/ic_comment"/>
-
-
-ㅗ
 
 </androidx.cardview.widget.CardView>

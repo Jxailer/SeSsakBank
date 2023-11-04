@@ -3,13 +3,15 @@ package com.example.codevalley.wishStore;
 import static com.example.codevalley.LoginActivity.userID;
 import static com.example.codevalley.RegisterActivity.ur_stamp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 import com.example.codevalley.R;
-import com.example.wishShop.DataClass;
-import com.google.firebase.database.DatabaseError;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -21,15 +23,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class store_confirm extends AppCompatActivity {
-    DatabaseReference childRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
-    DatabaseReference adultRef = FirebaseDatabase.getInstance().getReference("wishManage").child(userID);
+    DatabaseReference childRef = FirebaseDatabase.getInstance().getReference("users").child("alsdk@naver,com");
+    DatabaseReference adultRef = FirebaseDatabase.getInstance().getReference("wishManage").child("alsdk@naver,com");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.confirmactivity_store);
     }
 
-    //"네" 버튼 선택 시
     public void rewardConfirm_yes(View v){
         Intent get_intent = getIntent();
         String wish_title = get_intent.getStringExtra("wish_title");
@@ -38,7 +40,6 @@ public class store_confirm extends AppCompatActivity {
         if(ur_stamp >= stamp_price){
             upDateWishList(wish_title, stamp_price);
 
-            Toast.makeText(getApplicationContext(), "구매확인 버튼을 눌렀어요.", Toast.LENGTH_LONG).show();
             Intent yesIntent = new Intent(getApplicationContext(), store_complete.class);
             startActivity(yesIntent);
             finish();
@@ -52,10 +53,10 @@ public class store_confirm extends AppCompatActivity {
 
     //"아니오" 버튼 선택 시
     public void rewardConfirm_no(View v){
-        Toast.makeText(getApplicationContext(), "구매를 취소했어요.", Toast.LENGTH_LONG).show();
-        Intent noIntent = new Intent(getApplicationContext(), store_main.class);
-        startActivity(noIntent);
-        finish();
+//        Toast.makeText(getApplicationContext(), "구매를 취소했어요.", Toast.LENGTH_LONG).show();
+//        Intent noIntent = new Intent(getApplicationContext(), store_main.class);
+//        startActivity(noIntent);
+
     }
 
     //소원권 리스트 업데이트

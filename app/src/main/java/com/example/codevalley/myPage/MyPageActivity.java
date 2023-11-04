@@ -2,12 +2,15 @@ package com.example.codevalley.myPage;
 
 import static com.example.codevalley.LoginActivity.userID;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,21 +23,41 @@ import com.example.codevalley.game.PlantGame;
 import com.example.codevalley.wishStore.store_main;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MyPageActivity extends AppCompatActivity {
+    LinearLayout userInfo, pushSet, dataSend, noticeInfo, cusService, termsInfo, verInfo, defID;
+    TextView profileName;
 
     private int gameCheck; // gamestart1번만 실행하기 위해 옆에 이 코드 추가
 
+    @SuppressLint("MissingInflatedId")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mypage);
 
+        profileName = findViewById(R.id.profile_name);
+        DatabaseReference profileRef = FirebaseDatabase.getInstance().getReference("users").child("33@naver,com");
+
+        profileRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String name = snapshot.child("name").getValue(String.class);
+                profileName.setText(name);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 //        getSupportActionBar().setTitle("< 마이 페이지");
 
-        Button imageButton = (Button) findViewById(R.id.user_info);
-        imageButton.setOnClickListener(new View.OnClickListener() {
+        userInfo = findViewById(R.id.user_info);
+        userInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), UserInfo.class);
@@ -42,8 +65,8 @@ public class MyPageActivity extends AppCompatActivity {
             }
         });
 
-        Button imageButton1 = (Button) findViewById(R.id.data_send);
-        imageButton1.setOnClickListener(new View.OnClickListener() {
+        pushSet = findViewById(R.id.data_send);
+        pushSet.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -52,8 +75,8 @@ public class MyPageActivity extends AppCompatActivity {
             }
         });
 
-        Button imageButton2 = (Button) findViewById(R.id.del_id);
-        imageButton2.setOnClickListener(new View.OnClickListener() {
+        defID = findViewById(R.id.del_id);
+        defID.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -61,8 +84,8 @@ public class MyPageActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Button imageButton3 = (Button) findViewById(R.id.cus_service);
-        imageButton3.setOnClickListener(new View.OnClickListener() {
+        cusService = findViewById(R.id.cus_service);
+        cusService.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -71,8 +94,8 @@ public class MyPageActivity extends AppCompatActivity {
             }
 
         });
-        Button imageButton4 = (Button) findViewById(R.id.notice);
-        imageButton4.setOnClickListener(new View.OnClickListener() {
+        noticeInfo = findViewById(R.id.notice_info);
+        noticeInfo.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {

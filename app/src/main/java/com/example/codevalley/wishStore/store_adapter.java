@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.codevalley.R;
 import com.example.wishShop.DataClass;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
 
@@ -49,6 +50,7 @@ public class store_adapter extends RecyclerView.Adapter<store_adapter.ViewHolder
                 confirmIntent.putExtra("wish_title", wish_title);
                 confirmIntent.putExtra("stamp_price", Integer.valueOf(stamp_price));
                 context.startActivity(confirmIntent);
+
             }
         });
     }

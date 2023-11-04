@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,9 +32,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardVH>{
     @NonNull
     @Override
     public BoardVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View view = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
-
         return new BoardVH(view);
 
     }
@@ -70,7 +70,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardVH>{
 
         });
 
-        holder.imgBtn.setOnClickListener(new View.OnClickListener() {
+        holder.commenBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent2 = new Intent(context, commentActivity.class);
@@ -97,18 +97,18 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardVH>{
 
         CardView cardView;
 
-        ImageButton imgBtn;
+        LinearLayout commenBtn;
 
         public BoardVH(@NonNull View itemView) {
             super(itemView);
 
             titleText = itemView.findViewById(R.id.title_text);
 
-            writeUser = itemView.findViewById(R.id.title_user);
+            writeUser = itemView.findViewById(R.id.user_nickname);
 
             cardView = itemView.findViewById(R.id.board_card_view);
 
-            imgBtn = itemView.findViewById(R.id.commentBtn);
+            commenBtn = itemView.findViewById(R.id.comment_btn);
 
 
         }

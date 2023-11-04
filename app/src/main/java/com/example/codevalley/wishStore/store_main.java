@@ -22,6 +22,7 @@ import com.example.codevalley.game.GameStart1;
 import com.example.codevalley.game.PlantGame;
 import com.example.codevalley.myPage.MyPageActivity;
 import com.example.wishShop.DataClass;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,12 +42,13 @@ import java.util.Map;
 public class store_main extends AppCompatActivity implements View.OnClickListener {
     TextView stampAmount;
     Button ferBtn, synBtn, waterBtn;
+    View dialogView;
     RecyclerView wishRcv;
     RecyclerView.Adapter wishAdt;
     ArrayList<DataClass> dataList;
-    DatabaseReference wishRef = FirebaseDatabase.getInstance().getReference("wishManage").child(userID);
-    DatabaseReference itemRef = FirebaseDatabase.getInstance().getReference("game").child(userID).child("item");
-    DatabaseReference stampRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
+    DatabaseReference wishRef = FirebaseDatabase.getInstance().getReference("wishManage").child("alsdk@naver,com");
+    DatabaseReference itemRef = FirebaseDatabase.getInstance().getReference("game").child("alsdk@naver,com").child("item");
+    DatabaseReference stampRef = FirebaseDatabase.getInstance().getReference("users").child("alsdk@naver,com");
 
     private int gameCheck; // gamestart1번만 실행하기 위해 옆에 이 코드 추가
 

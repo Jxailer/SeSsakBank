@@ -1,195 +1,299 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/sub1"
+    android:background="#EFEFEF"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:layout_editor_absoluteY="81dp">
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/notice"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="364dp"
-        android:background="@drawable/button"
-        android:gravity="center_vertical"
-        android:text="공지사항"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:paddingLeft="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="56dp"
+        android:background="@color/sub1"
+        android:gravity="center_vertical">
 
-    <Button
-        android:id="@+id/cus_service"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="316dp"
-        android:background="@drawable/button"
-        android:gravity="center_vertical"
-        android:text="고객센터"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:paddingLeft="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="마이페이지"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            android:textStyle="bold" />
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="0.8dp"
-        android:layout_marginTop="364dp"
-        android:background="@drawable/line"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/user_info"
-        app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="0.8dp"
-        android:layout_marginTop="268dp"
-        android:background="@drawable/line"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/user_info"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/data_send"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="220dp"
-        android:background="@drawable/button"
-        android:gravity="center_vertical"
-        android:text="데이터 전송 주기 변경"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:paddingLeft="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:layout_width="0dp"
-        android:layout_height="0.8dp"
-        android:layout_marginTop="268dp"
-        android:background="@drawable/line"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/user_info"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/del_id"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="268dp"
-        android:background="@drawable/button"
-        android:gravity="center_vertical"
-        android:text="회원탈퇴"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:paddingLeft="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:layout_width="0dp"
-        android:layout_height="0.8dp"
-        android:layout_marginTop="316dp"
-        android:background="@drawable/line"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/user_info"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/view3"
-        android:layout_width="0dp"
-        android:layout_height="0.8dp"
-        android:layout_marginTop="220dp"
-        android:background="@drawable/line"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/user_info"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
+    <LinearLayout
         android:id="@+id/user_info"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="124dp"
-        android:background="@drawable/button"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:text="계정정보"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:textStyle="normal"
-        android:paddingLeft="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@color/sub1">
 
-    <View
-        android:id="@+id/view4"
-        android:layout_width="0dp"
-        android:layout_height="0.8dp"
-        android:layout_marginTop="172dp"
-        android:background="@drawable/line"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/user_info"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="14dp"
+            android:background="@drawable/user_profile" />
 
-    <!--    하단바-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
 
-    <Switch
-        android:id="@+id/push_onOff"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="172dp"
-        android:layout_marginEnd="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/push_set"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="김하연"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="18dp"/>
 
-    <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="내 정보 수정하기"
+                android:textColor="@color/gray2"
+                android:textSize="14dp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/detail_icon"
+            android:layout_marginRight="16dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/push_set"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="215dp"
-        android:layout_marginBottom="394dp"
-        android:background="#00FFFFFF"
-        android:text="알림설정"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/push_onOff"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_info"
-        app:layout_constraintVertical_bias="0.22" />
+        android:layout_height="56dp"
+        android:layout_marginTop="18dp"
+        android:background="@color/sub1"
+        android:gravity="center_vertical">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="푸시 알림"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Switch
+            android:id="@+id/push_onOff"
+            android:thumb="@drawable/thumb"
+            android:track="@drawable/track"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="16dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/data_send"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:background="@color/sub1"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="보호자 피드백 주기"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/detail_icon" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/notice_info"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_marginTop="18dp"
+        android:background="@color/sub1"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="공지사항"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/detail_icon" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cus_service"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:background="@color/sub1"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="고객센터"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/detail_icon" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/terms_info"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_marginTop="18dp"
+        android:background="@color/sub1"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="약관 및 개인정보 처리 동의"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/detail_icon" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ver_info"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_marginTop="18dp"
+        android:background="@color/sub1"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="앱 버전"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:text="최신 버전"
+            android:textSize="18dp"
+            android:textColor="@color/gray2"/> />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/del_id"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_marginTop="18dp"
+        android:background="@color/sub1"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="탈퇴하기"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/detail_icon" />
+
+    </LinearLayout>
+
+
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!--    하단바-->
     <LinearLayout
         android:id="@+id/topBar_rectangle"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="600dp"
+        android:layout_height="56dp"
         android:background="@drawable/bar_layout"
-        android:orientation="horizontal"
         android:gravity="center_horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="horizontal">
 
         <!--        홈 버튼(눌렸다는 것을 표현하기 위해 app:tint="#D5D6D6" 설정함)-->
         <ImageButton
             android:id="@+id/homeButton"
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:layout_marginTop="5dp"
             android:layout_marginRight="30dp"
             android:background="#00ff0000"
             android:onClick="homeButtonClicked"
@@ -202,39 +306,36 @@
             android:id="@+id/wishstoreButton"
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:layout_marginTop="5dp"
-            android:onClick="wishstoreButtonClicked"
-            android:background="#00ff0000"
             android:layout_marginRight="30dp"
+            android:background="#00ff0000"
+            android:onClick="wishstoreButtonClicked"
             app:srcCompat="@drawable/store"
             app:tint="#c1c5be"
-            tools:ignore="SpeakableTextPresentCheck"/>
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <!--        게임 버튼-->
         <ImageButton
             android:id="@+id/gameButton"
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:layout_marginTop="5dp"
-            android:onClick="plantgameButtonClicked"
-            android:background="#00ff0000"
             android:layout_marginRight="30dp"
+            android:background="#00ff0000"
+            android:onClick="plantgameButtonClicked"
             app:srcCompat="@drawable/game"
             app:tint="#c1c5be"
-            tools:ignore="SpeakableTextPresentCheck"/>
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <!--        마이페이지 버튼-->
         <ImageButton
             android:id="@+id/mypageButton"
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:layout_marginTop="5dp"
-            android:onClick="mypageButtonClicked"
             android:background="#00ff0000"
+            android:onClick="mypageButtonClicked"
             app:srcCompat="@drawable/person"
             app:tint="#397b18"
-            tools:ignore="SpeakableTextPresentCheck"/>
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

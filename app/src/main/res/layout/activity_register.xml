@@ -24,7 +24,7 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginTop="80dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
@@ -33,23 +33,21 @@
 
         <EditText
             android:id="@+id/signup_username"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
+            android:layout_width="258dp"
+            android:layout_height="match_parent"
             android:hint="이메일"
             android:textSize="18dp"
             android:textColorHint="@color/gray2" />
 
         <Button
             android:id="@+id/username_duplicate"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_width="70dp"
+            android:layout_height="43dp"
             android:text="중복확인"
-            android:textSize="16sp"
             android:textColor="@color/sub1"
+            android:textStyle="bold"
             android:backgroundTint="@color/main"
-            android:background="@drawable/rectangle_button"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="157dp" />
+            android:background="@drawable/round_button2" />
 
     </LinearLayout>
 
