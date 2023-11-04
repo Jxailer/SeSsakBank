@@ -28,8 +28,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:background="#7fac68"
+        android:layout_height="100dp"
+        android:background="#99bd87"
         android:elevation="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -37,10 +37,10 @@
 
         <TextView
             android:id="@+id/targetButton"
-            android:layout_width="378dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="15dp"
             android:background="@drawable/green_button"
             android:backgroundTint="#ffffff"
             android:drawableLeft="@drawable/warning"
@@ -61,9 +61,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/targetChangeBox"
         android:layout_width="match_parent"
-        android:layout_height="380dp"
+        android:layout_height="340dp"
         android:layout_gravity="center"
-        android:background="#eeeeee"
+        android:background="#faf9f7"
         android:orientation="vertical"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +74,8 @@
             android:id="@+id/myTarget"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="20dp"
             android:text="나의 목표"
             android:textColor="@color/black"
             android:textSize="30dp"
@@ -83,27 +84,25 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="26dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/myTarget">
 
             <!--목표 작성하는 텍스트 박스-->
             <EditText
                 android:id="@+id/targetBox"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:background="#B9CDA8"
-                android:drawableLeft="@drawable/baseline_check_24"
                 android:drawablePadding="8dp"
                 android:hint="용돈사용 목표를 적어주세요"
-                android:padding="8dp"
+                android:padding="10dp"
                 android:privateImeOptions="defaultInputmode=korean"
                 android:singleLine="true"
                 android:textColor="@color/black"
-                android:textColorHint="#373737"
+                android:textColorHint="#c1c5be"
                 android:textStyle="normal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -131,31 +130,34 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
-            android:id="@+id/saveButton"
-            android:layout_width="wrap_content"
+            android:id="@+id/cancelButton"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="68dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/round_button"
-            android:backgroundTint="#3B8019"
-            android:text="저장"
+            android:backgroundTint="#dfe1de"
+            android:text="취소"
+            android:textColor="@color/black"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/cancelButton"
-            android:layout_width="wrap_content"
+            android:id="@+id/saveButton"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/round_button"
-            android:backgroundTint="#CDCDCD"
-            android:text="취소"
+            android:backgroundTint="#397b18"
+            android:text="저장"
+            android:textColor="#FFFFFF"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.485"
-            app:layout_constraintStart_toEndOf="@+id/saveButton" />
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toEndOf="@+id/cancelButton" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -170,29 +172,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="100dp"
             android:background="#faf9f7"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="parent">
 <!--    월 정보, 도장, 통계 버튼 linearLayout-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <Button
                 android:id="@+id/month"
                 android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_height="match_parent"
                 android:background="#00ff0000"
                 android:text="5월"
-                android:textColor="#5F6060"
-                android:textSize="30dp"
-                android:gravity="left"
+                android:textColor="@color/black"
+                android:textSize="28dp"
+                android:gravity="center"
                 android:textStyle="bold"
                 android:onClick="monthButtonClicked"
                 app:layout_constraintStart_toStartOf="parent"
@@ -200,9 +202,9 @@
 
                 <ImageButton
                     android:id="@+id/stamp"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="265dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="200dp"
                     android:onClick="stampButtonClicked"
                     android:background="#00ff0000"
                     app:layout_constraintStart_toEndOf="@+id/month"
@@ -213,8 +215,8 @@
 
                 <ImageButton
                     android:id="@+id/statistics"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:onClick="statisticsButtonClicked"
                     android:background="#00ff0000"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -228,9 +230,11 @@
             <!--            달력 위젯-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Calendar"
-                android:layout_marginTop="25dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/info">
 
@@ -239,124 +243,125 @@
                     android:id="@+id/week1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <!--                    1일-->
+                    <!--                    1일차 아이콘 linear layout-->
                     <Button
                         android:id="@+id/day1"
-                        android:layout_width="54dp"
+                        android:layout_width="47dp"
                         android:layout_height="80dp"
-                        android:text="1"
+                        android:background="@drawable/round_button2"
                         android:gravity="top|center"
-                        android:paddingTop="20dp"
-                        android:layout_marginLeft="16dp"
-                        android:background="#00ff0000"
                         android:onClick="dayButtonClicked"
+                        android:paddingTop="20dp"
+                        android:text="1"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-                    <!--                    1일차 아이콘 linear layout-->
-                    <LinearLayout
-                        android:id="@+id/day1Icon"
-                        android:layout_width="54dp"
-                        android:layout_height="20dp"
-                        android:layout_marginTop="15dp"
-                        android:paddingLeft="2dp"
-                        android:paddingRight="2dp"
-                        android:orientation="horizontal"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/day1"
-                        app:layout_constraintStart_toStartOf="@+id/day1"
-                        app:layout_constraintTop_toTopOf="@+id/day1">
-
-                        <ImageView
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:background="#00ff0000"
-                            android:visibility="visible"
-                            app:srcCompat="@drawable/bar_chart_24" />
-
-                        <ImageView
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:background="#00ff0000"
-                            android:visibility="visible"
-                            app:srcCompat="@drawable/bar_chart_24" />
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:background="#00ff0000"
-                            android:visibility="visible"
-                            app:srcCompat="@drawable/bar_chart_24" />
-                    </LinearLayout>
 
                     <!--                    2일-->
+
+                    <LinearLayout
+                        android:id="@+id/day1Icon"
+                        android:layout_width="47dp"
+                        android:layout_height="20dp"
+                        android:background="#397b18"
+                        android:orientation="horizontal"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/day1"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/day1"
+                        app:layout_constraintTop_toTopOf="@+id/day1"
+                        app:layout_constraintVertical_bias="0.595">
+
+                        <!--                        <ImageView-->
+                        <!--                            android:layout_width="18dp"-->
+                        <!--                            android:layout_height="18dp"-->
+                        <!--                            android:background="#00ff0000"-->
+                        <!--                            android:visibility="visible"-->
+                        <!--                            app:srcCompat="@drawable/bar_chart_24" />-->
+
+                        <!--                        <ImageView-->
+                        <!--                            android:layout_width="18dp"-->
+                        <!--                            android:layout_height="18dp"-->
+                        <!--                            android:background="#00ff0000"-->
+                        <!--                            android:visibility="visible"-->
+                        <!--                            app:srcCompat="@drawable/bar_chart_24" />-->
+
+                        <!--                        <ImageView-->
+                        <!--                            android:layout_width="20dp"-->
+                        <!--                            android:layout_height="20dp"-->
+                        <!--                            android:background="#00ff0000"-->
+                        <!--                            android:visibility="visible"-->
+                        <!--                            app:srcCompat="@drawable/bar_chart_24" />-->
+                    </LinearLayout>
+
                     <Button
                         android:id="@+id/day2"
-                        android:layout_width="52dp"
+                        android:layout_width="47dp"
                         android:layout_height="80dp"
                         android:gravity="top|center"
                         android:paddingTop="20dip"
                         android:text="2"
-                        android:background="#00ff0000"
+                        android:background="@drawable/round_button2"
                         app:layout_constraintStart_toEndOf="@+id/day1"
                         app:layout_constraintTop_toTopOf="parent" />
                     <!--                    3일-->
                     <Button
                         android:id="@+id/day3"
-                        android:layout_width="54dp"
+                        android:layout_width="47dp"
                         android:layout_height="80dp"
                         android:text="3"
                         android:gravity="top|center"
                         android:paddingTop="20dip"
-                        android:background="#00ff0000"
+                        android:background="@drawable/round_button2"
                         app:layout_constraintStart_toEndOf="@+id/day2"
                         app:layout_constraintTop_toTopOf="parent" />
                     <!--                    4일-->
                     <Button
                         android:id="@+id/day4"
-                        android:layout_width="54dp"
+                        android:layout_width="47dp"
                         android:layout_height="80dp"
                         android:text="4"
                         android:gravity="top|center"
                         android:paddingTop="20dip"
-                        android:background="#00ff0000"
+                        android:background="@drawable/round_button2"
                         app:layout_constraintStart_toEndOf="@+id/day3"
                         app:layout_constraintTop_toTopOf="parent" />
                     <!--                    5일-->
                     <Button
                         android:id="@+id/day5"
-                        android:layout_width="54dp"
+                        android:layout_width="47dp"
                         android:layout_height="80dp"
                         android:text="5"
                         android:gravity="top|center"
                         android:paddingTop="20dip"
-                        android:background="#00ff0000"
+                        android:background="@drawable/round_button2"
                         app:layout_constraintStart_toEndOf="@+id/day4"
                         app:layout_constraintTop_toTopOf="parent" />
                     <!--                    6일-->
                     <Button
                         android:id="@+id/day6"
-                        android:layout_width="54dp"
+                        android:layout_width="47dp"
                         android:layout_height="80dp"
                         android:text="6"
                         android:gravity="top|center"
                         android:paddingTop="20dip"
-                        android:background="#00ff0000"
+                        android:background="@drawable/round_button2"
                         app:layout_constraintStart_toEndOf="@+id/day5"
                         app:layout_constraintTop_toTopOf="parent" />
                     <!--                    7일-->
                     <Button
                         android:id="@+id/day7"
-                        android:layout_width="54dp"
+                        android:layout_width="47dp"
                         android:layout_height="80dp"
                         android:text="7"
                         android:gravity="top|center"
                         android:paddingTop="20dip"
-                        android:background="#00ff0000"
+                        android:background="@drawable/round_button2"
                         app:layout_constraintStart_toEndOf="@+id/day6"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -377,9 +382,10 @@
                             android:id="@+id/totalIncome"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="210dp"
+                            android:layout_marginRight="180dp"
                             android:padding="1dp"
                             android:text="+10,000"
+                            android:textStyle="bold"
                             android:textColor="#9D5A4D"
                             android:textSize="16dp"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -389,9 +395,10 @@
                             android:id="@+id/totalSpend"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="30dp"
+                            android:layout_marginRight="20dp"
                             android:padding="1dp"
                             android:text="-5,000"
+                            android:textStyle="bold"
                             android:textColor="#ffffff"
                             android:textSize="16dp"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -410,71 +417,73 @@
                 android:id="@+id/CalendarRecord"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="20dp"
                 android:background="#faf9f7"
-                android:visibility="invisible"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/Calendar"
                 app:tint="#21480e">
                 <!--            날짜 텍스트뷰-->
-
+<!--                android:visibility="invisible"-->
                 <TextView
                     android:id="@+id/time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="10dp"
                     android:text="2023년 5월 1일"
                     android:textSize="20dp"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/recordList"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="10dp"
-                    android:text=" 123"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/buttonLayout" />
+<!--                <TextView-->
+<!--                    android:id="@+id/recordList"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginHorizontal="16dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:text=" 123"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/buttonLayout" />-->
 
-                <TextView
-                    android:id="@+id/moneyAmountRecord"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="26dp"
-                    android:text=" 123"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/buttonLayout" />
+<!--                <TextView-->
+<!--                    android:id="@+id/moneyAmountRecord"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_marginRight="26dp"-->
+<!--                    android:text=" 123"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/buttonLayout" />-->
 
-                <!--용돈 기입 내역을 띄워주는 리싸이클러 뷰-->
-                <!--            <androidx.recyclerview.widget.RecyclerView-->
-                <!--                android:id="@+id/recyclerView"-->
-                <!--                android:layout_width="0dp"-->
-                <!--                android:layout_height="641dp"-->
-                <!--                android:layout_marginLeft="10dp"-->
-                <!--                android:layout_marginTop="10dp"-->
-                <!--                app:layout_constraintEnd_toEndOf="parent"-->
-                <!--                app:layout_constraintStart_toStartOf="parent"-->
-                <!--                app:layout_constraintTop_toBottomOf="@+id/recordList" />-->
+<!--                용돈 기입 내역을 띄워주는 리싸이클러 뷰-->
+<!--                            <androidx.recyclerview.widget.RecyclerView-->
+<!--                                android:id="@+id/recyclerView"-->
+<!--                                android:layout_width="0dp"-->
+<!--                                android:layout_height="641dp"-->
+<!--                                android:layout_marginLeft="10dp"-->
+<!--                                android:layout_marginTop="10dp"-->
+<!--                                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                                app:layout_constraintStart_toStartOf="parent"-->
+<!--                                app:layout_constraintTop_toBottomOf="@+id/recordList" />-->
 
                 <LinearLayout
                     android:id="@+id/buttonLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/time">
 
                     <Button
                         android:id="@+id/recordCreateButton_spent"
-                        android:layout_width="188dp"
+                        android:layout_width="157dp"
                         android:layout_height="40dp"
+                        android:layout_marginRight="10dp"
                         android:gravity="center"
                         android:background="@drawable/round_button"
                         android:backgroundTint="#dfe1de"
@@ -484,7 +493,7 @@
 
                     <Button
                         android:id="@+id/recordCreateButton_income"
-                        android:layout_width="188dp"
+                        android:layout_width="157dp"
                         android:layout_height="40dp"
                         android:layout_marginLeft="4dp"
                         android:background="@drawable/round_button"
@@ -498,10 +507,10 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
                     android:layout_width="0dp"
-                    android:layout_height="641dp"
-                    android:layout_marginStart="18dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recordList" />
+                    app:layout_constraintTop_toBottomOf="@+id/buttonLayout" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -297,7 +297,7 @@
             android:layout_marginRight="30dp"
             android:background="#00ff0000"
             android:onClick="homeButtonClicked"
-            app:srcCompat="@drawable/home"
+            app:srcCompat="@drawable/calendar"
             app:tint="#c1c5be"
             tools:ignore="SpeakableTextPresentCheck" />
 
