@@ -54,7 +54,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardVH>{
         //제목
         holder.titleText.setText(boardwrite.getUser_title());
 
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+        holder.boardInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -97,7 +97,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardVH>{
 
         CardView cardView;
 
-        LinearLayout commenBtn;
+        LinearLayout commenBtn, boardInfo;
 
         public BoardVH(@NonNull View itemView) {
             super(itemView);
@@ -107,6 +107,8 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardVH>{
             writeUser = itemView.findViewById(R.id.user_nickname);
 
             cardView = itemView.findViewById(R.id.board_card_view);
+
+            boardInfo = itemView.findViewById(R.id.board_info);
 
             commenBtn = itemView.findViewById(R.id.comment_btn);
 

@@ -1,5 +1,6 @@
 package com.example.adult.post;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,7 @@ public class BoardWirteMain extends AppCompatActivity implements View.OnClickLis
     Button listBtn;
     Intent intent;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +30,7 @@ public class BoardWirteMain extends AppCompatActivity implements View.OnClickLis
         EditText write_edit = findViewById(R.id.write_edit);
         Button addBtn = findViewById(R.id.writeAdd_btn);
 
-        listBtn = (Button) findViewById(R.id.writeList_btn);
+        listBtn = findViewById(R.id.writeList_btn1);
         listBtn.setOnClickListener(this);
 
 

@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/board_card_view"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:backgroundTint="@color/sub1"
-    app:cardCornerRadius="5dp">
+    android:layout_height="140dp"
+    android:backgroundTint="#F7F7F7"
+    app:cardCornerRadius="5dp"
+    android:layout_marginTop="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,44 +15,50 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/board_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp">
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/user_nickname"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="닉네임"
-                android:textSize="18dp"
-                android:textColor="@color/black"/>
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp">
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+                <TextView
+                    android:id="@+id/user_nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="닉네임"
+                    android:textSize="18dp"
+                    android:textColor="@color/black"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/write_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="시간"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/write_time"
+                android:id="@+id/title_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="시간"
-                android:textSize="14sp" />
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:text="글 내용" />
 
         </LinearLayout>
-
-
-
-        <TextView
-            android:id="@+id/title_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:textSize="16sp"
-            android:text="글 내용" />
 
         <View
             android:layout_width="match_parent"
@@ -73,11 +80,10 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
                     android:layout_marginRight="5dp"
-                    android:background="@drawable/ic_like"
-                    android:backgroundTint="@color/gray2"/>
+                    android:background="@drawable/like_button" />
 
                 <TextView
                     android:id="@+id/like_cnt"

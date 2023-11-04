@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -44,7 +45,7 @@ public class BoardListActivity extends AppCompatActivity implements View.OnClick
 
     ArrayList<BoardWrite> list = new ArrayList<>();
 
-    FloatingActionButton boardWriteBtn;
+    ImageView boardWriteBtn;
 
 
     @Override
@@ -52,7 +53,7 @@ public class BoardListActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board_list);
 
-        boardWriteBtn = (FloatingActionButton) findViewById(R.id.board_write_btn);
+        boardWriteBtn = findViewById(R.id.board_write_btn);
         boardWriteBtn.setOnClickListener(this);
 
         recyclerView = findViewById(R.id.rv);

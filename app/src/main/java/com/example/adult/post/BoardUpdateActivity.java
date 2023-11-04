@@ -3,6 +3,7 @@ package com.example.adult.post;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,12 +17,14 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.HashMap;
 
-public class BoardUpdateActivity extends AppCompatActivity {
+public class BoardUpdateActivity extends AppCompatActivity implements View.OnClickListener{
 
     EditText updateTitleEdit, updateWriteEdit;
 
     String sKey, sTitle, sWrite;
+    Button listBtn;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +34,9 @@ public class BoardUpdateActivity extends AppCompatActivity {
 
         updateTitleEdit = findViewById(R.id.update_title_edit);
         updateWriteEdit = findViewById(R.id.update_write_edit);
+
+        listBtn = findViewById(R.id.writeList_btn2);
+        listBtn.setOnClickListener(this);
 
         getAndSetIntentData();
 
@@ -85,5 +91,11 @@ public class BoardUpdateActivity extends AppCompatActivity {
             updateTitleEdit.setText(sTitle);
             updateWriteEdit.setText(sWrite);
         }
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(this, BoardListActivity.class);  //BoardListActivity
+        startActivity(intent);
     }
 }
