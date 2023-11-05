@@ -113,8 +113,8 @@ public class adult_LoginActivity extends AppCompatActivity {
         String adult_nickname = loginNickname.getText().toString();
         String adult_name = loginName.getText().toString();
 
-        HelperClass helperClass = new HelperClass(adult_nickname, adult_name);
-        reference.child(childID).setValue(helperClass);
+        HelperClass adultHelperClass = new HelperClass(adult_nickname, adult_name);
+        reference.child(childID).setValue(adultHelperClass);
 
         Intent intent = new Intent(adult_LoginActivity.this, HomeActivity.class);
         startActivity(intent);
