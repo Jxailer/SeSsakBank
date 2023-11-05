@@ -11,12 +11,17 @@
     <color name="green">#769787</color>
     <color name="defaultgray">#c7c7c7</color>
     <color name="dialogColor">#DDDDDD</color>
-
+<!--어린이 Color-->
     <color name="main">#397b18</color>
     <color name="sub1">#faf9f7</color>
     <color name="sub2">#99bd87</color>
     <color name="gray1">#dfe1de</color>
     <color name="gray2">#c1c5be</color>
+<!--어른 Color-->
+    <color name="a_main">#769787</color>
+    <color name="a_sub1">#F7F7F7</color>
+    <color name="a_sub2">#F0E7D7</color>
+    <color name="a_dark">#3A3E45</color>
 
     <style name="DialogTheme" parent="@style/Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@color/dialogColor</item>
