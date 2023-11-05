@@ -127,12 +127,9 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="180dp"
         android:background="@drawable/round_button"
-        android:backgroundTint="@color/defaultgray"
-        android:onClick="onButton1Clicked"
         android:text="변경하기"
-        android:textColor="@color/black"
+        android:textColor="@color/sub1"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:enabled="false" />
+        android:textStyle="bold" />
 
 </LinearLayout>

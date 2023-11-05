@@ -49,7 +49,6 @@
                 android:id="@+id/profile_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="김하연"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="18dp"/>
@@ -79,7 +78,7 @@
         android:id="@+id/push_set"
         android:layout_width="wrap_content"
         android:layout_height="56dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="10dp"
         android:background="@color/sub1"
         android:gravity="center_vertical">
 
@@ -136,7 +135,7 @@
         android:id="@+id/notice_info"
         android:layout_width="wrap_content"
         android:layout_height="56dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="10dp"
         android:background="@color/sub1"
         android:gravity="center_vertical">
 
@@ -191,7 +190,7 @@
         android:id="@+id/terms_info"
         android:layout_width="wrap_content"
         android:layout_height="56dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="10dp"
         android:background="@color/sub1"
         android:gravity="center_vertical">
 
@@ -219,7 +218,7 @@
         android:id="@+id/ver_info"
         android:layout_width="wrap_content"
         android:layout_height="56dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="10dp"
         android:background="@color/sub1"
         android:gravity="center_vertical">
 
@@ -249,7 +248,7 @@
         android:id="@+id/del_id"
         android:layout_width="wrap_content"
         android:layout_height="56dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="10dp"
         android:background="@color/sub1"
         android:gravity="center_vertical">
 

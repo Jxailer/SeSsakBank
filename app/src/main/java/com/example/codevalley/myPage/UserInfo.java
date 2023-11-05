@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -29,7 +31,7 @@ public class UserInfo extends AppCompatActivity {
 
 
 
-        Button imageButton = (Button) findViewById(R.id.pwd_update);
+        LinearLayout imageButton = (LinearLayout) findViewById(R.id.pwd_update);
         imageButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -39,7 +41,7 @@ public class UserInfo extends AppCompatActivity {
             }
         });
 
-        Button imageButton2 = (Button) findViewById(R.id.ver_info);
+        LinearLayout imageButton2 = (LinearLayout) findViewById(R.id.ver_info);
         imageButton2.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -49,7 +51,7 @@ public class UserInfo extends AppCompatActivity {
             }
         });
 
-        Button imageButton3 = (Button) findViewById(R.id.logout);
+        LinearLayout imageButton3 = (LinearLayout) findViewById(R.id.logout);
         imageButton3.setOnClickListener(new View.OnClickListener() {
 
             @Override

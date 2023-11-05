@@ -39,6 +39,9 @@ public class HelperClass {
     public String getAdult_name() { return adult_name; }
     public void setAdult_name(String adult_name) { this.adult_name = adult_name; }
 
+    public String getAdult_nickname(){ return adult_nickname; }
+    public void setAdult_nickname(String adult_nickname) { this.adult_nickname = adult_nickname; }
+
     public Integer getFertilizer() { return fertilizer; }
     public void setFertilizer(Integer fertilizer) { this.fertilizer = fertilizer; }
 
