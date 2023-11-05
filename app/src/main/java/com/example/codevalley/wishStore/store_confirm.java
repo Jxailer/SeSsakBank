@@ -23,8 +23,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class store_confirm extends AppCompatActivity {
-    DatabaseReference childRef = FirebaseDatabase.getInstance().getReference("users").child("alsdk@naver,com");
-    DatabaseReference adultRef = FirebaseDatabase.getInstance().getReference("wishManage").child("alsdk@naver,com");
+    DatabaseReference childRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
+    DatabaseReference adultRef = FirebaseDatabase.getInstance().getReference("wishManage").child(userID);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

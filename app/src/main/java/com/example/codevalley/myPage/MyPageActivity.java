@@ -39,7 +39,7 @@ public class MyPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mypage);
 
         profileName = findViewById(R.id.profile_name);
-        DatabaseReference profileRef = FirebaseDatabase.getInstance().getReference("users").child("33@naver,com");
+        DatabaseReference profileRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
 
         profileRef.addValueEventListener(new ValueEventListener() {
             @Override

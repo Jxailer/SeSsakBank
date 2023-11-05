@@ -3,9 +3,12 @@ package com.example.adult.post;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -37,6 +40,9 @@ public class commentActivity extends AppCompatActivity {
     TextView commentText;
     String sKey, sTitle, sText;
 
+    Button writeListBtn;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +53,16 @@ public class commentActivity extends AppCompatActivity {
 
         commentTitle = findViewById(R.id.comment_title);
         commentText = findViewById(R.id.comment_text);
+
+        writeListBtn = findViewById(R.id.writeList_btn2);
+
+        writeListBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goListIntent = new Intent(commentActivity.this, BoardListActivity.class);
+                startActivity(goListIntent);
+            }
+        });
 
         getAndSetIntentData();
 

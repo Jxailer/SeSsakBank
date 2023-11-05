@@ -65,15 +65,16 @@
         android:id="@+id/login_password"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="170dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="비밀번호를 입력하세요."
         android:inputType="textPassword"
         android:textColorHint="@color/gray2"
         android:textSize="18dp"
         app:layout_constraintBottom_toTopOf="@+id/login_button"
+        app:layout_constraintTop_toBottomOf="@+id/login_username"
+        app:layout_constraintVertical_bias="0.009"
         tools:layout_editor_absoluteX="16dp" />
 
     <TextView
@@ -92,7 +93,7 @@
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="42dp"
+        android:layout_marginEnd="25dp"
         android:backgroundTint="@color/sub1"
         android:text="회원가입"
         android:textColor="@color/main"

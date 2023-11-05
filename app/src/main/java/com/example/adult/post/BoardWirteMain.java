@@ -50,8 +50,7 @@ public class BoardWirteMain extends AppCompatActivity implements View.OnClickLis
                 dao.add(boardWrite).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        Toast.makeText(getApplicationContext(), "게시완료",
-                                Toast.LENGTH_SHORT).show();
+                        goList();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -80,6 +79,11 @@ public class BoardWirteMain extends AppCompatActivity implements View.OnClickLis
 
 
     }//onCreate
+
+    public void goList(){
+        Intent listIntent = new Intent(this, BoardListActivity.class);
+        startActivity(listIntent);
+    }
 
     //모든 게시글 목록(리스트) 버튼
     @Override

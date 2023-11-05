@@ -46,9 +46,9 @@ public class store_main extends AppCompatActivity implements View.OnClickListene
     RecyclerView wishRcv;
     RecyclerView.Adapter wishAdt;
     ArrayList<DataClass> dataList;
-    DatabaseReference wishRef = FirebaseDatabase.getInstance().getReference("wishManage").child("alsdk@naver,com");
-    DatabaseReference itemRef = FirebaseDatabase.getInstance().getReference("game").child("alsdk@naver,com").child("item");
-    DatabaseReference stampRef = FirebaseDatabase.getInstance().getReference("users").child("alsdk@naver,com");
+    DatabaseReference wishRef = FirebaseDatabase.getInstance().getReference("wishManage").child(userID);
+    DatabaseReference itemRef = FirebaseDatabase.getInstance().getReference("game").child(userID).child("item");
+    DatabaseReference stampRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
 
     private int gameCheck; // gamestart1번만 실행하기 위해 옆에 이 코드 추가
 

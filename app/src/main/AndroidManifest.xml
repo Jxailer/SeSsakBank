@@ -135,7 +135,7 @@
         <activity
             android:name="com.example.adult.post.commentActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan"
+            android:windowSoftInputMode="adjustResize"
             android:parentActivityName="com.example.adult.post.BoardListActivity"/>
         <activity
             android:name="com.example.adult.post.BoardUpdateActivity"

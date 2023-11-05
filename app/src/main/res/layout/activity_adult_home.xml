@@ -11,10 +11,9 @@
         android:id="@+id/topBar_rectangle"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
         android:background="@drawable/bar_layout"
-        android:gravity="center_horizontal" >
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <!--        홈 버튼(눌렸다는 것을 표현하기 위해 app:tint="#D5D6D6" 설정함)-->
         <ImageButton

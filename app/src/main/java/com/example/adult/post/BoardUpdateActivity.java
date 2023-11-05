@@ -35,7 +35,7 @@ public class BoardUpdateActivity extends AppCompatActivity implements View.OnCli
         updateTitleEdit = findViewById(R.id.update_title_edit);
         updateWriteEdit = findViewById(R.id.update_write_edit);
 
-        listBtn = findViewById(R.id.writeList_btn2);
+        listBtn = findViewById(R.id.writeList_btn);
         listBtn.setOnClickListener(this);
 
         getAndSetIntentData();
