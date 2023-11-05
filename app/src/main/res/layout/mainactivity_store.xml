@@ -140,7 +140,7 @@
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:layout_marginTop="16dp"
-                    android:src="@drawable/icons8_water"
+                    android:src="@drawable/water_icon"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view" />
                 <!--햇살-->
@@ -149,7 +149,7 @@
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:layout_marginTop="16dp"
-                    android:src="@drawable/icons8_sunshine"
+                    android:src="@drawable/sun_icon"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view" />
@@ -159,7 +159,7 @@
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:layout_marginTop="16dp"
-                    android:src="@drawable/icons8_fertilizer"
+                    android:src="@drawable/fer_icon"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view" />
 
