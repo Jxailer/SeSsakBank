@@ -61,7 +61,7 @@
             android:progressBackgroundTint="#FFFFFF"
             android:progressBackgroundTintMode="src_over"
             android:progressDrawable="@drawable/progressbar_custom"
-            android:progressTint="#C62809" />
+            android:progressTint="#be3a20" />
         <!--        android:progress="20"  프로그레스바 시작을 20으로 하고 싶다면 이 코드 넣으면 됨.-->
 
         <TextView
