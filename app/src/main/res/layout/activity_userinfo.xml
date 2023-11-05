@@ -1,76 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#EFEFEF"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/sub1"
     tools:context=".myPage.MyPageActivity">
 
-    <Button
-        android:id="@+id/ver_info"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="212dp"
-        android:background="@drawable/button"
-        android:gravity="center_vertical"
-        android:text="버전정보"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:paddingLeft="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/line7"
-        android:layout_width="0dp"
-        android:layout_height="0.8dp"
-        android:layout_marginTop="164dp"
-        android:background="@drawable/line"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/user_info"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/pwd_update"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="164dp"
-        android:background="@drawable/button"
-        android:gravity="center_vertical"
-        android:text="비밀번호 변경"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:paddingLeft="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/line8"
-        android:layout_width="0dp"
-        android:layout_height="0.8dp"
-        android:layout_marginTop="212dp"
-        android:background="@drawable/line"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/user_info"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="UnknownIdInLayout" />
-
-    <Button
+    <LinearLayout
         android:id="@+id/logout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="116dp"
-        android:background="@drawable/button"
-        android:gravity="center_vertical"
-        android:text="로그아웃"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:paddingLeft="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="56dp"
+        android:layout_marginTop="40dp"
+        android:background="@color/sub1"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="로그아웃"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/detail_icon" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/pwd_update"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/sub1"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="비밀번호 변경"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/detail_icon" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ver_info"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="18dp"
+        android:background="@color/sub1"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="버전정보"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/detail_icon" />
+
+    </LinearLayout>
+
+<!--    <Button-->
+<!--        android:id="@+id/ver_info"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginTop="212dp"-->
+<!--        android:background="@drawable/button"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:text="버전정보"-->
+<!--        android:textColor="@android:color/black"-->
+<!--        android:textSize="16sp"-->
+<!--        android:paddingLeft="16dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <View-->
+<!--        android:id="@+id/line7"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0.8dp"-->
+<!--        android:layout_marginTop="164dp"-->
+<!--        android:background="@drawable/line"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/user_info"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/pwd_update"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginTop="164dp"-->
+<!--        android:background="@drawable/button"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:text="비밀번호 변경"-->
+<!--        android:textColor="@android:color/black"-->
+<!--        android:textSize="16sp"-->
+<!--        android:paddingLeft="16dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <View-->
+<!--        android:id="@+id/line8"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0.8dp"-->
+<!--        android:layout_marginTop="212dp"-->
+<!--        android:background="@drawable/line"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/user_info"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        tools:ignore="UnknownIdInLayout" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/logout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginTop="116dp"-->
+<!--        android:background="@drawable/button"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:text="로그아웃"-->
+<!--        android:textColor="@android:color/black"-->
+<!--        android:textSize="16sp"-->
+<!--        android:paddingLeft="16dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

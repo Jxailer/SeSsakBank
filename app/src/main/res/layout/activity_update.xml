@@ -1,85 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#769787"
     tools:context="com.example.wishShop.UpdateActivity">
 
-    <androidx.cardview.widget.CardView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp">
+        android:layout_height="70dp"
+        android:background="@color/a_main"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="소원권 수정"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/radius_layout">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal"
-
-            android:padding="20dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="20dp"
-                >
-
-                <ImageView
-                    android:id="@+id/back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/baseline_arrow_back_ios_24" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/inter_bold"
-                    android:text="소원권 수정"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
-            </LinearLayout>
+            android:padding="10dp" >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                >
+                android:background="@color/a_sub1">
 
                 <TextView
                     android:layout_width="160dp"
                     android:layout_height="60dp"
-                    android:layout_marginLeft="25dp"
                     android:layout_weight="1"
-                    android:background="#FFFFFF"
                     android:fontFamily="@font/inter_bold"
                     android:gravity="start|center_vertical"
-                    android:hint="소원제목"
-                    android:maxLength="13"
-                    android:maxLines="1"
                     android:text="소원권 : "
                     android:textColor="#000000"
-                    android:textColorHint="#A5A5A5"
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/updateTitle"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_marginLeft="5dp"
+                    android:padding="5dp"
                     android:layout_weight="1"
-                    android:background="#FFFFFF"
                     android:fontFamily="@font/inter_bold"
                     android:gravity="start|center_vertical"
                     android:hint="소원제목"
-                    android:textColor="#000000"
-                    android:textColorHint="#A5A5A5"
+                    android:textColor="@color/black"
+                    android:textColorHint="#c1c5be"
                     android:textSize="20sp"
-                    android:maxLength="13"
+                    android:maxLength="15"
                     android:maxLines="1" />
 
             </LinearLayout>
@@ -87,42 +78,42 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#BFBFBF"/>
+                android:background="#c1c5be"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:fontFamily="@font/inter"
-                android:text="필요 도장 개수"
-                android:textAlignment="center"
-                android:textColor="#606060"
-                android:textSize="15sp" />
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="40dp"-->
+<!--                android:fontFamily="@font/inter"-->
+<!--                android:text="필요 도장 개수"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textColor="#606060"-->
+<!--                android:textSize="15sp" />-->
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:gravity="center">
+                android:layout_marginTop="20dp" >
 
                 <EditText
                     android:id="@+id/updateStamp"
-                    android:layout_width="65dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:background="@drawable/green_border"
-                    android:backgroundTint="#F0E7D7"
+                    android:background="@color/a_sub1"
                     android:fontFamily="@font/inter_bold"
-                    android:padding="16dp"
+                    android:padding="5dp"
+                    android:hint="도장개수 ex: 5"
+                    android:textColorHint="#c1c5be"
                     android:textAlignment="center"
-                    android:textColor="#3A3E45"
-                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
                     android:inputType="number"
                     android:digits="0123456789" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
                     android:fontFamily="@font/inter_bold"
                     android:gravity="center"
@@ -134,55 +125,62 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="40dp"
+                android:padding="5dp"
                 android:fontFamily="@font/inter"
-                android:text="도장은 최소 1개부터 최대 150개까지 가능합니다."
-                android:textAlignment="center"
-                android:textColor="#95606060"
+                android:text="(도장은 최소 1개부터 최대 150개까지 가능합니다.)"
+                android:textColor="#c1c5be"
                 android:textSize="12sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="#c1c5be"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
+                android:padding="5dp"
                 android:fontFamily="@font/inter"
-                android:text="소원권 설명"
-                android:textAlignment="center"
-                android:textColor="#606060"
+                android:text="소원권에 대한 설명을 적어주세요"
+                android:textColor="@color/black"
                 android:textSize="15sp" />
 
             <EditText
                 android:id="@+id/updateDesc"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/green_border"
-                android:backgroundTint="#F0E7D7"
+                android:layout_height="230dp"
+                android:padding="5dp"
+                android:background="@color/a_sub1"
                 android:fontFamily="@font/inter"
-                android:gravity="start|center_vertical"
-                android:padding="16dp"
-                android:textColor="#3A3E45"
+                android:gravity="start"
+                android:textColor="@color/black"
                 android:textSize="16sp"
-                android:maxLength="100" />
+                android:hint="아이가 받을 수 있는 소원권의 자세한 정보와 설명을 적어주세요!"
+                android:textColorHint="#c1c5be" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#c1c5be"/>
 
             <Button
                 android:id="@+id/updateButton"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="60dp"
-                android:background="@drawable/green_border"
-                android:backgroundTint="#769787"
+                android:layout_height="56dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/round_button4"
                 android:fontFamily="@font/inter_bold"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:outlineProvider="none"
                 android:text="완료"
-                android:textColor="#F6F6F6"
-                android:textSize="20sp"
-                app:cornerRadius="10dp" />
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
 
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </FrameLayout>
 
-</ScrollView>
+</LinearLayout>

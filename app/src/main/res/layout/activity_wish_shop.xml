@@ -1,79 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#769787"
     tools:context="com.example.wishShop.WishShopActivity">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/inter_bold"
-        android:text="소원권 관리 페이지"
-        android:textColor="#3A3E45"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.257"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.07999998" />
-
-    <Button
-        android:id="@+id/btn_add"
-        android:layout_width="75dp"
-        android:layout_height="38dp"
-        android:background="#00FFFFFF"
-        android:fontFamily="@font/inter_bold"
-        android:text="추가"
-        android:textColor="#769787"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.854"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.078" />
-
-    <View
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#BFBFBF"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.147"
-        tools:layout_editor_absoluteX="-16dp" />
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
+        android:background="#F7F7F7">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            android:text="소원권 관리 페이지"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="90dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/round_button4"
+            android:text="추가"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:id="@+id/recyclerView"
         android:scrollbars="vertical"
-        android:layout_marginTop="120dp"/>
+        android:layout_marginTop="80dp"/>
 
+    <!--    하단바-->
     <LinearLayout
         android:id="@+id/topBar_rectangle"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="56dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="600dp"
+        android:layout_alignParentBottom="true"
         android:background="@drawable/bar_layout"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:gravity="center_horizontal">
 
         <!--        홈 버튼(눌렸다는 것을 표현하기 위해 app:tint="#D5D6D6" 설정함)-->
         <ImageButton
             android:id="@+id/homeBtn"
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:layout_marginTop="5dp"
             android:layout_marginRight="30dp"
             android:background="#00ff0000"
             android:onClick="homeButtonClicked"
@@ -86,39 +82,36 @@
             android:id="@+id/wishShopBtn"
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:layout_marginTop="5dp"
-            android:onClick="wishShopButtonClicked"
-            android:background="#00ff0000"
             android:layout_marginRight="30dp"
+            android:background="#00ff0000"
+            android:onClick="wishShopButtonClicked"
             app:srcCompat="@drawable/store"
-            app:tint="#397b18"
-            tools:ignore="SpeakableTextPresentCheck"/>
+            app:tint="#769787"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <!--        게시판 버튼-->
         <ImageButton
             android:id="@+id/communityBtn"
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:layout_marginTop="5dp"
-            android:onClick="communityButtonClicked"
-            android:background="#00ff0000"
             android:layout_marginRight="30dp"
+            android:background="#00ff0000"
+            android:onClick="communityButtonClicked"
             app:srcCompat="@drawable/community"
             app:tint="#c1c5be"
-            tools:ignore="SpeakableTextPresentCheck"/>
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <!--        마이페이지 버튼-->
         <ImageButton
             android:id="@+id/myPageBtn"
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:layout_marginTop="5dp"
-            android:onClick="profileButtonClicked"
             android:background="#00ff0000"
+            android:onClick="profileButtonClicked"
             app:srcCompat="@drawable/person"
             app:tint="#c1c5be"
-            tools:ignore="SpeakableTextPresentCheck"/>
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

@@ -5,7 +5,7 @@
     android:layout_width="350dp"
     android:layout_height="550dp"
     android:layout_gravity="center"
-    android:background="#ECEDCC"
+    android:background="#faf9f7"
     android:orientation="vertical">
 
     <TextView
@@ -121,7 +121,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/round_button"
-        android:backgroundTint="#88BDA5"
+        android:backgroundTint="#397b18"
         android:padding="12dp"
         android:text="소원권 상점 바로가기"
         android:textSize="18dp"
@@ -137,7 +137,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/round_button"
-        android:backgroundTint="#CDCDCD"
+        android:backgroundTint="#c1c5be"
         android:padding="12dp"
         android:text="닫기"
         android:textSize="18dp"
