@@ -3,17 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="350dp"
+    android:layout_height="250dp"
+    android:layout_gravity="center"
+    android:layout_marginHorizontal="16dp"
     android:background="@color/sub1"
-    tools:context=".wishStore.store_confirm">
+    tools:context=".wishStore.store_buyGameItem">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="도장을 써서 소원을 빌까요?"
+        android:layout_marginTop="40dp"
+        android:text="아이템을 구매할까요?"
         android:textSize="24dp"
         android:textStyle="bold"
         android:textColor="@color/black"
@@ -22,27 +24,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="20dp"
-        android:text="보호자에게 알림이 가요!"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
     <Button
-        android:id="@+id/yesButton"
-        android:layout_width="185dp"
+        android:id="@+id/yesBuyButton"
+        android:layout_width="150dp"
         android:layout_height="56dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/round_button"
         android:backgroundTint="@color/main"
-        android:onClick="rewardConfirm_yes"
         android:text="네"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -50,18 +39,19 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/noButton"
-        android:layout_width="185dp"
+        android:id="@+id/noBuyButton"
+        android:layout_width="150dp"
         android:layout_height="56dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/round_button"
         android:backgroundTint="@color/gray2"
-        android:onClick="rewardConfirm_no"
         android:text="아니요"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

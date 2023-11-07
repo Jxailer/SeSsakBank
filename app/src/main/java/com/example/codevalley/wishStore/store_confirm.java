@@ -53,9 +53,8 @@ public class store_confirm extends AppCompatActivity {
 
     //"아니오" 버튼 선택 시
     public void rewardConfirm_no(View v){
-//        Toast.makeText(getApplicationContext(), "구매를 취소했어요.", Toast.LENGTH_LONG).show();
-//        Intent noIntent = new Intent(getApplicationContext(), store_main.class);
-//        startActivity(noIntent);
+        Intent noIntent = new Intent(getApplicationContext(), store_main.class);
+        startActivity(noIntent);
 
     }
 

@@ -72,6 +72,10 @@
             android:exported="true"/>
         <activity android:name=".wishStore.store_main"
             android:exported="true"/>
+        <activity android:name=".wishStore.store_buyGameItem"
+            android:theme="@android:style/Theme.Dialog"
+            android:exported="true"/>
+
 
 <!--            child_myPage-->
         <activity
