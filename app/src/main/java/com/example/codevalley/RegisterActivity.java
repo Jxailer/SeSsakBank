@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
     public String id, pw, name, birth, phone;
-    public static Integer fertilizer = 1, synthesis = 1, water = 1, ur_stamp=65;
+    public static Integer fertilizer = 1, synthesis = 1, water = 1, ur_stamp=80;
     EditText signupUsername, signupPassword, signupName, signupBirth, signupPhone;
     Button signupButton, usernameDuplicate, loginRedirectText;
     DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
