@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         Button saveButton = findViewById(R.id.saveButton);
         Button cancelButton = findViewById(R.id.cancelButton);
         Button dayButton = findViewById(R.id.day1);
-//        Button targetButton = findViewById(R.id.targetButton);
+        //Button targetButton = findViewById(R.id.targetButton);
 
 
         // day1 버튼 클릭시
@@ -163,17 +163,17 @@ public class MainActivity extends AppCompatActivity {
 
     //    정보바 버튼 클릭
     public void monthButtonClicked(View v) {
-        Toast.makeText(MainActivity.this, "월 버튼 눌림.", Toast.LENGTH_SHORT).show();
+    //Toast.makeText(MainActivity.this, "월 버튼 눌림.", Toast.LENGTH_SHORT).show();
     }
 
     public void stampButtonClicked(View v) {
-        Toast.makeText(MainActivity.this, "스템프 버튼 눌림.", Toast.LENGTH_SHORT).show();
+    //Toast.makeText(MainActivity.this, "스템프 버튼 눌림.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, StampPopupActivity.class);
         startActivity(intent);
     }
 
     public void statisticsButtonClicked(View v) {
-        Toast.makeText(MainActivity.this, "통계 버튼 눌림.", Toast.LENGTH_SHORT).show();
+    //Toast.makeText(MainActivity.this, "통계 버튼 눌림.", Toast.LENGTH_SHORT).show();
     }
 
     //    일일 캘린더 버튼 눌림
@@ -192,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
 
         getValue();
 
-        Toast.makeText(MainActivity.this, "날짜 버튼 눌림.", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(MainActivity.this, "날짜 버튼 눌림.", Toast.LENGTH_SHORT).show();
         CalendarRecord = (ViewGroup)findViewById(R.id.CalendarRecord);
         CalendarRecord.setVisibility(View.VISIBLE);
 
@@ -243,32 +243,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void plantgameButtonClicked(View v){
+        Intent gameIntent = new Intent(this, GameStart1.class);
+        startActivity(gameIntent);
+        finish();
         // gamestart1번만 실행하기 위해 아래 이 코드 추가
-        FirebaseDatabase.getInstance().getReference("game").child(userID).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                try{
-                    gameCheck = snapshot.child("gameCheck").getValue(Integer.class);
-                    if (gameCheck == 1) {
-                        Intent intent = new Intent(MainActivity.this, PlantGame.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                    else {
-                        Intent intent = new Intent(MainActivity.this, GameStart1.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                } catch (Exception e){
-                    Intent intent = new Intent(MainActivity.this, GameStart1.class);
-                    startActivity(intent);
-                    finish();
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
+//        FirebaseDatabase.getInstance().getReference("game").child(userID).addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                try{
+//                    gameCheck = snapshot.child("gameCheck").getValue(Integer.class);
+//                    if (gameCheck == 1) {
+//                        Intent intent = new Intent(MainActivity.this, PlantGame.class);
+//                        startActivity(intent);
+//                        finish();
+//                    }
+//                    else {
+//                        Intent intent = new Intent(MainActivity.this, GameStart1.class);
+//                        startActivity(intent);
+//                        finish();
+//                    }
+//                } catch (Exception e){
+//                    Intent intent = new Intent(MainActivity.this, GameStart1.class);
+//                    startActivity(intent);
+//                    finish();
+//                }
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//            }
+//        });
     }
 
 //    public class Fraglike extends Fragment {

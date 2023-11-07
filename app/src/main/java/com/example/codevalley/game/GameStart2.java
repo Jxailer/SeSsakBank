@@ -37,7 +37,7 @@ public class GameStart2 extends AppCompatActivity {
                 String plantName = edt_plantName.getText().toString(); // 변수에 저장된 객체에서 Text를 가져오고 String형식으로 변환 후 저장
                 Integer level = 1;
                 Integer progress_num = 0;
-                Integer gameCheck = 1; // gamestart1번만 실행하기 위해 옆에 이 코드 추가
+//                Integer gameCheck = 1; // gamestart1번만 실행하기 위해 옆에 이 코드 추가
 
                 if (plantName.isEmpty()) {
                     Toast.makeText(getApplicationContext(),"이름을 정해주세요!",Toast.LENGTH_LONG).show();
@@ -55,9 +55,9 @@ public class GameStart2 extends AppCompatActivity {
                     plantProgressInfo.put("progress", progress_num);
                     ref.updateChildren(plantProgressInfo);
 
-                    Map<String, Object> gameCheckInfo = new HashMap<>(); // gamestart1번만 실행하기 위해 옆에 이 코드 추가
-                    gameCheckInfo.put("gameCheck", gameCheck);
-                    ref.updateChildren(gameCheckInfo);
+//                    Map<String, Object> gameCheckInfo = new HashMap<>(); // gamestart1번만 실행하기 위해 옆에 이 코드 추가
+//                    gameCheckInfo.put("gameCheck", gameCheck);
+//                    ref.updateChildren(gameCheckInfo);
 
 
 

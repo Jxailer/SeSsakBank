@@ -33,23 +33,6 @@ public class GameStart1 extends AppCompatActivity {
         Button btn_mandarin = (Button) findViewById(R.id.btn_mandarin);
         Button btn_banana = (Button) findViewById(R.id.btn_banana);
 
-        // SharedPreferences 객체 생성
-        SharedPreferences sharedPreferences = getSharedPreferences("GamePrefs", MODE_PRIVATE);
-
-        // "isInit" 값 가져오기 (기본값은 false)
-        boolean isInit = sharedPreferences.getBoolean("isInit", false);
-
-        if (!isInit) {
-            startActivity(new Intent(GameStart1.this, PlantGame.class)
-                    .setAction(Intent.ACTION_MAIN)
-                    .addCategory(Intent.CATEGORY_LAUNCHER)
-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean("isInit", true).apply();
-        }
-
-
         // 처음 게임에 접속했을 시 키울 나무를 선택하는 페이지
         // 사과 나무를 선택 했을 시
         btn_apple.setOnClickListener(new View.OnClickListener() {
