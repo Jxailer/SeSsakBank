@@ -149,17 +149,6 @@ public class PlantGame extends AppCompatActivity {
             }
         });
 
-        // 하단바 홈버튼 눌렀을 시
-        homeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(PlantGame.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
-
         // 아이템 버튼 클릭 했을 시
         btn_fertilizer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -210,63 +199,6 @@ public class PlantGame extends AppCompatActivity {
                         }
                         tv_countFertilizer.setText(fertilizer+"");
 
-//                        // 식물 이미지 변경
-//                        if (countLevel >= 3 && countLevel < 20){
-//                            FirebaseDatabase.getInstance().getReference("game").child(userID).child("plantType").addValueEventListener(new ValueEventListener(){
-//                                @Override
-//                                public void onDataChange(DataSnapshot dataSnapshot) {
-//                                    // 저장된 데이터를 하나씩 얻어옴
-//                                    if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "사과나무")) {
-//                                        imv_growingPlant.setImageResource(R.drawable.appletree);
-//                                    }
-//                                    else if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "귤나무")) {
-//                                        imv_growingPlant.setImageResource(R.drawable.mandarintree);
-//                                    }
-//                                    else {
-//                                        imv_growingPlant.setImageResource(R.drawable.bananatree);
-//                                    }
-//                                }
-//                                @Override
-//                                public void onCancelled(DatabaseError databaseError) {
-//                                    // 데이터 불러오기 실패 시 처리
-//                                }
-//                            });
-////                            imv_growingPlant.setImageResource(R.drawable.ssessak);
-//                        }
-//                        else if (countLevel >= 20  && countLevel < 30){
-//                            imv_growingPlant.setImageResource(R.drawable.small_tree);
-//                        }
-//                        else if (countLevel >= 30  && countLevel < 40){
-//                            imv_growingPlant.setImageResource(R.drawable.big_tree);
-//                        }
-//                        else if (countLevel >= 40  && countLevel <= 50){
-////                            private void readTree(){
-//                            FirebaseDatabase.getInstance().getReference("game").child(userID).child("plantType").addValueEventListener(new ValueEventListener(){
-//                                @Override
-//                                public void onDataChange(DataSnapshot dataSnapshot) {
-//                                    // 저장된 데이터를 하나씩 얻어옴
-//                                    if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "사과나무")) {
-//                                        imv_growingPlant.setImageResource(R.drawable.appletree);
-//                                    }
-//                                    else if (Objects.equals(dataSnapshot.child("type").getValue(String.class), "귤나무")) {
-//                                        imv_growingPlant.setImageResource(R.drawable.mandarintree);
-//                                    }
-//                                    else {
-//                                        imv_growingPlant.setImageResource(R.drawable.bananatree);
-//                                    }
-//                                }
-//                                    @Override
-//                                    public void onCancelled(DatabaseError databaseError) {
-//                                        // 데이터 불러오기 실패 시 처리
-//                                    }
-//                            });
-////                            }
-//                        }
-//                        else if (countLevel < 0 || countLevel > 50){
-//                            Toast.makeText(getApplicationContext(),"범위를 초과했습니다.",Toast.LENGTH_SHORT).show();
-//                        }
-//                        else {
-//                        }
                     }
                     else {
                         tv_countFertilizer.setText(0);
@@ -303,8 +235,6 @@ public class PlantGame extends AppCompatActivity {
                             Map<String, Object> plantLevelInfo = new HashMap<>();
                             plantLevelInfo.put("plantType/level", countLevel);
                             gameRef.updateChildren(plantLevelInfo);
-//                            reference = FirebaseDatabase.getInstance().getReference();
-//                            reference.child("users").child("username").child("level").setValue(countLevel);
                         }
                         else if (progress_num > 20){
                             countLevel++;
@@ -318,8 +248,6 @@ public class PlantGame extends AppCompatActivity {
                             Map<String, Object> plantLevelInfo = new HashMap<>();
                             plantLevelInfo.put("plantType/level", countLevel);
                             gameRef.updateChildren(plantLevelInfo);
-//                            reference = FirebaseDatabase.getInstance().getReference();
-//                            reference.child("users").child("username").child("level").setValue(countLevel);
                         }
                         else {
                             progressBar.setProgress(progress_num);
@@ -363,8 +291,6 @@ public class PlantGame extends AppCompatActivity {
                             Map<String, Object> plantLevelInfo = new HashMap<>();
                             plantLevelInfo.put("plantType/level", countLevel);
                             gameRef.updateChildren(plantLevelInfo);
-//                            reference = FirebaseDatabase.getInstance().getReference();
-//                            reference.child("users").child("username").child("level").setValue(countLevel);
                         }
                         else if (progress_num > 20){
                             countLevel++;
@@ -377,8 +303,6 @@ public class PlantGame extends AppCompatActivity {
                             Map<String, Object> plantLevelInfo = new HashMap<>();
                             plantLevelInfo.put("plantType/level", countLevel);
                             gameRef.updateChildren(plantLevelInfo);
-//                            reference = FirebaseDatabase.getInstance().getReference();
-//                            reference.child("users").child("username").child("level").setValue(countLevel);
                         }
                         else {
                             progressBar.setProgress(progress_num);
@@ -400,6 +324,7 @@ public class PlantGame extends AppCompatActivity {
             }
         });
     }
+
     //    네비게이션 하단바 버튼클릭 이벤트
     public void homeButtonClicked(View v){
         Intent homeIntent = new Intent(getApplicationContext(), MainActivity.class);
