@@ -64,7 +64,7 @@ public class store_buyGameItem extends Activity {
 
 
     }
-    //네 버튼 눌렀을 시 게임 아이템 데이터 없데이트
+    //네 버튼 눌렀을 시 게임 아이템 구매
     public void setYesBuyBtn(){
         ur_stamp = getIntent().getIntExtra("ur_stamp", ur_stamp);
         Integer itemID = getIntent().getIntExtra("itemID", 0);
@@ -73,9 +73,6 @@ public class store_buyGameItem extends Activity {
                 water = getIntent().getIntExtra("water", water);
                 if(ur_stamp>=1){
                     water++;
-                    Map<String, Object> waterUpdates = new HashMap<>();
-                    waterUpdates.put("water", water);
-                    itemRef.updateChildren(waterUpdates);
                     ur_stamp -= 1;
                 }else{
                     Toast.makeText(this, "도장 개수가 모자라요!", Toast.LENGTH_SHORT).show();}
@@ -84,9 +81,6 @@ public class store_buyGameItem extends Activity {
                 synthesis = getIntent().getIntExtra("sun", synthesis);
                 if(ur_stamp>=2){
                     synthesis++;
-                    Map<String, Object> synthesisUpdates = new HashMap<>();
-                    synthesisUpdates.put("synthesis", synthesis);
-                    itemRef.updateChildren(synthesisUpdates);
                     ur_stamp-=2;
                 }else{Toast.makeText(this, "도장 개수가 모자라요!", Toast.LENGTH_SHORT).show();}
                 break;
@@ -94,15 +88,20 @@ public class store_buyGameItem extends Activity {
                 fertilizer = getIntent().getIntExtra("fertilizer", fertilizer);
                 if(ur_stamp>=3){
                     fertilizer++;
-                    Map<String, Object> fertilizerUpdates = new HashMap<>();
-                    fertilizerUpdates.put("fertilizer", fertilizer);
-                    itemRef.updateChildren(fertilizerUpdates);
                     ur_stamp-=3;
                 }else{Toast.makeText(this, "도장 개수가 모자라요!", Toast.LENGTH_SHORT).show();}
                 break;
             default:
                 break;
         }
+        //아이템 DB에 없데이트
+        Map<String, Object> itemCountUpdates = new HashMap<>();
+        itemCountUpdates.put("water", water);
+        itemCountUpdates.put("synthesis", synthesis);
+        itemCountUpdates.put("fertilizer", fertilizer);
+        itemRef.updateChildren(itemCountUpdates);
+
+        //최종 도장 개수 store_main으로 값 전달
         Intent buyCompleteIntent = new Intent(this, store_main.class);
         buyCompleteIntent.putExtra("resultStamp", ur_stamp);
         setResult(0, buyCompleteIntent);
