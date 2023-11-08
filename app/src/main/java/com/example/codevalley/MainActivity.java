@@ -25,7 +25,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.codevalley.game.PlantGame;
 import com.example.codevalley.recordListHelper.Fraglike;
 import com.example.codevalley.recordListHelper.CustomAdapter_RecordList;
 import com.example.codevalley.recordListHelper.HelperClass_RecordList;
@@ -163,21 +162,21 @@ public class MainActivity extends AppCompatActivity {
 
     //    정보바 버튼 클릭
     public void monthButtonClicked(View v) {
-    //Toast.makeText(MainActivity.this, "월 버튼 눌림.", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(MainActivity.this, "월 버튼 눌림.", Toast.LENGTH_SHORT).show();
     }
 
     public void stampButtonClicked(View v) {
-    //Toast.makeText(MainActivity.this, "스템프 버튼 눌림.", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(MainActivity.this, "스템프 버튼 눌림.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, StampPopupActivity.class);
         startActivity(intent);
     }
 
     public void statisticsButtonClicked(View v) {
-    //Toast.makeText(MainActivity.this, "통계 버튼 눌림.", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(MainActivity.this, "통계 버튼 눌림.", Toast.LENGTH_SHORT).show();
     }
 
     //    일일 캘린더 버튼 눌림
-    public void dayButtonClicked(View v){
+    public void dayButtonClicked(View v) {
         ArrayList<String> arrayList = new ArrayList<>();
         ArrayAdapter<String> adapter;
 
@@ -193,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
         getValue();
 
         //Toast.makeText(MainActivity.this, "날짜 버튼 눌림.", Toast.LENGTH_SHORT).show();
-        CalendarRecord = (ViewGroup)findViewById(R.id.CalendarRecord);
+        CalendarRecord = (ViewGroup) findViewById(R.id.CalendarRecord);
         CalendarRecord.setVisibility(View.VISIBLE);
 
     }
@@ -229,24 +228,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //    하단 네비게이션 바 버튼 클릭
-    public void homeButtonClicked(View v){
+    public void homeButtonClicked(View v) {
     }
 
-    public void wishstoreButtonClicked(View v){
+    public void wishstoreButtonClicked(View v) {
         Intent intent = new Intent(this, store_main.class);
         startActivity(intent);
     }
 
-    public void mypageButtonClicked(View v){
+    public void mypageButtonClicked(View v) {
         Intent intent = new Intent(this, MyPageActivity.class);
         startActivity(intent);
     }
 
-    public void plantgameButtonClicked(View v){
-        Intent gameIntent = new Intent(this, GameStart1.class);
-        startActivity(gameIntent);
-        finish();
-        // gamestart1번만 실행하기 위해 아래 이 코드 추가
+    public void plantgameButtonClicked(View v) {
+            Intent gameIntent = new Intent(this, GameStart1.class);
+            startActivity(gameIntent);
+            finish();
+    }
+
+
+    // gamestart1번만 실행하기 위해 아래 이 코드 추가
 //        FirebaseDatabase.getInstance().getReference("game").child(userID).addValueEventListener(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -272,7 +274,7 @@ public class MainActivity extends AppCompatActivity {
 //            public void onCancelled(@NonNull DatabaseError error) {
 //            }
 //        });
-    }
+//    }
 
 //    public class Fraglike extends Fragment {
 //        private RecyclerView recyclerView;
@@ -320,10 +322,5 @@ public class MainActivity extends AppCompatActivity {
 //            return view;
 //        }
 //    }
-
-
-
-
-
-
 }
+
