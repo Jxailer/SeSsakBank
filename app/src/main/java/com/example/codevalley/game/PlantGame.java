@@ -68,8 +68,10 @@ public class PlantGame extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 fertilizer = snapshot.child("fertilizer").getValue(Integer.class);
                 tv_countFertilizer.setText(String.valueOf(fertilizer));
+
                 water = snapshot.child("water").getValue(Integer.class);
                 tv_countWater.setText(String.valueOf(water));
+
                 synthesis = snapshot.child("synthesis").getValue(Integer.class);
                 tv_countSynthesis.setText(String.valueOf(synthesis));
             }
@@ -82,15 +84,10 @@ public class PlantGame extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 tv_name.setText(String.valueOf(snapshot.child("plantName").getValue(String.class)));
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
 
-        gameRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                progress_num = snapshot.child("progress").getValue(Integer.class);
+                progressBar.setProgress(progress_num);
+
                 countLevel = snapshot.child("plantType").child("level").getValue(Integer.class);
                 tv_countLevel.setText(String.valueOf(snapshot.child("plantType").child("level").getValue(Integer.class)));
 
@@ -135,21 +132,6 @@ public class PlantGame extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-
-        gameRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                progress_num = snapshot.child("progress").getValue(Integer.class);
-                progressBar.setProgress(progress_num);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-
-
-
-
 
 //        // GameStar2에서 받은 식물 이름 가져와서 출력
 //        Intent intent = getIntent(); // 넘어온 값을 받기 위해 intent객체를 생성하지만 getIntent()를 통해 넘어온 intent객체를 받아온다.
