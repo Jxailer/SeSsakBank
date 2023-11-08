@@ -66,13 +66,10 @@ public class PlantGame extends AppCompatActivity {
         itemRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                fertilizer = snapshot.child("fertilizer").getValue(Integer.class);
                 tv_countFertilizer.setText(String.valueOf(fertilizer));
 
-                water = snapshot.child("water").getValue(Integer.class);
                 tv_countWater.setText(String.valueOf(water));
 
-                synthesis = snapshot.child("synthesis").getValue(Integer.class);
                 tv_countSynthesis.setText(String.valueOf(synthesis));
             }
             @Override
