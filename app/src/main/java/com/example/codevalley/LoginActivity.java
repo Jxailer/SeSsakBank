@@ -56,12 +56,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        //로그인 상태 저장 리스너
+        //로그인 저장 상태 리스너
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 mUser = firebaseAuth.getCurrentUser();
-                if (mUser != null) {
+                if(mUser != null){
                     userID = mUser.getEmail().replace(".", ",");
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
     }
 
