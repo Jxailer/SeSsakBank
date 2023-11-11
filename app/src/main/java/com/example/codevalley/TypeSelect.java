@@ -1,9 +1,15 @@
 package com.example.codevalley;
 
+import static com.example.codevalley.LoginActivity.mAuth;
+import static com.example.codevalley.LoginActivity.mUser;
+import static com.example.codevalley.LoginActivity.userID;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.os.Bundle;
 import android.widget.Button;
@@ -12,9 +18,12 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.adult.adult_LoginActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class TypeSelect extends AppCompatActivity {
     Button typeChild, typeAdult, selectBtn;
+    SharedPreferences mShared;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -25,6 +34,10 @@ public class TypeSelect extends AppCompatActivity {
         typeChild = findViewById(R.id.typeChild);
         typeAdult = findViewById(R.id.typeAdult);
         selectBtn = findViewById(R.id.selectBtn);
+
+        mAuth  = FirebaseAuth.getInstance();
+        mShared = getSharedPreferences("autoLoginValue", Context.MODE_PRIVATE);
+        Integer checkValue = mShared.getInt("checkValue", 0);
 
         //'어린이' 선택시 색 변경
         typeChild.setOnClickListener(new View.OnClickListener() {
@@ -57,8 +70,8 @@ public class TypeSelect extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(typeChild.isSelected()){
-                    Intent childSelect = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(childSelect);
+                    mUser = mAuth.getCurrentUser();
+                    goMainPage(mUser, checkValue);
                 }
                 else if(typeAdult.isSelected()){
                     Intent adultSelect = new Intent(getApplicationContext(), adult_LoginActivity.class);
@@ -66,6 +79,21 @@ public class TypeSelect extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void goMainPage(FirebaseUser firebaseUser, Integer value) {
+        if (firebaseUser != null) {
+            if(value == 1){
+                userID = firebaseUser.getEmail().replace(".", ",");
+                startActivity(new Intent(this, MainActivity.class));
+            }
+            else if(value == 0){
+                startActivity(new Intent(this, LoginActivity.class));
+            }
+        }
+        else if(firebaseUser == null){
+            startActivity(new Intent(this, LoginActivity.class));
+        }
     }
 
     //        select.setOnClickListener(new View.OnClickListener(){
