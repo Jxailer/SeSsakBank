@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.codevalley.admin.AdminActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -45,6 +46,9 @@ public class LoginActivity extends AppCompatActivity {
         signupRedirectText = findViewById(R.id.signupRedirectText);
         loginButton = findViewById(R.id.login_button);
 
+        String adminID = "admin";
+        String adminPW = "admin1234";
+
         mAuth = FirebaseAuth.getInstance();
 
         //로그인 버튼 누를 시
@@ -52,7 +56,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(validateUsername() & validatePassword()){
-                    loginUser(loginUsername.getText().toString(), loginPassword.getText().toString());
+                    if(loginUsername.getText().toString().equals(adminID) && loginPassword.getText().toString().equals(adminPW)){
+                        loginAdmin();
+                    }
+                    else{
+                        loginUser(loginUsername.getText().toString(), loginPassword.getText().toString());
+                    }
                 }
             }
         });
@@ -122,6 +131,21 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    //관리자 계정으로 로그인 시
+    public void loginAdmin(){
+        mAuth.signInAnonymously().addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    startActivity(new Intent(LoginActivity.this, AdminActivity.class));
+                }
+                else{
+                    Toast.makeText(LoginActivity.this, "당신 관리자 맞아요??????", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     @Override
