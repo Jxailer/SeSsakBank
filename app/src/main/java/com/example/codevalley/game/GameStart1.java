@@ -1,7 +1,9 @@
 package com.example.codevalley.game;
 
+import static com.example.codevalley.LoginActivity.mUser;
 import static com.example.codevalley.LoginActivity.userID;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,8 +14,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.codevalley.LoginActivity;
 import com.example.codevalley.MainActivity;
 import com.example.codevalley.R;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -22,6 +26,8 @@ import java.util.Map;
 
 public class GameStart1 extends AppCompatActivity {
     DatabaseReference reference;
+    SharedPreferences gameShared;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +38,9 @@ public class GameStart1 extends AppCompatActivity {
         Button btn_apple = (Button) findViewById(R.id.btn_apple);
         Button btn_mandarin = (Button) findViewById(R.id.btn_mandarin);
         Button btn_banana = (Button) findViewById(R.id.btn_banana);
+
+        gameShared = getSharedPreferences("gameValue", Context.MODE_PRIVATE);
+        Integer gameCheck = gameShared.getInt("gameCheck", 0);
 
         // 처음 게임에 접속했을 시 키울 나무를 선택하는 페이지
         // 사과 나무를 선택 했을 시
@@ -44,10 +53,7 @@ public class GameStart1 extends AppCompatActivity {
                 Map<String, Object> plantInfo = new HashMap<>();
                 plantInfo.put("plantType/type", "사과나무");
                 ref.updateChildren(plantInfo);
-                startActivity(new Intent(GameStart1.this, GameStart2.class)
-                        .setAction(Intent.ACTION_MAIN)
-                        .addCategory(Intent.CATEGORY_LAUNCHER)
-                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                goGamePage(gameCheck);
             }
         });
 
@@ -61,10 +67,7 @@ public class GameStart1 extends AppCompatActivity {
                 Map<String, Object> plantInfo = new HashMap<>();
                 plantInfo.put("plantType/type", "귤나무");
                 ref.updateChildren(plantInfo);
-                startActivity(new Intent(GameStart1.this, GameStart2.class)
-                        .setAction(Intent.ACTION_MAIN)
-                        .addCategory(Intent.CATEGORY_LAUNCHER)
-                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                goGamePage(gameCheck);
             }
         });
 
@@ -78,11 +81,17 @@ public class GameStart1 extends AppCompatActivity {
                 Map<String, Object> plantInfo = new HashMap<>();
                 plantInfo.put("plantType/type", "바나나나무");
                 ref.updateChildren(plantInfo);
-                startActivity(new Intent(GameStart1.this, GameStart2.class)
-                        .setAction(Intent.ACTION_MAIN)
-                        .addCategory(Intent.CATEGORY_LAUNCHER)
-                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                goGamePage(gameCheck);
             }
         });
+    }
+
+    public void goGamePage(Integer gameValue) {
+        if(gameValue == 1){
+            startActivity(new Intent(this, PlantGame.class));
+        }
+        else if(gameValue == 0){
+            startActivity(new Intent(this, GameStart2.class));
+        }
     }
 }

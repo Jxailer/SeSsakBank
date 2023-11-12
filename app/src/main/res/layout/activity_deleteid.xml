@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/defaultgray">
+    android:background="#EFEFEF">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/sub1"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="회원탈퇴"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,6 +38,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -30,7 +51,7 @@
                     android:id="@+id/user_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="5dp"
                     android:layout_marginTop="25dp"
                     android:textColor="@color/black"
                     android:textSize="24sp"
@@ -40,7 +61,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
-                    android:text="회원의 정보가 모두 사라져요!" />
+                    android:text="회원의 정보가 모두 사라져요!"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -48,35 +72,41 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:layout_marginLeft="20dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
                 android:text="- 회원탈퇴한 계정의 정보는 복구가 불가능합니다." />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="20dp"
-                android:text="- 탈퇴 후 동일한 아이디로 30일 이내에 재가입이 가능합니다." />
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:text="- 탈퇴 후 동일한 아이디로 회원가입이 가능합니다." />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="20dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
                 android:text="- 혹시 이용하시는 도중 불편한 점이 있으셨다면, [고객센터]로 내용을 남겨주세요." />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="20dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
                 android:text="- 혹시 이용하시는 도중 불편한 점이 있으셨다면, [고객센터]로 내용을 남겨주세요." />
 
             <CheckBox
                 android:id="@+id/del_agree"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="25dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
                 android:layout_gravity="center"
                 android:text="위 내용을 전부 확인했으며 탈퇴에 동의합니다." />
         </LinearLayout>
@@ -86,7 +116,7 @@
         android:id="@+id/deleteBtn"
         android:layout_width="107dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="11dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@color/defaultgray"
         android:text="탈퇴"
         android:textColor="@color/black"
