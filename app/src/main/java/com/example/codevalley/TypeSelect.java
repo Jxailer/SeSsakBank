@@ -82,16 +82,16 @@ public class TypeSelect extends AppCompatActivity {
     }
 
     public void goMainPage(FirebaseUser firebaseUser, Integer value) {
-        if (firebaseUser != null) {
-            if(value == 1){
+        if (firebaseUser != null) { //로그인 상태가 저장되었을 때(로그인 했을 때)
+            if(value == 1){ //자동 로그인에 체크했을 때
                 userID = firebaseUser.getEmail().replace(".", ",");
                 startActivity(new Intent(this, MainActivity.class));
             }
-            else if(value == 0){
+            else if(value == 0){ // 자동 로그인에 체크를 안 했을 때
                 startActivity(new Intent(this, LoginActivity.class));
             }
         }
-        else if(firebaseUser == null){
+        else if(firebaseUser == null){ //로그인 상태가 저장이 안 되었을 때(로그인 안했을 때)
             startActivity(new Intent(this, LoginActivity.class));
         }
     }

@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +31,7 @@ import com.example.codevalley.recordListHelper.CustomAdapter_RecordList;
 import com.example.codevalley.recordListHelper.HelperClass_RecordList;
 import com.example.codevalley.recordListHelper.IncomeRecordCreate;
 import com.example.codevalley.recordListHelper.SpentRecordCreate;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -242,9 +244,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void plantgameButtonClicked(View v) {
-            Intent gameIntent = new Intent(this, GameStart1.class);
-            startActivity(gameIntent);
-            finish();
+        Intent gameIntent = new Intent(this, GameStart1.class);
+        startActivity(gameIntent);
+        finish();
     }
 
 

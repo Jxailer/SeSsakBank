@@ -7,7 +7,9 @@ import static com.example.codevalley.RegisterActivity.ur_stamp;
 import static com.example.codevalley.RegisterActivity.water;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -66,10 +68,12 @@ public class PlantGame extends AppCompatActivity {
         itemRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //앱을 종료하면 횐가입했을 때 1로 초기화한 값으로 돌아와서 다시 데베에서 가져오는 걸로 바꿨어 --확인햇으면 지워도 돼
+                fertilizer = snapshot.child("fertilizer").getValue(Integer.class);
                 tv_countFertilizer.setText(String.valueOf(fertilizer));
-
+                water = snapshot.child("water").getValue(Integer.class);
                 tv_countWater.setText(String.valueOf(water));
-
+                synthesis = snapshot.child("synthesis").getValue(Integer.class);
                 tv_countSynthesis.setText(String.valueOf(synthesis));
             }
             @Override

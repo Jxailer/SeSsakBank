@@ -12,35 +12,38 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.codevalley.LoginActivity;
 import com.example.codevalley.MainActivity;
 import com.example.codevalley.R;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class GameStart1 extends AppCompatActivity {
-    DatabaseReference reference;
-    SharedPreferences gameShared;
-
+    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("game").child(userID);
+    TextView tv_select;
+    Button btn_apple, btn_mandarin, btn_banana;
+    String plantType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_game_start1);
 
-        TextView tv_select = (TextView) findViewById(R.id.tv_selectplant);
-        Button btn_apple = (Button) findViewById(R.id.btn_apple);
-        Button btn_mandarin = (Button) findViewById(R.id.btn_mandarin);
-        Button btn_banana = (Button) findViewById(R.id.btn_banana);
-
-        gameShared = getSharedPreferences("gameValue", Context.MODE_PRIVATE);
-        Integer gameCheck = gameShared.getInt("gameCheck", 0);
+        tv_select = findViewById(R.id.tv_selectplant);
+        btn_apple = findViewById(R.id.btn_apple);
+        btn_mandarin = findViewById(R.id.btn_mandarin);
+        btn_banana = findViewById(R.id.btn_banana);
 
         // 처음 게임에 접속했을 시 키울 나무를 선택하는 페이지
         // 사과 나무를 선택 했을 시
@@ -49,11 +52,10 @@ public class GameStart1 extends AppCompatActivity {
             public void onClick(View view) {
 //                reference = FirebaseDatabase.getInstance().getReference();
 //                reference.child("users").child("username").child("planttype").setValue("사과나무");
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
                 Map<String, Object> plantInfo = new HashMap<>();
                 plantInfo.put("plantType/type", "사과나무");
-                ref.updateChildren(plantInfo);
-                goGamePage(gameCheck);
+                reference.updateChildren(plantInfo);
+                startActivity(new Intent(GameStart1.this, GameStart2.class));
             }
         });
 
@@ -63,11 +65,10 @@ public class GameStart1 extends AppCompatActivity {
             public void onClick(View view) {
 //                reference = FirebaseDatabase.getInstance().getReference();
 //                reference.child("users").child("username").child("planttype").setValue("귤나무");
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
                 Map<String, Object> plantInfo = new HashMap<>();
                 plantInfo.put("plantType/type", "귤나무");
-                ref.updateChildren(plantInfo);
-                goGamePage(gameCheck);
+                reference.updateChildren(plantInfo);
+                startActivity(new Intent(GameStart1.this, GameStart2.class));
             }
         });
 
@@ -77,21 +78,12 @@ public class GameStart1 extends AppCompatActivity {
             public void onClick(View view) {
 //                reference = FirebaseDatabase.getInstance().getReference();
 //                reference.child("users").child("username").child("planttype").setValue("바나나나무");
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("game").child(userID);
                 Map<String, Object> plantInfo = new HashMap<>();
                 plantInfo.put("plantType/type", "바나나나무");
-                ref.updateChildren(plantInfo);
-                goGamePage(gameCheck);
+                reference.updateChildren(plantInfo);
+                startActivity(new Intent(GameStart1.this, GameStart2.class));
             }
         });
     }
 
-    public void goGamePage(Integer gameValue) {
-        if(gameValue == 1){
-            startActivity(new Intent(this, PlantGame.class));
-        }
-        else if(gameValue == 0){
-            startActivity(new Intent(this, GameStart2.class));
-        }
-    }
 }

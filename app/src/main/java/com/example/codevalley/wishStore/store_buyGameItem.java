@@ -18,12 +18,16 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.codevalley.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,6 +45,19 @@ public class store_buyGameItem extends Activity {
 
         //배경 흐리게 만들기
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        //DB에 저장된 값을 다시 전역변수에 저장(게임에서 사용하기 위해) -> 안하면 앱을 종료했을 떄 값이 사라짐
+        itemRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                water = snapshot.child("water").getValue(Integer.class);
+                synthesis = snapshot.child("synthesis").getValue(Integer.class);
+                fertilizer = snapshot.child("fertilizer").getValue(Integer.class);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
 
         noBuyBtn = findViewById(R.id.noBuyButton);
         yesBuyBtn = findViewById(R.id.yesBuyButton);
