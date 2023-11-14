@@ -2,16 +2,13 @@ package com.example.codevalley;
 
 import static com.example.codevalley.LoginActivity.userID;
 
-import static java.security.AccessController.getContext;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
+
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -20,26 +17,38 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.codevalley.MainActivity;
+import com.example.codevalley.R;
+import com.example.codevalley.game.GameStart1;
+import com.example.codevalley.game.PlantGame;
+import com.example.codevalley.myPage.MyPageActivity;
+import com.example.codevalley.recordListHelper.CustomAdapter_RecordList;
+import com.example.codevalley.recordListHelper.HelperClass_RecordList;
+import com.example.codevalley.recordListHelper.IncomeRecordCreate;
+import com.example.codevalley.recordListHelper.SpentRecordCreate;
+import com.example.wishShop.DataClass;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.codevalley.recordListHelper.Fraglike;
-import com.example.codevalley.recordListHelper.CustomAdapter_RecordList;
-import com.example.codevalley.recordListHelper.HelperClass_RecordList;
-import com.example.codevalley.recordListHelper.IncomeRecordCreate;
-import com.example.codevalley.recordListHelper.SpentRecordCreate;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 import com.example.codevalley.game.GameStart1;
@@ -52,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     ViewGroup CalendarRecord;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
+
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<HelperClass_RecordList> arrayList;
     private FirebaseDatabase database;
@@ -61,29 +71,101 @@ public class MainActivity extends AppCompatActivity {
 
     private int gameCheck; // gamestart1번만 실행하기 위해 옆에 이 코드 추가
 
+    Context context_Main = this;
+    Button recordCreate_Spent;
+    Button recordCreate_Income;
+    View mainParent;
 
+    View targetChangeBox;
+    EditText editText;
+    View calendar;
+    RecyclerView recordRcv;
+    RecyclerView.Adapter recordAdt;
+    ArrayList<HelperClass_RecordList> incomeList;
+    ArrayList<HelperClass_RecordList> spentList;
+    Button saveButton;
+    Button cancelButton;
+    Button dayButton;
+    Button target;
+
+    int incomeSum, spentSum;
+
+    DatabaseReference recordRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        recordCreate_Spent = (Button) findViewById(R.id.recordCreateButton_spent);
+        recordCreate_Income = (Button) findViewById(R.id.recordCreateButton_income);
+        mainParent = findViewById(R.id.mainParent);
 
-        Context context_Main = this;
-        TextView target = (TextView) findViewById(R.id.targetButton);
-        Button recordCreate_Spent = (Button) findViewById(R.id.recordCreateButton_spent);
-        Button recordCreate_Income = (Button) findViewById(R.id.recordCreateButton_income);
-        View mainParent = findViewById(R.id.mainParent);
+        targetChangeBox = (View) findViewById(R.id.targetChangeBox);
+        editText = findViewById((R.id.targetBox));
 
-        View targetChangeBox = (View) findViewById(R.id.targetChangeBox);
-        EditText editText = findViewById((R.id.targetBox));
-        CalendarRecord = findViewById((R.id.CalendarRecord));
+        calendar = (View) findViewById(R.id.calendar);
 
         View calendar = (View) findViewById(R.id.calendar);
 
-        Button saveButton = findViewById(R.id.saveButton);
-        Button cancelButton = findViewById(R.id.cancelButton);
-        Button dayButton = findViewById(R.id.day1);
+
+        CalendarRecord = findViewById(R.id.CalendarRecord);
+        saveButton = findViewById(R.id.saveButton);
+        cancelButton = findViewById(R.id.cancelButton);
+        dayButton = findViewById(R.id.day1);
         //Button targetButton = findViewById(R.id.targetButton);
+
+        recordRef = FirebaseDatabase.getInstance().getReference("wishManage").child(userID);
+        target = findViewById(R.id.targetButton);
+
+        // 용돈 기입 내역 보여주기
+
+        recordRcv = findViewById(R.id.recyclerView);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager((Context) this);
+        recordRcv.setLayoutManager(linearLayoutManager);
+
+        arrayList = new ArrayList<>();
+        incomeList = new ArrayList<>();
+        spentList = new ArrayList<>();
+
+        DatabaseReference incomeDatabase = FirebaseDatabase.getInstance().getReference("recordManage").child(userID);
+        Query incomeSum = incomeDatabase.orderByChild("pm").equalTo("1");
+        incomeSum.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                incomeList.clear();
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    HelperClass_RecordList incomeListData = dataSnapshot.getValue(HelperClass_RecordList.class);
+                    incomeList.add(incomeListData);
+                }
+                Log.w("MainActivity", "incomeList = "+ incomeList.toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("MainActivity", "onCancelled");
+            }
+        });
+
+
+        recordRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                arrayList.clear();
+                for (DataSnapshot itemSnapshot: snapshot.getChildren()){
+                    HelperClass_RecordList dataClass = itemSnapshot.getValue(HelperClass_RecordList.class);
+                    arrayList.add(dataClass);
+                }
+                recordAdt.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(MainActivity.this, "용돈기입 데이터 불러오기 실패", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        recordAdt = new CustomAdapter_RecordList(arrayList,this);
+        recordRcv.setAdapter(recordAdt);
 
 
         // day1 버튼 클릭시
@@ -95,6 +177,8 @@ public class MainActivity extends AppCompatActivity {
 
 
                 CalendarRecord.setVisibility(View.VISIBLE);
+
+
             }
         });
 
@@ -102,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
         target.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                targetChangeBox.setVisibility(View.VISIBLE);
                 targetChangeBox.bringToFront();
             }
         });
@@ -116,6 +201,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //수입내용 작성버튼 눌렀을 시
         recordCreate_Income.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -191,7 +277,7 @@ public class MainActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference().child("wishManage");
 
-        getValue();
+//        getValue();
 
         //Toast.makeText(MainActivity.this, "날짜 버튼 눌림.", Toast.LENGTH_SHORT).show();
         CalendarRecord = (ViewGroup) findViewById(R.id.CalendarRecord);
@@ -199,35 +285,39 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void getValue() {
 
-        TextView record = findViewById(R.id.recordList);
-        TextView amount = findViewById(R.id.moneyAmountRecord);
 
-//        DatabaseReference recordRef = FirebaseDatabase.getInstance().getReference("users/"+userID+"/userrecord/record1");
-        DatabaseReference recordRef = FirebaseDatabase.getInstance().getReference("users").child(userID).child("userrecord");
-        recordRef.addValueEventListener(new ValueEventListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//              String memoData = snapshot.child(userID).child("memo").getValue(String.class);
-                String memoData = snapshot.child("record1").child("memo").getValue(String.class);
-                Integer amountData = snapshot.child("record1").child("moneyAmount").getValue(Integer.class);
 
-                if (memoData != null && amountData != null) {
-                    record.setText(memoData);
-                    amount.setText("금액 : " + amountData);
-                }
 
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(MainActivity.this, "error", Toast.LENGTH_SHORT).show();
-            }
-
-        });
-    }
+//    private void getValue() {
+//
+//        TextView record = findViewById(R.id.recordList);
+//        TextView amount = findViewById(R.id.moneyAmountRecord);
+//
+////        DatabaseReference recordRef = FirebaseDatabase.getInstance().getReference("users/"+userID+"/userrecord/record1");
+//        DatabaseReference recordRef = FirebaseDatabase.getInstance().getReference("recordManage").child(userID);
+//        recordRef.addValueEventListener(new ValueEventListener() {
+//            @SuppressLint("SetTextI18n")
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+////              String memoData = snapshot.child(userID).child("memo").getValue(String.class);
+//                String memoData = snapshot.child("record1").child("memo").getValue(String.class);
+//                Integer amountData = snapshot.child("record1").child("moneyAmount").getValue(Integer.class);
+//
+//                if (memoData != null && amountData != null) {
+//                    record.setText(memoData);
+//                    amount.setText("금액 : " + amountData);
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//                Toast.makeText(MainActivity.this, "error", Toast.LENGTH_SHORT).show();
+//            }
+//
+//        });
+//    }
 
     //    하단 네비게이션 바 버튼 클릭
     public void homeButtonClicked(View v) {

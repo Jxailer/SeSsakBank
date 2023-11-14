@@ -35,7 +35,7 @@
         app:layout_constraintTop_toTopOf="parent"
         >
 
-        <TextView
+        <Button
             android:id="@+id/targetButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
         android:layout_gravity="center"
         android:background="#faf9f7"
         android:orientation="vertical"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topBar">
 
@@ -215,8 +215,8 @@
 
             <ImageButton
                 android:id="@+id/statistics"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:background="#00ff0000"
                 android:onClick="statisticsButtonClicked"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -424,7 +424,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="20dp"
                 android:background="#faf9f7"
-                android:visibility="invisible"
+                android:visibility="visible"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/Calendar"
                 app:tint="#21480e">
@@ -442,37 +442,37 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/recordList"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:text=" 123"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/buttonLayout" />
+<!--                <TextView-->
+<!--                    android:id="@+id/recordList"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:text=" 123"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/buttonLayout" />-->
 
-                <TextView
-                    android:id="@+id/moneyAmountRecord"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:text=" 123"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/buttonLayout" />
+<!--                <TextView-->
+<!--                    android:id="@+id/moneyAmountRecord"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginRight="20dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:text=" 123"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/buttonLayout" />-->
 
                 <!--                용돈 기입 내역을 띄워주는 리싸이클러 뷰-->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
                     android:layout_width="0dp"
                     android:layout_height="641dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recordList" />
+                    app:layout_constraintTop_toBottomOf="@+id/buttonLayout" />
 
                 <LinearLayout
                     android:id="@+id/buttonLayout"

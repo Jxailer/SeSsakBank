@@ -45,11 +45,11 @@ public class SpentRecordCreate extends AppCompatActivity {
 
                 String category = categorySpinner.getSelectedItem().toString(); // 카테고리 스피너에서 선택된 값 가져오기
                 String memoText = memo.getText().toString(); // 메모칸에 입력한 값 가져오기
-                int Amount = Integer.parseInt(moneyAmount.getText().toString()); // 용돈 금액 입력값을 int형으로 저장함.
+                String Amount = moneyAmount.getText().toString(); // 용돈 금액 입력값을 String형으로 저장함.
 
-                int categoryNum; // 카테고리 별 고유번호 부여
+                String categoryNum; // 카테고리 별 고유번호 부여
 
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users/"+ userID +"/userrecord/");
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("recordManage/"+ userID);
 
 
                 //<!--    1	식사-->
@@ -63,29 +63,29 @@ public class SpentRecordCreate extends AppCompatActivity {
                 //<!--    9	분실-->
                 //<!--    10	기타-->
                 if (category.equals("식사")) {
-                    categoryNum = 1;
+                    categoryNum = "1";
                 }
                 else if (category.equals("의류")) {
-                    categoryNum = 2;
+                    categoryNum = "2";
                 }
                 else if (category.equals("문구")) {
-                    categoryNum = 3;
+                    categoryNum = "3";
                 }
                 else if (category.equals("간식")) {
-                    categoryNum = 4;
+                    categoryNum = "4";
                 }
                 else if (category.equals("여가")) {
-                    categoryNum = 5;
+                    categoryNum = "5";
                 }else if (category.equals("취미")) {
-                    categoryNum = 6;
+                    categoryNum = "6";
                 }else if (category.equals("교재/책")) {
-                    categoryNum = 7;
+                    categoryNum = "7";
                 }else if (category.equals("교통")) {
-                    categoryNum = 8;
+                    categoryNum = "8";
                 }else if (category.equals("분실")) {
-                    categoryNum = 9;
+                    categoryNum = "9";
                 }else {
-                    categoryNum = 10;
+                    categoryNum = "10";
                 }
                 Log.i("tag1", String.valueOf(categoryNum));
 
@@ -107,15 +107,13 @@ public class SpentRecordCreate extends AppCompatActivity {
                                     String categorySrc = src + "category";
                                     String moneySrc = src + "moneyAmount";
                                     String memoSrc = src + "memo";
-
-                                    Log.i("tag2", src);
-                                    Log.i("tag3", categorySrc);
-                                    Log.i("tag4", moneySrc);
+                                    String pmSrc = src + "pm"; // plus, minus 의 여부를 판별. 0이면 지출, 1이면 수입
 
                                     Map<String, Object> record = new HashMap<>();
                                     record.put(categorySrc, categoryNum);
                                     record.put(moneySrc, Amount);
                                     record.put(memoSrc, memoText);
+                                    record.put(pmSrc, "0");
                                     ref.updateChildren(record);
 
                                     Toast.makeText(SpentRecordCreate.this, "저장 버튼 눌림.", Toast.LENGTH_SHORT).show();

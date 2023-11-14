@@ -3,16 +3,17 @@ package com.example.codevalley.recordListHelper;
 import android.content.Context;
 
 public class HelperClass_RecordList {
-    int category, moneyAmount;
-    String memo;
+    private String memo;
+    private String category;
+    private String moneyAmount;
 
 
 
-    public int getCategory(){
+    public String getCategory(){
         return category;
     }
 
-    public void setCategory(int category){
+    public void setCategory(String category){
         this.category = category;
     }
 
@@ -24,7 +25,7 @@ public class HelperClass_RecordList {
         this.memo = memo;
     }
 
-    public int getMoneyAmount(){
+    public String getMoneyAmount(){
         return moneyAmount;
     }
 
@@ -32,7 +33,7 @@ public class HelperClass_RecordList {
         this.moneyAmount = moneyAmount;
     }
 
-    public HelperClass_RecordList(String memo, int category, int moneyAmount){
+    public HelperClass_RecordList(String memo, String category, String moneyAmount){
         this.memo = memo;
         this.moneyAmount = moneyAmount;
         this.category = category;

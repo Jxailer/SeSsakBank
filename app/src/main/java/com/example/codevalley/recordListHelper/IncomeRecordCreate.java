@@ -40,10 +40,10 @@ public class IncomeRecordCreate extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String category = categorySpinner.getSelectedItem().toString(); // 카테고리 스피너에서 선택된 값 가져오기
-                int categoryNum; // 카테고리 별 고유번호 부여
-                int Amount = Integer.parseInt(moneyAmount.getText().toString()); // 용돈 금액 입력값을 int형으로 저장함.
+                String categoryNum; // 카테고리 별 고유번호 부여
+                String Amount = moneyAmount.getText().toString(); // 용돈 금액 입력값을 int형으로 저장함.
 
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users/"+ userID +"/userrecord/");
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("recordManage/"+ userID);
 
                 // 카테고리 고유번호 부여
                 // 21	정기적 용돈
@@ -51,27 +51,22 @@ public class IncomeRecordCreate extends AppCompatActivity {
                 // 23	비정기적인 보너스
                 // 24	기타
                 if (category.equals("정기적 용돈")) {
-                    categoryNum = 21;
+                    categoryNum = "21";
                 }
                 else if (category.equals("세뱃돈")) {
-                    categoryNum = 22;
+                    categoryNum = "22";
                 }
                 else if (category.equals("비정기적인 보너스")) {
-                    categoryNum = 23;
+                    categoryNum = "23";
                 } else {
-                    categoryNum = 24;
+                    categoryNum = "24";
                 }
-                Log.i("tag1", String.valueOf(categoryNum));
 
 
 //                데이터베이스에 저장하기
                 //reference = FirebaseDatabase.getInstance().getReference();
                 //reference.child("users").child("username").child("planttype").setValue("사과나무");
-
-                //record 순차저장
                 FirebaseDatabase.getInstance().getReference().addListenerForSingleValueEvent(new ValueEventListener() {
-                    //addListenerForSingleValueEvent: 한 번만 반복
-                    // record들을 구분하기 위한 번호
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         int recordNum = 1;
@@ -81,14 +76,14 @@ public class IncomeRecordCreate extends AppCompatActivity {
                                     String src = category+ "/";
                                     String categorySrc = src + "category";
                                     String moneySrc = src + "moneyAmount";
-
-                                    Log.i("tag2", src);
-                                    Log.i("tag3", categorySrc);
-                                    Log.i("tag4", moneySrc);
+                                    String memoSrc = src + "memo";
+                                    String pmSrc = src + "pm"; // plus, minus 의 여부를 판별. 0이면 지출, 1이면 수입
 
                                     Map<String, Object> record = new HashMap<>();
                                     record.put(categorySrc, categoryNum);
                                     record.put(moneySrc, Amount);
+                                    record.put(memoSrc, "");
+                                    record.put(pmSrc, "1");
                                     ref.updateChildren(record);
 
                                     Toast.makeText(IncomeRecordCreate.this, "저장 버튼 눌림.", Toast.LENGTH_SHORT).show();
