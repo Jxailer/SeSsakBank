@@ -129,16 +129,16 @@ public class MainActivity extends AppCompatActivity {
         spentList = new ArrayList<>();
 
         DatabaseReference incomeDatabase = FirebaseDatabase.getInstance().getReference("recordManage").child(userID);
-        Query incomeSum = incomeDatabase.orderByChild("pm").equalTo("1");
+        Query incomeSum = incomeDatabase.orderByChild("pm").equalTo("1"); // pm이 1이면 수입, 0이면 지출. 수입 내용만 쿼리함
         incomeSum.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 incomeList.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     HelperClass_RecordList incomeListData = dataSnapshot.getValue(HelperClass_RecordList.class);
-                    incomeList.add(incomeListData);
+                    incomeList.add(incomeListData); // 수입인 것만 array에 추가함
                 }
-                Log.w("MainActivity", "incomeList = "+ incomeList.toString());
+                Log.w("MainActivity", "incomeList = "+ incomeList.toString()); // array에 추가된 내용을 출력함. 그런데 경로를 제대로 못잡는지 이상한 결과값으로 나옴...
             }
 
             @Override
@@ -147,8 +147,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        recordRef.addValueEventListener(new ValueEventListener() {
+        // 용돈 기입내역 데이터 불러오기 (arrayAdapter)
+        recordRef.addValueEventListener(new ValueEventListener() { 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 arrayList.clear();
