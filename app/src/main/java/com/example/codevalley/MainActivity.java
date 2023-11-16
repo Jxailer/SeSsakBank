@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         recordRef = FirebaseDatabase.getInstance().getReference("recordManage").child(userID);
         target = findViewById(R.id.targetButton);
 
-        recordRcv = findViewById(R.id.recyclerView);
+        recordRcv = findViewById(R.id.recordRecyclerView);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager((Context) this);
         recordRcv.setLayoutManager(linearLayoutManager);

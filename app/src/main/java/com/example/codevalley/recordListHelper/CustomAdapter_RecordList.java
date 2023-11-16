@@ -2,6 +2,7 @@ package com.example.codevalley.recordListHelper;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,6 +69,7 @@ public class CustomAdapter_RecordList extends RecyclerView.Adapter<CustomAdapter
     @Override
     public int getItemCount() {
         // 삼항 연산자
+        Log.w("arrayList size", String.valueOf(arrayList.size())); // arrayList에 기록된 데이터의 갯수 확인
         return (arrayList != null ? arrayList.size() : 0);
     }
 

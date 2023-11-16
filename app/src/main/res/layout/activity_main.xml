@@ -464,9 +464,9 @@
 
                 <!--                용돈 기입 내역을 띄워주는 리싸이클러 뷰-->
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:layout_width="350dp"
-                    android:layout_height="641dp"
+                    android:id="@+id/recordRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="30dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/buttonLayout" />

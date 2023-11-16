@@ -2,6 +2,7 @@ package com.example.codevalley.wishStore;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,7 @@ public class store_adapter extends RecyclerView.Adapter<store_adapter.ViewHolder
 
     @Override
     public int getItemCount() {
+        Log.w("dataList size", String.valueOf(dataList.size())); // arrayList에 기록된 데이터의 갯수 확인
         return (dataList != null ? dataList.size() : 0);
     }
 
