@@ -1,6 +1,7 @@
 package com.example.codevalley.recordListHelper;
 
 import static com.example.codevalley.LoginActivity.userID;
+import static com.example.codevalley.RegisterActivity.ur_stamp;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -21,11 +22,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 
 public class SpentRecordCreate extends AppCompatActivity {
     DatabaseReference reference;
+    DatabaseReference childRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,32 +96,29 @@ public class SpentRecordCreate extends AppCompatActivity {
 
                 FirebaseDatabase.getInstance().getReference().addListenerForSingleValueEvent(new ValueEventListener() {
                     //addListenerForSingleValueEvent: 한 번만 반복
-                    // record들을 구분하기 위한 번호
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         int recordNum = 1;
                         // 데이터를 불러올 때 처리
                         for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-//                            record를 순차 저장함
-                            while(true){
-                                    String src = memoText + "/";
-                                    String categorySrc = src + "category";
-                                    String moneySrc = src + "moneyAmount";
-                                    String memoSrc = src + "memo";
-                                    String pmSrc = src + "pm"; // plus, minus 의 여부를 판별. 0이면 지출, 1이면 수입
 
-                                    Map<String, Object> record = new HashMap<>();
-                                    record.put(categorySrc, categoryNum);
-                                    record.put(moneySrc, Amount);
-                                    record.put(memoSrc, memoText);
-                                    record.put(pmSrc, "0");
-                                    ref.updateChildren(record);
+                            String src = memoText + "/";
+                            String categorySrc = src + "category";
+                            String moneySrc = src + "moneyAmount";
+                            String memoSrc = src + "memo";
+                            String pmSrc = src + "pm"; // plus, minus 의 여부를 판별. 0이면 지출, 1이면 수입
 
-                                    Toast.makeText(SpentRecordCreate.this, "저장 버튼 눌림.", Toast.LENGTH_SHORT).show();
-                                    finish();
-                                    break;
+                            Map<String, Object> record = new HashMap<>();
+                            record.put(categorySrc, categoryNum);
+                            record.put(moneySrc, Amount);
+                            record.put(memoSrc, memoText);
+                            record.put(pmSrc, "0");
+                            ref.updateChildren(record);
 
-                            }
+                            stampUpdate();
+
+//                          Toast.makeText(SpentRecordCreate.this, "저장 버튼 눌림.", Toast.LENGTH_SHORT).show();
+                            finish();
 
                         }
                     }
@@ -150,7 +148,15 @@ public class SpentRecordCreate extends AppCompatActivity {
 
     } // onCreate 클래스 끝.
 
+    void stampUpdate(){
+        DatabaseReference childRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
+        Integer Stamp = ur_stamp + 1;
 
+        Map<String, Object> stampUpdates = new HashMap<>();
+        stampUpdates.put("stamp", Stamp);
+        childRef.updateChildren(stampUpdates);
+        Log.w("SpentRecordCreate", "스탬프 업데이트");
+    }
 
 
 } // 메인 클래스 끝.

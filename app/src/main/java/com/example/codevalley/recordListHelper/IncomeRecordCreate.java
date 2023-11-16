@@ -1,6 +1,7 @@
 package com.example.codevalley.recordListHelper;
 
 import static com.example.codevalley.LoginActivity.userID;
+import static com.example.codevalley.RegisterActivity.ur_stamp;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +28,9 @@ public class IncomeRecordCreate extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        DatabaseReference childRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
+
         setContentView(R.layout.income_record_create);
 
         Button saveButton = findViewById(R.id.saveButton);
@@ -73,21 +77,31 @@ public class IncomeRecordCreate extends AppCompatActivity {
                         // 데이터를 불러올 때 처리
                         for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 //                            record를 category를 기준으로 경로 설정하여 저장함.
-                                    String src = category+ "/";
-                                    String categorySrc = src + "category";
-                                    String moneySrc = src + "moneyAmount";
-                                    String memoSrc = src + "memo";
-                                    String pmSrc = src + "pm"; // plus, minus 의 여부를 판별. 0이면 지출, 1이면 수입
+                            String src = category+ "/";
+                            String categorySrc = src + "category";
+                            String moneySrc = src + "moneyAmount";
+                            String memoSrc = src + "memo";
+                            String pmSrc = src + "pm"; // plus, minus 의 여부를 판별. 0이면 지출, 1이면 수입
 
-                                    Map<String, Object> record = new HashMap<>();
-                                    record.put(categorySrc, categoryNum);
-                                    record.put(moneySrc, Amount);
-                                    record.put(memoSrc, "");
-                                    record.put(pmSrc, "1");
-                                    ref.updateChildren(record);
+                            Map<String, Object> record = new HashMap<>();
+                            record.put(categorySrc, categoryNum);
+                            record.put(moneySrc, Amount);
+                            record.put(memoSrc, category);
+                            record.put(pmSrc, "1");
+                            ref.updateChildren(record);
 
-                                    Toast.makeText(IncomeRecordCreate.this, "저장 버튼 눌림.", Toast.LENGTH_SHORT).show();
-                                    finish();
+//                            stampUpdate();
+
+                            Integer stamp = ur_stamp + 1;
+
+                            Map<String, Object> stampUpdates = new HashMap<>();
+                            stampUpdates.put("stamp", stamp);
+                            childRef.updateChildren(stampUpdates);
+                            Log.w("IncomeRecordCreate", "스탬프 업데이트");
+
+                            // 완료된 것을 알리기
+                            Toast.makeText(IncomeRecordCreate.this, "저장 버튼 눌림.", Toast.LENGTH_SHORT).show();
+                            finish();
 
                         }
                     }
@@ -105,7 +119,7 @@ public class IncomeRecordCreate extends AppCompatActivity {
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(IncomeRecordCreate.this, "취소 버튼 눌림.", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(IncomeRecordCreate.this, "취소 버튼 눌림.", Toast.LENGTH_SHORT).show();
                 finish();
 
             }
@@ -114,6 +128,16 @@ public class IncomeRecordCreate extends AppCompatActivity {
 
     }; // onCreate 클래스 끝.
 
+    // 기록 작성할 때 마다 도장 갯수가 늘어나게 하기
+//    void stampUpdate(){
+//        DatabaseReference childRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
+//        Integer stamp = ur_stamp + 1;
+//
+//        Map<String, Object> stampUpdates = new HashMap<>();
+//        stampUpdates.put("stamp", stamp);
+//        childRef.updateChildren(stampUpdates);
+//        Log.w("IncomeRecordCreate", "스탬프 업데이트");
+//    }
 
 
 

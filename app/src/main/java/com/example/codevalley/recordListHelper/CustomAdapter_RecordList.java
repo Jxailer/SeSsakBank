@@ -1,6 +1,7 @@
 package com.example.codevalley.recordListHelper;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.codevalley.R;
 import com.example.codevalley.recordListHelper.HelperClass_RecordList;
+import com.example.codevalley.wishStore.store_confirm;
 
 
 import java.util.ArrayList;
@@ -39,9 +41,8 @@ public class CustomAdapter_RecordList extends RecyclerView.Adapter<CustomAdapter
 
     @Override
     public void onBindViewHolder(@NonNull CustomAdapter_RecordList.ViewHolder holder, int position) {
-
         holder.recordMemo.setText(arrayList.get(position).getMemo());
-        holder.recordAmount.setText(arrayList.get(position).getMoneyAmount());
+        holder.recordAmount.setText(arrayList.get(position).getMoneyAmount()+"원");
 
     }
 

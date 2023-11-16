@@ -114,10 +114,8 @@ public class MainActivity extends AppCompatActivity {
         dayButton = findViewById(R.id.day1);
         //Button targetButton = findViewById(R.id.targetButton);
 
-        recordRef = FirebaseDatabase.getInstance().getReference("wishManage").child(userID);
+        recordRef = FirebaseDatabase.getInstance().getReference("recordManage").child(userID);
         target = findViewById(R.id.targetButton);
-
-        // 용돈 기입 내역 보여주기
 
         recordRcv = findViewById(R.id.recyclerView);
 
@@ -125,29 +123,30 @@ public class MainActivity extends AppCompatActivity {
         recordRcv.setLayoutManager(linearLayoutManager);
 
         arrayList = new ArrayList<>();
-        incomeList = new ArrayList<>();
-        spentList = new ArrayList<>();
+//        incomeList = new ArrayList<>();
+//        spentList = new ArrayList<>();
 
         DatabaseReference incomeDatabase = FirebaseDatabase.getInstance().getReference("recordManage").child(userID);
-        Query incomeSum = incomeDatabase.orderByChild("pm").equalTo("1");
-        incomeSum.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                incomeList.clear();
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    HelperClass_RecordList incomeListData = dataSnapshot.getValue(HelperClass_RecordList.class);
-                    incomeList.add(incomeListData);
-                }
-                Log.w("MainActivity", "incomeList = "+ incomeList.toString());
-            }
+//        Query incomeSum = incomeDatabase.orderByChild("pm").equalTo("1");
+//        incomeSum.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                incomeList.clear();
+//                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+//                    HelperClass_RecordList incomeListData = dataSnapshot.getValue(HelperClass_RecordList.class);
+//                    incomeList.add(incomeListData);
+//                }
+//                Log.w("MainActivity", "incomeList = "+ incomeList.toString());
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//                Log.e("MainActivity", "onCancelled");
+//            }
+//        });
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("MainActivity", "onCancelled");
-            }
-        });
 
-
+        // 용돈 기입 내역 보여주기
         recordRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -160,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(MainActivity.this, "용돈기입 데이터 불러오기 실패", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "용돈기입 데이터 불러오기 실패", Toast.LENGTH_SHORT).show();
             }
         });
 

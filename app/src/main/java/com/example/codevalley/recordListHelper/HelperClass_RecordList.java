@@ -6,6 +6,7 @@ public class HelperClass_RecordList {
     private String memo;
     private String category;
     private String moneyAmount;
+    private String pm;
 
 
 
@@ -32,11 +33,19 @@ public class HelperClass_RecordList {
     public void setMoneyAmount(){
         this.moneyAmount = moneyAmount;
     }
+    public String getPm(){
+        return pm;
+    }
 
-    public HelperClass_RecordList(String memo, String category, String moneyAmount){
+    public void setPm(String pm){
+        this.pm = pm;
+    }
+
+    public HelperClass_RecordList(String memo, String category, String moneyAmount, String pm){
         this.memo = memo;
         this.moneyAmount = moneyAmount;
         this.category = category;
+        this.pm = pm;
     }
 
     public HelperClass_RecordList(){
