@@ -23,10 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CycleSet extends AppCompatActivity {
-
-    private int weekcycle;
-
-
+    DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("cycle").child(userID);
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -37,35 +34,23 @@ public class CycleSet extends AppCompatActivity {
 
 //        getSupportActionBar().setTitle("< 데이터 전송 주기 변경");
 
+        EditText et2 = (EditText) findViewById(R.id.week_set);
+        et2.setFilters(new InputFilter[]{ new InputFilterMinMax("0","4")});
+
         Button button = (Button) findViewById(R.id.cycleBtn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //주기 DB에 저장
+                Map<String, Object> cycleInfo = new HashMap<>();
+                cycleInfo.put("week", et2.getText().toString());
+                ref.updateChildren(cycleInfo);
                 Toast.makeText(getApplicationContext(),"저장되었습니다.",Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(),MyPageActivity.class);
                 startActivity(intent);
             }
         });
-
-        EditText et2 = (EditText) findViewById(R.id.week_set);
-        et2.setFilters(new InputFilter[]{ new InputFilterMinMax("0","4")});
-
-        //
-
-
-        //주기 DB에 저장(불완전함 - 숫자 저장이 안됨, cycle 저장만 됨)
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("cycle").child(userID);
-        Map<String, Object> cycleInfo = new HashMap<>();
-        cycleInfo.put("week", weekcycle);
-        ref.updateChildren(cycleInfo);
-
-
-
-
     }
-
-
-
 
     private class InputFilterMinMax implements InputFilter {
         private int min, max;
@@ -93,8 +78,5 @@ public class CycleSet extends AppCompatActivity {
         private boolean isInRange(int a, int b, int c) {
             return b > a ? c >= a && c <= b : c >= b && c <= a;
         }
-    }
-
-    private class Private {
     }
 }
