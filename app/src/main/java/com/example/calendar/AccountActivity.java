@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,10 +19,9 @@ import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class AccountActivity extends AppCompatActivity {
+public class AccountActivity extends AppCompatActivity{
 
     TextView monthYearText; //년월 텍스트뷰
-    LocalDate selectedDate; //년월 변수
 
     RecyclerView day_recyclerView;
 
@@ -38,7 +38,7 @@ public class AccountActivity extends AppCompatActivity {
         day_recyclerView = findViewById(R.id.calendar_recyclerView);
 
         //현재 날짜
-        selectedDate = LocalDate.now();
+        CalendarUtil.selectedDate = LocalDate.now();
 
         //화면 설정
         setMonthView();
@@ -49,7 +49,7 @@ public class AccountActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 //-1한 월을 넣어준다..(2월 -> 1월)
-                selectedDate = selectedDate.minusMonths(1);
+                CalendarUtil.selectedDate = CalendarUtil.selectedDate.minusMonths(1);
                 setMonthView();
             }
         });
@@ -60,7 +60,7 @@ public class AccountActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 //+1한 월을 넣어준다.(2월 -> 3월)
-                selectedDate = selectedDate.plusMonths(1);
+                CalendarUtil.selectedDate = CalendarUtil.selectedDate.plusMonths(1);
                 setMonthView();
             }
         });
@@ -75,15 +75,16 @@ public class AccountActivity extends AppCompatActivity {
         return  date.format(formatter);
     }
 
+
     //화면 설정
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void setMonthView(){
 
         //년월 텍스트뷰 셋팅
-        monthYearText.setText(monthYearFromDate(selectedDate));
+        monthYearText.setText(monthYearFromDate(CalendarUtil.selectedDate));
 
         //해당 월 날짜 가져오기
-        ArrayList<String> dayList = daysInMonthArray(selectedDate);
+        ArrayList<LocalDate> dayList = daysInMonthArray(CalendarUtil.selectedDate);
 
         //어뎁터 데이터 적용
         CalendarAdapter adapter = new CalendarAdapter(dayList);
@@ -100,9 +101,9 @@ public class AccountActivity extends AppCompatActivity {
 
     //날짜 생성성
    @RequiresApi(api = Build.VERSION_CODES.O)
-   private ArrayList<String> daysInMonthArray(LocalDate date){
+   private ArrayList<LocalDate> daysInMonthArray(LocalDate date){
 
-        ArrayList<String> dayList = new ArrayList<>();
+        ArrayList<LocalDate> dayList = new ArrayList<>();
 
         YearMonth yearMonth = YearMonth.from(date);
 
@@ -110,7 +111,7 @@ public class AccountActivity extends AppCompatActivity {
        int lastDay = YearMonth.now().lengthOfMonth();
 
        // 해당 월의 첫 번째 날 가져오기
-       LocalDate firstDay = selectedDate.withDayOfMonth(1);
+       LocalDate firstDay = CalendarUtil.selectedDate.withDayOfMonth(1);
 
        //첫 번째 날 요일 가져오기
        int dayofWeek = firstDay.getDayOfWeek().getValue();
@@ -118,11 +119,13 @@ public class AccountActivity extends AppCompatActivity {
        //날짜 생성
        for (int i = 1; i < 42; i++) {
            if (i <= dayofWeek || i > lastDay + dayofWeek) {
-               dayList.add("");
+               dayList.add(null);
            } else {
-               dayList.add(String.valueOf(i - dayofWeek));
+               dayList.add(LocalDate.of(CalendarUtil.selectedDate.getYear(), CalendarUtil.selectedDate.getMonth(),
+                       i - dayofWeek));
            }
        }
        return dayList;
     }
+
 }//AccountActivitiy
