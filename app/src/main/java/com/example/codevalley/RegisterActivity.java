@@ -23,12 +23,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
     public String id, pw, name, birth, phone;
-    public static Integer fertilizer = 1, synthesis = 1, water = 1, ur_stamp=80;
+    public static Integer fertilizer = 1, synthesis = 1, water = 1, ur_stamp;
     EditText signupUsername, signupPassword, signupName, signupBirth, signupPhone;
     Button signupButton, usernameDuplicate, loginRedirectText;
     DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
@@ -151,7 +153,9 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    HelperClass userInfoClass = new HelperClass(id, pw, name, birth, phone, ur_stamp);
+                    ur_stamp = 0;
+                    String create_date = createAccountDate();
+                    HelperClass userInfoClass = new HelperClass(id, pw, name, birth, phone, create_date, ur_stamp);
                     reference.child(id.replace(".", ",")).setValue(userInfoClass);
                     //초기 게임 아이템 주기
                     HelperClass gameItemClass = new HelperClass(fertilizer, synthesis, water);
@@ -178,6 +182,13 @@ public class RegisterActivity extends AppCompatActivity {
         else{
             return false;
         }
+    }
+
+    public String createAccountDate(){
+        Long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd");
+        return dateFormat.format(date);
     }
 
 }

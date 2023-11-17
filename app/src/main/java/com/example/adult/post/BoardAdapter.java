@@ -15,6 +15,11 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.codevalley.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -37,22 +42,18 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardVH>{
 
     }
 
-
-
-
     @Override
     public void onBindViewHolder(@NonNull BoardVH holder, int position) {
-
         BoardWrite boardwrite = list.get(holder.getAdapterPosition());
 
         // 글쓴이
         //holder.writeUser.setText(boardwrite.getUser_key());
-        holder.writeUser.setText("익명"); // 홀더 설정 => 닉네임을 바꾸기
-
-
-
-        //제목
-        holder.titleText.setText(boardwrite.getUser_title());
+        //holder.writeUser.setText("익명"); // 홀더 설정 => 닉네임을 바꾸기
+        //holder.writeTime.setText(boardwrite.);
+        holder.writeUser.setText(boardwrite.getUser_nick()); //작성자
+        holder.writeTime.setText(boardwrite.getUser_time()); //시간
+        holder.writeTitle.setText(boardwrite.getUser_title()); //제목
+        holder.writeText.setText(boardwrite.getUser_text()); //내용
 
         holder.boardInfo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +84,6 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardVH>{
 
     }
 
-
     @Override
     public int getItemCount() {
         return list.size();
@@ -91,9 +91,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardVH>{
 
     class BoardVH extends RecyclerView.ViewHolder{
 
-        TextView titleText;
-
-        TextView writeUser;
+        TextView writeUser, writeTime, writeTitle, writeText;
 
         CardView cardView;
 
@@ -102,8 +100,9 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardVH>{
         public BoardVH(@NonNull View itemView) {
             super(itemView);
 
-            titleText = itemView.findViewById(R.id.title_text);
-
+            writeTime = itemView.findViewById(R.id.write_time);
+            writeTitle = itemView.findViewById(R.id.write_title);
+            writeText = itemView.findViewById(R.id.write_text);
             writeUser = itemView.findViewById(R.id.user_nickname);
 
             cardView = itemView.findViewById(R.id.board_card_view);
@@ -111,7 +110,6 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardVH>{
             boardInfo = itemView.findViewById(R.id.board_info);
 
             commenBtn = itemView.findViewById(R.id.comment_btn);
-
 
         }
     }

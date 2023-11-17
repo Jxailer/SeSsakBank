@@ -1,5 +1,7 @@
 package com.example.codevalley;
 
+import static com.example.codevalley.RegisterActivity.ur_stamp;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,6 +23,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -34,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth.AuthStateListener mAuthListener;
     public static FirebaseUser mUser;
     public static String userID;
+    DatabaseReference stampRef = FirebaseDatabase.getInstance().getReference("users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,12 +173,22 @@ public class LoginActivity extends AppCompatActivity {
             if(autoLoginBox.isChecked()){
                 editor.putInt("checkValue", 1);
                 editor.commit();
-
             }else{
                 editor.putInt("checkValue", 0);
                 editor.commit();
             }
             userID = user.getEmail().replace(".", ",");
+            //도장 개수 불러오기(앱 시작할 때 초기화하기 위해...)
+            stampRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    ur_stamp = snapshot.child(userID).child("stamp").getValue(Integer.class);
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
             startActivity(new Intent(this, MainActivity.class));
             finish();
         }

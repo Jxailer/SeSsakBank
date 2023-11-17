@@ -80,7 +80,7 @@ public class BoardUpdateActivity extends AppCompatActivity implements View.OnCli
 
         // 값 있는지 체크
         if(getIntent().hasExtra("key") && getIntent().hasExtra("title") &&
-        getIntent().hasExtra("write")){
+                getIntent().hasExtra("write")){
 
             //데이터 가져오기
             sKey = getIntent().getStringExtra("key");

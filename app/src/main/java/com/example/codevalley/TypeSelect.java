@@ -3,7 +3,9 @@ package com.example.codevalley;
 import static com.example.codevalley.LoginActivity.mAuth;
 import static com.example.codevalley.LoginActivity.mUser;
 import static com.example.codevalley.LoginActivity.userID;
+import static com.example.codevalley.RegisterActivity.ur_stamp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -20,10 +22,16 @@ import android.widget.Toast;
 import com.example.adult.adult_LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class TypeSelect extends AppCompatActivity {
     Button typeChild, typeAdult, selectBtn;
     SharedPreferences mShared;
+    DatabaseReference stampRef = FirebaseDatabase.getInstance().getReference("users");
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -85,6 +93,17 @@ public class TypeSelect extends AppCompatActivity {
         if (firebaseUser != null) { //로그인 상태가 저장되었을 때(로그인 했을 때)
             if(value == 1){ //자동 로그인에 체크했을 때
                 userID = firebaseUser.getEmail().replace(".", ",");
+                //도장 개수 불러오기(앱 시작할 때 초기화하기 위해...)
+                stampRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        ur_stamp = snapshot.child(userID).child("stamp").getValue(Integer.class);
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
                 startActivity(new Intent(this, MainActivity.class));
             }
             else if(value == 0){ // 자동 로그인에 체크를 안 했을 때

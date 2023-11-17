@@ -149,8 +149,8 @@ public class SpentRecordCreate extends AppCompatActivity {
     } // onCreate 클래스 끝.
 
     void stampUpdate(){
-        DatabaseReference childRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
-        Integer Stamp = ur_stamp + 1;
+        Integer Stamp = ur_stamp;
+        Stamp++;
 
         Map<String, Object> stampUpdates = new HashMap<>();
         stampUpdates.put("stamp", Stamp);

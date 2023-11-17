@@ -4,7 +4,7 @@ import androidx.appcompat.widget.ThemedSpinnerAdapter;
 
 public class HelperClass {
 
-    String username, password, name, birth, phone, adult_name, adult_nickname;
+    String username, password, name, birth, phone, adult_name, adult_nickname, createDate;
     Integer fertilizer, synthesis, water, stamp;
 
     public String getUsername() {
@@ -36,6 +36,13 @@ public class HelperClass {
         this.phone = phone;
     }
 
+    public String getCreateDate() {
+        return createDate;
+    }
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
+
     public String getAdult_name() { return adult_name; }
     public void setAdult_name(String adult_name) { this.adult_name = adult_name; }
 
@@ -54,12 +61,13 @@ public class HelperClass {
     public Integer getStamp() { return stamp; }
     public void setStamp(Integer stamp) { this.stamp = stamp; }
 
-    public HelperClass(String username, String password, String name, String birth, String phone, Integer stamp) {
+    public HelperClass(String username, String password, String name, String birth, String phone, String createDate, Integer stamp) {
         this.username = username;
         this.password = password;
         this.name = name;
         this.birth = birth;
         this.phone = phone;
+        this.createDate = createDate;
         this.stamp = stamp;
     }
 

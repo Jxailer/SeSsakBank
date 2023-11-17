@@ -92,7 +92,8 @@ public class IncomeRecordCreate extends AppCompatActivity {
 
 //                            stampUpdate();
 
-                            Integer stamp = ur_stamp + 1;
+                            Integer stamp = ur_stamp;
+                            stamp++;
 
                             Map<String, Object> stampUpdates = new HashMap<>();
                             stampUpdates.put("stamp", stamp);

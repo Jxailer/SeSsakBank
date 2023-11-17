@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -46,7 +47,7 @@ public class BoardListActivity extends AppCompatActivity implements View.OnClick
     ArrayList<BoardWrite> list = new ArrayList<>();
 
     ImageView boardWriteBtn;
-
+    LinearLayout likeBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,11 +90,11 @@ public class BoardListActivity extends AppCompatActivity implements View.OnClick
 
                 switch (direction) {
                     case ItemTouchHelper.LEFT:
-                        String key = list.get(position).getUser_key();
+                        String nick = list.get(position).getUser_nick();
 
                         DAOBoardWrite dao = new DAOBoardWrite();
 
-                        dao.remove(key).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        dao.remove(nick).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
                                 Toast.makeText(BoardListActivity.this,
@@ -150,7 +151,7 @@ public class BoardListActivity extends AppCompatActivity implements View.OnClick
                     //boardwrite.setUser_title(title);
 
                     //리스트에 담기
-                    list.add(boardwrite);
+                    list.add(0, boardwrite);
                 }
 
                 adapter.notifyDataSetChanged();

@@ -1,5 +1,10 @@
 package com.example.adult.post;
 
+import static com.example.adult.adult_LoginActivity.nickName;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 

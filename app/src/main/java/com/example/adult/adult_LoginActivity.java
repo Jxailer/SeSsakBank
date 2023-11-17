@@ -25,7 +25,7 @@ import java.util.Objects;
 
 public class adult_LoginActivity extends AppCompatActivity {
     EditText loginUsername;
-    public static String childID;
+    public static String childID, nickName;
     EditText loginNickname;
     EditText loginName;
     Button loginButton;
@@ -110,10 +110,10 @@ public class adult_LoginActivity extends AppCompatActivity {
         reference = database.getReference("adults");
 
         childID = loginUsername.getText().toString().replace(".", ",");
-        String adult_nickname = loginNickname.getText().toString();
+        nickName = loginNickname.getText().toString();
         String adult_name = loginName.getText().toString();
 
-        HelperClass adultHelperClass = new HelperClass(adult_nickname, adult_name);
+        HelperClass adultHelperClass = new HelperClass(nickName, adult_name);
         reference.child(childID).setValue(adultHelperClass);
 
         Intent intent = new Intent(adult_LoginActivity.this, HomeActivity.class);

@@ -1,5 +1,7 @@
 package com.example.adult.post;
 
+import static com.example.adult.adult_LoginActivity.nickName;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.codevalley.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class BoardWirteMain extends AppCompatActivity implements View.OnClickListener{
 
@@ -41,10 +46,11 @@ public class BoardWirteMain extends AppCompatActivity implements View.OnClickLis
             public void onClick(View view) {
 
                 //입력값 변수에 담기
+                String time = getTime();
                 String title = title_edit.getText().toString(); //글 제목
-                String write = write_edit.getText().toString();//글 내용
+                String text = write_edit.getText().toString();//글 내용
 
-                BoardWrite boardWrite = new BoardWrite("", title, write);
+                BoardWrite boardWrite = new BoardWrite(nickName, time, title, text);
 
                 //데이터베이스 사용자 등록
                 dao.add(boardWrite).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -79,6 +85,13 @@ public class BoardWirteMain extends AppCompatActivity implements View.OnClickLis
 
 
     }//onCreate
+
+    public String getTime(){
+        Long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yy/MM/dd hh:mm:ss");
+        return dateFormat.format(date);
+    }
 
     public void goList(){
         Intent listIntent = new Intent(this, BoardListActivity.class);

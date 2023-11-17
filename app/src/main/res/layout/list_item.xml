@@ -28,12 +28,20 @@
                 android:layout_marginTop="16dp">
 
                 <TextView
+                    android:id="@+id/write_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="글제목"
+                    android:textSize="18sp"
+                    android:textColor="@color/black" />
+
+                <TextView
                     android:id="@+id/user_nickname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:text="닉네임"
-                    android:textSize="18sp"
-                    android:textColor="@color/black"/>
+                    android:textSize="14sp" />
 
                 <View
                     android:layout_width="0dp"
@@ -50,7 +58,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/title_text"
+                android:id="@+id/write_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
