@@ -1,5 +1,7 @@
 package com.example.codevalley.myPage;
 
+import static com.example.codevalley.LoginActivity.userID;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,10 +16,21 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.codevalley.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class CycleSet extends AppCompatActivity {
+
+    private int weekcycle;
+
+
+
     @SuppressLint("MissingInflatedId")
     @Override
+
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cycleset);
@@ -34,14 +47,25 @@ public class CycleSet extends AppCompatActivity {
             }
         });
 
-//        EditText et1 = (EditText) findViewById(R.id.month_set);
-//        et1.setFilters(new InputFilter[]{ new InputFilterMinMax("0","12")});
-
         EditText et2 = (EditText) findViewById(R.id.week_set);
         et2.setFilters(new InputFilter[]{ new InputFilterMinMax("0","4")});
 
+        //
+
+
+        //주기 DB에 저장(불완전함 - 숫자 저장이 안됨, cycle 저장만 됨)
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("cycle").child(userID);
+        Map<String, Object> cycleInfo = new HashMap<>();
+        cycleInfo.put("week", weekcycle);
+        ref.updateChildren(cycleInfo);
+
+
+
 
     }
+
+
+
 
     private class InputFilterMinMax implements InputFilter {
         private int min, max;
@@ -69,5 +93,8 @@ public class CycleSet extends AppCompatActivity {
         private boolean isInRange(int a, int b, int c) {
             return b > a ? c >= a && c <= b : c >= b && c <= a;
         }
+    }
+
+    private class Private {
     }
 }
