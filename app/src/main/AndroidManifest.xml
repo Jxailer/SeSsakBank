@@ -38,6 +38,10 @@
             android:name=".RegisterActivity"
             android:exported="true" />
 
+        <activity
+            android:name="com.example.calendar.AccountActivity"
+            android:exported="true" />
+
 <!--        main-->
 <!--        <activity-->
 <!--            android:name=".DailyRecordPopupActivity"-->
