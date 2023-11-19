@@ -22,7 +22,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class IncomeRecordCreate extends AppCompatActivity {
 
@@ -101,7 +100,7 @@ public class IncomeRecordCreate extends AppCompatActivity {
                             Log.w("IncomeRecordCreate", "스탬프 업데이트");
 
                             // 완료된 것을 알리기
-                            Toast.makeText(IncomeRecordCreate.this, "저장 버튼 눌림.", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(IncomeRecordCreate.this, "저장 버튼 눌림.", Toast.LENGTH_SHORT).show();
                             finish();
 
                         }

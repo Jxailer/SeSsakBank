@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.codevalley" >
+    package="com.example.codevalley">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -14,13 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CodeValley"
         tools:targetApi="31">
-
-<!--        App start-->
+        <activity
+            android:name=".categoryStatsActivity"
+            android:exported="false" />
+        <!-- 어른 통계 -->
+        <activity
+            android:name=".ageStatsActivity"
+            android:exported="true" /> <!-- App start -->
         <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -37,81 +43,72 @@
         <activity
             android:name=".RegisterActivity"
             android:exported="true" />
-
         <activity
             android:name="com.example.calendar.AccountActivity"
-            android:exported="true" />
-
-<!--        main-->
-<!--        <activity-->
-<!--            android:name=".DailyRecordPopupActivity"-->
-<!--            android:theme="@style/Theme.AppCompat" />-->
-<!--        <activity-->
-<!--            android:name=".RecordCreate"-->
-<!--            android:exported="true"/>-->
-<!--        <activity-->
-<!--            android:name=".TargetPopupActivity"-->
-<!--            android:theme="@style/Theme.AppCompat"-->
-<!--            android:exported="true"/>-->
+            android:exported="true" /> <!-- main -->
+        <!-- <activity -->
+        <!-- android:name=".DailyRecordPopupActivity" -->
+        <!-- android:theme="@style/Theme.AppCompat" /> -->
+        <!-- <activity -->
+        <!-- android:name=".RecordCreate" -->
+        <!-- android:exported="true"/> -->
+        <!-- <activity -->
+        <!-- android:name=".TargetPopupActivity" -->
+        <!-- android:theme="@style/Theme.AppCompat" -->
+        <!-- android:exported="true"/> -->
         <activity
             android:name=".recordListHelper.IncomeRecordCreate"
             android:theme="@style/Theme.AppCompat" />
         <activity
             android:name=".recordListHelper.SpentRecordCreate"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".StampPopupActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-        </activity>
-
-
-<!--        child_wishStore-->
+            android:exported="true" /> <!-- child_wishStore -->
         <activity
             android:name=".wishStore.store_complete"
             android:exported="true" />
-        <activity android:name=".wishStore.store_confirm"
-            android:exported="true"/>
-        <activity android:name=".wishStore.store_main"
-            android:exported="true"/>
-        <activity android:name=".wishStore.store_buyGameItem"
-            android:theme="@android:style/Theme.Dialog"
-            android:exported="true"/>
-
-
-<!--            child_myPage-->
+        <activity
+            android:name=".wishStore.store_confirm"
+            android:exported="true" />
+        <activity
+            android:name=".wishStore.store_main"
+            android:exported="true" />
+        <activity
+            android:name=".wishStore.store_buyGameItem"
+            android:exported="true"
+            android:theme="@android:style/Theme.Dialog" /> <!-- child_myPage -->
         <activity
             android:name=".myPage.MyPageActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".myPage.UserInfo"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".myPage.PwdUpdate"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".myPage.VersionInfo"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".myPage.CycleSet"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".myPage.DeleteID"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".myPage.Maintainance"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".myPage.CustomService"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".myPage.LogoutPopup"
             android:exported="true"
-            android:theme="@style/DialogTheme"/>
-
-<!--        game-->
+            android:theme="@style/DialogTheme" /> <!-- game -->
         <activity
             android:name=".game.GameStart2"
             android:exported="true" />
@@ -122,10 +119,8 @@
             android:name=".game.PlantGame"
             android:exported="true" />
         <activity
-             android:name=".game.Game_nameChange"
-             android:exported="true" />
-
-<!--        adult_wishShop-->
+            android:name=".game.Game_nameChange"
+            android:exported="true" /> <!-- adult_wishShop -->
         <activity
             android:name="com.example.wishShop.UpdateActivity"
             android:exported="false" />
@@ -137,45 +132,38 @@
             android:exported="true" />
         <activity
             android:name="com.example.wishShop.UploadActivity"
-            android:exported="true" />
-
-<!--        adult_post-->
+            android:exported="true" /> <!-- adult_post -->
         <activity
             android:name="com.example.adult.post.commentActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize"
-            android:parentActivityName="com.example.adult.post.BoardListActivity"/>
+            android:parentActivityName="com.example.adult.post.BoardListActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="com.example.adult.post.BoardUpdateActivity"
             android:exported="true"
             android:parentActivityName="com.example.adult.post.BoardListActivity" />
         <activity
             android:name="com.example.adult.post.BoardWirteMain"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name="com.example.adult.post.BoardListActivity"
-            android:exported="true" />
-
-<!--            adult_activity-->
+            android:exported="true" /> <!-- adult_activity -->
         <activity
             android:name="com.example.adult.HomeActivity"
             android:enabled="true" />
         <activity
             android:name="com.example.adult.profile.Profile"
-            android:enabled="true" />
-
-<!--            admin-->
+            android:enabled="true" /> <!-- admin -->
         <activity
             android:name=".admin.AdminActivity"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                 <action android:name="android.intent.action.MAIN" />
-                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
 
         <meta-data
             android:name="preloaded_fonts"

@@ -139,7 +139,7 @@ public class SpentRecordCreate extends AppCompatActivity {
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(SpentRecordCreate.this, "취소 버튼 눌림.", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(SpentRecordCreate.this, "취소 버튼 눌림.", Toast.LENGTH_SHORT).show();
                 finish();
 
             }
