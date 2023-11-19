@@ -57,7 +57,7 @@ public class AdminActivity extends AppCompatActivity {
     LineChart lineChart;
     CardView viewAllUsers, viewAllNotice, viewAllCommunity;
     ArrayList arrayPost;
-    TextView totalUsers, nOne, nTwo, nThree, tOne, tTwo, tThree;
+    TextView totalUsers, nOne, nTwo, nThree, tOne, tTwo, tThree, tFour;
     String createDay, totalUserCnt;
 
 
@@ -80,6 +80,7 @@ public class AdminActivity extends AppCompatActivity {
         tOne = findViewById(R.id.t1);
         tTwo = findViewById(R.id.t2);
         tThree = findViewById(R.id.t3);
+        tFour = findViewById(R.id.t4);
 
         // 가입자 수 차트
         setChartForDailySignups();
@@ -245,6 +246,7 @@ public class AdminActivity extends AppCompatActivity {
                 tOne.setText((CharSequence) arrayPost.get(0));
                 tTwo.setText((CharSequence) arrayPost.get(1));
                 tThree.setText((CharSequence) arrayPost.get(2));
+                tFour.setText((CharSequence) arrayPost.get(3));
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
