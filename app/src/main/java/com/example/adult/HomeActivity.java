@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.adult.post.BoardListActivity;
 import com.example.adult.profile.Profile;
 import com.example.adult.statistics.ageStatsActivity;
+import com.example.adult.statistics.categoryStatsActivity;
 import com.example.codevalley.R;
 import com.example.wishShop.WishShopActivity;
 import com.github.mikephil.charting.charts.PieChart;
@@ -83,9 +84,9 @@ public class HomeActivity extends AppCompatActivity {
                         mMoney += money;
                     }
                 }
-                Integer Money = pMoney + mMoney;
-                float pValue = pMoney.floatValue() / Money;
-                float mValue = mMoney.floatValue() / Money;
+                Integer Money = pMoney - mMoney;
+                float pValue = Money / pMoney.floatValue();
+                float mValue = mMoney.floatValue() / pMoney.floatValue();
                 pTotalValue = pValue * 100;
                 mTotalValue = mValue * 100;
                 System.out.println(pTotalValue);
@@ -137,11 +138,14 @@ public class HomeActivity extends AppCompatActivity {
 
     // 다른 통계화면으로 이동
     public void ageStatsButtonClicked(View v){
-        Intent statsIntent = new Intent(this, ageStatsActivity.class);
-        startActivity(statsIntent);
+        Intent ageStatsIntent = new Intent(this, ageStatsActivity.class);
+        startActivity(ageStatsIntent);
     }
 
-
+    public void categoryStatsButtonClicked(View v) {
+        Intent categoryStatsIntent = new Intent(this, categoryStatsActivity.class);
+        startActivity(categoryStatsIntent);
+    }
 
     //    하단 네비게이션 바 버튼 클릭
     public void homeButtonClicked(View v){

@@ -110,14 +110,15 @@
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/pie_Chart"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="280dp"
+                android:layout_margin="20dp"
                 android:layout_centerHorizontal="true"/>
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:orientation="vertical"
             android:gravity="center">
 
@@ -136,6 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="5dp"
+                android:gravity="center"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="20dp"/>
