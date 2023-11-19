@@ -1,13 +1,24 @@
 package com.example.codevalley.admin;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.os.Bundle;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.ConcatAdapter;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.adult.post.BoardAdapter;
+import com.example.adult.post.BoardWrite;
 import com.example.codevalley.R;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
@@ -27,9 +38,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
 
 public class AdminActivity extends AppCompatActivity {
     DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
@@ -39,15 +55,43 @@ public class AdminActivity extends AppCompatActivity {
     public static ArrayList<Entry> arrayLastWeek = new ArrayList<Entry>();
     public static ArrayList<Entry> arrayThisWeek = new ArrayList<Entry>();
     LineChart lineChart;
-    String createDay;
+    CardView viewAllUsers, viewAllNotice, viewAllCommunity;
+    ArrayList arrayPost;
+    TextView totalUsers, nOne, nTwo, nThree, tOne, tTwo, tThree;
+    String createDay, totalUserCnt;
 
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
-
+        //사용자
         lineChart = findViewById(R.id.dailySignups_chart);
+        viewAllUsers = findViewById(R.id.view_all_users);
+        totalUsers = findViewById(R.id.total_users);
+        //공지사항
+        viewAllNotice = findViewById(R.id.view_all_notice);
+        nOne = findViewById(R.id.n1);
+        nTwo = findViewById(R.id.n2);
+        nThree = findViewById(R.id.n3);
+        //게시판
+        viewAllCommunity = findViewById(R.id.view_all_community);
+        tOne = findViewById(R.id.t1);
+        tTwo = findViewById(R.id.t2);
+        tThree = findViewById(R.id.t3);
 
+        // 가입자 수 차트
+        setChartForDailySignups();
+        // 공지사항
+        nOne.setText("시스템 점검 안내");
+        nTwo.setText("커뮤니티 이용규칙 안내");
+        nThree.setText("시스템 장애 안내");
+        // 최근 게시판
+        loadCommunityList();
+    }
+
+    private void setChartForDailySignups(){
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -67,6 +111,9 @@ public class AdminActivity extends AppCompatActivity {
                     }
                     arrayDay.add(createDay);  // -> 사용자들의 가입 날짜만 저장됨 -> (2일에 아무도 가입하지 않았으면 2는 들어가지 않음)
                 }
+                // 총 가입자 수
+                totalUserCnt = String.valueOf(arrayDay.size());
+                totalUsers.setText(totalUserCnt);
 
                 //통계를 위해 1일부터 현재 일자에 대한 가입자 수 배열 생성
                 Integer toDay = Integer.valueOf(getTodayDate()); // 오늘 일자 구하기
@@ -101,9 +148,8 @@ public class AdminActivity extends AppCompatActivity {
                 //x축의 범위 설정을 위한 리스트 생성
                 for(Integer i=(toDay-6); i<=toDay; i++){
                     String j = String.valueOf(i);
-                    arrayXRange.add("11-" + j);
+                    arrayXRange.add(j + "일");
                 }
-                System.out.println(arrayXRange);
 
                 LineData lineData = new LineData();
 
@@ -132,16 +178,21 @@ public class AdminActivity extends AppCompatActivity {
 
                 lineChart.setData(lineData);
 
+                //애니메이션
+                lineChart.animateX(300);
                 //description 지우기
                 Description description = lineChart.getDescription();
                 description.setEnabled(false);
                 //범례 설정
                 Legend legend = lineChart.getLegend();
+                legend.setTextSize(10f);
                 legend.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);  // 상단에 위치
                 legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);  // 오른쪽에 위치
                 legend.setForm(Legend.LegendForm.LINE);  // 구분은 선 모양
+                legend.setDrawInside(true);
                 //x축 설정
                 XAxis xAxis = lineChart.getXAxis();
+                xAxis.setTextSize(10f);  // 글자 크기
                 xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);  // x축은 아래에 위치
                 xAxis.setDrawAxisLine(false);  // x축 선 지우기
                 xAxis.setDrawGridLines(false);  // 격자무늬 지우기
@@ -175,6 +226,31 @@ public class AdminActivity extends AppCompatActivity {
         Date todayDate = new Date(today);
         SimpleDateFormat sd = new SimpleDateFormat("d");
         return sd.format(todayDate);
+    }
+
+    private void loadCommunityList(){
+        DatabaseReference boardRef = FirebaseDatabase.getInstance().getReference("Post");
+        boardRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                arrayPost = new ArrayList<>();
+                arrayPost.clear();
+                for(DataSnapshot data : snapshot.getChildren()){
+                    String writeText = data.child("user_text").getValue().toString();
+
+                    arrayPost.add(writeText);
+                }
+                arrayPost.sort(Comparator.reverseOrder());
+
+                tOne.setText((CharSequence) arrayPost.get(0));
+                tTwo.setText((CharSequence) arrayPost.get(1));
+                tThree.setText((CharSequence) arrayPost.get(2));
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
 }
