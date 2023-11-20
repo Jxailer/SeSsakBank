@@ -113,19 +113,17 @@ public class SpentRecordCreate extends AppCompatActivity {
                         for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 //
 
-                            String src = memoText + "/";
+                            String src = dateInfo+"/"+ memoText + "/";
                             String categorySrc = src + "category";
                             String moneySrc = src + "moneyAmount";
                             String memoSrc = src + "memo";
                             String pmSrc = src + "pm"; // plus, minus 의 여부를 판별. 0이면 지출, 1이면 수입
-                            String dateSrc = src + "date";
 
                             Map<String, Object> record = new HashMap<>();
                             record.put(categorySrc, categoryNum);
                             record.put(moneySrc, Amount);
                             record.put(memoSrc, memoText);
                             record.put(pmSrc, "0");
-                            record.put(dateSrc, dateInfo);
                             ref.updateChildren(record);
                             Log.w("Spent date info", dateInfo+"에 지출 기록 저장됨");
 
