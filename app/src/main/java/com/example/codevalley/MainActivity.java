@@ -2,9 +2,11 @@ package com.example.codevalley;
 
 import static com.example.codevalley.LoginActivity.userID;
 
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,10 +15,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.calendar.CalendarAdapter;
+import com.example.calendar.CalendarUtil;
 import com.example.codevalley.MainActivity;
 import com.example.codevalley.R;
 import com.example.codevalley.game.GameStart1;
@@ -42,10 +47,15 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.time.LocalDate;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -88,9 +98,17 @@ public class MainActivity extends AppCompatActivity {
     Button dayButton;
     Button target;
 
-    int incomeSum, spentSum;
+//    캘린더 커스텀뷰 관련 변수 선언
+    TextView monthYearText; //년월 텍스트뷰
+    RecyclerView day_recyclerView;
+
+
+//    주간 용돈 사용 내역 합산 변수 선언
+//    int incomeSum, spentSum;
 
     DatabaseReference recordRef;
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,7 +129,6 @@ public class MainActivity extends AppCompatActivity {
         CalendarRecord = findViewById(R.id.CalendarRecord);
         saveButton = findViewById(R.id.saveButton);
         cancelButton = findViewById(R.id.cancelButton);
-        dayButton = findViewById(R.id.day1);
         //Button targetButton = findViewById(R.id.targetButton);
 
         recordRef = FirebaseDatabase.getInstance().getReference("recordManage").child(userID);
@@ -123,10 +140,46 @@ public class MainActivity extends AppCompatActivity {
         recordRcv.setLayoutManager(linearLayoutManager);
 
         arrayList = new ArrayList<>();
+
+//        달력커스텀뷰 위젯 초기화
+        monthYearText = findViewById(R.id.monthYearText);
+        ImageButton preBtn = findViewById(R.id.pre_btn);
+        ImageButton nextBtn = findViewById(R.id.next_btn);
+        day_recyclerView = findViewById(R.id.calendar_recyclerView);
+
+        //현재 날짜
+        CalendarUtil.selectedDate = LocalDate.now();
+
+        //화면 설정
+        setMonthView();
+
+        //이전 달 버튼 이벤트
+        preBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //-1한 월을 넣어준다..(2월 -> 1월)
+                CalendarUtil.selectedDate = CalendarUtil.selectedDate.minusMonths(1);
+                setMonthView();
+            }
+        });
+
+        //다음 달 버튼 이벤트
+        nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //+1한 월을 넣어준다.(2월 -> 3월)
+                CalendarUtil.selectedDate = CalendarUtil.selectedDate.plusMonths(1);
+                setMonthView();
+            }
+        });
+
+//        수입지출 합계 쿼리
 //        incomeList = new ArrayList<>();
 //        spentList = new ArrayList<>();
 
-        DatabaseReference incomeDatabase = FirebaseDatabase.getInstance().getReference("recordManage").child(userID);
+//        DatabaseReference incomeDatabase = FirebaseDatabase.getInstance().getReference("recordManage").child(userID);
 //        Query incomeSum = incomeDatabase.orderByChild("pm").equalTo("1");
 //        incomeSum.addValueEventListener(new ValueEventListener() {
 //            @Override
@@ -167,19 +220,6 @@ public class MainActivity extends AppCompatActivity {
         recordRcv.setAdapter(recordAdt);
 
 
-        // day1 버튼 클릭시
-        dayButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-//                getValue();
-
-
-                CalendarRecord.setVisibility(View.VISIBLE);
-
-
-            }
-        });
 
         // 목표 버튼 눌렀을 시
         target.setOnClickListener(new View.OnClickListener() {
@@ -246,11 +286,68 @@ public class MainActivity extends AppCompatActivity {
 
     } // onCreate class 끝
 
+    //날짜 타입 설정
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private String monthYearFromDate(LocalDate date){
 
-    //    정보바 버튼 클릭
-    public void monthButtonClicked(View v) {
-        //Toast.makeText(MainActivity.this, "월 버튼 눌림.", Toast.LENGTH_SHORT).show();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월");
+
+        return  date.format(formatter);
     }
+
+
+    //화면 설정
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void setMonthView(){
+
+        //년월 텍스트뷰 셋팅
+        monthYearText.setText(monthYearFromDate(CalendarUtil.selectedDate));
+
+        //해당 월 날짜 가져오기
+        ArrayList<LocalDate> dayList = daysInMonthArray(CalendarUtil.selectedDate);
+
+        //어뎁터 데이터 적용
+        CalendarAdapter adapter = new CalendarAdapter(dayList, this);
+
+        //레이아웃 설정(열 7개)
+        RecyclerView.LayoutManager manager = new GridLayoutManager(getApplicationContext(),7);
+
+        //레이아웃 적용
+        day_recyclerView.setLayoutManager(manager);
+
+        //어뎁터 적용
+        day_recyclerView.setAdapter(adapter);
+    }
+
+    //날짜 생성성
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private ArrayList<LocalDate> daysInMonthArray(LocalDate date){
+
+        ArrayList<LocalDate> dayList = new ArrayList<>();
+
+        YearMonth yearMonth = YearMonth.from(date);
+
+        // 해당 월 마지막 날짜 가져오기기
+        int lastDay = YearMonth.now().lengthOfMonth();
+
+        // 해당 월의 첫 번째 날 가져오기
+        LocalDate firstDay = CalendarUtil.selectedDate.withDayOfMonth(1);
+
+        //첫 번째 날 요일 가져오기
+        int dayofWeek = firstDay.getDayOfWeek().getValue();
+
+        //날짜 생성
+        for (int i = 1; i < 42; i++) {
+            if (i <= dayofWeek || i > lastDay + dayofWeek) {
+                dayList.add(null);
+            } else {
+                dayList.add(LocalDate.of(CalendarUtil.selectedDate.getYear(), CalendarUtil.selectedDate.getMonth(),
+                        i - dayofWeek));
+            }
+        }
+        return dayList;
+    }
+
 
     public void stampButtonClicked(View v) {
         //Toast.makeText(MainActivity.this, "스템프 버튼 눌림.", Toast.LENGTH_SHORT).show();
@@ -262,7 +359,7 @@ public class MainActivity extends AppCompatActivity {
         //Toast.makeText(MainActivity.this, "통계 버튼 눌림.", Toast.LENGTH_SHORT).show();
     }
 
-    //    일일 캘린더 버튼 눌림
+    //    일일 캘린더 버튼 눌림(리싸이클러뷰 visible하게 만들기)
     public void dayButtonClicked(View v) {
         ArrayList<String> arrayList = new ArrayList<>();
         ArrayAdapter<String> adapter;

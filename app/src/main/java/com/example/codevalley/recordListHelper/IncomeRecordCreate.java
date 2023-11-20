@@ -2,7 +2,12 @@ package com.example.codevalley.recordListHelper;
 
 import static com.example.codevalley.LoginActivity.userID;
 import static com.example.codevalley.RegisterActivity.ur_stamp;
+import static com.example.codevalley.LoginActivity.userID;
+import static com.example.calendar.CalendarAdapter.year_info;
+import static com.example.calendar.CalendarAdapter.month_info;
+import static com.example.calendar.CalendarAdapter.day_info;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -72,8 +77,16 @@ public class IncomeRecordCreate extends AppCompatActivity {
                 FirebaseDatabase.getInstance().getReference().addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        int recordNum = 1;
-                        // 데이터를 불러올 때 처리
+
+                        // 날짜 정보 불러오기
+//                        Intent get_intent = getIntent();
+//                        Integer year_info = get_intent.getIntExtra("year_info", 1);
+//                        Integer month_info = get_intent.getIntExtra("month_info", 1);
+//                        Integer day_info = get_intent.getIntExtra("day_info", 1);
+//
+                        String dateInfo = year_info+","+month_info+","+day_info;
+
+
                         for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 //                            record를 category를 기준으로 경로 설정하여 저장함.
                             String src = category+ "/";
@@ -81,13 +94,16 @@ public class IncomeRecordCreate extends AppCompatActivity {
                             String moneySrc = src + "moneyAmount";
                             String memoSrc = src + "memo";
                             String pmSrc = src + "pm"; // plus, minus 의 여부를 판별. 0이면 지출, 1이면 수입
+                            String dateSrc = src + "date";
 
                             Map<String, Object> record = new HashMap<>();
                             record.put(categorySrc, categoryNum);
                             record.put(moneySrc, Amount);
                             record.put(memoSrc, category);
                             record.put(pmSrc, "1");
+                            record.put(dateSrc, dateInfo);
                             ref.updateChildren(record);
+                            Log.w("Income date info", dateInfo+"에 수입 기록됨");
 
 //                            stampUpdate();
 
@@ -98,6 +114,8 @@ public class IncomeRecordCreate extends AppCompatActivity {
                             stampUpdates.put("stamp", stamp);
                             childRef.updateChildren(stampUpdates);
                             Log.w("IncomeRecordCreate", "스탬프 업데이트");
+
+
 
                             // 완료된 것을 알리기
 //                            Toast.makeText(IncomeRecordCreate.this, "저장 버튼 눌림.", Toast.LENGTH_SHORT).show();

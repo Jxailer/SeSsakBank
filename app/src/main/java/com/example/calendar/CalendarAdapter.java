@@ -1,7 +1,10 @@
 package com.example.calendar;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,16 +16,22 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.codevalley.R;
+import com.example.codevalley.recordListHelper.IncomeRecordCreate;
+import com.example.codevalley.recordListHelper.SpentRecordCreate;
+import com.example.codevalley.wishStore.store_confirm;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.CalendarViewHolder> {
 
+    public static Integer year_info, month_info, day_info;
     ArrayList<LocalDate> dayList;
+    private Context context;
 
-    public CalendarAdapter(ArrayList<LocalDate> dayList) {
+    public CalendarAdapter(ArrayList<LocalDate> dayList, Context context) {
         this.dayList = dayList;
+        this.context = context;
     }
 
     @NonNull
@@ -72,6 +81,22 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.Calend
                 String yearMonDay = iYear + "년" + iMonth + "월" + iDay + "일";
 
                 Toast.makeText(holder.itemView.getContext(), yearMonDay, Toast.LENGTH_SHORT).show();
+
+                year_info= iYear;
+                month_info = iMonth;
+                day_info = iDay;
+
+//                Intent IncomeIntent = new Intent(context, IncomeRecordCreate.class);
+//                IncomeIntent.putExtra("year_info", iYear);
+//                IncomeIntent.putExtra("month_info", iMonth);
+//                IncomeIntent.putExtra("day_info", iDay);
+//
+//                Intent SpentIntent = new Intent(context, SpentRecordCreate.class);
+//                SpentIntent.putExtra("year_info", iYear);
+//                SpentIntent.putExtra("month_info", iMonth);
+//                SpentIntent.putExtra("day_info", iDay);
+
+                Log.w("date info", iYear+","+iMonth+","+iDay);
             }
         });
     }

@@ -2,7 +2,11 @@ package com.example.codevalley.recordListHelper;
 
 import static com.example.codevalley.LoginActivity.userID;
 import static com.example.codevalley.RegisterActivity.ur_stamp;
+import static com.example.calendar.CalendarAdapter.year_info;
+import static com.example.calendar.CalendarAdapter.month_info;
+import static com.example.calendar.CalendarAdapter.day_info;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -98,22 +102,32 @@ public class SpentRecordCreate extends AppCompatActivity {
                     //addListenerForSingleValueEvent: 한 번만 반복
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        int recordNum = 1;
+                            // 날짜 정보 불러오기
+//                            Intent get_intent = getIntent();
+//                            String year_info = get_intent.getStringExtra("year_info");
+//                            String month_info = get_intent.getStringExtra("month_info");
+//                            String day_info = get_intent.getStringExtra("day_info");
+                        String dateInfo = year_info+","+month_info+","+day_info;
+
                         // 데이터를 불러올 때 처리
                         for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+//
 
                             String src = memoText + "/";
                             String categorySrc = src + "category";
                             String moneySrc = src + "moneyAmount";
                             String memoSrc = src + "memo";
                             String pmSrc = src + "pm"; // plus, minus 의 여부를 판별. 0이면 지출, 1이면 수입
+                            String dateSrc = src + "date";
 
                             Map<String, Object> record = new HashMap<>();
                             record.put(categorySrc, categoryNum);
                             record.put(moneySrc, Amount);
                             record.put(memoSrc, memoText);
                             record.put(pmSrc, "0");
+                            record.put(dateSrc, dateInfo);
                             ref.updateChildren(record);
+                            Log.w("Spent date info", dateInfo+"에 지출 기록 저장됨");
 
                             stampUpdate();
 

@@ -167,8 +167,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible">
+
+
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/calendar"
+            android:id="@+id/calendarHome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -176,7 +178,8 @@
             android:background="#faf9f7"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="parent">
-<!--    월 정보, 도장, 통계 버튼 linearLayout-->
+
+<!--            정보 버튼-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/info"
             android:layout_width="match_parent"
@@ -186,32 +189,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <Button
-                android:id="@+id/month"
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:background="#00ff0000"
-                android:text="5월"
-                android:textColor="@color/black"
-                android:textSize="28dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:onClick="monthButtonClicked"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-<!--                <ImageButton-->
-<!--                    android:id="@+id/stamp"-->
-<!--                    android:layout_width="40dp"-->
-<!--                    android:layout_height="40dp"-->
-<!--                    android:layout_marginStart="200dp"-->
-<!--                    android:onClick="stampButtonClicked"-->
-<!--                    android:background="#00ff0000"-->
-<!--                    app:layout_constraintStart_toEndOf="@+id/month"-->
-<!--                    app:layout_constraintTop_toTopOf="parent"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:srcCompat="@drawable/fact_check"-->
-<!--                    tools:ignore="SpeakableTextPresentCheck" />-->
 
             <ImageButton
                 android:id="@+id/statistics"
@@ -226,243 +203,144 @@
                 tools:ignore="SpeakableTextPresentCheck" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!--            달력 위젯-->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/Calendar"
+            <!--            달력 커스텀뷰-->
+            <LinearLayout
+                android:id="@+id/calendar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/info">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:context=".AccountActivity">
 
-                <!--                1주 위젯-->
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/week1"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal">
 
-                    <!--                    1일-->
-                    <!--                    1일차 아이콘 linear layout-->
-                    <Button
-                        android:id="@+id/day1"
-                        android:layout_width="54dp"
-                        android:layout_height="80dp"
-                        android:background="@drawable/round_button2"
-                        android:gravity="top|center"
-                        android:onClick="dayButtonClicked"
-                        android:paddingTop="20dp"
-                        android:text="1"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <!--                    2일-->
-
-                    <LinearLayout
-                        android:id="@+id/day1Icon"
-                        android:layout_width="54dp"
-                        android:layout_height="20dp"
-                        android:background="#397b18"
-                        android:orientation="horizontal"
-                        android:paddingLeft="2dp"
-                        android:paddingRight="2dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/day1"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/day1"
-                        app:layout_constraintTop_toTopOf="@+id/day1"
-                        app:layout_constraintVertical_bias="0.595">
-
-                        <!--                        <ImageView-->
-                        <!--                            android:layout_width="18dp"-->
-                        <!--                            android:layout_height="18dp"-->
-                        <!--                            android:background="#00ff0000"-->
-                        <!--                            android:visibility="visible"-->
-                        <!--                            app:srcCompat="@drawable/bar_chart_24" />-->
-
-                        <!--                        <ImageView-->
-                        <!--                            android:layout_width="18dp"-->
-                        <!--                            android:layout_height="18dp"-->
-                        <!--                            android:background="#00ff0000"-->
-                        <!--                            android:visibility="visible"-->
-                        <!--                            app:srcCompat="@drawable/bar_chart_24" />-->
-
-                        <!--                        <ImageView-->
-                        <!--                            android:layout_width="20dp"-->
-                        <!--                            android:layout_height="20dp"-->
-                        <!--                            android:background="#00ff0000"-->
-                        <!--                            android:visibility="visible"-->
-                        <!--                            app:srcCompat="@drawable/bar_chart_24" />-->
-                    </LinearLayout>
-
-                    <Button
-                        android:id="@+id/day2"
-                        android:layout_width="54dp"
-                        android:layout_height="80dp"
-                        android:gravity="top|center"
-                        android:paddingTop="20dip"
-                        android:text="2"
-                        android:background="@drawable/round_button2"
-                        app:layout_constraintStart_toEndOf="@+id/day1"
-                        app:layout_constraintTop_toTopOf="parent" />
-                    <!--                    3일-->
-                    <Button
-                        android:id="@+id/day3"
-                        android:layout_width="54dp"
-                        android:layout_height="80dp"
-                        android:text="3"
-                        android:gravity="top|center"
-                        android:paddingTop="20dip"
-                        android:background="@drawable/round_button2"
-                        app:layout_constraintStart_toEndOf="@+id/day2"
-                        app:layout_constraintTop_toTopOf="parent" />
-                    <!--                    4일-->
-                    <Button
-                        android:id="@+id/day4"
-                        android:layout_width="54dp"
-                        android:layout_height="80dp"
-                        android:text="4"
-                        android:gravity="top|center"
-                        android:paddingTop="20dip"
-                        android:background="@drawable/round_button2"
-                        app:layout_constraintStart_toEndOf="@+id/day3"
-                        app:layout_constraintTop_toTopOf="parent" />
-                    <!--                    5일-->
-                    <Button
-                        android:id="@+id/day5"
-                        android:layout_width="54dp"
-                        android:layout_height="80dp"
-                        android:text="5"
-                        android:gravity="top|center"
-                        android:paddingTop="20dip"
-                        android:background="@drawable/round_button2"
-                        app:layout_constraintStart_toEndOf="@+id/day4"
-                        app:layout_constraintTop_toTopOf="parent" />
-                    <!--                    6일-->
-                    <Button
-                        android:id="@+id/day6"
-                        android:layout_width="54dp"
-                        android:layout_height="80dp"
-                        android:text="6"
-                        android:gravity="top|center"
-                        android:paddingTop="20dip"
-                        android:background="@drawable/round_button2"
-                        app:layout_constraintStart_toEndOf="@+id/day5"
-                        app:layout_constraintTop_toTopOf="parent" />
-                    <!--                    7일-->
-                    <Button
-                        android:id="@+id/day7"
-                        android:layout_width="54dp"
-                        android:layout_height="80dp"
-                        android:text="7"
-                        android:gravity="top|center"
-                        android:paddingTop="20dip"
-                        android:background="@drawable/round_button2"
-                        app:layout_constraintStart_toEndOf="@+id/day6"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <LinearLayout
-                        android:id="@+id/week1Total"
-                        android:layout_width="match_parent"
+                    <ImageButton
+                        android:id="@+id/pre_btn"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginTop="5dp"
-                        android:background="#99bd87"
-                        android:gravity="right|center_horizontal"
-                        android:orientation="horizontal"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/day1">
+                        android:layout_weight="1"
+                        android:layout_marginLeft="16dp"
+                        android:src="@drawable/ic_calendar_previous"/>
 
-                        <TextView
-                            android:id="@+id/totalIncome"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:padding="1dp"
-                            android:text="+10,000"
-                            android:textStyle="bold"
-                            android:textColor="#FFFFFF"
-                            android:textSize="16dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/day7" />
+                    <TextView
+                        android:id="@+id/monthYearText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:textAlignment="center"
+                        android:textSize="25sp"
+                        android:textColor="@android:color/black"/>
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            />
+                    <ImageButton
+                        android:id="@+id/next_btn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginRight="16dp"
+                        android:src="@drawable/ic_calendar_next"/>
+                </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/totalSpend"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="16dp"
-                            android:padding="1dp"
-                            android:text="-5,000"
-                            android:textStyle="bold"
-                            android:textColor="#be3a20"
-                            android:textSize="16dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/totalIncome" />
-                    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="SUN"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/holo_red_dark" />
 
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="MON"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"/>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TUE"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"/>
 
-            <!--스크롤바를 확인하기 위한 임시 뷰-->
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="WED"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="THU"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="FRI"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="SAT"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/holo_blue_dark"/>
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/calendar_recyclerView"/>
+
+            </LinearLayout>
+
+<!--            달력 기록 불러오기-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/CalendarRecord"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="20dp"
                 android:background="#faf9f7"
                 android:visibility="visible"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/Calendar"
+                app:layout_constraintTop_toBottomOf="@id/calendar"
                 app:tint="#21480e">
-                <!--날짜 텍스트뷰 -->
 
-                <TextView
-                    android:id="@+id/time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="2023년 5월 1일"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-<!--                <TextView-->
-<!--                    android:id="@+id/recordList"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:layout_marginLeft="20dp"-->
-<!--                    android:text=" 123"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@id/buttonLayout" />-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/moneyAmountRecord"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginRight="20dp"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:text=" 123"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@id/buttonLayout" />-->
-
-                <!--                용돈 기입 내역을 띄워주는 리싸이클러 뷰-->
+                <!--용돈 기입 내역을 띄워주는 리싸이클러 뷰-->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recordRecyclerView"
                     android:layout_width="match_parent"
@@ -478,7 +356,7 @@
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/time">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <Button
                         android:id="@+id/recordCreateButton_income"
@@ -598,6 +476,176 @@
             app:tint="#c1c5be"
             tools:ignore="SpeakableTextPresentCheck" />
 
+
     </LinearLayout>
+
+    <!--            달력 위젯(구버전) -->
+    <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                android:id="@+id/Calendar"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="10dp"-->
+    <!--                android:layout_marginLeft="16dp"-->
+    <!--                android:layout_marginRight="16dp"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toBottomOf="@+id/info">-->
+
+    <!--                &lt;!&ndash;                1주 위젯&ndash;&gt;-->
+    <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                    android:id="@+id/week1"-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    app:layout_constraintStart_toStartOf="parent"-->
+    <!--                    app:layout_constraintTop_toTopOf="parent">-->
+
+    <!--                    &lt;!&ndash;                    1일&ndash;&gt;-->
+    <!--                    &lt;!&ndash;                    1일차 아이콘 linear layout&ndash;&gt;-->
+    <!--                    <Button-->
+    <!--                        android:id="@+id/day1"-->
+    <!--                        android:layout_width="54dp"-->
+    <!--                        android:layout_height="80dp"-->
+    <!--                        android:background="@drawable/round_button2"-->
+    <!--                        android:gravity="top|center"-->
+    <!--                        android:onClick="dayButtonClicked"-->
+    <!--                        android:paddingTop="20dp"-->
+    <!--                        android:text="1"-->
+    <!--                        app:layout_constraintStart_toStartOf="parent"-->
+    <!--                        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--                    &lt;!&ndash;                    2일&ndash;&gt;-->
+
+    <!--                    <LinearLayout-->
+    <!--                        android:id="@+id/day1Icon"-->
+    <!--                        android:layout_width="54dp"-->
+    <!--                        android:layout_height="20dp"-->
+    <!--                        android:background="#397b18"-->
+    <!--                        android:orientation="horizontal"-->
+    <!--                        android:paddingLeft="2dp"-->
+    <!--                        android:paddingRight="2dp"-->
+    <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                        app:layout_constraintEnd_toEndOf="@+id/day1"-->
+    <!--                        app:layout_constraintHorizontal_bias="0.0"-->
+    <!--                        app:layout_constraintStart_toStartOf="@+id/day1"-->
+    <!--                        app:layout_constraintTop_toTopOf="@+id/day1"-->
+    <!--                        app:layout_constraintVertical_bias="0.595">-->
+
+    <!--                    </LinearLayout>-->
+
+    <!--                    <Button-->
+    <!--                        android:id="@+id/day2"-->
+    <!--                        android:layout_width="54dp"-->
+    <!--                        android:layout_height="80dp"-->
+    <!--                        android:gravity="top|center"-->
+    <!--                        android:paddingTop="20dip"-->
+    <!--                        android:text="2"-->
+    <!--                        android:background="@drawable/round_button2"-->
+    <!--                        app:layout_constraintStart_toEndOf="@+id/day1"-->
+    <!--                        app:layout_constraintTop_toTopOf="parent" />-->
+    <!--                    &lt;!&ndash;                    3일&ndash;&gt;-->
+    <!--                    <Button-->
+    <!--                        android:id="@+id/day3"-->
+    <!--                        android:layout_width="54dp"-->
+    <!--                        android:layout_height="80dp"-->
+    <!--                        android:text="3"-->
+    <!--                        android:gravity="top|center"-->
+    <!--                        android:paddingTop="20dip"-->
+    <!--                        android:background="@drawable/round_button2"-->
+    <!--                        app:layout_constraintStart_toEndOf="@+id/day2"-->
+    <!--                        app:layout_constraintTop_toTopOf="parent" />-->
+    <!--                    &lt;!&ndash;                    4일&ndash;&gt;-->
+    <!--                    <Button-->
+    <!--                        android:id="@+id/day4"-->
+    <!--                        android:layout_width="54dp"-->
+    <!--                        android:layout_height="80dp"-->
+    <!--                        android:text="4"-->
+    <!--                        android:gravity="top|center"-->
+    <!--                        android:paddingTop="20dip"-->
+    <!--                        android:background="@drawable/round_button2"-->
+    <!--                        app:layout_constraintStart_toEndOf="@+id/day3"-->
+    <!--                        app:layout_constraintTop_toTopOf="parent" />-->
+    <!--                    &lt;!&ndash;                    5일&ndash;&gt;-->
+    <!--                    <Button-->
+    <!--                        android:id="@+id/day5"-->
+    <!--                        android:layout_width="54dp"-->
+    <!--                        android:layout_height="80dp"-->
+    <!--                        android:text="5"-->
+    <!--                        android:gravity="top|center"-->
+    <!--                        android:paddingTop="20dip"-->
+    <!--                        android:background="@drawable/round_button2"-->
+    <!--                        app:layout_constraintStart_toEndOf="@+id/day4"-->
+    <!--                        app:layout_constraintTop_toTopOf="parent" />-->
+    <!--                    &lt;!&ndash;                    6일&ndash;&gt;-->
+    <!--                    <Button-->
+    <!--                        android:id="@+id/day6"-->
+    <!--                        android:layout_width="54dp"-->
+    <!--                        android:layout_height="80dp"-->
+    <!--                        android:text="6"-->
+    <!--                        android:gravity="top|center"-->
+    <!--                        android:paddingTop="20dip"-->
+    <!--                        android:background="@drawable/round_button2"-->
+    <!--                        app:layout_constraintStart_toEndOf="@+id/day5"-->
+    <!--                        app:layout_constraintTop_toTopOf="parent" />-->
+    <!--                    &lt;!&ndash;                    7일&ndash;&gt;-->
+    <!--                    <Button-->
+    <!--                        android:id="@+id/day7"-->
+    <!--                        android:layout_width="54dp"-->
+    <!--                        android:layout_height="80dp"-->
+    <!--                        android:text="7"-->
+    <!--                        android:gravity="top|center"-->
+    <!--                        android:paddingTop="20dip"-->
+    <!--                        android:background="@drawable/round_button2"-->
+    <!--                        app:layout_constraintStart_toEndOf="@+id/day6"-->
+    <!--                        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--                    <LinearLayout-->
+    <!--                        android:id="@+id/week1Total"-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_alignParentLeft="true"-->
+    <!--                        android:layout_alignParentTop="true"-->
+    <!--                        android:layout_marginTop="5dp"-->
+    <!--                        android:background="#99bd87"-->
+    <!--                        android:gravity="right|center_horizontal"-->
+    <!--                        android:orientation="horizontal"-->
+    <!--                        app:layout_constraintStart_toStartOf="parent"-->
+    <!--                        app:layout_constraintTop_toBottomOf="@+id/day1">-->
+
+    <!--                        <TextView-->
+    <!--                            android:id="@+id/totalIncome"-->
+    <!--                            android:layout_width="wrap_content"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_marginLeft="16dp"-->
+    <!--                            android:padding="1dp"-->
+    <!--                            android:text="+10,000"-->
+    <!--                            android:textStyle="bold"-->
+    <!--                            android:textColor="#FFFFFF"-->
+    <!--                            android:textSize="16dp"-->
+    <!--                            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                            app:layout_constraintTop_toBottomOf="@+id/day7" />-->
+
+    <!--                        <View-->
+    <!--                            android:layout_width="0dp"-->
+    <!--                            android:layout_height="0dp"-->
+    <!--                            android:layout_weight="1"-->
+    <!--                            />-->
+
+    <!--                        <TextView-->
+    <!--                            android:id="@+id/totalSpend"-->
+    <!--                            android:layout_width="wrap_content"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_marginRight="16dp"-->
+    <!--                            android:padding="1dp"-->
+    <!--                            android:text="-5,000"-->
+    <!--                            android:textStyle="bold"-->
+    <!--                            android:textColor="#be3a20"-->
+    <!--                            android:textSize="16dp"-->
+    <!--                            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                            app:layout_constraintTop_toBottomOf="@+id/totalIncome" />-->
+    <!--                    </LinearLayout>-->
+
+    <!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+    <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
