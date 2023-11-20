@@ -158,13 +158,13 @@
         <activity
             android:name=".admin.AdminActivity"
             android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
+        <activity
+            android:name=".admin.MemberActivity"
+            android:enabled="true" />
+        <activity
+            android:name=".admin.CommunityActivity"
+            android:enabled="true" />
 
         <meta-data
             android:name="preloaded_fonts"

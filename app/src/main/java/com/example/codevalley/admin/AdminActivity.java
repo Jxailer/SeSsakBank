@@ -2,9 +2,11 @@ package com.example.codevalley.admin;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -90,6 +92,20 @@ public class AdminActivity extends AppCompatActivity {
         nThree.setText("시스템 장애 안내");
         // 최근 게시판
         loadCommunityList();
+        // 회원 관리 페이지로
+        viewAllUsers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AdminActivity.this, MemberActivity.class));
+            }
+        });
+        // 게시판 관리 페이지로
+        viewAllCommunity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AdminActivity.this, CommunityActivity.class));
+            }
+        });
     }
 
     private void setChartForDailySignups(){

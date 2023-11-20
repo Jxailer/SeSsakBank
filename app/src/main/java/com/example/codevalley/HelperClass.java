@@ -61,6 +61,10 @@ public class HelperClass {
     public Integer getStamp() { return stamp; }
     public void setStamp(Integer stamp) { this.stamp = stamp; }
 
+    public HelperClass(){
+
+    }
+
     public HelperClass(String username, String password, String name, String birth, String phone, String createDate, Integer stamp) {
         this.username = username;
         this.password = password;

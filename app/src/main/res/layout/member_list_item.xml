@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
@@ -11,39 +10,48 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/c_tit"
+            android:id="@+id/id"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginRight="10dp"
-            android:text="오류 안 나겠지"
-            android:textSize="14sp"
-            android:textColor="@color/a_dark"/>
+            android:text="22@naver.com"
+            android:textSize="16sp"
+            android:textColor="@color/a_dark" />
 
         <TextView
-            android:id="@+id/c_txt"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:maxLength="15"
-            android:layout_gravity="center"
-            android:layout_marginRight="10dp"
-            android:text="이거 오류 안 날까요?"
-            android:textSize="14sp"
-            android:textColor="@color/a_dark"/>
-
-        <TextView
-            android:id="@+id/c_wtr"
+            android:id="@+id/name"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginRight="10dp"
-            android:text="미나리"
-            android:textSize="14sp"
-            android:textColor="@color/a_dark"/>
+            android:text="성지호"
+            android:textSize="16sp"
+            android:textColor="@color/a_dark" />
 
         <TextView
-            android:id="@+id/c_d"
-            android:layout_width="200dp"
+            android:id="@+id/birth"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:text="000000"
+            android:textSize="16sp"
+            android:textColor="@color/a_dark" />
+
+        <TextView
+            android:id="@+id/phone_numbaer"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:text="01012341234"
+            android:textSize="16sp"
+            android:textColor="@color/a_dark" />
+
+        <TextView
+            android:id="@+id/create_account_date"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginRight="10dp"
@@ -52,7 +60,7 @@
             android:textColor="@color/a_dark" />
 
         <Button
-            android:id="@+id/commu_del"
+            android:id="@+id/del_user"
             android:layout_width="50dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
@@ -64,6 +72,10 @@
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/gray1" />
 
 
 </LinearLayout>

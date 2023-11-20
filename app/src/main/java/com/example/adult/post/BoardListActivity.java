@@ -90,11 +90,11 @@ public class BoardListActivity extends AppCompatActivity implements View.OnClick
 
                 switch (direction) {
                     case ItemTouchHelper.LEFT:
-                        String nick = list.get(position).getUser_nick();
+                        String key = list.get(position).getUser_key();
 
                         DAOBoardWrite dao = new DAOBoardWrite();
 
-                        dao.remove(nick).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        dao.remove(key).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
                                 Toast.makeText(BoardListActivity.this,
