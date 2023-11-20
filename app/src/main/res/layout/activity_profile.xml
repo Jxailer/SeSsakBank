@@ -37,7 +37,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginLeft="14dp"
-            android:background="@drawable/user_profile" />
+            android:background="@drawable/adult_profile" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -45,20 +45,14 @@
             android:layout_marginLeft="10dp"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/profile_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="18dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="내 정보 수정하기"
-                android:textColor="@color/gray2"
-                android:textSize="14dp"/>
+                android:text="닉네임 수정하기"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18dp"/>
         </LinearLayout>
 
         <View
@@ -95,7 +89,7 @@
             android:layout_weight="1" />
 
         <Switch
-            android:id="@+id/push_onOff"
+            android:id="@+id/push_onOff2"
             android:thumb="@drawable/thumb"
             android:track="@drawable/track"
             android:layout_width="wrap_content"
@@ -106,7 +100,7 @@
 
 
     <LinearLayout
-        android:id="@+id/notice_info"
+        android:id="@+id/adult_notice_info"
         android:layout_width="wrap_content"
         android:layout_height="56dp"
         android:layout_marginTop="10dp"
@@ -134,7 +128,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/cus_service"
+        android:id="@+id/adult_cus_service"
         android:layout_width="wrap_content"
         android:layout_height="56dp"
         android:background="@color/sub1"
@@ -163,7 +157,7 @@
 
 
     <LinearLayout
-        android:id="@+id/ver_info"
+        android:id="@+id/adult_ver_info"
         android:layout_width="wrap_content"
         android:layout_height="56dp"
         android:layout_marginTop="10dp"
@@ -193,7 +187,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/del_id"
+        android:id="@+id/adult_logout"
         android:layout_width="wrap_content"
         android:layout_height="56dp"
         android:layout_marginTop="10dp"
@@ -204,7 +198,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:text="탈퇴하기"
+            android:text="로그아웃"
             android:textSize="20dp"
             android:textColor="@color/black"/>
         <View
