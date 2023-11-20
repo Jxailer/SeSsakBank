@@ -1,18 +1,15 @@
 package com.example.codevalley;
 
-import static com.example.codevalley.LoginActivity.userID;
-import static com.example.calendar.CalendarAdapter.year_info;
+import static com.example.calendar.CalendarAdapter.day_info;
 import static com.example.calendar.CalendarAdapter.month_info;
 import static com.example.calendar.CalendarAdapter.year_info;
+import static com.example.codevalley.LoginActivity.userID;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,51 +19,32 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.calendar.CalendarAdapter;
-import com.example.calendar.CalendarUtil;
-import com.example.codevalley.MainActivity;
-import com.example.codevalley.R;
-import com.example.codevalley.game.GameStart1;
-import com.example.codevalley.game.PlantGame;
-import com.example.codevalley.myPage.MyPageActivity;
-import com.example.codevalley.recordListHelper.CustomAdapter_RecordList;
-import com.example.codevalley.recordListHelper.HelperClass_RecordList;
-import com.example.codevalley.recordListHelper.IncomeRecordCreate;
-import com.example.codevalley.recordListHelper.SpentRecordCreate;
-import com.example.wishShop.DataClass;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.calendar.CalendarAdapter;
+import com.example.calendar.CalendarUtil;
+import com.example.codevalley.game.GameStart1;
+import com.example.codevalley.myPage.MyPageActivity;
+import com.example.codevalley.recordListHelper.CustomAdapter_RecordList;
+import com.example.codevalley.recordListHelper.HelperClass_RecordList;
+import com.example.codevalley.recordListHelper.IncomeRecordCreate;
+import com.example.codevalley.recordListHelper.SpentRecordCreate;
+import com.example.codevalley.wishStore.store_main;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-
-import com.example.codevalley.game.GameStart1;
-import com.example.codevalley.myPage.MyPageActivity;
-import com.example.codevalley.wishStore.store_complete;
-import com.example.codevalley.wishStore.store_main;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -83,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
 
     private int gameCheck; // gamestart1번만 실행하기 위해 옆에 이 코드 추가
 
-    Context context_Main = this;
+    public static Context context_Main;
+
     Button recordCreate_Spent;
     Button recordCreate_Income;
     View mainParent;
@@ -100,8 +79,9 @@ public class MainActivity extends AppCompatActivity {
     Button dayButton;
     Button target;
 
-//    캘린더 커스텀뷰 관련 변수 선언
+    //    캘린더 커스텀뷰 관련 변수 선언
     TextView monthYearText; //년월 텍스트뷰
+    TextView selectedDate; // 커스텀 캘린더에서 선택된 날짜
     RecyclerView day_recyclerView;
 
 
@@ -115,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        context_Main = this;
 
         recordCreate_Spent = (Button) findViewById(R.id.recordCreateButton_spent);
         recordCreate_Income = (Button) findViewById(R.id.recordCreateButton_income);
@@ -321,7 +302,7 @@ public class MainActivity extends AppCompatActivity {
         day_recyclerView.setAdapter(adapter);
     }
 
-    //날짜 생성성
+    //날짜 생성
     @RequiresApi(api = Build.VERSION_CODES.O)
     private ArrayList<LocalDate> daysInMonthArray(LocalDate date){
 
@@ -362,7 +343,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //    일일 캘린더 버튼 눌림(리싸이클러뷰 visible하게 만들기)
-    public void dayButtonClicked(View v) {
+    public void setRecyclerVisible() {
         ArrayList<String> arrayList = new ArrayList<>();
         ArrayAdapter<String> adapter;
 
@@ -379,6 +360,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Toast.makeText(MainActivity.this, "날짜 버튼 눌림.", Toast.LENGTH_SHORT).show();
         CalendarRecord = (ViewGroup) findViewById(R.id.CalendarRecord);
+        selectedDate = (TextView) findViewById(R.id.selectedDate);
+        selectedDate.setText(year_info + "년 " + month_info + "월 " + day_info + "일");
         CalendarRecord.setVisibility(View.VISIBLE);
 
     }

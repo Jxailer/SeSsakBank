@@ -57,7 +57,7 @@
             app:layout_constraintVertical_bias="0.771" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    목표 수정창 (목표 수정시 활성화)-->
+    <!--    목표 수정창 (목표 수정시 활성화)-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/targetChangeBox"
         android:layout_width="match_parent"
@@ -162,7 +162,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    캘린더-->
+    <!--    캘린더-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -179,28 +179,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="parent">
 
-<!--            정보 버튼-->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/info"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            <!--            정보 버튼-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
 
-            <ImageButton
-                android:id="@+id/statistics"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="#00ff0000"
-                android:onClick="statisticsButtonClicked"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/assessment"
-                tools:ignore="SpeakableTextPresentCheck" />
+                <ImageButton
+                    android:id="@+id/statistics"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="#00ff0000"
+                    android:onClick="statisticsButtonClicked"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/assessment"
+                    tools:ignore="SpeakableTextPresentCheck" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!--            달력 커스텀뷰-->
@@ -327,7 +327,7 @@
 
             </LinearLayout>
 
-<!--            달력 기록 불러오기-->
+            <!--            달력 기록 불러오기-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/CalendarRecord"
                 android:layout_width="match_parent"
@@ -335,10 +335,23 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:background="#faf9f7"
-                android:visibility="visible"
+                android:visibility="invisible"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/calendar"
                 app:tint="#21480e">
+
+                <TextView
+                    android:id="@+id/selectedDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="선택한 날짜"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <!--용돈 기입 내역을 띄워주는 리싸이클러 뷰-->
                 <androidx.recyclerview.widget.RecyclerView
@@ -356,14 +369,14 @@
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toBottomOf="@+id/selectedDate">
 
                     <Button
                         android:id="@+id/recordCreateButton_income"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="185dp"
+                        android:layout_height="46dp"
                         android:gravity="center"
-                        android:background="@drawable/btn_selected"
+                        android:background="@drawable/ripple_custom"
                         android:text="수입 기록 만들기"
                         android:textSize="16dp"
                         android:textColor="@color/black"
@@ -377,9 +390,9 @@
 
                     <Button
                         android:id="@+id/recordCreateButton_spent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/btn_selected"
+                        android:layout_width="185dp"
+                        android:layout_height="46dp"
+                        android:background="@drawable/ripple_custom"
                         android:gravity="center"
                         android:text="지출 기록 만들기"
                         android:textSize="16dp"
@@ -388,13 +401,13 @@
                 </LinearLayout>
 
 
-<!--                <androidx.recyclerview.widget.RecyclerView-->
-<!--                    android:id="@+id/recyclerView"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/buttonLayout" />-->
+                <!--                <androidx.recyclerview.widget.RecyclerView-->
+                <!--                    android:id="@+id/recyclerView"-->
+                <!--                    android:layout_width="0dp"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginTop="10dp"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@+id/buttonLayout" />-->
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

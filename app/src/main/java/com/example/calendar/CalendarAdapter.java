@@ -1,7 +1,6 @@
 package com.example.calendar;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.util.Log;
@@ -15,19 +14,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.codevalley.MainActivity;
 import com.example.codevalley.R;
-import com.example.codevalley.recordListHelper.IncomeRecordCreate;
-import com.example.codevalley.recordListHelper.SpentRecordCreate;
-import com.example.codevalley.wishStore.store_confirm;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+
 public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.CalendarViewHolder> {
 
+    TextView dayText;
     public static Integer year_info, month_info, day_info;
     ArrayList<LocalDate> dayList;
     private Context context;
+    ViewGroup CalendarRecord;
+
 
     public CalendarAdapter(ArrayList<LocalDate> dayList, Context context) {
         this.dayList = dayList;
@@ -86,6 +87,12 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.Calend
                 month_info = iMonth;
                 day_info = iDay;
 
+//                dayText.setText(year_info + "년 " + month_info + "월 " + day_info + "일");
+                ((MainActivity)MainActivity.context_Main).setRecyclerVisible();
+
+
+
+
 //                Intent IncomeIntent = new Intent(context, IncomeRecordCreate.class);
 //                IncomeIntent.putExtra("year_info", iYear);
 //                IncomeIntent.putExtra("month_info", iMonth);
@@ -97,6 +104,8 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.Calend
 //                SpentIntent.putExtra("day_info", iDay);
 
                 Log.w("date info", iYear+","+iMonth+","+iDay);
+
+
             }
         });
     }
@@ -105,6 +114,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.Calend
     public int getItemCount() {
         return dayList.size();
     }
+
 
     class CalendarViewHolder extends RecyclerView.ViewHolder{
 
