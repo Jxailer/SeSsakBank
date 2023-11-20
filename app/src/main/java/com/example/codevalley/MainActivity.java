@@ -1,7 +1,9 @@
 package com.example.codevalley;
 
 import static com.example.codevalley.LoginActivity.userID;
-
+import static com.example.calendar.CalendarAdapter.year_info;
+import static com.example.calendar.CalendarAdapter.month_info;
+import static com.example.calendar.CalendarAdapter.year_info;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
