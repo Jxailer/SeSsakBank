@@ -1,21 +1,28 @@
 package com.example.calendar;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.codevalley.MainActivity;
 import com.example.codevalley.R;
+import com.example.codevalley.recordListHelper.IncomeRecordCreate;
+import com.example.codevalley.recordListHelper.SpentRecordCreate;
+import com.example.codevalley.wishStore.store_confirm;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -86,12 +93,6 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.Calend
                 year_info= iYear;
                 month_info = iMonth;
                 day_info = iDay;
-
-//                dayText.setText(year_info + "년 " + month_info + "월 " + day_info + "일");
-                ((MainActivity)MainActivity.context_Main).setRecyclerVisible();
-
-
-
 
 //                Intent IncomeIntent = new Intent(context, IncomeRecordCreate.class);
 //                IncomeIntent.putExtra("year_info", iYear);
