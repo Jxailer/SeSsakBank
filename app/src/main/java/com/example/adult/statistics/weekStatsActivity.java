@@ -106,6 +106,11 @@ public class weekStatsActivity extends AppCompatActivity {
                     }
                 }
 
+                System.out.println(firstWeek);
+                System.out.println(secondWeek);
+                System.out.println(thirdWeek);
+                System.out.println(lastWeek);
+
                 // x축 레이블 설정
                 weekLabel.add("1~7");
                 weekLabel.add("8~14");
