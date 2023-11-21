@@ -7,6 +7,22 @@ public class HelperClass_RecordList {
     private String category;
     private String moneyAmount;
     private String pm;
+    public String date;
+
+
+    public HelperClass_RecordList(){
+
+    }
+
+
+    public HelperClass_RecordList(String memo, String category, String moneyAmount, String pm, String date){
+        this.memo = memo;
+        this.moneyAmount = moneyAmount;
+        this.category = category;
+        this.pm = pm;
+        this.date = date;
+    }
+
 
 
 
@@ -40,16 +56,13 @@ public class HelperClass_RecordList {
     public void setPm(String pm){
         this.pm = pm;
     }
-
-    public HelperClass_RecordList(String memo, String category, String moneyAmount, String pm){
-        this.memo = memo;
-        this.moneyAmount = moneyAmount;
-        this.category = category;
-        this.pm = pm;
+    public String getDate(){
+        return date;
     }
 
-    public HelperClass_RecordList(){
-
+    public void setDate(String date){
+        this.date = date;
     }
+
 
 }

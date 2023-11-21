@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="350dp"
-android:layout_height="400dp"
-android:background="#faf9f7"
-android:orientation="vertical"
-android:layout_gravity="center">
+    android:layout_height="620dp"
+    android:background="#faf9f7"
+    android:orientation="vertical"
+    android:layout_gravity="center">
 
     <TextView
         android:id="@+id/recordViewTitle"
@@ -22,7 +22,7 @@ android:layout_gravity="center">
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<!--용돈기입 작성하는 뷰들-->
+    <!--용돈기입 작성하는 뷰들-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/recordView"
         android:layout_width="match_parent"
@@ -85,13 +85,42 @@ android:layout_gravity="center">
             android:textColorHint="#535353"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/moneyAmountText" />
+
+        <TextView
+            android:id="@+id/memoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="136dp"
+            android:text="메모할 것이 있나요?"
+            android:textSize="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/categorySpinner" />
+
+        <EditText
+            android:id="@+id/memo"
+            android:layout_width="300dp"
+            android:layout_height="180dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/green_button"
+            android:backgroundTint="#c4d9ba"
+            android:hint="memo"
+            android:textColor="@color/black"
+            android:textColorHint="#535353"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/memoText" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!--    저장, 취소 버튼-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="40dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"

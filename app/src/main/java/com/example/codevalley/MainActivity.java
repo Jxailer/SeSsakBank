@@ -1,15 +1,19 @@
 package com.example.codevalley;
 
+import static com.example.adult.adult_LoginActivity.nickName;
+import static com.example.codevalley.LoginActivity.userID;
 import static com.example.calendar.CalendarAdapter.day_info;
 import static com.example.calendar.CalendarAdapter.month_info;
 import static com.example.calendar.CalendarAdapter.year_info;
-import static com.example.codevalley.LoginActivity.userID;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -26,9 +30,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.adult.post.BoardWrite;
 import com.example.calendar.CalendarAdapter;
 import com.example.calendar.CalendarUtil;
+import com.example.codevalley.MainActivity;
+import com.example.codevalley.R;
 import com.example.codevalley.game.GameStart1;
+import com.example.codevalley.game.PlantGame;
 import com.example.codevalley.myPage.MyPageActivity;
 import com.example.codevalley.recordListHelper.CustomAdapter_RecordList;
 import com.example.codevalley.recordListHelper.HelperClass_RecordList;
@@ -39,12 +47,33 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+
+import com.example.codevalley.game.GameStart1;
+import com.example.codevalley.myPage.MyPageActivity;
+import com.example.codevalley.wishStore.store_complete;
+import com.example.codevalley.wishStore.store_main;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -96,6 +125,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context_Main = this;
+        year_info = 2023;
+        month_info = 11;
+        day_info = 20;
 
         recordCreate_Spent = (Button) findViewById(R.id.recordCreateButton_spent);
         recordCreate_Income = (Button) findViewById(R.id.recordCreateButton_income);
@@ -114,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
         cancelButton = findViewById(R.id.cancelButton);
         //Button targetButton = findViewById(R.id.targetButton);
 
-        recordRef = FirebaseDatabase.getInstance().getReference("recordManage").child(userID);
+        recordRef = FirebaseDatabase.getInstance().getReference("recordManage").child(userID).child(year_info+","+month_info+","+day_info);
         target = findViewById(R.id.targetButton);
 
         recordRcv = findViewById(R.id.recordRecyclerView);
@@ -183,24 +215,33 @@ public class MainActivity extends AppCompatActivity {
 
 
         // 용돈 기입 내역 보여주기
-        recordRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                arrayList.clear();
-                for (DataSnapshot itemSnapshot: snapshot.getChildren()){
-                    HelperClass_RecordList dataClass = itemSnapshot.getValue(HelperClass_RecordList.class);
-                    arrayList.add(dataClass);
-                }
-                recordAdt.notifyDataSetChanged();
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-//                Toast.makeText(MainActivity.this, "용돈기입 데이터 불러오기 실패", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        recordAdt = new CustomAdapter_RecordList(arrayList,this);
-        recordRcv.setAdapter(recordAdt);
+//        recordRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                arrayList.clear();
+//                for (DataSnapshot itemSnapshot: snapshot.getChildren()){
+//                    HelperClass_RecordList dataClass = itemSnapshot.getValue(HelperClass_RecordList.class);
+//                    if (dataClass.date.equals(year_info+","+month_info+","+day_info)){
+//                        Log.w("date equals.", dataClass.date);
+//                        arrayList.add(dataClass);
+//                    }
+//                    else{
+//                        Log.e("date not equals.", dataClass.date);
+//                        Log.w("dataClass.date", "="+ dataClass.date);
+//                        Log.w("year_info+\",\"+month_info+\",\"+day_info", "="+year_info+","+month_info+","+day_info);
+//                    }
+//
+//                }
+//                recordAdt.notifyDataSetChanged();
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+////                Toast.makeText(MainActivity.this, "용돈기입 데이터 불러오기 실패", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        recordAdt = new CustomAdapter_RecordList(arrayList,this);
+//        recordRcv.setAdapter(recordAdt);
 
 
 
@@ -344,19 +385,45 @@ public class MainActivity extends AppCompatActivity {
 
     //    일일 캘린더 버튼 눌림(리싸이클러뷰 visible하게 만들기)
     public void setRecyclerVisible() {
-        ArrayList<String> arrayList = new ArrayList<>();
-        ArrayAdapter<String> adapter;
-
-        FirebaseDatabase firebaseDatabase;
-        DatabaseReference databaseReference;
-
-        ListView listView;
-
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayList);
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference().child("wishManage");
+//        ArrayList<String> arrayList = new ArrayList<>();
+//
+//        ArrayAdapter<String> adapter;
+//
+//        FirebaseDatabase firebaseDatabase;
+//        DatabaseReference databaseReference;
+//
+//        ListView listView;
+//
+//        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayList);
+//        firebaseDatabase = FirebaseDatabase.getInstance();
+//        databaseReference = firebaseDatabase.getReference().child("wishManage");
 
 //        getValue();
+        recordRef = FirebaseDatabase.getInstance().getReference("recordManage").child(userID);
+        recordRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                arrayList.clear();
+                for (DataSnapshot itemSnapshot: snapshot.getChildren()){
+                    HelperClass_RecordList dataClass = itemSnapshot.getValue(HelperClass_RecordList.class);
+                    Log.w("arrayList add", "데이터 날짜"+dataClass.getDate());
+                    if (dataClass.getDate().equals(year_info+","+month_info+","+day_info)) {
+                        arrayList.add(dataClass);
+
+                    }
+
+                }
+                recordAdt.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+//                Toast.makeText(MainActivity.this, "용돈기입 데이터 불러오기 실패", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        recordAdt = new CustomAdapter_RecordList(arrayList,this);
+        recordRcv.setAdapter(recordAdt);
+
 
         //Toast.makeText(MainActivity.this, "날짜 버튼 눌림.", Toast.LENGTH_SHORT).show();
         CalendarRecord = (ViewGroup) findViewById(R.id.CalendarRecord);
@@ -496,4 +563,3 @@ public class MainActivity extends AppCompatActivity {
 //        }
 //    }
 }
-
