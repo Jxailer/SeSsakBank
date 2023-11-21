@@ -89,8 +89,8 @@ public class HomeActivity extends AppCompatActivity {
                 float mValue = mMoney.floatValue() / pMoney.floatValue();
                 pTotalValue = pValue * 100;
                 mTotalValue = mValue * 100;
-                System.out.println(pTotalValue);
-                System.out.println(mTotalValue);
+//                System.out.println(pTotalValue);
+//                System.out.println(mTotalValue);
 //                arrayMoney.add(pTotalValue);
 //                arrayMoney.add(mTotalValue);
 
@@ -137,14 +137,20 @@ public class HomeActivity extends AppCompatActivity {
 
 
     // 다른 통계화면으로 이동
+    public void statsButtonClicked(View v){
+
+    }
+
     public void ageStatsButtonClicked(View v){
         Intent ageStatsIntent = new Intent(this, ageStatsActivity.class);
         startActivity(ageStatsIntent);
+        overridePendingTransition(0, 0);
     }
 
     public void categoryStatsButtonClicked(View v) {
         Intent categoryStatsIntent = new Intent(this, categoryStatsActivity.class);
         startActivity(categoryStatsIntent);
+        overridePendingTransition(0, 0);
     }
 
     //    하단 네비게이션 바 버튼 클릭
