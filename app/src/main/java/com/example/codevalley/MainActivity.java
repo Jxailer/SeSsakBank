@@ -399,14 +399,18 @@ public class MainActivity extends AppCompatActivity {
 //        databaseReference = firebaseDatabase.getReference().child("wishManage");
 
 //        getValue();
-        recordRef = FirebaseDatabase.getInstance().getReference("recordManage").child(userID).child(year_info+","+month_info+","+day_info);
+        recordRef = FirebaseDatabase.getInstance().getReference("recordManage").child(userID);
         recordRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 arrayList.clear();
                 for (DataSnapshot itemSnapshot: snapshot.getChildren()){
                     HelperClass_RecordList dataClass = itemSnapshot.getValue(HelperClass_RecordList.class);
+                    Log.w("arrayList add", "데이터 날짜"+dataClass.getDate());
+                    if (dataClass.getDate().equals(year_info+","+month_info+","+day_info)) {
                         arrayList.add(dataClass);
+
+                    }
 
                 }
                 recordAdt.notifyDataSetChanged();

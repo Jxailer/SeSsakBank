@@ -42,6 +42,7 @@ public class IncomeRecordCreate extends AppCompatActivity {
 
         Spinner categorySpinner = (Spinner) findViewById(R.id.categorySpinner);
         EditText moneyAmount = (EditText) findViewById(R.id.moneyAmount);
+        EditText memo = (EditText) findViewById(R.id.memo);
 
 //        저장버튼 눌림
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +50,7 @@ public class IncomeRecordCreate extends AppCompatActivity {
             public void onClick(View view) {
                 String category = categorySpinner.getSelectedItem().toString(); // 카테고리 스피너에서 선택된 값 가져오기
                 String categoryNum; // 카테고리 별 고유번호 부여
+                String memoText = memo.getText().toString(); // 메모칸에 입력한 값 가져오기
                 String Amount = moneyAmount.getText().toString(); // 용돈 금액 입력값을 int형으로 저장함.
 
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("recordManage/"+ userID);
@@ -89,7 +91,7 @@ public class IncomeRecordCreate extends AppCompatActivity {
 
                         for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 //                            record를 category를 기준으로 경로 설정하여 저장함.
-                            String src = category+ "/";
+                            String src = memoText+ "/";
                             String categorySrc = src + "category";
                             String moneySrc = src + "moneyAmount";
                             String memoSrc = src + "memo";
@@ -99,7 +101,7 @@ public class IncomeRecordCreate extends AppCompatActivity {
                             Map<String, Object> record = new HashMap<>();
                             record.put(categorySrc, categoryNum);
                             record.put(moneySrc, Amount);
-                            record.put(memoSrc, category);
+                            record.put(memoSrc, memoText);
                             record.put(dateSrc, dateInfo);
                             record.put(pmSrc, "1");
 
