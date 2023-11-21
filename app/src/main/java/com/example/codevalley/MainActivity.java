@@ -1,5 +1,7 @@
 package com.example.codevalley;
 
+import static com.example.adult.adult_LoginActivity.nickName;
+import static com.example.codevalley.LoginActivity.userID;
 import static com.example.calendar.CalendarAdapter.day_info;
 import static com.example.calendar.CalendarAdapter.month_info;
 import static com.example.calendar.CalendarAdapter.year_info;
@@ -28,6 +30,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.adult.post.BoardWrite;
 import com.example.calendar.CalendarAdapter;
 import com.example.calendar.CalendarUtil;
 import com.example.codevalley.MainActivity;
@@ -405,8 +408,6 @@ public class MainActivity extends AppCompatActivity {
                     HelperClass_RecordList dataClass = itemSnapshot.getValue(HelperClass_RecordList.class);
                         arrayList.add(dataClass);
 
-
-
                 }
                 recordAdt.notifyDataSetChanged();
             }
@@ -418,8 +419,6 @@ public class MainActivity extends AppCompatActivity {
 
         recordAdt = new CustomAdapter_RecordList(arrayList,this);
         recordRcv.setAdapter(recordAdt);
-
-
 
 
         //Toast.makeText(MainActivity.this, "날짜 버튼 눌림.", Toast.LENGTH_SHORT).show();

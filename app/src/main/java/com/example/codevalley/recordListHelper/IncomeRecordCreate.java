@@ -1,8 +1,8 @@
 package com.example.codevalley.recordListHelper;
 
+import static com.example.adult.adult_LoginActivity.nickName;
 import static com.example.codevalley.LoginActivity.userID;
 import static com.example.codevalley.RegisterActivity.ur_stamp;
-import static com.example.codevalley.LoginActivity.userID;
 import static com.example.calendar.CalendarAdapter.year_info;
 import static com.example.calendar.CalendarAdapter.month_info;
 import static com.example.calendar.CalendarAdapter.day_info;

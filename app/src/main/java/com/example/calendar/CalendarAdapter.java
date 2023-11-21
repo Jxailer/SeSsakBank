@@ -65,16 +65,16 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.Calend
 
             //오늘 날짜 색상 칠하기
             if (day.equals(CalendarUtil.selectedDate)){
-                holder.parentView.setBackgroundColor(Color.parseColor("#ABD77E"));
+                holder.parentView.setBackgroundColor(Color.parseColor("#FF98BC86"));
             }
         }
 
 
         //텍스트 색상 지정(토,일)
         if ((position+1) % 7 == 0){//토요일
-            holder.dayText.setTextColor(Color.BLUE);
+            holder.dayText.setTextColor(Color.parseColor("#008EDA"));
         }else if( position == 0 || position % 7 == 0){ //일요일
-            holder.dayText.setTextColor(Color.RED);
+            holder.dayText.setTextColor(Color.parseColor("#FFCC0000"));
 
         }
 
@@ -89,6 +89,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.Calend
                 String yearMonDay = iYear + "년" + iMonth + "월" + iDay + "일";
 
                 Toast.makeText(holder.itemView.getContext(), yearMonDay, Toast.LENGTH_SHORT).show();
+
 
                 year_info= iYear;
                 month_info = iMonth;
@@ -105,6 +106,8 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.Calend
 //                SpentIntent.putExtra("day_info", iDay);
 
                 Log.w("date info", iYear+","+iMonth+","+iDay);
+                ((MainActivity)MainActivity.context_Main).setRecyclerVisible();
+
 
 
             }

@@ -1,16 +1,20 @@
 package com.example.codevalley.recordListHelper;
 
+import com.example.codevalley.MainActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.adult.post.BoardUpdateActivity;
+import com.example.adult.post.BoardWrite;
 import com.example.codevalley.R;
 import com.example.codevalley.recordListHelper.HelperClass_RecordList;
 import com.example.codevalley.wishStore.store_confirm;
@@ -21,7 +25,7 @@ import java.util.ArrayList;
 
 public class CustomAdapter_RecordList extends RecyclerView.Adapter<CustomAdapter_RecordList.ViewHolder> {
 
-    private ArrayList<HelperClass_RecordList> arrayList;
+    ArrayList<HelperClass_RecordList> arrayList;
     private Context context;
     //어댑터에서 액티비티 액션을 가져올 때 context가 필요한데 어댑터에는 context가 없다.
     //선택한 액티비티에 대한 context를 가져올 때 필요하다.
@@ -42,8 +46,12 @@ public class CustomAdapter_RecordList extends RecyclerView.Adapter<CustomAdapter
 
     @Override
     public void onBindViewHolder(@NonNull CustomAdapter_RecordList.ViewHolder holder, int position) {
+        HelperClass_RecordList helperClass_recordList = arrayList.get(holder.getAdapterPosition());
         holder.recordMemo.setText(arrayList.get(position).getMemo());
         holder.recordAmount.setText(arrayList.get(position).getMoneyAmount()+"원");
+//        holder.recordMemo.setText(HelperClass_RecordList.getMemo());
+//        holder.recordAmount.setText(HelperClass_RecordList.getMoneyAmount()+"원");
+
 
     }
 
@@ -76,11 +84,14 @@ public class CustomAdapter_RecordList extends RecyclerView.Adapter<CustomAdapter
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView recordMemo;
         TextView recordAmount;
+        LinearLayout recordInfo;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.recordMemo = itemView.findViewById(R.id.recordMemo);
             this.recordAmount = itemView.findViewById(R.id.recordAmount);
+
+            recordInfo = itemView.findViewById(R.id.recordInfo);
         }
 
     }
