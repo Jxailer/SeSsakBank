@@ -17,6 +17,8 @@ import com.example.adult.profile.Profile;
 import com.example.codevalley.R;
 import com.example.wishShop.WishShopActivity;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
@@ -38,7 +40,8 @@ public class categoryStatsActivity extends AppCompatActivity {
 
 //    ArrayList arrayCategory = new ArrayList<>();
 //    ArrayList arrayLastCategory = new ArrayList<>();
-    ArrayList arrayMonthMonth = new ArrayList<>();
+//    ArrayList arrayMonthMoney = new ArrayList<>();
+//    ArrayList arrayLastMonthMoney = new ArrayList<>();
     TextView categoryStatsResult;
     TextView statsName;
     float m1, m2, m3, m4, m5, m6, m7, m8, m9, m10;
@@ -74,7 +77,8 @@ public class categoryStatsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 //                arrayCategory.clear();
 //                arrayLastCategory.clear();
-                arrayMonthMonth.clear();
+//                arrayMonthMoney.clear();
+//                arrayLastMonthMoney.clear();
                 m1 = 0; m2 = 0; m3 = 0; m4 = 0; m5 = 0; m6 = 0; m7 = 0; m8 = 0; m9 = 0; m10 = 0;
                 lM1 = 0; lM2 = 0; lM3 = 0; lM4 = 0; lM5 = 0; lM6 = 0; lM7 = 0; lM8 = 0; lM9 = 0; lM10 = 0;
 
@@ -163,13 +167,34 @@ public class categoryStatsActivity extends AppCompatActivity {
                 lM9 = lM9 / hapLM * 100;
                 lM10 = lM10 / hapLM * 100;
 
+                //저번달과 카테고리별 지출 비교
+                String c1 = "", c2 = "", c3 = "", c4 = "", c5 = "",
+                        c6 = "", c7 = "", c8 = "", c9 = "", c10 = "";
                 if (m1 > lM1){
-                    categoryStatsResult.setText("이번달은 저번달보다 음식에 많이 소비했어요!");
+                    c1 = "\"음식\" ";
+                } else if (m2 > lM2){
+                    c2 = "\"간식\" ";
+                } else if (m3 > lM3){
+                    c3 = "\"문구\" ";
+                } else if (m4 > lM4){
+                    c4 = "\"의류\" ";
+                } else if (m5 > lM5){
+                    c5 = "\"여가\" ";
+                } else if (m6 > lM6){
+                    c6 = "\"취미\" ";
+                } else if (m7 > lM7){
+                    c7 = "\"교재/책\" ";
+                } else if (m8 > lM8){
+                    c8 = "\"교통\" ";
+                } else if (m9 > lM9){
+                    c9 = "\"분실\" ";
+                } else if (m10 > lM10) {
+                    c10 = "\"기타\" ";
+                } else {
+                    categoryStatsResult.setText("이번달은 저번달보다 적은 소비를 했어요! 참 잘했어요");
                 }
-                else{
-                    categoryStatsResult.setText("이번달은 저번달보다 음식에 많이 소비하지 않았어요!");
-                }
-
+                categoryStatsResult.setText("저번달보다 "+c1+c2+c3+c4+c5+c6+c7+c8+c9+c10+"항목에 많이 소비했어요 \n " +
+                        c1+c2+c3+c4+c5+c6+c7+c8+c9+c10+"항목의 소비를 조금 줄이는 것이 좋아요! ");
 
                 // 파이차트 만들기
                 pieChart = findViewById(R.id.category_pie_Chart);
@@ -177,14 +202,47 @@ public class categoryStatsActivity extends AppCompatActivity {
                 PieDataSet pieDataSet2 = new PieDataSet(data2(), "");
                 pieDataSet2.setColors(colorArray2);
                 PieData pieData2 = new PieData(pieDataSet2);
-                pieChart.setDrawEntryLabels(true);
+                pieDataSet2.setValueTextColor(Color.BLACK);
+                pieChart.setDrawEntryLabels(false);
                 pieChart.setUsePercentValues(true);
-                pieData2.setValueTextSize(16);
-                pieChart.setCenterText("카테고리별 통계");
-                pieChart.setCenterTextSize(16);
+                pieData2.setValueTextSize(12);
+//                pieData2.setDrawValues(false); // pieChart 안에 들어가는 value값 표기 지우기
+                Legend legend = pieChart.getLegend(); // pieChart 범례 커스텀
+//                legend.setTextSize(14);
+                legend.setVerticalAlignment(Legend.LegendVerticalAlignment.CENTER);
+                legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+                legend.setOrientation(Legend.LegendOrientation.VERTICAL);
+                legend.setDrawInside(false);
+                legend.setXEntrySpace(4f);
+                legend.setYEntrySpace(0f);
+                legend.setWordWrapEnabled(true);
+                Description description = pieChart.getDescription(); // pieChart 설명 커스텀
+                description.setEnabled(false); // 차트 설명 비활성화
+                pieChart.setCenterText("카테고리\n통계");
+                pieChart.setCenterTextSize(12);
                 pieChart.setHoleRadius(30);
                 pieChart.setData(pieData2);
                 pieChart.invalidate();
+
+
+
+//                // 밖으로 나오는 선 만들어서 퍼센트 표시 https://stackoverflow.com/questions/50907258/pie-chart-alignment-issue-using-mpandroidchart
+//                pieDataSet2.setSliceSpace(10f);
+//                pieDataSet2.setIconsOffset(new MPPointF(0, 40));
+//                pieDataSet2.setSelectionShift(5f);
+//
+//                // Outside values
+//                pieDataSet2.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
+//                pieDataSet2.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
+//                pieDataSet2.setValueLinePart1OffsetPercentage(100f); /** When valuePosition is OutsideSlice, indicates offset as percentage out of the slice size */
+//                pieDataSet2.setValueLinePart1Length(0.6f); /** When valuePosition is OutsideSlice, indicates length of first half of the line */
+//                pieDataSet2.setValueLinePart2Length(0.6f); /** When valuePosition is OutsideSlice, indicates length of second half of the line */
+//                pieChart.setExtraOffsets(0.f, 5.f, 0.f, 5.f); // Ofsets of the view chart to prevent outside values being cropped /** Sets extra offsets (around the chart view) to be appended to the auto-calculated offsets.*/
+//
+//                PieData data = new PieData(pieDataSet2);
+//                data.setValueTextSize(10f);
+//                data.setValueTextColor(Color.BLACK);
+//                pieChart.setData(data);
             }
 
             private ArrayList<PieEntry> data2() {
@@ -225,6 +283,8 @@ public class categoryStatsActivity extends AppCompatActivity {
         String lastMonth = new java.text.SimpleDateFormat("M").format(mon.getTime());
         return lastMonth;
     }
+
+
 
     // 다른 통계화면으로 이동
     public void statsButtonClicked(View v){
