@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CodeValley"
         tools:targetApi="31">
-
+        <activity
+            android:name=".statistics"
+            android:exported="false" />
         <!-- App start -->
         <activity
             android:name=".SplashActivity"
@@ -37,10 +39,9 @@
             android:exported="true" />
         <activity
             android:name=".RegisterActivity"
-            android:exported="true" />
-<!--        <activity-->
-<!--            android:name="com.example.calendar.AccountActivity"-->
-<!--            android:exported="true" />-->
+            android:exported="true" /> <!-- <activity -->
+        <!-- android:name="com.example.calendar.AccountActivity" -->
+        <!-- android:exported="true" /> -->
         <!-- main -->
         <!-- <activity -->
         <!-- android:name=".DailyRecordPopupActivity" -->
@@ -63,9 +64,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
-
-        <!-- child_wishStore -->
+            android:exported="true" /> <!-- child_wishStore -->
         <activity
             android:name=".wishStore.store_complete"
             android:exported="true" />
@@ -78,9 +77,7 @@
         <activity
             android:name=".wishStore.store_buyGameItem"
             android:exported="true"
-            android:theme="@android:style/Theme.Dialog" />
-
-        <!-- child_myPage -->
+            android:theme="@android:style/Theme.Dialog" /> <!-- child_myPage -->
         <activity
             android:name=".myPage.MyPageActivity"
             android:exported="true" />
@@ -108,9 +105,7 @@
         <activity
             android:name=".myPage.LogoutPopup"
             android:exported="true"
-            android:theme="@style/DialogTheme" />
-
-        <!-- game -->
+            android:theme="@style/DialogTheme" /> <!-- game -->
         <activity
             android:name=".game.GameStart2"
             android:exported="true" />
@@ -122,11 +117,7 @@
             android:exported="true" />
         <activity
             android:name=".game.Game_nameChange"
-            android:exported="true" />
-
-
-
-        <!-- 어른 통계 -->
+            android:exported="true" /> <!-- 어른 통계 -->
         <activity
             android:name="com.example.adult.HomeActivity"
             android:enabled="true" />
@@ -135,9 +126,7 @@
             android:exported="false" />
         <activity
             android:name="com.example.adult.statistics.ageStatsActivity"
-            android:exported="true" />
-
-        <!-- adult_wishShop -->
+            android:exported="true" /> <!-- adult_wishShop -->
         <activity
             android:name="com.example.wishShop.UpdateActivity"
             android:exported="false" />
@@ -149,9 +138,7 @@
             android:exported="true" />
         <activity
             android:name="com.example.wishShop.UploadActivity"
-            android:exported="true" />
-
-        <!-- adult_post -->
+            android:exported="true" /> <!-- adult_post -->
         <activity
             android:name="com.example.adult.post.commentActivity"
             android:exported="true"
@@ -166,14 +153,10 @@
             android:exported="true" />
         <activity
             android:name="com.example.adult.post.BoardListActivity"
-            android:exported="true" />
-
-        <!-- adult_activity -->
+            android:exported="true" /> <!-- adult_activity -->
         <activity
             android:name="com.example.adult.profile.Profile"
-            android:enabled="true" />
-
-        <!-- admin -->
+            android:enabled="true" /> <!-- admin -->
         <activity
             android:name=".admin.AdminActivity"
             android:enabled="true"

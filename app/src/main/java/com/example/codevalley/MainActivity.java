@@ -31,6 +31,7 @@ import com.example.codevalley.game.GameStart1;
 import com.example.codevalley.myPage.MyPageActivity;
 import com.example.codevalley.recordListHelper.CustomAdapter_RecordList;
 import com.example.codevalley.recordListHelper.HelperClass_RecordList;
+import com.example.codevalley.recordListHelper.IncomeRecordCreate;
 import com.example.codevalley.recordListHelper.SpentRecordCreate;
 import com.example.codevalley.wishStore.store_main;
 import com.google.firebase.database.DataSnapshot;
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
     Button cancelButton;
     Button dayButton;
     Button target;
+    ImageButton statistics;
 
     //    캘린더 커스텀뷰 관련 변수 선언
     TextView monthYearText; //년월 텍스트뷰
@@ -103,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
         mainParent = findViewById(R.id.mainParent);
 
         targetChangeBox = (View) findViewById(R.id.targetChangeBox);
+        statistics = (ImageButton) findViewById(R.id.statistics);
         editText = findViewById((R.id.targetBox));
 
         calendar = (View) findViewById(R.id.calendar);
@@ -223,6 +226,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //통계 버튼 눌렀을 시
+        statistics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent statisIntent = new Intent(MainActivity.this, statistics.class);
+                startActivity(statisIntent);
+            }
+        });
+
 
 //        지출 내용 작성 버튼 눌렀을 시
         recordCreate_Spent.setOnClickListener(new View.OnClickListener() {
@@ -270,7 +282,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.w("no futre", "미래 일");
                 }
                 else{ // 현재 날짜보다 과거에 작성하는 경우
-                    Intent intent = new Intent(MainActivity.this, SpentRecordCreate.class);
+                    Intent intent = new Intent(MainActivity.this, IncomeRecordCreate.class);
                     startActivity(intent);
                 }
             }
