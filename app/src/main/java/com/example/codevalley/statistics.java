@@ -37,10 +37,10 @@ public class statistics extends AppCompatActivity {
     float lM1, lM2, lM3, lM4, lM5, lM6, lM7, lM8, lM9, lM10;
 
     PieChart pieChart;
-    int[] colorArray2 = new int[] {Color.rgb(26, 34, 30), Color.rgb(49, 63, 56),
-            Color.rgb(72, 92, 82), Color.rgb(95, 121, 108), Color.rgb(118, 151, 135),
-            Color.rgb(140, 180, 160), Color.rgb(164, 210, 187), Color.rgb(240, 231, 215), Color.rgb(218, 218, 218),
-            Color.rgb(247, 247, 247)};
+    int[] colorArray2 = new int[] {Color.rgb(16, 35, 7), Color.rgb(30, 64, 13),
+            Color.rgb(44, 93, 19), Color.rgb(57, 123, 24), Color.rgb(71, 152, 30),
+            Color.rgb(84, 181, 36), Color.rgb(98, 210, 42), Color.rgb(165, 166, 164), Color.rgb(194, 195, 193),
+            Color.rgb(223, 225, 222)};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
