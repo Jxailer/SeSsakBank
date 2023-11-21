@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/a_sub1"
-    tools:context="com.example.adult.statistics.ageStatsActivity">
+    tools:context="com.example.adult.statistics.weekStatsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -85,13 +85,13 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/ageStatsBtn"
+                android:id="@+id/weekStatsBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="25dp"
                 android:paddingRight="25dp"
-                android:onClick="ageStatsButtonClicked"
-                android:text="월별 통계"
+                android:onClick="weekStatsButtonClicked"
+                android:text="주간 통계"
                 android:textColor="@color/a_sub1"
                 android:textStyle="bold"
                 android:textSize="16dp"
@@ -107,11 +107,21 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/radius_layout">
 
-            <com.github.mikephil.charting.charts.PieChart
-                android:id="@+id/pie_Chart"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="주간 지출"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/bar_Chart"
                 android:layout_width="match_parent"
-                android:layout_height="280dp"
-                android:layout_margin="20dp"
+                android:layout_height="260dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
                 android:layout_centerHorizontal="true"/>
         </androidx.cardview.widget.CardView>
     </LinearLayout>

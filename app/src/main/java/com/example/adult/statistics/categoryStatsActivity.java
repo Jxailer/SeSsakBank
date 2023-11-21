@@ -325,7 +325,7 @@ public class categoryStatsActivity extends AppCompatActivity {
     }
 
     public void ageStatsButtonClicked(View v){
-        Intent ageStatsIntent = new Intent(this, ageStatsActivity.class);
+        Intent ageStatsIntent = new Intent(this, weekStatsActivity.class);
         startActivity(ageStatsIntent);
         overridePendingTransition(0, 0);
     }

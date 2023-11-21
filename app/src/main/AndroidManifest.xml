@@ -125,7 +125,7 @@
             android:name="com.example.adult.statistics.categoryStatsActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.adult.statistics.ageStatsActivity"
+            android:name="com.example.adult.statistics.weekStatsActivity"
             android:exported="true" /> <!-- adult_wishShop -->
         <activity
             android:name="com.example.wishShop.UpdateActivity"

@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.adult.post.BoardListActivity;
 import com.example.adult.profile.Profile;
-import com.example.adult.statistics.ageStatsActivity;
+import com.example.adult.statistics.weekStatsActivity;
 import com.example.adult.statistics.categoryStatsActivity;
 import com.example.codevalley.R;
 import com.example.wishShop.WishShopActivity;
@@ -158,9 +158,9 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    public void ageStatsButtonClicked(View v){
-        Intent ageStatsIntent = new Intent(this, ageStatsActivity.class);
-        startActivity(ageStatsIntent);
+    public void weekStatsButtonClicked(View v){
+        Intent weekStatsIntent = new Intent(this, weekStatsActivity.class);
+        startActivity(weekStatsIntent);
         overridePendingTransition(0, 0);
     }
 
