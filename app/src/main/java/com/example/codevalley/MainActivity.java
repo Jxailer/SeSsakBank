@@ -6,6 +6,8 @@ import static com.example.calendar.CalendarAdapter.day_info;
 import static com.example.calendar.CalendarAdapter.month_info;
 import static com.example.calendar.CalendarAdapter.year_info;
 
+import java.time.LocalDate;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -66,6 +68,8 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -259,8 +263,26 @@ public class MainActivity extends AppCompatActivity {
         recordCreate_Spent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SpentRecordCreate.class);
-                startActivity(intent);
+                if(year_info > LocalDate.now().getYear()) // 현재 날짜보다 미래 년도에 작성하려는 경우
+                {
+                    Toast.makeText(MainActivity.this, "미래의 내역은 작성할 수 없어요!", Toast.LENGTH_SHORT).show();
+                    Log.w("no futre", "미래 년도");
+                }
+                else if (year_info == LocalDate.now().getYear() && month_info > LocalDate.now().getMonthValue()) // 현재 날짜보다 미래 월에 작성하려는 경우
+                {
+                    Toast.makeText(MainActivity.this, "미래의 내역은 작성할 수 없어요!", Toast.LENGTH_SHORT).show();
+                    Log.w("no futre", "미래 월");
+                } else if (year_info == LocalDate.now().getYear() && month_info == LocalDate.now().getMonthValue() && day_info > LocalDate.now().getDayOfMonth()) // 현자 날짜보다 미래 '일'에 기록을 작성하려는 경우
+                {
+                    Toast.makeText(MainActivity.this, "미래의 내역은 작성할 수 없어요!", Toast.LENGTH_SHORT).show();
+                    Log.w("no futre", "미래 일");
+                }
+                else{ // 현재 날짜보다 과거에 작성하는 경우
+                    Intent intent = new Intent(MainActivity.this, SpentRecordCreate.class);
+                    startActivity(intent);
+                    }
+
+
             }
         });
 
@@ -268,8 +290,24 @@ public class MainActivity extends AppCompatActivity {
         recordCreate_Income.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, IncomeRecordCreate.class);
-                startActivity(intent);
+                if(year_info > LocalDate.now().getYear()) // 현재 날짜보다 미래 년도에 작성하려는 경우
+                {
+                    Toast.makeText(MainActivity.this, "미래의 내역은 작성할 수 없어요!", Toast.LENGTH_SHORT).show();
+                    Log.w("no futre", "미래 년도");
+                }
+                else if (year_info == LocalDate.now().getYear() && month_info > LocalDate.now().getMonthValue()) // 현재 날짜보다 미래 월에 작성하려는 경우
+                {
+                    Toast.makeText(MainActivity.this, "미래의 내역은 작성할 수 없어요!", Toast.LENGTH_SHORT).show();
+                    Log.w("no futre", "미래 월");
+                } else if (year_info == LocalDate.now().getYear() && month_info == LocalDate.now().getMonthValue() && day_info > LocalDate.now().getDayOfMonth()) // 현자 날짜보다 미래 '일'에 기록을 작성하려는 경우
+                {
+                    Toast.makeText(MainActivity.this, "미래의 내역은 작성할 수 없어요!", Toast.LENGTH_SHORT).show();
+                    Log.w("no futre", "미래 일");
+                }
+                else{ // 현재 날짜보다 과거에 작성하는 경우
+                    Intent intent = new Intent(MainActivity.this, SpentRecordCreate.class);
+                    startActivity(intent);
+                }
             }
         });
 

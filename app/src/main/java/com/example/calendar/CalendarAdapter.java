@@ -88,8 +88,8 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.Calend
 
                 String yearMonDay = iYear + "년" + iMonth + "월" + iDay + "일";
 
-                Toast.makeText(holder.itemView.getContext(), yearMonDay, Toast.LENGTH_SHORT).show();
-
+//                Toast.makeText(holder.itemView.getContext(), yearMonDay, Toast.LENGTH_SHORT).show();
+                Log.w("선택된 날짜", yearMonDay);
 
                 year_info= iYear;
                 month_info = iMonth;
