@@ -1,25 +1,20 @@
 package com.example.codevalley;
 
-import static com.example.adult.adult_LoginActivity.nickName;
-import static com.example.codevalley.LoginActivity.userID;
 import static com.example.calendar.CalendarAdapter.day_info;
 import static com.example.calendar.CalendarAdapter.month_info;
 import static com.example.calendar.CalendarAdapter.year_info;
+import static com.example.codevalley.LoginActivity.userID;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,50 +25,24 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.adult.post.BoardWrite;
 import com.example.calendar.CalendarAdapter;
 import com.example.calendar.CalendarUtil;
-import com.example.codevalley.MainActivity;
-import com.example.codevalley.R;
 import com.example.codevalley.game.GameStart1;
-import com.example.codevalley.game.PlantGame;
 import com.example.codevalley.myPage.MyPageActivity;
 import com.example.codevalley.recordListHelper.CustomAdapter_RecordList;
 import com.example.codevalley.recordListHelper.HelperClass_RecordList;
-import com.example.codevalley.recordListHelper.IncomeRecordCreate;
 import com.example.codevalley.recordListHelper.SpentRecordCreate;
 import com.example.codevalley.wishStore.store_main;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-
-import com.example.codevalley.game.GameStart1;
-import com.example.codevalley.myPage.MyPageActivity;
-import com.example.codevalley.wishStore.store_complete;
-import com.example.codevalley.wishStore.store_main;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -259,8 +228,26 @@ public class MainActivity extends AppCompatActivity {
         recordCreate_Spent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SpentRecordCreate.class);
-                startActivity(intent);
+                if(year_info > LocalDate.now().getYear()) // 현재 날짜보다 미래 년도에 작성하려는 경우
+                {
+                    Toast.makeText(MainActivity.this, "미래의 내역은 작성할 수 없어요!", Toast.LENGTH_SHORT).show();
+                    Log.w("no futre", "미래 년도");
+                }
+                else if (year_info == LocalDate.now().getYear() && month_info > LocalDate.now().getMonthValue()) // 현재 날짜보다 미래 월에 작성하려는 경우
+                {
+                    Toast.makeText(MainActivity.this, "미래의 내역은 작성할 수 없어요!", Toast.LENGTH_SHORT).show();
+                    Log.w("no futre", "미래 월");
+                } else if (year_info == LocalDate.now().getYear() && month_info == LocalDate.now().getMonthValue() && day_info > LocalDate.now().getDayOfMonth()) // 현자 날짜보다 미래 '일'에 기록을 작성하려는 경우
+                {
+                    Toast.makeText(MainActivity.this, "미래의 내역은 작성할 수 없어요!", Toast.LENGTH_SHORT).show();
+                    Log.w("no futre", "미래 일");
+                }
+                else{ // 현재 날짜보다 과거에 작성하는 경우
+                    Intent intent = new Intent(MainActivity.this, SpentRecordCreate.class);
+                    startActivity(intent);
+                }
+
+
             }
         });
 
@@ -268,8 +255,24 @@ public class MainActivity extends AppCompatActivity {
         recordCreate_Income.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, IncomeRecordCreate.class);
-                startActivity(intent);
+                if(year_info > LocalDate.now().getYear()) // 현재 날짜보다 미래 년도에 작성하려는 경우
+                {
+                    Toast.makeText(MainActivity.this, "미래의 내역은 작성할 수 없어요!", Toast.LENGTH_SHORT).show();
+                    Log.w("no futre", "미래 년도");
+                }
+                else if (year_info == LocalDate.now().getYear() && month_info > LocalDate.now().getMonthValue()) // 현재 날짜보다 미래 월에 작성하려는 경우
+                {
+                    Toast.makeText(MainActivity.this, "미래의 내역은 작성할 수 없어요!", Toast.LENGTH_SHORT).show();
+                    Log.w("no futre", "미래 월");
+                } else if (year_info == LocalDate.now().getYear() && month_info == LocalDate.now().getMonthValue() && day_info > LocalDate.now().getDayOfMonth()) // 현자 날짜보다 미래 '일'에 기록을 작성하려는 경우
+                {
+                    Toast.makeText(MainActivity.this, "미래의 내역은 작성할 수 없어요!", Toast.LENGTH_SHORT).show();
+                    Log.w("no futre", "미래 일");
+                }
+                else{ // 현재 날짜보다 과거에 작성하는 경우
+                    Intent intent = new Intent(MainActivity.this, SpentRecordCreate.class);
+                    startActivity(intent);
+                }
             }
         });
 

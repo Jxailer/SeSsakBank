@@ -48,9 +48,9 @@ public class categoryStatsActivity extends AppCompatActivity {
     float lM1, lM2, lM3, lM4, lM5, lM6, lM7, lM8, lM9, lM10;
 
     PieChart pieChart;
-    int[] colorArray2 = new int[] {Color.rgb(118, 151, 135), Color.rgb(124, 150, 117),
-            Color.rgb(150, 150, 117), Color.rgb(150, 142, 117), Color.rgb(150, 133, 117),
-            Color.rgb(150, 122, 117), Color.rgb(224, 224, 202), Color.rgb(224, 218, 191), Color.rgb(223, 224, 222),
+    int[] colorArray2 = new int[] {Color.rgb(26, 34, 30), Color.rgb(49, 63, 56),
+            Color.rgb(72, 92, 82), Color.rgb(95, 121, 108), Color.rgb(118, 151, 135),
+            Color.rgb(140, 180, 160), Color.rgb(164, 210, 187), Color.rgb(240, 231, 215), Color.rgb(218, 218, 218),
             Color.rgb(247, 247, 247)};
 
     @Override
@@ -193,8 +193,8 @@ public class categoryStatsActivity extends AppCompatActivity {
                 } else {
                     categoryStatsResult.setText("이번달은 저번달보다 적은 소비를 했어요! 참 잘했어요");
                 }
-                categoryStatsResult.setText("저번달보다 "+c1+c2+c3+c4+c5+c6+c7+c8+c9+c10+"항목에 많이 소비했어요 \n " +
-                        c1+c2+c3+c4+c5+c6+c7+c8+c9+c10+"항목의 소비를 조금 줄이는 것이 좋아요! ");
+                categoryStatsResult.setText("저번달보다 "+c1+c2+c3+c4+c5+c6+c7+c8+c9+c10+"항목에서 많이 소비했어요! \n " +
+                        c1+c2+c3+c4+c5+c6+c7+c8+c9+c10+"소비를 조금 줄일 수 있도록 독려해주세요");
 
                 // 파이차트 만들기
                 pieChart = findViewById(R.id.category_pie_Chart);
@@ -203,12 +203,12 @@ public class categoryStatsActivity extends AppCompatActivity {
                 pieDataSet2.setColors(colorArray2);
                 PieData pieData2 = new PieData(pieDataSet2);
                 pieDataSet2.setValueTextColor(Color.BLACK);
-                pieChart.setDrawEntryLabels(false);
+                pieChart.setDrawEntryLabels(true);
                 pieChart.setUsePercentValues(true);
-                pieData2.setValueTextSize(12);
+                pieData2.setValueTextSize(14);
 //                pieData2.setDrawValues(false); // pieChart 안에 들어가는 value값 표기 지우기
                 Legend legend = pieChart.getLegend(); // pieChart 범례 커스텀
-//                legend.setTextSize(14);
+                legend.setTextSize(14);
                 legend.setVerticalAlignment(Legend.LegendVerticalAlignment.CENTER);
                 legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
                 legend.setOrientation(Legend.LegendOrientation.VERTICAL);
@@ -227,7 +227,7 @@ public class categoryStatsActivity extends AppCompatActivity {
 
 
 //                // 밖으로 나오는 선 만들어서 퍼센트 표시 https://stackoverflow.com/questions/50907258/pie-chart-alignment-issue-using-mpandroidchart
-//                pieDataSet2.setSliceSpace(10f);
+                pieDataSet2.setSliceSpace(2f);
 //                pieDataSet2.setIconsOffset(new MPPointF(0, 40));
 //                pieDataSet2.setSelectionShift(5f);
 //
@@ -247,16 +247,47 @@ public class categoryStatsActivity extends AppCompatActivity {
 
             private ArrayList<PieEntry> data2() {
                 ArrayList<PieEntry> datavalue2 = new ArrayList<>();
-                datavalue2.add(new PieEntry(m1,"식사"));
-                datavalue2.add(new PieEntry(m2,"간식"));
-                datavalue2.add(new PieEntry(m3,"문구"));
-                datavalue2.add(new PieEntry(m4,"의류"));
-                datavalue2.add(new PieEntry(m5,"여가"));
-                datavalue2.add(new PieEntry(m6,"취미"));
-                datavalue2.add(new PieEntry(m7,"교재/책"));
-                datavalue2.add(new PieEntry(m8,"교통"));
-                datavalue2.add(new PieEntry(m9,"분실"));
-                datavalue2.add(new PieEntry(m10,"기타"));
+                if (m1 != 0){
+                    datavalue2.add(new PieEntry(m1,"식사"));
+                }
+                if (m2 != 0){
+                    datavalue2.add(new PieEntry(m2,"간식"));
+                }
+                if (m3 != 0){
+                    datavalue2.add(new PieEntry(m3,"문구"));
+                }
+                if (m4 != 0){
+                    datavalue2.add(new PieEntry(m4,"의류"));
+                }
+                if (m5 != 0){
+                    datavalue2.add(new PieEntry(m5,"여가"));
+                }
+                if (m6 != 0){
+                    datavalue2.add(new PieEntry(m6,"취미"));
+                }
+                if (m7 != 0){
+                    datavalue2.add(new PieEntry(m7,"교재/책"));
+                }
+                if (m8 != 0){
+                    datavalue2.add(new PieEntry(m8,"교통"));
+                }
+                if (m9 != 0){
+                    datavalue2.add(new PieEntry(m9,"분실"));
+                }
+                if (m10 != 0){
+                    datavalue2.add(new PieEntry(m10,"기타"));
+                }
+
+//                datavalue2.add(new PieEntry(m1,"식사"));
+//                datavalue2.add(new PieEntry(m2,"간식"));
+//                datavalue2.add(new PieEntry(m3,"문구"));
+//                datavalue2.add(new PieEntry(m4,"의류"));
+//                datavalue2.add(new PieEntry(m5,"여가"));
+//                datavalue2.add(new PieEntry(m6,"취미"));
+//                datavalue2.add(new PieEntry(m7,"교재/책"));
+//                datavalue2.add(new PieEntry(m8,"교통"));
+//                datavalue2.add(new PieEntry(m9,"분실"));
+//                datavalue2.add(new PieEntry(m10,"기타"));
 
                 return datavalue2;
             }

@@ -48,7 +48,7 @@ public class HomeActivity extends AppCompatActivity {
     float mTotalValue;
 
     PieChart pieChart;
-    int[] colorArray = new int[] {Color.rgb(118, 151, 135), Color.rgb(247, 247, 247)};
+    int[] colorArray = new int[] {Color.rgb(118, 151, 135), Color.rgb(193, 197, 190)};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
