@@ -1,12 +1,11 @@
 package com.example.codevalley.recordListHelper;
 
+import static com.example.calendar.CalendarAdapter.day_info;
+import static com.example.calendar.CalendarAdapter.month_info;
+import static com.example.calendar.CalendarAdapter.year_info;
 import static com.example.codevalley.LoginActivity.userID;
 import static com.example.codevalley.RegisterActivity.ur_stamp;
-import static com.example.calendar.CalendarAdapter.year_info;
-import static com.example.calendar.CalendarAdapter.month_info;
-import static com.example.calendar.CalendarAdapter.day_info;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -67,25 +66,25 @@ public class SpentRecordCreate extends AppCompatActivity {
                 //<!--    8	교통-->
                 //<!--    9	분실-->
                 //<!--    10	기타-->
-                if (category.equals("식사")) {
+                if (category.equals("음식")) {
                     categoryNum = "1";
                 }
-                else if (category.equals("의류")) {
+                else if (category.equals("간식")) {
                     categoryNum = "2";
                 }
-                else if (category.equals("문구")) {
+                else if (category.equals("문구류")) {
                     categoryNum = "3";
                 }
-                else if (category.equals("간식")) {
+                else if (category.equals("옷")) {
                     categoryNum = "4";
                 }
                 else if (category.equals("여가")) {
                     categoryNum = "5";
                 }else if (category.equals("취미")) {
                     categoryNum = "6";
-                }else if (category.equals("교재/책")) {
+                }else if (category.equals("문제집/책")) {
                     categoryNum = "7";
-                }else if (category.equals("교통")) {
+                }else if (category.equals("교통비")) {
                     categoryNum = "8";
                 }else if (category.equals("분실")) {
                     categoryNum = "9";
@@ -102,7 +101,7 @@ public class SpentRecordCreate extends AppCompatActivity {
                     //addListenerForSingleValueEvent: 한 번만 반복
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                            // 날짜 정보 불러오기
+                        // 날짜 정보 불러오기
 //                            Intent get_intent = getIntent();
 //                            String year_info = get_intent.getStringExtra("year_info");
 //                            String month_info = get_intent.getStringExtra("month_info");

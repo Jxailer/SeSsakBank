@@ -5,6 +5,7 @@ import static com.example.codevalley.LoginActivity.userID;
 import static com.example.calendar.CalendarAdapter.day_info;
 import static com.example.calendar.CalendarAdapter.month_info;
 import static com.example.calendar.CalendarAdapter.year_info;
+import static com.example.codevalley.LoginActivity.userID;
 
 import java.time.LocalDate;
 
@@ -111,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
     Button cancelButton;
     Button dayButton;
     Button target;
+    ImageButton statistics;
 
 //    캘린더 커스텀뷰 관련 변수 선언
     TextView monthYearText; //년월 텍스트뷰
@@ -138,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
         mainParent = findViewById(R.id.mainParent);
 
         targetChangeBox = (View) findViewById(R.id.targetChangeBox);
+        statistics = (ImageButton) findViewById(R.id.statistics);
         editText = findViewById((R.id.targetBox));
 
         calendar = (View) findViewById(R.id.calendar);
@@ -255,6 +258,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 targetChangeBox.setVisibility(View.VISIBLE);
                 targetChangeBox.bringToFront();
+            }
+        });
+
+        //통계 버튼 눌렀을 시
+        statistics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent statisIntent = new Intent(MainActivity.this, statistics.class);
+                startActivity(statisIntent);
             }
         });
 

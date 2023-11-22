@@ -14,11 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.adult.post.BoardListActivity;
 import com.example.adult.profile.Profile;
-import com.example.adult.statistics.ageStatsActivity;
+import com.example.adult.statistics.weekStatsActivity;
 import com.example.adult.statistics.categoryStatsActivity;
 import com.example.codevalley.R;
 import com.example.wishShop.WishShopActivity;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
@@ -28,6 +29,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
@@ -45,7 +48,7 @@ public class HomeActivity extends AppCompatActivity {
     float mTotalValue;
 
     PieChart pieChart;
-    int[] colorArray = new int[] {Color.rgb(118, 151, 135), Color.rgb(247, 247, 247)};
+    int[] colorArray = new int[] {Color.rgb(118, 151, 135), Color.rgb(193, 197, 190)};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,15 +76,19 @@ public class HomeActivity extends AppCompatActivity {
                 mMoney = 0;
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    String date = dataSnapshot.child("date").getValue().toString();
+                    Integer thisMonth = Integer.valueOf(getMonth());
+                    Integer Month = Integer.valueOf(date.substring(5,7));
                     Integer pmInfo = Integer.parseInt(dataSnapshot.child("pm").getValue().toString().trim());
-
-                    if(pmInfo == 1){
-                        Integer money = Integer.parseInt(dataSnapshot.child("moneyAmount").getValue().toString().trim());
-                        pMoney += money;
-                    }
-                    else{
-                        Integer money = Integer.parseInt(dataSnapshot.child("moneyAmount").getValue().toString().trim());
-                        mMoney += money;
+                    if(Month == thisMonth){
+                        if(pmInfo == 1){
+                            Integer money = Integer.parseInt(dataSnapshot.child("moneyAmount").getValue().toString().trim());
+                            pMoney += money;
+                        }
+                        else{
+                            Integer money = Integer.parseInt(dataSnapshot.child("moneyAmount").getValue().toString().trim());
+                            mMoney += money;
+                        }
                     }
                 }
                 Integer Money = pMoney - mMoney;
@@ -115,8 +122,10 @@ public class HomeActivity extends AppCompatActivity {
                 pieChart.setDrawEntryLabels(true);
                 pieChart.setUsePercentValues(true);
                 pieData.setValueTextSize(20);
-                pieChart.setCenterText("수입/지출 통계");
-                pieChart.setCenterTextSize(16);
+                Description description = pieChart.getDescription(); // pieChart 설명 커스텀
+                description.setEnabled(false); // 차트 설명 비활성화
+                pieChart.setCenterText("수입/지출\n통계");
+                pieChart.setCenterTextSize(12);
                 pieChart.setHoleRadius(30);
                 pieChart.setData(pieData);
                 pieChart.invalidate();
@@ -134,6 +143,14 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+    // 이번달 "월" 구하기
+    public String getMonth(){
+        Long month = System.currentTimeMillis();
+        Date monthDate = new Date(month);
+        SimpleDateFormat M = new SimpleDateFormat("M");
+        return M.format(monthDate);
+    }
+
 
 
     // 다른 통계화면으로 이동
@@ -141,9 +158,9 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    public void ageStatsButtonClicked(View v){
-        Intent ageStatsIntent = new Intent(this, ageStatsActivity.class);
-        startActivity(ageStatsIntent);
+    public void weekStatsButtonClicked(View v){
+        Intent weekStatsIntent = new Intent(this, weekStatsActivity.class);
+        startActivity(weekStatsIntent);
         overridePendingTransition(0, 0);
     }
 

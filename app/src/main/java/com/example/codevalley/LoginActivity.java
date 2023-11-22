@@ -178,11 +178,15 @@ public class LoginActivity extends AppCompatActivity {
                 editor.commit();
             }
             userID = user.getEmail().replace(".", ",");
+//            String a = "23-11-18";
+//            stampRef.child(userID).child("createDate").setValue(a);
+
             //도장 개수 불러오기(앱 시작할 때 초기화하기 위해...)
             stampRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     ur_stamp = snapshot.child(userID).child("stamp").getValue(Integer.class);
+
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {

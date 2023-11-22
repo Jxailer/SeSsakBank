@@ -85,18 +85,18 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/ageStatsBtn"
+                android:id="@+id/weekStatsBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="25dp"
                 android:paddingRight="25dp"
-                android:onClick="ageStatsButtonClicked"
-                android:text="월별 통계"
+                android:onClick="weekStatsButtonClicked"
+                android:text="주간 통계"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="16dp"
                 android:background="@drawable/round_button5"
-                app:tint="#c1c5be"
+                app:tint="#769787"
                 tools:layout_editor_absoluteX="122dp"
                 tools:layout_editor_absoluteY="186dp" />
         </LinearLayout>

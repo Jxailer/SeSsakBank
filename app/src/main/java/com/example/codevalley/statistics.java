@@ -1,21 +1,14 @@
-package com.example.adult.statistics;
+package com.example.codevalley;
 
-import static com.example.adult.adult_LoginActivity.childID;
+import static com.example.codevalley.LoginActivity.userID;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.adult.HomeActivity;
-import com.example.adult.post.BoardListActivity;
-import com.example.adult.profile.Profile;
-import com.example.codevalley.R;
-import com.example.wishShop.WishShopActivity;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
@@ -33,39 +26,35 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class categoryStatsActivity extends AppCompatActivity {
+public class statistics extends AppCompatActivity {
 
-    DatabaseReference nameRef = FirebaseDatabase.getInstance().getReference("users").child(childID);
-    DatabaseReference recordRef = FirebaseDatabase.getInstance().getReference("recordManage").child(childID);
+    DatabaseReference nameRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
+    DatabaseReference recordRef = FirebaseDatabase.getInstance().getReference("recordManage").child(userID);
 
-//    ArrayList arrayCategory = new ArrayList<>();
-//    ArrayList arrayLastCategory = new ArrayList<>();
-//    ArrayList arrayMonthMoney = new ArrayList<>();
-//    ArrayList arrayLastMonthMoney = new ArrayList<>();
-    TextView categoryStatsResult;
-    TextView statsName;
+    TextView childCategoryStatsResult;
+    TextView childStatsName;
     float m1, m2, m3, m4, m5, m6, m7, m8, m9, m10;
     float lM1, lM2, lM3, lM4, lM5, lM6, lM7, lM8, lM9, lM10;
 
     PieChart pieChart;
-    int[] colorArray2 = new int[] {Color.rgb(26, 34, 30), Color.rgb(49, 63, 56),
-            Color.rgb(72, 92, 82), Color.rgb(95, 121, 108), Color.rgb(118, 151, 135),
-            Color.rgb(140, 180, 160), Color.rgb(164, 210, 187), Color.rgb(240, 231, 215), Color.rgb(218, 218, 218),
-            Color.rgb(247, 247, 247)};
+    int[] colorArray2 = new int[] {Color.rgb(16, 35, 7), Color.rgb(30, 64, 13),
+            Color.rgb(44, 93, 19), Color.rgb(57, 123, 24), Color.rgb(71, 152, 30),
+            Color.rgb(84, 181, 36), Color.rgb(98, 210, 42), Color.rgb(165, 166, 164), Color.rgb(194, 195, 193),
+            Color.rgb(223, 225, 222)};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category_stats);
+        setContentView(R.layout.activity_statistics);
 
-        categoryStatsResult = findViewById(R.id.categoryStats_result);
+        childCategoryStatsResult = findViewById(R.id.child_categoryStats_result);
+        childStatsName = findViewById(R.id.statistics_name);
 
-        statsName = findViewById(R.id.stats_name);
         nameRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String name = snapshot.child("name").getValue(String.class);
-                statsName.setText(name);
+                childStatsName.setText(name);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -75,17 +64,13 @@ public class categoryStatsActivity extends AppCompatActivity {
         recordRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                arrayCategory.clear();
-//                arrayLastCategory.clear();
-//                arrayMonthMoney.clear();
-//                arrayLastMonthMoney.clear();
                 m1 = 0; m2 = 0; m3 = 0; m4 = 0; m5 = 0; m6 = 0; m7 = 0; m8 = 0; m9 = 0; m10 = 0;
                 lM1 = 0; lM2 = 0; lM3 = 0; lM4 = 0; lM5 = 0; lM6 = 0; lM7 = 0; lM8 = 0; lM9 = 0; lM10 = 0;
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     String date = dataSnapshot.child("date").getValue().toString();
-                    Integer thisMonth = Integer.valueOf(getMonth());
-                    Integer lastMonth = Integer.valueOf(getLastMonth());
+                    Integer thisMonth = Integer.valueOf(getMonth2());
+                    Integer lastMonth = Integer.valueOf(getLastMonth2());
                     Integer category = Integer.parseInt(dataSnapshot.child("category").getValue().toString());
                     Integer allowance = Integer.parseInt(dataSnapshot.child("moneyAmount").getValue().toString());
                     Integer Month = Integer.valueOf(date.substring(5,7));
@@ -191,22 +176,22 @@ public class categoryStatsActivity extends AppCompatActivity {
                 } else if (m10 > lM10) {
                     c10 = "\"기타\" ";
                 } else {
-                    categoryStatsResult.setText("이번달은 저번달보다 적은 소비를 했어요! 참 잘했어요");
+                    childCategoryStatsResult.setText("이번달은 저번달보다 적은 소비를 했어요! 참 잘했어요");
                 }
-                categoryStatsResult.setText("저번달보다 "+c1+c2+c3+c4+c5+c6+c7+c8+c9+c10+"항목에서 많이 소비했어요! \n " +
-                        c1+c2+c3+c4+c5+c6+c7+c8+c9+c10+"소비를 조금 줄일 수 있도록 독려해주세요");
+                childCategoryStatsResult.setText("저번달보다 "+c1+c2+c3+c4+c5+c6+c7+c8+c9+c10+"항목에서 많이 소비했어요 \n " +
+                        c1+c2+c3+c4+c5+c6+c7+c8+c9+c10+"소비를 조금 줄이는 것이 좋아요!");
 
                 // 파이차트 만들기
-                pieChart = findViewById(R.id.category_pie_Chart);
+                pieChart = findViewById(R.id.child_category_pie_Chart);
 
                 PieDataSet pieDataSet2 = new PieDataSet(data2(), "");
                 pieDataSet2.setColors(colorArray2);
                 PieData pieData2 = new PieData(pieDataSet2);
                 pieDataSet2.setValueTextColor(Color.BLACK);
+                pieDataSet2.setSliceSpace(2f); // 항목별 사이 칸 띄우기
                 pieChart.setDrawEntryLabels(true);
                 pieChart.setUsePercentValues(true);
                 pieData2.setValueTextSize(14);
-//                pieData2.setDrawValues(false); // pieChart 안에 들어가는 value값 표기 지우기
                 Legend legend = pieChart.getLegend(); // pieChart 범례 커스텀
                 legend.setTextSize(14);
                 legend.setVerticalAlignment(Legend.LegendVerticalAlignment.CENTER);
@@ -223,26 +208,6 @@ public class categoryStatsActivity extends AppCompatActivity {
                 pieChart.setHoleRadius(30);
                 pieChart.setData(pieData2);
                 pieChart.invalidate();
-
-
-
-//                // 밖으로 나오는 선 만들어서 퍼센트 표시 https://stackoverflow.com/questions/50907258/pie-chart-alignment-issue-using-mpandroidchart
-                pieDataSet2.setSliceSpace(2f);
-//                pieDataSet2.setIconsOffset(new MPPointF(0, 40));
-//                pieDataSet2.setSelectionShift(5f);
-//
-//                // Outside values
-//                pieDataSet2.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
-//                pieDataSet2.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
-//                pieDataSet2.setValueLinePart1OffsetPercentage(100f); /** When valuePosition is OutsideSlice, indicates offset as percentage out of the slice size */
-//                pieDataSet2.setValueLinePart1Length(0.6f); /** When valuePosition is OutsideSlice, indicates length of first half of the line */
-//                pieDataSet2.setValueLinePart2Length(0.6f); /** When valuePosition is OutsideSlice, indicates length of second half of the line */
-//                pieChart.setExtraOffsets(0.f, 5.f, 0.f, 5.f); // Ofsets of the view chart to prevent outside values being cropped /** Sets extra offsets (around the chart view) to be appended to the auto-calculated offsets.*/
-//
-//                PieData data = new PieData(pieDataSet2);
-//                data.setValueTextSize(10f);
-//                data.setValueTextColor(Color.BLACK);
-//                pieChart.setData(data);
             }
 
             private ArrayList<PieEntry> data2() {
@@ -278,79 +243,27 @@ public class categoryStatsActivity extends AppCompatActivity {
                     datavalue2.add(new PieEntry(m10,"기타"));
                 }
 
-//                datavalue2.add(new PieEntry(m1,"식사"));
-//                datavalue2.add(new PieEntry(m2,"간식"));
-//                datavalue2.add(new PieEntry(m3,"문구"));
-//                datavalue2.add(new PieEntry(m4,"의류"));
-//                datavalue2.add(new PieEntry(m5,"여가"));
-//                datavalue2.add(new PieEntry(m6,"취미"));
-//                datavalue2.add(new PieEntry(m7,"교재/책"));
-//                datavalue2.add(new PieEntry(m8,"교통"));
-//                datavalue2.add(new PieEntry(m9,"분실"));
-//                datavalue2.add(new PieEntry(m10,"기타"));
-
                 return datavalue2;
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-
     }
 
     // 이번달 "월" 구하기
-    public String getMonth(){
-        Long month = System.currentTimeMillis();
-        Date monthDate = new Date(month);
+    public String getMonth2(){
+        Long month2 = System.currentTimeMillis();
+        Date monthDate2 = new Date(month2);
         SimpleDateFormat M = new SimpleDateFormat("M");
-        return M.format(monthDate);
+        return M.format(monthDate2);
     }
 
     // 한달 전 "월" 구하기
-    public String getLastMonth(){
-        Calendar mon = Calendar.getInstance();
-        mon.add(Calendar.MONTH, -1);
-        String lastMonth = new java.text.SimpleDateFormat("M").format(mon.getTime());
-        return lastMonth;
-    }
-
-
-
-    // 다른 통계화면으로 이동
-    public void statsButtonClicked(View v){
-        Intent statsIntent = new Intent(this, HomeActivity.class);
-        startActivity(statsIntent);
-        overridePendingTransition(0, 0);
-    }
-
-    public void ageStatsButtonClicked(View v){
-        Intent ageStatsIntent = new Intent(this, weekStatsActivity.class);
-        startActivity(ageStatsIntent);
-        overridePendingTransition(0, 0);
-    }
-
-    public void categoryStatsButtonClicked(View v) {
-
-    }
-
-    //    하단 네비게이션 바 버튼 클릭
-    public void homeButtonClicked(View v){
-
-    }
-
-    public void wishShopButtonClicked(View v){
-        Intent wishShopIntent = new Intent(this, WishShopActivity.class);
-        startActivity(wishShopIntent);
-    }
-
-    public void profileButtonClicked(View v){
-        Intent profileIntent = new Intent(this, Profile.class);
-        startActivity(profileIntent);
-    }
-
-    public void communityButtonClicked(View v){
-        Intent communityIntent = new Intent(this, BoardListActivity.class);
-        startActivity(communityIntent);
+    public String getLastMonth2(){
+        Calendar mon2 = Calendar.getInstance();
+        mon2.add(Calendar.MONTH, -1);
+        String lastMonth2 = new java.text.SimpleDateFormat("M").format(mon2.getTime());
+        return lastMonth2;
     }
 }
