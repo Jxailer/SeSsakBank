@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
         cancelButton = findViewById(R.id.cancelButton);
         //Button targetButton = findViewById(R.id.targetButton);
 
-        recordRef = FirebaseDatabase.getInstance().getReference("recordManage").child(userID).child(year_info+","+month_info+","+day_info);
+        recordRef = FirebaseDatabase.getInstance().getReference("recordManage").child(userID);
         target = findViewById(R.id.targetButton);
 
         recordRcv = findViewById(R.id.recordRecyclerView);
@@ -288,6 +288,10 @@ public class MainActivity extends AppCompatActivity {
                 {
                     Toast.makeText(MainActivity.this, "미래의 내역은 작성할 수 없어요!", Toast.LENGTH_SHORT).show();
                     Log.w("no futre", "미래 일");
+                } else if (LocalDate.now().getDayOfMonth() - day_info > 7){ // 일주일 이상 이전에 기록을 기록하려 하는 경우
+                    Log.w("must be in a week", "일주일 지남"+(LocalDate.now().getDayOfMonth() - day_info));
+                    Toast.makeText(MainActivity.this, "일주일 이내 기록만 작성할 수 있어요!", Toast.LENGTH_SHORT).show();
+                    Log.w("must be in a week", "일주일 지남");
                 }
                 else{ // 현재 날짜보다 과거에 작성하는 경우
                     Intent intent = new Intent(MainActivity.this, SpentRecordCreate.class);
@@ -302,6 +306,7 @@ public class MainActivity extends AppCompatActivity {
         recordCreate_Income.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.w("must in a week", "일주일 이내 작성"+(LocalDate.now().getDayOfMonth() - day_info));
                 if(year_info > LocalDate.now().getYear()) // 현재 날짜보다 미래 년도에 작성하려는 경우
                 {
                     Toast.makeText(MainActivity.this, "미래의 내역은 작성할 수 없어요!", Toast.LENGTH_SHORT).show();
@@ -315,8 +320,12 @@ public class MainActivity extends AppCompatActivity {
                 {
                     Toast.makeText(MainActivity.this, "미래의 내역은 작성할 수 없어요!", Toast.LENGTH_SHORT).show();
                     Log.w("no futre", "미래 일");
+                } else if (LocalDate.now().getDayOfMonth() - day_info > 7) // 현자 날짜보다 미래 '일'에 기록을 작성하려는 경우
+                {
+                    Toast.makeText(MainActivity.this, "일주일 이내 기록만 작성할 수 있어요!", Toast.LENGTH_SHORT).show();
+                    Log.w("must in a week", "일주일 이내 작성"+(LocalDate.now().getDayOfMonth() - day_info));
                 }
-                else{ // 현재 날짜보다 과거에 작성하는 경우
+                else{ // 현재 날짜에서 일주일 이내의 과거에 작성하는 경우
                     Intent intent = new Intent(MainActivity.this, IncomeRecordCreate.class);
                     startActivity(intent);
                 }
