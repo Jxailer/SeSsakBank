@@ -317,7 +317,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.w("no futre", "미래 일");
                 }
                 else{ // 현재 날짜보다 과거에 작성하는 경우
-                    Intent intent = new Intent(MainActivity.this, SpentRecordCreate.class);
+                    Intent intent = new Intent(MainActivity.this, IncomeRecordCreate.class);
                     startActivity(intent);
                 }
             }

@@ -71,7 +71,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/assessment"
             tools:ignore="SpeakableTextPresentCheck" />
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!--    목표 수정창 (목표 수정시 활성화)-->
     <androidx.constraintlayout.widget.ConstraintLayout
