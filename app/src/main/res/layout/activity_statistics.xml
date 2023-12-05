@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="님의 이번달 카테고리별 통계"
+                android:text="님의 이번달 통계"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
