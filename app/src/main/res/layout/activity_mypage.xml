@@ -286,6 +286,7 @@
         android:layout_height="56dp"
         android:background="@drawable/bar_layout"
         android:gravity="center_horizontal"
+        android:layout_gravity="bottom"
         android:orientation="horizontal">
 
         <!--        홈 버튼(눌렸다는 것을 표현하기 위해 app:tint="#D5D6D6" 설정함)-->
