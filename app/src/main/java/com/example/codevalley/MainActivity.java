@@ -44,6 +44,7 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -367,7 +368,7 @@ public class MainActivity extends AppCompatActivity {
         YearMonth yearMonth = YearMonth.from(date);
 
         // 해당 월 마지막 날짜 가져오기기
-        int lastDay = YearMonth.now().lengthOfMonth();
+        int lastDay = yearMonth.lengthOfMonth();
 
         // 해당 월의 첫 번째 날 가져오기
         LocalDate firstDay = CalendarUtil.selectedDate.withDayOfMonth(1);
@@ -381,7 +382,7 @@ public class MainActivity extends AppCompatActivity {
                 dayList.add(null);
             } else {
                 dayList.add(LocalDate.of(CalendarUtil.selectedDate.getYear(), CalendarUtil.selectedDate.getMonth(),
-                        i - dayofWeek));
+                        (i - dayofWeek)));
             }
         }
         return dayList;
