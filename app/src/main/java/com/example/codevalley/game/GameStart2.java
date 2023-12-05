@@ -69,6 +69,7 @@ public class GameStart2 extends AppCompatActivity {
                             .setAction(Intent.ACTION_MAIN)
                             .addCategory(Intent.CATEGORY_LAUNCHER)
                             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                    finish();
 
 //                    goGamePage(plantName);
                 }
