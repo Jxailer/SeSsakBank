@@ -11,23 +11,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.codevalley.MainActivity;
-import com.example.codevalley.R;
-import com.example.codevalley.game.GameStart1;
-import com.example.codevalley.game.PlantGame;
-import com.example.codevalley.myPage.MyPageActivity;
-import com.example.wishShop.DataClass;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -37,6 +22,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.codevalley.MainActivity;
+import com.example.codevalley.R;
+import com.example.codevalley.game.GameStart1;
+import com.example.codevalley.game.PlantGame;
+import com.example.codevalley.myPage.MyPageActivity;
+import com.example.wishShop.DataClass;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -200,6 +197,35 @@ public class store_main extends AppCompatActivity implements View.OnClickListene
     }
 
     public void plantgameButtonClicked(View v){
+        // gamestart1번만 실행하기 위해 아래 이 코드 추가
+//        FirebaseDatabase.getInstance().getReference("game").child(userID).addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                try{
+//                    gameCheck = snapshot.child("gameCheck").getValue(Integer.class);
+//                    if (gameCheck == 1) {
+//                        Intent intent = new Intent(store_main.this, PlantGame.class);
+//                        startActivity(intent);
+//                        overridePendingTransition(0, 0);
+//                        finish();
+//                    }
+//                    else {
+//                        Intent intent = new Intent(store_main.this, GameStart1.class);
+//                        startActivity(intent);
+//                        overridePendingTransition(0, 0);
+//                        finish();
+//                    }
+//                } catch (Exception e){
+//                    Intent intent = new Intent(store_main.this, GameStart1.class);
+//                    startActivity(intent);
+//                    overridePendingTransition(0, 0);
+//                    finish();
+//                }
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//            }
+//        });
         Intent gameIntent = new Intent(this, GameStart1.class);
         startActivity(gameIntent);
         finish();

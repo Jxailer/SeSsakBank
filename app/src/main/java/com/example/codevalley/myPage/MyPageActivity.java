@@ -6,7 +6,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
@@ -19,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.codevalley.MainActivity;
 import com.example.codevalley.R;
 import com.example.codevalley.game.GameStart1;
-import com.example.codevalley.game.PlantGame;
 import com.example.codevalley.wishStore.store_main;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -137,6 +135,35 @@ public class MyPageActivity extends AppCompatActivity {
     }
 
     public void plantgameButtonClicked(View v){
+        // gamestart1번만 실행하기 위해 아래 이 코드 추가
+//        FirebaseDatabase.getInstance().getReference("game").child(userID).addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                try{
+//                    gameCheck = snapshot.child("gameCheck").getValue(Integer.class);
+//                    if (gameCheck == 1) {
+//                        Intent intent = new Intent(MyPageActivity.this, PlantGame.class);
+//                        startActivity(intent);
+//                        overridePendingTransition(0, 0);
+//                        finish();
+//                    }
+//                    else {
+//                        Intent intent = new Intent(MyPageActivity.this, GameStart1.class);
+//                        startActivity(intent);
+//                        overridePendingTransition(0, 0);
+//                        finish();
+//                    }
+//                } catch (Exception e){
+//                    Intent intent = new Intent(MyPageActivity.this, GameStart1.class);
+//                    startActivity(intent);
+//                    overridePendingTransition(0, 0);
+//                    finish();
+//                }
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//            }
+//        });
         Intent gameIntent = new Intent(this, GameStart1.class);
         startActivity(gameIntent);
         finish();

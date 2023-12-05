@@ -2,9 +2,7 @@ package com.example.codevalley.game;
 
 import static com.example.codevalley.LoginActivity.userID;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,17 +10,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.codevalley.MainActivity;
 import com.example.codevalley.R;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -69,9 +61,14 @@ public class GameStart2 extends AppCompatActivity {
 
 
 
-                    Intent intent = new Intent(GameStart2.this, PlantGame.class); // Activity사이에서 값을 전달하기 위해서는 intent를 사용한다.
+//                    Intent intent = new Intent(GameStart2.this, PlantGame.class); // Activity사이에서 값을 전달하기 위해서는 intent를 사용한다.
 //                    intent.putExtra("plantname",plantName); // intent생성시 현재 activity와 이동할 activity선언하고, putExtra메서드를 통해 키 값과 데이터를 저장
-                    startActivity(intent); // Intent와 함께 다음 activity실행
+//                    startActivity(intent); // Intent와 함께 다음 activity실행
+
+                    startActivity(new Intent(GameStart2.this, PlantGame.class)
+                            .setAction(Intent.ACTION_MAIN)
+                            .addCategory(Intent.CATEGORY_LAUNCHER)
+                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
 //                    goGamePage(plantName);
                 }
