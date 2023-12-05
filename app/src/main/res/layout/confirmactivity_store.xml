@@ -36,7 +36,7 @@
 
     <Button
         android:id="@+id/yesButton"
-        android:layout_width="185dp"
+        android:layout_width="161.5dp"
         android:layout_height="56dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="56dp"
@@ -51,7 +51,7 @@
 
     <Button
         android:id="@+id/noButton"
-        android:layout_width="185dp"
+        android:layout_width="161.5dp"
         android:layout_height="56dp"
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="56dp"

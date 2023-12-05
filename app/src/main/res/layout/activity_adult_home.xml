@@ -40,11 +40,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:gravity="center">
 
             <Button
                 android:id="@+id/statsBtn"
-                android:layout_width="wrap_content"
+                android:layout_width="107dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="25dp"
                 android:paddingRight="25dp"
@@ -52,7 +53,7 @@
                 android:text="수입/지출"
                 android:textColor="@color/a_sub1"
                 android:textStyle="bold"
-                android:textSize="16dp"
+                android:textSize="14dp"
                 android:background="@drawable/round_button4"
                 app:tint="#769787"
                 tools:layout_editor_absoluteX="122dp"
@@ -65,15 +66,15 @@
 
             <Button
                 android:id="@+id/categoryStatsBtn"
-                android:layout_width="wrap_content"
+                android:layout_width="110dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="25dp"
                 android:paddingRight="25dp"
                 android:onClick="categoryStatsButtonClicked"
-                android:text="카테고리별"
+                android:text="카테고리"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:textSize="16dp"
+                android:textSize="14dp"
                 android:background="@drawable/round_button5"
                 app:tint="#c1c5be"
                 tools:layout_editor_absoluteX="122dp"
@@ -86,7 +87,7 @@
 
             <Button
                 android:id="@+id/weekStatsBtn"
-                android:layout_width="wrap_content"
+                android:layout_width="107dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="25dp"
                 android:paddingRight="25dp"
@@ -94,7 +95,7 @@
                 android:text="주간 통계"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:textSize="16dp"
+                android:textSize="14dp"
                 android:background="@drawable/round_button5"
                 app:tint="#769787"
                 tools:layout_editor_absoluteX="122dp"
@@ -129,7 +130,7 @@
                 android:text="용돈의 30%를 저축하는 습관은 중요해요"
                 android:textColor="@color/a_main"
                 android:textStyle="bold"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/stats_result"
@@ -140,7 +141,7 @@
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:textSize="20dp"/>
+                android:textSize="18dp"/>
         </LinearLayout>
     </LinearLayout>
 
