@@ -1,13 +1,11 @@
 package com.example.codevalley.recordListHelper;
 
-import static com.example.adult.adult_LoginActivity.nickName;
+import static com.example.calendar.CalendarAdapter.day_info;
+import static com.example.calendar.CalendarAdapter.month_info;
+import static com.example.calendar.CalendarAdapter.year_info;
 import static com.example.codevalley.LoginActivity.userID;
 import static com.example.codevalley.RegisterActivity.ur_stamp;
-import static com.example.calendar.CalendarAdapter.year_info;
-import static com.example.calendar.CalendarAdapter.month_info;
-import static com.example.calendar.CalendarAdapter.day_info;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.codevalley.R;
@@ -36,6 +35,10 @@ public class IncomeRecordCreate extends AppCompatActivity {
         DatabaseReference childRef = FirebaseDatabase.getInstance().getReference("users").child(userID);
 
         setContentView(R.layout.income_record_create);
+
+        //액션 바(타이틀 바) 없애기
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         Button saveButton = findViewById(R.id.saveButton);
         Button cancelButton = findViewById(R.id.cancelButton);

@@ -118,7 +118,7 @@
             <TextView
                 android:id="@+id/detailDesc"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="230dp"
                 android:padding="5dp"
                 android:background="@color/a_sub1"
                 android:fontFamily="@font/inter"
@@ -142,7 +142,7 @@
 
                 <Button
                     android:id="@+id/deleteButton"
-                    android:layout_width="170dp"
+                    android:layout_width="150dp"
                     android:layout_height="56dp"
                     android:background="@drawable/round_button3"
                     android:backgroundTint="#B0DDDDDD"
@@ -162,7 +162,7 @@
 
                 <Button
                     android:id="@+id/editButton"
-                    android:layout_width="170dp"
+                    android:layout_width="150dp"
                     android:layout_height="56dp"
                     android:background="@drawable/round_button3"
                     android:backgroundTint="#769787"
