@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
     Button dayButton;
     Button target;
     ImageButton statistics;
+    public static String result;
 
 //    캘린더 커스텀뷰 관련 변수 선언
     TextView monthYearText; //년월 텍스트뷰
@@ -332,6 +333,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        if(result == null){
+            target.setText("목표가 설정되지 않았어요!");
+        }
+        else{
+            target.setText(result);
+        }
 
 //        저장버튼 눌렀을 시 onClickListener
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -341,7 +348,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "목표가 설정되지 않았어요!", Toast.LENGTH_SHORT).show();
                 } else {
                     if (target.getText().toString() != editText.getText().toString()) { // 기존의 목표와 값이 다르다면 값을 변경함.
-                        String result = editText.getText().toString();
+                        result = editText.getText().toString();
                         target.setText(result);
                         Toast.makeText(MainActivity.this, "목표를 바꿨어요!", Toast.LENGTH_SHORT).show();
                         targetChangeBox.setVisibility(View.INVISIBLE);
