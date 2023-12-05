@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="350dp"
@@ -15,10 +15,9 @@ android:layout_gravity="center">
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="용돈 기입 작성하기 (수입)"
+        android:text="용돈 기입 작성하기 (지출)"
         android:textStyle="bold"
         android:textSize="24dp"
-        android:textColor="#535353"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,66 +35,24 @@ android:layout_gravity="center">
             android:id="@+id/categoryText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:text="어디에서 돈을 얻었나요?"
+            android:text="어디에 돈을 사용했나요?"
             android:textSize="16dp"
-            android:textColor="#535353"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <!--        메모 작성-->
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="16dp" />
 
         <Spinner
             android:id="@+id/categorySpinner"
             android:layout_width="250dp"
             android:layout_height="45dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="#c4d9ba"
-            android:background="@drawable/green_button"
-            android:entries="@array/recordType2"
-            android:spinnerMode="dropdown"
-            android:textColor="#535353"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/categoryText" />
-
-        <TextView
-            android:id="@+id/moneyAmountText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:text="얼만큼의 돈이 생겼나요?"
-            android:textSize="16dp"
-            android:textColor="#535353"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/categorySpinner" />
-
-        <EditText
-            android:id="@+id/moneyAmount"
-            android:layout_width="250dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="10dp"
-            android:paddingLeft="10dp"
             android:backgroundTint="#c4d9ba"
-            android:background="@drawable/green_button"
-            android:hint="받은 금액"
-            android:textColor="#8B8888"
-            android:textColorHint="#535353"
+            android:entries="@array/recordType"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/moneyAmountText" />
+            app:layout_constraintTop_toBottomOf="@+id/categoryText"
+            android:background="@drawable/green_button"/>
 
-        <TextView
-            android:id="@+id/memoText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="136dp"
-            android:text="메모할 것이 있나요?"
-            android:textSize="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/categorySpinner" />
+        <!--        메모 작성-->
 
         <EditText
             android:id="@+id/memo"
@@ -113,13 +70,48 @@ android:layout_gravity="center">
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/memoText" />
 
+        <TextView
+            android:id="@+id/memoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="136dp"
+            android:text="메모할 것이 있나요?"
+            android:textSize="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/categorySpinner" />
 
+        <TextView
+            android:id="@+id/moneyAmountText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:text="얼만큼의 돈이 쓰였나요?"
+            android:textSize="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/categorySpinner" />
+
+        <EditText
+            android:id="@+id/moneyAmount"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/green_button"
+            android:backgroundTint="#c4d9ba"
+            android:hint="사용한 금액"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/moneyAmountText"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!--    저장, 취소 버튼-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_marginTop="40dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
@@ -131,20 +123,17 @@ android:layout_gravity="center">
         <Button
             android:id="@+id/cancelButton"
             android:layout_width="150dp"
-            android:layout_height="56dp"
-            android:layout_marginLeft="16dp"
+            android:layout_height="match_parent"
             android:background="@drawable/round_button"
             android:backgroundTint="#DDDDDD"
             android:text="취소하기"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#535353"/>
+            android:textStyle="bold"/>
 
         <Button
             android:id="@+id/saveButton"
             android:layout_width="150dp"
-            android:layout_height="56dp"
-            android:layout_marginRight="16dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
             android:background="@drawable/round_button"
             android:backgroundTint="#397b18"

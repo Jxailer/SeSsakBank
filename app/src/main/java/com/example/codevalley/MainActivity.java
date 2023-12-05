@@ -1,20 +1,28 @@
 package com.example.codevalley;
 
+import static com.example.adult.adult_LoginActivity.nickName;
+import static com.example.codevalley.LoginActivity.userID;
 import static com.example.calendar.CalendarAdapter.day_info;
 import static com.example.calendar.CalendarAdapter.month_info;
 import static com.example.calendar.CalendarAdapter.year_info;
 import static com.example.codevalley.LoginActivity.userID;
 
+import java.time.LocalDate;
+
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +35,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.calendar.CalendarAdapter;
 import com.example.calendar.CalendarUtil;
+import com.example.codevalley.MainActivity;
+import com.example.codevalley.R;
 import com.example.codevalley.game.GameStart1;
+import com.example.codevalley.game.PlantGame;
 import com.example.codevalley.myPage.MyPageActivity;
 import com.example.codevalley.recordListHelper.CustomAdapter_RecordList;
 import com.example.codevalley.recordListHelper.HelperClass_RecordList;
@@ -38,12 +49,35 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+
+import com.example.codevalley.game.GameStart1;
+import com.example.codevalley.myPage.MyPageActivity;
+import com.example.codevalley.wishStore.store_complete;
+import com.example.codevalley.wishStore.store_main;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
@@ -80,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
     Button target;
     ImageButton statistics;
 
-    //    캘린더 커스텀뷰 관련 변수 선언
+//    캘린더 커스텀뷰 관련 변수 선언
     TextView monthYearText; //년월 텍스트뷰
     TextView selectedDate; // 커스텀 캘린더에서 선택된 날짜
     RecyclerView day_recyclerView;
@@ -119,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
         cancelButton = findViewById(R.id.cancelButton);
         //Button targetButton = findViewById(R.id.targetButton);
 
-        recordRef = FirebaseDatabase.getInstance().getReference("recordManage").child(userID).child(year_info+","+month_info+","+day_info);
+        recordRef = FirebaseDatabase.getInstance().getReference("recordManage").child(userID);
         target = findViewById(R.id.targetButton);
 
         recordRcv = findViewById(R.id.recordRecyclerView);
@@ -254,11 +288,15 @@ public class MainActivity extends AppCompatActivity {
                 {
                     Toast.makeText(MainActivity.this, "미래의 내역은 작성할 수 없어요!", Toast.LENGTH_SHORT).show();
                     Log.w("no futre", "미래 일");
+                } else if (LocalDate.now().getDayOfMonth() - day_info > 7){ // 일주일 이상 이전에 기록을 기록하려 하는 경우
+                    Log.w("must be in a week", "일주일 지남"+(LocalDate.now().getDayOfMonth() - day_info));
+                    Toast.makeText(MainActivity.this, "일주일 이내 기록만 작성할 수 있어요!", Toast.LENGTH_SHORT).show();
+                    Log.w("must be in a week", "일주일 지남");
                 }
                 else{ // 현재 날짜보다 과거에 작성하는 경우
                     Intent intent = new Intent(MainActivity.this, SpentRecordCreate.class);
                     startActivity(intent);
-                }
+                    }
 
 
             }
@@ -268,6 +306,7 @@ public class MainActivity extends AppCompatActivity {
         recordCreate_Income.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.w("must in a week", "일주일 이내 작성"+(LocalDate.now().getDayOfMonth() - day_info));
                 if(year_info > LocalDate.now().getYear()) // 현재 날짜보다 미래 년도에 작성하려는 경우
                 {
                     Toast.makeText(MainActivity.this, "미래의 내역은 작성할 수 없어요!", Toast.LENGTH_SHORT).show();
@@ -281,8 +320,12 @@ public class MainActivity extends AppCompatActivity {
                 {
                     Toast.makeText(MainActivity.this, "미래의 내역은 작성할 수 없어요!", Toast.LENGTH_SHORT).show();
                     Log.w("no futre", "미래 일");
+                } else if (LocalDate.now().getDayOfMonth() - day_info > 7) // 현자 날짜보다 미래 '일'에 기록을 작성하려는 경우
+                {
+                    Toast.makeText(MainActivity.this, "일주일 이내 기록만 작성할 수 있어요!", Toast.LENGTH_SHORT).show();
+                    Log.w("must in a week", "일주일 이내 작성"+(LocalDate.now().getDayOfMonth() - day_info));
                 }
-                else{ // 현재 날짜보다 과거에 작성하는 경우
+                else{ // 현재 날짜에서 일주일 이내의 과거에 작성하는 경우
                     Intent intent = new Intent(MainActivity.this, IncomeRecordCreate.class);
                     startActivity(intent);
                 }

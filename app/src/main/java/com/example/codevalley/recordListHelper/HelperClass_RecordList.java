@@ -16,11 +16,12 @@ public class HelperClass_RecordList {
 
 
     public HelperClass_RecordList(String memo, String category, String moneyAmount, String pm, String date){
+        this.category = category;
+        this.date = date;
         this.memo = memo;
         this.moneyAmount = moneyAmount;
-        this.category = category;
         this.pm = pm;
-        this.date = date;
+
     }
 
 
